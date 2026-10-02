@@ -1,0 +1,144 @@
+{
+  "as_of": "2026-10-01",
+  "assumptions": {
+    "periods_per_year": 252,
+    "risk_free_rate": 0.055199,
+    "risk_free_source": "RBI, 91-day T-bill cut-off yield (auction of 30 Sep 2026)",
+    "risk_free_as_of": "2026-10-01",
+    "equity_risk_premium": 0.0708,
+    "erp_source": "Damodaran, Country Default Spreads and Risk Premiums (India, Baa3)",
+    "erp_as_of": "2026-01-05",
+    "benchmark": "Nifty 50 price index (excludes dividends)",
+    "ratio_convention": "arithmetic mean excess return x periods; cagr is geometric"
+  },
+  "data": {
+    "source": "Yahoo Finance via yfinance (auto_adjust=True)",
+    "fetched_at_utc": "2026-10-02T10:33:44+00:00",
+    "first_date": "2016-01-04",
+    "last_date": "2026-10-01",
+    "observations": 2649,
+    "dropped_incomplete_dates": [
+      "2016-01-01",
+      "2016-08-12",
+      "2018-01-01",
+      "2019-01-01",
+      "2019-10-27",
+      "2020-11-14",
+      "2026-01-15",
+      "2026-05-01",
+      "2026-05-28",
+      "2026-06-26",
+      "2026-09-14"
+    ],
+    "demerger_adjustments": [
+      {
+        "ticker": "HINDUNILVR.NS",
+        "ex_date": "2025-12-05",
+        "factor": 0.983673
+      }
+    ]
+  },
+  "names": {
+    "HINDUNILVR.NS": "Hindustan Unilever",
+    "INFY.NS": "Infosys",
+    "ICICIBANK.NS": "ICICI Bank",
+    "^NSEI": "Nifty 50"
+  },
+  "securities": {
+    "HINDUNILVR.NS": {
+      "cagr": 0.094401,
+      "mean_return": 0.11423,
+      "volatility": 0.219868,
+      "sharpe": 0.275142,
+      "sortino": 0.416687,
+      "max_drawdown": -0.358569,
+      "beta": 0.600402,
+      "treynor": 0.100757,
+      "jensen_alpha": 0.024477,
+      "capm_required_return": 0.097707
+    },
+    "INFY.NS": {
+      "cagr": 0.0939,
+      "mean_return": 0.12604,
+      "volatility": 0.268722,
+      "sharpe": 0.26907,
+      "sortino": 0.380103,
+      "max_drawdown": -0.481716,
+      "beta": 0.821118,
+      "treynor": 0.088057,
+      "jensen_alpha": 0.023046,
+      "capm_required_return": 0.113334
+    },
+    "ICICIBANK.NS": {
+      "cagr": 0.187635,
+      "mean_return": 0.216255,
+      "volatility": 0.29775,
+      "sharpe": 0.545827,
+      "sortino": 0.81758,
+      "max_drawdown": -0.483073,
+      "beta": 1.294867,
+      "treynor": 0.125511,
+      "jensen_alpha": 0.084841,
+      "capm_required_return": 0.146876
+    },
+    "^NSEI": {
+      "cagr": 0.105827,
+      "mean_return": 0.113725,
+      "volatility": 0.161362,
+      "sharpe": 0.371773,
+      "sortino": 0.508632,
+      "max_drawdown": -0.384399,
+      "beta": 1.0,
+      "treynor": 0.05999,
+      "jensen_alpha": 0.0,
+      "capm_required_return": 0.125999
+    }
+  },
+  "correlation_full_sample": {
+    "HINDUNILVR.NS": {
+      "HINDUNILVR.NS": 1.0,
+      "INFY.NS": 0.225076,
+      "ICICIBANK.NS": 0.235338
+    },
+    "INFY.NS": {
+      "HINDUNILVR.NS": 0.225076,
+      "INFY.NS": 1.0,
+      "ICICIBANK.NS": 0.223291
+    },
+    "ICICIBANK.NS": {
+      "HINDUNILVR.NS": 0.235338,
+      "INFY.NS": 0.223291,
+      "ICICIBANK.NS": 1.0
+    }
+  },
+  "correlation_check": {
+    "window_start": "2021-08-27",
+    "window_end": "2026-10-01",
+    "pairs": {
+      "HINDUNILVR.NS / INFY.NS": 0.192,
+      "HINDUNILVR.NS / ICICIBANK.NS": 0.202,
+      "INFY.NS / ICICIBANK.NS": 0.221
+    },
+    "max_pair": "INFY.NS / ICICIBANK.NS",
+    "max_correlation": 0.221,
+    "threshold": 0.5,
+    "passes": true
+  },
+  "covariance_annualized": {
+    "HINDUNILVR.NS": {
+      "HINDUNILVR.NS": 0.048342,
+      "INFY.NS": 0.013298,
+      "ICICIBANK.NS": 0.015407
+    },
+    "INFY.NS": {
+      "HINDUNILVR.NS": 0.013298,
+      "INFY.NS": 0.072211,
+      "ICICIBANK.NS": 0.017866
+    },
+    "ICICIBANK.NS": {
+      "HINDUNILVR.NS": 0.015407,
+      "INFY.NS": 0.017866,
+      "ICICIBANK.NS": 0.088655
+    }
+  }
+}

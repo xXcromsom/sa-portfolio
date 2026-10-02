@@ -1,0 +1,10 @@
+# Secrets and machine-specific files
+.env
+.certs/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+~$*
+
+# Source documents (PDFs, Screener exports) stay local
+data/raw/

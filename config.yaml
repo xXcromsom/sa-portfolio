@@ -1,0 +1,70 @@
+# Every tunable parameter lives here. Source files read this file; nothing is hardcoded.
+
+universe:
+  # Yahoo Finance tickers. NSE symbols carry the .NS suffix.
+  # Selection rule (PLAN_v2 §4): different primary macro driver per stock, and
+  # pairwise daily-return correlation of about 0.5 or lower over the last 5 years.
+  stocks:
+    HINDUNILVR.NS:
+      name: Hindustan Unilever
+      sector: FMCG
+      driver: Domestic and rural consumption, input-cost inflation
+      valuation_method: two_stage_ddm
+    INFY.NS:
+      name: Infosys
+      sector: IT Services
+      driver: USD/INR, US enterprise tech spending
+      valuation_method: two_stage_ddm
+    ICICIBANK.NS:
+      name: ICICI Bank
+      sector: Private Bank
+      driver: Credit growth, repo rate
+      valuation_method: justified_pb   # free cash flow is not meaningful for a bank
+  # Nifty 50 *price* index. The stock series are dividend-adjusted but this index
+  # is not, so benchmark returns are understated by roughly the index dividend
+  # yield (~1-1.5%/yr) and Jensen's alpha is overstated by about the same amount.
+  benchmark: ^NSEI
+  benchmark_name: Nifty 50
+
+data:
+  start: 2016-01-01        # spans the 2020 COVID crash and the 2022 rate-hike drawdown
+  end: null                # null = up to the latest available close
+  latest_dir: data/latest
+  submission_dir: data/submission
+  # Validation: a daily move larger than this stops the pipeline unless it is
+  # listed under allowed_large_moves after checking it is a real event.
+  max_abs_daily_move: 0.20
+  allowed_large_moves: []  # e.g. ["INFY.NS:2019-10-22"]
+  # Demergers Yahoo does not adjust for. Without a fix, the value handed to
+  # shareholders as new shares shows up as a one-day loss. Prices before ex_date
+  # are multiplied by 1 - spun_off_value / cum_close, the same way splits and
+  # dividends are adjusted.
+  demergers:
+    - ticker: HINDUNILVR.NS
+      ex_date: 2025-12-05
+      # 1 Kwality Wall's (KWIL) share per HUL share. KWIL's implied price from
+      # NSE's special pre-open session on the ex-date (it listed at Rs 29.80 on
+      # 16 Feb 2026). HUL's book-value cost split for tax was 98.09 / 1.91.
+      spun_off_value: 40.20
+      cum_close: 2462.20   # HUL's raw (unadjusted) close on 4 Dec 2025
+      source: NSE special pre-open session; Upstox News, 16 Feb 2026
+  correlation_window_years: 5
+
+market:
+  trading_days: 252
+  # 91-day T-bill cut-off yield at the last auction (30 Sep 2026), from the RBI
+  # homepage "Current Rates" panel on 1 Oct 2026. It is a money-market (simple)
+  # yield; the effective annual rate is ~0.1 pp higher, which we ignore.
+  # Simplification: today's rate is applied to the whole 2016-2026 history,
+  # although T-bill yields ranged from ~3.3% (2020-21) to ~6.9% (2023).
+  risk_free_rate: 0.055199
+  risk_free_source: RBI, 91-day T-bill cut-off yield (auction of 30 Sep 2026)
+  risk_free_as_of: 2026-10-01
+  # Damodaran, India total equity risk premium = mature-market ERP + 2.85% country
+  # risk premium. Used only for forward-looking CAPM required returns (valuation).
+  equity_risk_premium: 0.0708
+  erp_source: Damodaran, Country Default Spreads and Risk Premiums (India, Baa3)
+  erp_as_of: 2026-01-05
+
+# Set to the freeze date D when data/latest is copied to data/submission.
+snapshot_date: null

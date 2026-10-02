@@ -1,0 +1,27 @@
+{
+  "source": "Yahoo Finance via yfinance (auto_adjust=True)",
+  "fetched_at_utc": "2026-10-02T10:33:44+00:00",
+  "first_date": "2016-01-04",
+  "last_date": "2026-10-01",
+  "observations": 2649,
+  "dropped_incomplete_dates": [
+    "2016-01-01",
+    "2016-08-12",
+    "2018-01-01",
+    "2019-01-01",
+    "2019-10-27",
+    "2020-11-14",
+    "2026-01-15",
+    "2026-05-01",
+    "2026-05-28",
+    "2026-06-26",
+    "2026-09-14"
+  ],
+  "demerger_adjustments": [
+    {
+      "ticker": "HINDUNILVR.NS",
+      "ex_date": "2025-12-05",
+      "factor": 0.983673
+    }
+  ]
+}

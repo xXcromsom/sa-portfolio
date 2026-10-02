@@ -1,0 +1,56 @@
+{
+  "latest_price_date": "2026-10-01",
+  "securities": {
+    "HINDUNILVR.NS": {
+      "name": "Hindustan Unilever",
+      "model": "Two-stage DDM",
+      "workbook_price": 1836.0,
+      "latest_price": 1836.0,
+      "cost_of_equity": 0.097707,
+      "intrinsic_value": 1081.28,
+      "comps_value": 2075.48,
+      "blended_value": 1578.38,
+      "market_implied_growth": 0.07373,
+      "upside_vs_latest": {
+        "intrinsic": -0.411067,
+        "comps": 0.130435,
+        "blended": -0.140316
+      },
+      "workbook_verdict": "Fairly valued"
+    },
+    "INFY.NS": {
+      "name": "Infosys",
+      "model": "Two-stage DDM",
+      "workbook_price": 1035.0,
+      "latest_price": 1035.0,
+      "cost_of_equity": 0.113333,
+      "intrinsic_value": 965.0,
+      "comps_value": 1073.33,
+      "blended_value": 1019.17,
+      "market_implied_growth": 0.063988,
+      "upside_vs_latest": {
+        "intrinsic": -0.067631,
+        "comps": 0.037037,
+        "blended": -0.015297
+      },
+      "workbook_verdict": "Fairly valued"
+    },
+    "ICICIBANK.NS": {
+      "name": "ICICI Bank",
+      "model": "Two-stage P/B (residual income)",
+      "workbook_price": 1310.6,
+      "latest_price": 1310.6,
+      "cost_of_equity": 0.146878,
+      "intrinsic_value": 573.45,
+      "comps_value": 1139.04,
+      "blended_value": 856.25,
+      "market_implied_growth": 0.138725,
+      "upside_vs_latest": {
+        "intrinsic": -0.562449,
+        "comps": -0.130901,
+        "blended": -0.346675
+      },
+      "workbook_verdict": "Overvalued"
+    }
+  }
+}
