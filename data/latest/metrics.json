@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-01",
+  "as_of": "2026-10-13",
   "assumptions": {
     "periods_per_year": 252,
     "risk_free_rate": 0.055199,
@@ -8,15 +8,16 @@
     "equity_risk_premium": 0.0708,
     "erp_source": "Damodaran, Country Default Spreads and Risk Premiums (India, Baa3)",
     "erp_as_of": "2026-01-05",
-    "benchmark": "Nifty 50 price index (excludes dividends)",
-    "ratio_convention": "arithmetic mean excess return x periods; cagr is geometric"
+    "benchmark": "Nifty 50 TR (est.): Nifty 50 price index + 1.22%/yr estimated dividend yield",
+    "ratio_convention": "arithmetic mean excess return x periods; cagr is geometric",
+    "tail_measures": "historical, daily, 95%; VaR and ES are positive losses"
   },
   "data": {
     "source": "Yahoo Finance via yfinance (auto_adjust=True)",
-    "fetched_at_utc": "2026-10-02T10:33:44+00:00",
+    "fetched_at_utc": "2026-10-13T05:32:15+00:00",
     "first_date": "2016-01-04",
-    "last_date": "2026-10-01",
-    "observations": 2649,
+    "last_date": "2026-10-13",
+    "observations": 2655,
     "dropped_incomplete_dates": [
       "2016-01-01",
       "2016-08-12",
@@ -25,10 +26,7 @@
       "2019-10-27",
       "2020-11-14",
       "2026-01-15",
-      "2026-05-01",
-      "2026-05-28",
-      "2026-06-26",
-      "2026-09-14"
+      "2026-10-12"
     ],
     "demerger_adjustments": [
       {
@@ -42,54 +40,70 @@
     "HINDUNILVR.NS": "Hindustan Unilever",
     "INFY.NS": "Infosys",
     "ICICIBANK.NS": "ICICI Bank",
-    "^NSEI": "Nifty 50"
+    "^NSEI": "Nifty 50 TR (est.)"
   },
   "securities": {
     "HINDUNILVR.NS": {
-      "cagr": 0.094401,
-      "mean_return": 0.11423,
-      "volatility": 0.219868,
-      "sharpe": 0.275142,
-      "sortino": 0.416687,
+      "cagr": 0.094353,
+      "mean_return": 0.114201,
+      "volatility": 0.219935,
+      "sharpe": 0.274925,
+      "sortino": 0.416507,
       "max_drawdown": -0.358569,
-      "beta": 0.600402,
-      "treynor": 0.100757,
-      "jensen_alpha": 0.024477,
-      "capm_required_return": 0.097707
+      "skewness": 0.755664,
+      "excess_kurtosis": 8.406668,
+      "var_95_daily": 0.019679,
+      "es_95_daily": 0.028772,
+      "beta": 0.601606,
+      "treynor": 0.100507,
+      "jensen_alpha": 0.017016,
+      "capm_required_return": 0.097793
     },
     "INFY.NS": {
-      "cagr": 0.0939,
-      "mean_return": 0.12604,
-      "volatility": 0.268722,
-      "sharpe": 0.26907,
-      "sortino": 0.380103,
+      "cagr": 0.094218,
+      "mean_return": 0.12633,
+      "volatility": 0.268719,
+      "sharpe": 0.270151,
+      "sortino": 0.381697,
       "max_drawdown": -0.481716,
-      "beta": 0.821118,
-      "treynor": 0.088057,
-      "jensen_alpha": 0.023046,
-      "capm_required_return": 0.113334
+      "skewness": -0.352714,
+      "excess_kurtosis": 8.03636,
+      "var_95_daily": 0.024189,
+      "es_95_daily": 0.038327,
+      "beta": 0.820191,
+      "treynor": 0.08851,
+      "jensen_alpha": 0.013358,
+      "capm_required_return": 0.113269
     },
     "ICICIBANK.NS": {
-      "cagr": 0.187635,
-      "mean_return": 0.216255,
-      "volatility": 0.29775,
-      "sharpe": 0.545827,
-      "sortino": 0.81758,
+      "cagr": 0.190425,
+      "mean_return": 0.218526,
+      "volatility": 0.297491,
+      "sharpe": 0.553937,
+      "sortino": 0.82988,
       "max_drawdown": -0.483073,
-      "beta": 1.294867,
-      "treynor": 0.125511,
-      "jensen_alpha": 0.084841,
-      "capm_required_return": 0.146876
+      "skewness": 0.245717,
+      "excess_kurtosis": 9.650803,
+      "var_95_daily": 0.025381,
+      "es_95_daily": 0.040217,
+      "beta": 1.292801,
+      "treynor": 0.127468,
+      "jensen_alpha": 0.071422,
+      "capm_required_return": 0.146729
     },
     "^NSEI": {
-      "cagr": 0.105827,
-      "mean_return": 0.113725,
-      "volatility": 0.161362,
-      "sharpe": 0.371773,
-      "sortino": 0.508632,
-      "max_drawdown": -0.384399,
+      "cagr": 0.119432,
+      "mean_return": 0.125958,
+      "volatility": 0.161364,
+      "sharpe": 0.447575,
+      "sortino": 0.6141,
+      "max_drawdown": -0.38299,
+      "skewness": -1.003916,
+      "excess_kurtosis": 18.327491,
+      "var_95_daily": 0.014486,
+      "es_95_daily": 0.023405,
       "beta": 1.0,
-      "treynor": 0.05999,
+      "treynor": 0.072222,
       "jensen_alpha": 0.0,
       "capm_required_return": 0.125999
     }
@@ -97,48 +111,48 @@
   "correlation_full_sample": {
     "HINDUNILVR.NS": {
       "HINDUNILVR.NS": 1.0,
-      "INFY.NS": 0.225076,
-      "ICICIBANK.NS": 0.235338
+      "INFY.NS": 0.224626,
+      "ICICIBANK.NS": 0.235272
     },
     "INFY.NS": {
-      "HINDUNILVR.NS": 0.225076,
+      "HINDUNILVR.NS": 0.224626,
       "INFY.NS": 1.0,
-      "ICICIBANK.NS": 0.223291
+      "ICICIBANK.NS": 0.222361
     },
     "ICICIBANK.NS": {
-      "HINDUNILVR.NS": 0.235338,
-      "INFY.NS": 0.223291,
+      "HINDUNILVR.NS": 0.235272,
+      "INFY.NS": 0.222361,
       "ICICIBANK.NS": 1.0
     }
   },
   "correlation_check": {
-    "window_start": "2021-08-27",
-    "window_end": "2026-10-01",
+    "window_start": "2021-09-06",
+    "window_end": "2026-10-13",
     "pairs": {
       "HINDUNILVR.NS / INFY.NS": 0.192,
       "HINDUNILVR.NS / ICICIBANK.NS": 0.202,
-      "INFY.NS / ICICIBANK.NS": 0.221
+      "INFY.NS / ICICIBANK.NS": 0.219
     },
     "max_pair": "INFY.NS / ICICIBANK.NS",
-    "max_correlation": 0.221,
+    "max_correlation": 0.219,
     "threshold": 0.5,
     "passes": true
   },
   "covariance_annualized": {
     "HINDUNILVR.NS": {
-      "HINDUNILVR.NS": 0.048342,
-      "INFY.NS": 0.013298,
-      "ICICIBANK.NS": 0.015407
+      "HINDUNILVR.NS": 0.048371,
+      "INFY.NS": 0.013275,
+      "ICICIBANK.NS": 0.015393
     },
     "INFY.NS": {
-      "HINDUNILVR.NS": 0.013298,
-      "INFY.NS": 0.072211,
-      "ICICIBANK.NS": 0.017866
+      "HINDUNILVR.NS": 0.013275,
+      "INFY.NS": 0.07221,
+      "ICICIBANK.NS": 0.017776
     },
     "ICICIBANK.NS": {
-      "HINDUNILVR.NS": 0.015407,
-      "INFY.NS": 0.017866,
-      "ICICIBANK.NS": 0.088655
+      "HINDUNILVR.NS": 0.015393,
+      "INFY.NS": 0.017776,
+      "ICICIBANK.NS": 0.088501
     }
   }
 }

@@ -31,7 +31,18 @@ Data as of 2 Oct 2026. Rows marked *judgement* are the group's reasoning, not da
 - **Infosys: a rupee hedge at a de-rated price.** A weaker rupee and a 4.6% dividend yield offset slower client spending. The price is close to our DDM value, so the risk is that growth slows further, not that the stock is overvalued.
 - **ICICI Bank: growth engine.** It is the most direct play on India's investment-led cycle (GFCF +11.9%), with the highest return and Sharpe ratio. However, the current price needs about 14% perpetual growth at a CAPM cost of equity of 14.7%, so size it for that risk.
 
-## 4. Selection check (PLAN_v2 §4)
+## 4. Candidates considered and rejected
+
+| Candidate | Why not |
+|---|---|
+| HDFC Bank | The July 2023 merger with HDFC Ltd breaks the financial history, so ratios and growth rates before and after can't be compared. ICICI gives the same credit-cycle exposure with clean data. |
+| ITC | The January 2025 hotels demerger distorts the price series, and its mix (cigarettes, FMCG, hotels, paper) needs a sum-of-the-parts valuation rather than one model. |
+| TCS | Same macro driver as Infosys (USD/INR, US tech budgets), so holding both would raise correlation without adding a new risk factor. We kept Infosys for its lower P/E and higher dividend yield. |
+| Nestlé India, Britannia | Same consumption driver as HUL. At P/Es of 68 and 44, they make the valuation lesson (price vs DDM value) more extreme rather than different. |
+| Reliance Industries | A conglomerate (energy, telecom, retail). One dividend or P/B model can't value it, and it would need a segment-by-segment build. |
+| Sun Pharma | A mix of the defensive driver (like HUL) and the USD-earner driver (like Infosys), so it overlaps two picks rather than adding a third factor. |
+
+## 5. Selection check (PLAN_v2 §4)
 
 | Criterion | Result |
 |---|---|

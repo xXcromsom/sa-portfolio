@@ -20,11 +20,19 @@ universe:
       sector: Private Bank
       driver: Credit growth, repo rate
       valuation_method: justified_pb   # free cash flow is not meaningful for a bank
-  # Nifty 50 *price* index. The stock series are dividend-adjusted but this index
-  # is not, so benchmark returns are understated by roughly the index dividend
-  # yield (~1-1.5%/yr) and Jensen's alpha is overstated by about the same amount.
+  # Nifty 50 price index from Yahoo, turned into an estimated total-return series
+  # by adding the index dividend yield, spread evenly over trading days. Without
+  # this, the dividend-adjusted stocks would be compared with a benchmark that
+  # excludes dividends, overstating Jensen's alpha.
   benchmark: ^NSEI
-  benchmark_name: Nifty 50
+  benchmark_name: Nifty 50 TR (est.)
+  # 1.22%/yr = measured CAGR gap, 2016-2026, between the Nifty BeES ETF
+  # (NIFTYBEES.NS; Yahoo records no distributions, so its price carries
+  # reinvested dividends less fees) and the price index. The ETF itself is too
+  # noisy for daily beta (an unadjusted Dec-2019 split; 3-10% gaps to the index
+  # on crash days). Adding a constant leaves beta unchanged and lowers alpha by
+  # beta x yield. Replace with the official Nifty 50 TRI when available.
+  benchmark_dividend_yield: 0.0122
 
 data:
   start: 2016-01-01        # spans the 2020 COVID crash and the 2022 rate-hike drawdown
@@ -65,6 +73,62 @@ market:
   equity_risk_premium: 0.0708
   erp_source: Damodaran, Country Default Spreads and Risk Premiums (India, Baa3)
   erp_as_of: 2026-01-05
+
+portfolio:
+  # Long-only, 10-60% per stock: stops the optimiser putting everything into the
+  # stock with the best historical mean (mean-variance estimation error).
+  weight_bounds: [0.10, 0.60]
+  frontier_points: 40
+  # Risk-aversion coefficient A in U = E(r) - 0.5 * A * variance (BKM Ch 6).
+  # Group members' own A values come from docs/risk_questionnaire.md.
+  profiles:
+    Aggressive: 2
+    Balanced: 4
+    Conservative: 6
+  # y* above 1 means borrowing to buy more stock. Students can't borrow at the
+  # T-bill rate, so y is capped at 100% and the uncapped y* is reported alongside.
+  allow_borrowing: false
+  # Out-of-sample test: weights estimated up to this date, evaluated after it.
+  in_sample_end: 2022-12-31
+
+  # Two optimal risky portfolios are reported:
+  #  - history-based: 2016-2026 mean returns (the classroom method). It loads up
+  #    on whichever stock did best (hindsight), and fails out of sample.
+  #  - forward-looking: CAPM required returns (rf + beta x ERP) as expected
+  #    returns. This is the recommended P used in the profiles, Monte Carlo and SIP.
+
+monte_carlo:
+  n_sims: 10000
+  horizon_days: 252
+  initial_value: 100000          # Rs 1 lakh
+  seed: 42
+  # Forward-looking: expected returns = CAPM required returns, not last decade's
+  # means. Covariance = full sample, the same information the bootstrap uses,
+  # so the two modes differ only in distribution shape (fat tails). A third run
+  # uses EWMA covariance (RiskMetrics, lambda 0.94) to show the current regime.
+  expected_returns: capm         # capm or historical
+  ewma_lambda: 0.94
+  bootstrap_block_days: 10       # keeps some autocorrelation and volatility clustering
+  # constant_mix = back to target weights every day; buy_and_hold = weights drift.
+  rebalance: constant_mix
+
+sip:
+  # Monthly SIP, 15 years. The equity sleeve is core-satellite: a Nifty 50 index
+  # fund core plus the three stocks (in the forward-looking P weights). The CML
+  # beats our 3-stock CAL, so a long-term investor should diversify. Equity share
+  # starts at the profile's y and glides down toward the end value; the debt
+  # sleeve earns the risk-free rate. Rebalanced once a year. Pre-tax.
+  core_index_share: 0.50
+  monthly_amount: 10000          # Rs
+  annual_step_up: 0.10           # SIP grows 10% a year with income
+  years: 15
+  glide_path_end_equity: 0.40
+  rebalance_every_months: 12
+  # Goals to test (Rs). Total invested over 15 years is ~Rs 38 lakh, so Rs 50 lakh is easy
+  # and Rs 1 crore is a stretch. The chart marks the middle one.
+  goals: [5000000, 7500000, 10000000]
+  inflation: 0.04                # RBI's CPI target; used to show the real value
+  bootstrap_block_months: 12
 
 # Set to the freeze date D when data/latest is copied to data/submission.
 snapshot_date: null

@@ -93,5 +93,20 @@ def test_misaligned_dates_raise():
         qu.beta(A, shifted)
 
 
+def test_tail_measures_on_ten_point_fixture():
+    # Ten sorted returns; the 10% quantile sits between the two smallest.
+    r = pd.Series([-0.05, -0.03, -0.01, 0.0, 0.01, 0.01, 0.02, 0.03, 0.04, 0.05])
+    # pandas linear interpolation: position (n-1) x 0.10 = 0.9 -> -5% + 0.9 x 2% = -3.2%
+    assert qu.historical_var(r, 0.90) == pytest.approx(0.032)
+    # Only -5% lies at or below -3.2%
+    assert qu.expected_shortfall(r, 0.90) == pytest.approx(0.05)
+
+
+def test_skew_and_kurtosis_signs():
+    left_tail = pd.Series([0.01] * 20 + [-0.10])
+    assert qu.skewness(left_tail) < 0
+    assert qu.excess_kurtosis(left_tail) > 0
+
+
 def test_capm_required_return():
     assert qu.capm_required_return(1.2, 0.055, 0.07) == pytest.approx(0.055 + 0.084)

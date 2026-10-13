@@ -88,6 +88,29 @@ def max_drawdown(returns: Returns) -> float | pd.Series:
     return drawdown(returns).min()
 
 
+def skewness(returns: Returns) -> float | pd.Series:
+    """Sample skewness. Negative = a longer left tail (big falls more likely than big rises)."""
+    return returns.skew()
+
+
+def excess_kurtosis(returns: Returns) -> float | pd.Series:
+    """Sample excess kurtosis (normal = 0). Positive = fatter tails than the normal distribution."""
+    return returns.kurt()
+
+
+def historical_var(returns: Returns, level: float = 0.95) -> float | pd.Series:
+    """One-period historical Value-at-Risk as a positive loss: -quantile(1 - level)."""
+    return -returns.quantile(1 - level)
+
+
+def expected_shortfall(returns: Returns, level: float = 0.95) -> float | pd.Series:
+    """Average loss on the days at or beyond the VaR cutoff (positive number). Also called CVaR."""
+    def _es(s: pd.Series) -> float:
+        cutoff = s.quantile(1 - level)
+        return -s[s <= cutoff].mean()
+    return returns.apply(_es) if isinstance(returns, pd.DataFrame) else _es(returns)
+
+
 def _check_aligned(returns: Returns, market: pd.Series) -> None:
     # Misaligned dates silently pair the wrong days; fail loudly instead.
     if not returns.index.equals(market.index):
