@@ -75,7 +75,9 @@ def transcripts(cfg: dict) -> pd.DataFrame:
     return pd.DataFrame(rows).sort_values(["ticker", "quarter"]).reset_index(drop=True)
 
 
-def main(refresh: bool = False) -> None:
+def main(refresh: bool = False, news_only: bool = False) -> None:
+    """news_only: rescore headlines but keep the earlier transcript results. Used on GitHub Actions,
+    where the transcript PDFs (data/raw/, never committed) are not available."""
     cfg = load_config()
     out = project_path(cfg["data"]["latest_dir"])
     news_df = score_headlines(headlines(cfg, refresh), out / "news_scores.parquet")
@@ -85,8 +87,11 @@ def main(refresh: bool = False) -> None:
                .agg(headlines=("title", "size"), tone=("tone", "mean"),
                     pct_negative=("label", lambda s: (s == "negative").mean()))
                .reset_index())
-    calls = transcripts(cfg)
-    calls.to_csv(out / "transcript_tone.csv", index=False)
+    if news_only:
+        calls = pd.read_csv(out / "transcript_tone.csv")
+    else:
+        calls = transcripts(cfg)
+        calls.to_csv(out / "transcript_tone.csv", index=False)
     summary = {
         "headlines": {t: {"count": int(len(g)), "first": str(g["published"].min().date()),
                           "last": str(g["published"].max().date()), "mean_tone": float(g["tone"].mean()),
@@ -107,4 +112,6 @@ def main(refresh: bool = False) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--refresh", action="store_true", help="re-fetch headlines")
-    main(parser.parse_args().refresh)
+    parser.add_argument("--news-only", action="store_true", help="keep the existing transcript results")
+    args = parser.parse_args()
+    main(args.refresh, args.news_only)

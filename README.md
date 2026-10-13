@@ -2,7 +2,7 @@
 
 A group project for Security Analysis (BBAT35F97) at TAPMI. It values three NSE stocks using the course's methods, adds AI-based analysis, and builds a portfolio from them. The full plan is in `../PLAN_v2.md`.
 
-**Status:** Phases 1–3 are done: data and traditional analysis, portfolio, and AI-augmented analysis. Phases 4–5 (dashboard, report, deck) are next.
+**Status:** Phases 1–4 are done: data and traditional analysis, portfolio, AI-augmented analysis, and the dashboard. Phase 5 (report, deck) is next.
 
 **Stocks:** Hindustan Unilever, Sun Pharma, ICICI Bank. Sun Pharma replaced Infosys on 13 Oct 2026; the reasons are in `docs/macro_industry.md` §5.
 
@@ -51,6 +51,38 @@ Edit the Inputs sheet in Excel and save, then run the pipeline. Supporting docum
 - `macro_industry.md`: the top-down analysis and rejected candidates
 - `risk_questionnaire.md`: estimating each member's A
 - `investment_policy_statement.md`: the long-term plan
+
+## Dashboard (`app.py`)
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The dashboard has six tabs: Overview, Companies, Portfolio, AI insights, Risk, and Ask the portfolio. It reads only files already on disk, so a failed download can never blank a chart during the presentation. The risk-aversion slider recomputes y*, the complete portfolio's return and volatility, and the certainty equivalent for any A.
+
+**Two datasets.** *Submission (frozen)* (`data/submission/`) holds the numbers in the report. *Latest* (`data/latest/`) is refreshed on weekdays. Freeze once the report's numbers are final:
+
+```bash
+python scripts/freeze.py
+python scripts/check_dashboard.py
+git add data/submission && git commit -m "Freeze submission data"
+git tag submission-v1 && git push --tags
+```
+
+**Ask the portfolio.** Seven rehearsed questions are answered in `data/ai/qa_cache.json`, with no API key needed. Free-form questions go to Claude (`src/chat.py`) only when `ANTHROPIC_API_KEY` is set, as an environment variable or a Streamlit secret. The model is told to use only the dashboard's computed results and to cite the key behind every number. An optional `CHAT_PASSCODE` secret and a 10-question limit per session cap the cost.
+
+**Automatic refresh** (`.github/workflows/refresh.yml`). The workflow runs on GitHub Actions at 18:00 IST, Monday to Friday. It re-downloads prices and consensus, then reruns the metrics, portfolio, Monte Carlo and SIP. On Saturdays it also rescores news headlines. It commits `data/latest` only after the pipeline's own validation, the tests and `scripts/check_dashboard.py` all pass. Otherwise the dashboard keeps the last good data. Transcript tone is not refreshed there, because the PDFs are not in the repository; rerun `python -m pipeline.text_step` locally after adding a new quarter's transcript.
+
+**Hosting on Streamlit Community Cloud.**
+1. Push this folder to a GitHub repository.
+2. At share.streamlit.io, sign in with GitHub. Create the app from that repository, branch `main`, main file `app.py`.
+3. Optionally, under Settings → Secrets, add:
+   ```toml
+   ANTHROPIC_API_KEY = "..."
+   CHAT_PASSCODE = "..."
+   ```
+4. Each push (including the nightly data commit) redeploys the app automatically.
 
 ## Assumptions and known limitations
 

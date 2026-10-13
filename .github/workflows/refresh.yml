@@ -1,0 +1,72 @@
+# Keeps data/latest current so the hosted dashboard shows today's prices, Monte Carlo and SIP.
+# data/submission (the numbers in the report) is never touched here; see scripts/freeze.py.
+# If any step fails, nothing is committed and the dashboard keeps the last good data.
+name: Refresh data
+
+on:
+  schedule:
+    - cron: "30 12 * * 1-5"   # 18:00 IST Mon-Fri, after the NSE close: prices, metrics, portfolio, MC, SIP, consensus
+    - cron: "0 4 * * 6"       # 09:30 IST Saturday: the same, plus news headlines rescored with FinBERT
+  workflow_dispatch:
+    inputs:
+      news:
+        description: "Also refresh news headlines"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      NEWS: ${{ github.event.schedule == '0 4 * * 6' || inputs.news }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: |
+            requirements-pipeline.txt
+            requirements.txt
+
+      - name: Install
+        run: pip install -r requirements-pipeline.txt -r requirements.txt
+
+      - name: Cache the FinBERT model
+        if: env.NEWS == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: finbert-${{ hashFiles('requirements-pipeline.txt') }}
+
+      # Transcript PDFs are not in the repo, so only the headlines are rescored here.
+      - name: Rescore news headlines
+        if: env.NEWS == 'true'
+        run: python -m pipeline.text_step --refresh --news-only
+
+      - name: Run the pipeline
+        run: python -m pipeline.run_all --refresh
+
+      - name: Tests
+        run: python -m pytest -q
+
+      - name: Dashboard renders with the new data
+        run: python scripts/check_dashboard.py
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/latest
+          if git diff --cached --quiet; then echo "No changes to commit"; exit 0; fi
+          git commit -m "Data refresh $(date -u +%F)"
+          git push
