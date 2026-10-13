@@ -2,7 +2,7 @@
 
 A group project for Security Analysis (BBAT35F97) at TAPMI. It values three NSE stocks using the course's methods, adds AI-based analysis, and builds a portfolio from them. The full plan is in `../PLAN_v2.md`.
 
-**Status:** Phases 1–4 are done: data and traditional analysis, portfolio, AI-augmented analysis, and the dashboard. Phase 5 (report, deck) is next.
+**Status:** Phases 1–5 are done: data and traditional analysis, portfolio, AI-augmented analysis, the dashboard, and the report and deck. Still to do: publish the repository, deploy the dashboard, and record the backup video.
 
 **Stocks:** Hindustan Unilever, Sun Pharma, ICICI Bank. Sun Pharma replaced Infosys on 13 Oct 2026; the reasons are in `docs/macro_industry.md` §5.
 
@@ -84,11 +84,28 @@ git tag submission-v1 && git push --tags
    ```
 4. Each push (including the nightly data commit) redeploys the app automatically.
 
+## Report and deck (`deliverables/`)
+
+Both files are generated from the frozen dataset (`data/submission/`), so every number matches the dashboard's Submission view. To rebuild them after a re-freeze:
+
+```bash
+cd deliverables
+npm install
+npm run deck      # out/SA_Portfolio_Deck.pptx (13 slides, speaker notes, timings)
+npm run report    # out/SA_Portfolio_Report.docx (4 pages + appendix)
+```
+
+- Set `DASHBOARD_URL` (and `REPO_URL` for the report) before building to add the live link and QR codes.
+- `python shots.py` re-captures the dashboard screenshots for the demo-backup slide while `streamlit run app.py` is running.
+- The deck follows the group's reference deck: cream and navy panels, burnt-orange titles, Arial. The report follows the reference Word report: A4, Calibri, navy tables.
+- PDFs are exported from PowerPoint and Word, which give the most faithful rendering.
+- The deck build uses the pptx skill's `apply_theme.js`; point `PPTX_SKILL` at it if the default path differs.
+
 ## Assumptions and known limitations
 
 - **Risk-free rate:** the 91-day T-bill rate (5.52%, RBI, 30 Sep 2026) is applied to the whole 2016–2026 history. In reality the T-bill yield moved between about 3.3% and 6.9% over that period.
 - **Benchmark:** Yahoo has no Nifty total-return series, so the benchmark is the price index plus a 1.22%/yr estimated dividend yield. That is the measured 2016–2026 gap between the Nifty BeES ETF and the index; the ETF itself is too noisy for daily beta. Beta is unaffected; alpha is lower by β × 1.22%. Replace this with the official Nifty 50 TRI when it's available.
-- **Expected returns:** the history-based optimal portfolio puts 60% in ICICI (the past winner, i.e. hindsight). Weights estimated on 2016–2022 returned −0.7%/yr in 2023–26, against +7.4% for the Nifty TR. So the recommended P, the Monte Carlo and the SIP use CAPM required returns (rf + β × ERP), and the bootstrap is re-centred on them.
+- **Expected returns:** the history-based optimal portfolio puts 60% in ICICI (the past winner, i.e. hindsight). Weights estimated on 2016–2022 returned +3.2%/yr in 2023–26, against +7.4% for the Nifty TR and +7.9% for the forward-looking weights. So the recommended P, the Monte Carlo and the SIP use CAPM required returns (rf + β × ERP), and the bootstrap is re-centred on them.
 - **Monte Carlo:** returns are treated as stable over the horizon. The parametric mode also assumes normality; the bootstrap keeps fat tails and some clustering. Neither models regime shifts.
 - **SIP:** pre-tax, no fees, and the debt sleeve earns today's T-bill rate throughout.
 - **Ratio convention:** ratios use the arithmetic mean of excess returns × 252. CAGR is geometric.

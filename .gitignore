@@ -11,3 +11,6 @@ data/raw/
 
 # Streamlit secrets (API key, passcode) stay local / in the Streamlit Cloud settings
 .streamlit/secrets.toml
+
+# Deck/report build dependencies (npm install in deliverables/)
+deliverables/node_modules/

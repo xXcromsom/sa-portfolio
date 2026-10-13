@@ -131,8 +131,11 @@ def frontier_figure(panels: list[dict], vol: pd.Series, stocks: list[str], label
                 label=f"CML: T-bills + Nifty (Sharpe {cml:.2f})")
         for color, t in zip(SERIES, stocks):
             ax.scatter(vol[t], mu[t], s=80, color=color, edgecolor=SURFACE, linewidth=2, zorder=4)
-            ax.annotate(labels[t], (vol[t], mu[t]), xytext=(7, -3), textcoords="offset points",
-                        color=INK, fontsize=8)
+            # Label on the left when another stock sits just to the right at a similar return
+            # (HUL and Sun Pharma: ~5 points of volatility apart, <1 point of return).
+            crowded = any(0 < vol[o] - vol[t] < 0.07 and abs(mu[o] - mu[t]) < 0.015 for o in stocks if o != t)
+            ax.annotate(labels[t], (vol[t], mu[t]), xytext=(-7, -3) if crowded else (7, -3),
+                        ha="right" if crowded else "left", textcoords="offset points", color=INK, fontsize=8)
         ax.scatter(mkt["volatility"], mkt["expected_return"], s=70, color=MUTED, edgecolor=SURFACE,
                    linewidth=2, zorder=4)
         ax.annotate("Nifty 50", (mkt["volatility"], mkt["expected_return"]), xytext=(-6, 8), ha="right",
