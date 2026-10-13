@@ -1,0 +1,625 @@
+{
+  "headlines": {
+    "HINDUNILVR.NS": {
+      "count": 621,
+      "first": "2025-11-05",
+      "last": "2026-10-13",
+      "mean_tone": 0.04759171532224054,
+      "pct_positive": 0.3027375201288245,
+      "pct_negative": 0.25442834138486314
+    },
+    "ICICIBANK.NS": {
+      "count": 1068,
+      "first": "2025-11-04",
+      "last": "2026-10-13",
+      "mean_tone": 0.09255867693765082,
+      "pct_positive": 0.27808988764044945,
+      "pct_negative": 0.18726591760299627
+    },
+    "SUNPHARMA.NS": {
+      "count": 739,
+      "first": "2025-11-04",
+      "last": "2026-10-13",
+      "mean_tone": 0.21061043367571172,
+      "pct_positive": 0.38430311231393777,
+      "pct_negative": 0.15426251691474965
+    }
+  },
+  "monthly_headline_tone": [
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2025-11",
+      "headlines": 23,
+      "tone": 0.249,
+      "pct_negative": 0.0435
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2025-12",
+      "headlines": 35,
+      "tone": -0.0668,
+      "pct_negative": 0.2286
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-01",
+      "headlines": 29,
+      "tone": -0.0905,
+      "pct_negative": 0.3793
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-02",
+      "headlines": 86,
+      "tone": 0.1078,
+      "pct_negative": 0.186
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-03",
+      "headlines": 25,
+      "tone": 0.0238,
+      "pct_negative": 0.2
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-04",
+      "headlines": 74,
+      "tone": 0.179,
+      "pct_negative": 0.2027
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-05",
+      "headlines": 39,
+      "tone": 0.2083,
+      "pct_negative": 0.1538
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-06",
+      "headlines": 44,
+      "tone": 0.1131,
+      "pct_negative": 0.1364
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-07",
+      "headlines": 96,
+      "tone": -0.1026,
+      "pct_negative": 0.4271
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-08",
+      "headlines": 69,
+      "tone": 0.0865,
+      "pct_negative": 0.2899
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-09",
+      "headlines": 55,
+      "tone": 0.0673,
+      "pct_negative": 0.2364
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "month": "2026-10",
+      "headlines": 46,
+      "tone": -0.1573,
+      "pct_negative": 0.3478
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2025-11",
+      "headlines": 21,
+      "tone": 0.3293,
+      "pct_negative": 0.0476
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2025-12",
+      "headlines": 80,
+      "tone": 0.2011,
+      "pct_negative": 0.1
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-01",
+      "headlines": 104,
+      "tone": -0.1725,
+      "pct_negative": 0.4038
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-02",
+      "headlines": 65,
+      "tone": 0.1733,
+      "pct_negative": 0.2154
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-03",
+      "headlines": 98,
+      "tone": -0.1037,
+      "pct_negative": 0.3367
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-04",
+      "headlines": 108,
+      "tone": 0.2549,
+      "pct_negative": 0.1204
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-05",
+      "headlines": 85,
+      "tone": 0.0349,
+      "pct_negative": 0.2118
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-06",
+      "headlines": 104,
+      "tone": 0.1844,
+      "pct_negative": 0.0962
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-07",
+      "headlines": 97,
+      "tone": 0.316,
+      "pct_negative": 0.134
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-08",
+      "headlines": 93,
+      "tone": 0.0826,
+      "pct_negative": 0.1505
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-09",
+      "headlines": 101,
+      "tone": -0.0078,
+      "pct_negative": 0.1881
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "month": "2026-10",
+      "headlines": 112,
+      "tone": 0.0488,
+      "pct_negative": 0.1339
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2025-11",
+      "headlines": 30,
+      "tone": 0.4993,
+      "pct_negative": 0.1
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2025-12",
+      "headlines": 41,
+      "tone": 0.0413,
+      "pct_negative": 0.2439
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-01",
+      "headlines": 38,
+      "tone": 0.3212,
+      "pct_negative": 0.1579
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-02",
+      "headlines": 38,
+      "tone": 0.1509,
+      "pct_negative": 0.1579
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-03",
+      "headlines": 34,
+      "tone": 0.2199,
+      "pct_negative": 0.1176
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-04",
+      "headlines": 98,
+      "tone": 0.0644,
+      "pct_negative": 0.2143
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-05",
+      "headlines": 100,
+      "tone": 0.195,
+      "pct_negative": 0.17
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-06",
+      "headlines": 63,
+      "tone": 0.2148,
+      "pct_negative": 0.0794
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-07",
+      "headlines": 97,
+      "tone": 0.2876,
+      "pct_negative": 0.1649
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-08",
+      "headlines": 76,
+      "tone": 0.1227,
+      "pct_negative": 0.2237
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-09",
+      "headlines": 76,
+      "tone": 0.3606,
+      "pct_negative": 0.0526
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "month": "2026-10",
+      "headlines": 48,
+      "tone": 0.1995,
+      "pct_negative": 0.1042
+    }
+  ],
+  "transcripts": [
+    {
+      "ticker": "HINDUNILVR.NS",
+      "quarter": "FY25Q3",
+      "sentences": 678.0,
+      "management_sentences": 589.0,
+      "management_tone": 0.3368,
+      "management_pct_positive": 0.4024,
+      "management_pct_negative": 0.0662,
+      "management_hedge_share": 0.0044,
+      "analyst_sentences": 89.0,
+      "analyst_tone": 0.0115,
+      "analyst_pct_positive": 0.0562,
+      "analyst_pct_negative": 0.1011,
+      "analyst_hedge_share": 0.0113,
+      "tone_gap": 0.3253,
+      "skipped": null
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "quarter": "FY25Q4",
+      "sentences": null,
+      "management_sentences": null,
+      "management_tone": null,
+      "management_pct_positive": null,
+      "management_pct_negative": null,
+      "management_hedge_share": null,
+      "analyst_sentences": null,
+      "analyst_tone": null,
+      "analyst_pct_positive": null,
+      "analyst_pct_negative": null,
+      "analyst_hedge_share": null,
+      "tone_gap": null,
+      "skipped": "scanned PDF; unreadable text layer"
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "quarter": "FY26Q1",
+      "sentences": 712.0,
+      "management_sentences": 594.0,
+      "management_tone": 0.383,
+      "management_pct_positive": 0.4411,
+      "management_pct_negative": 0.0488,
+      "management_hedge_share": 0.003,
+      "analyst_sentences": 118.0,
+      "analyst_tone": 0.0637,
+      "analyst_pct_positive": 0.1356,
+      "analyst_pct_negative": 0.1017,
+      "analyst_hedge_share": 0.0099,
+      "tone_gap": 0.3192,
+      "skipped": null
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "quarter": "FY26Q2",
+      "sentences": 708.0,
+      "management_sentences": 573.0,
+      "management_tone": 0.2572,
+      "management_pct_positive": 0.3246,
+      "management_pct_negative": 0.082,
+      "management_hedge_share": 0.0034,
+      "analyst_sentences": 135.0,
+      "analyst_tone": 0.0961,
+      "analyst_pct_positive": 0.1185,
+      "analyst_pct_negative": 0.0519,
+      "analyst_hedge_share": 0.0112,
+      "tone_gap": 0.161,
+      "skipped": null
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "quarter": "FY26Q3",
+      "sentences": 535.0,
+      "management_sentences": 408.0,
+      "management_tone": 0.376,
+      "management_pct_positive": 0.4289,
+      "management_pct_negative": 0.049,
+      "management_hedge_share": 0.0031,
+      "analyst_sentences": 127.0,
+      "analyst_tone": 0.07,
+      "analyst_pct_positive": 0.126,
+      "analyst_pct_negative": 0.0945,
+      "analyst_hedge_share": 0.0124,
+      "tone_gap": 0.3059,
+      "skipped": null
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "quarter": "FY26Q4",
+      "sentences": 566.0,
+      "management_sentences": 441.0,
+      "management_tone": 0.3767,
+      "management_pct_positive": 0.4218,
+      "management_pct_negative": 0.0272,
+      "management_hedge_share": 0.005,
+      "analyst_sentences": 125.0,
+      "analyst_tone": 0.1104,
+      "analyst_pct_positive": 0.144,
+      "analyst_pct_negative": 0.072,
+      "analyst_hedge_share": 0.0129,
+      "tone_gap": 0.2663,
+      "skipped": null
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "quarter": "FY27Q1",
+      "sentences": 414.0,
+      "management_sentences": 347.0,
+      "management_tone": 0.3513,
+      "management_pct_positive": 0.3977,
+      "management_pct_negative": 0.049,
+      "management_hedge_share": 0.0053,
+      "analyst_sentences": 67.0,
+      "analyst_tone": 0.0353,
+      "analyst_pct_positive": 0.1642,
+      "analyst_pct_negative": 0.1493,
+      "analyst_hedge_share": 0.0075,
+      "tone_gap": 0.316,
+      "skipped": null
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "quarter": "FY25Q3",
+      "sentences": 281.0,
+      "management_sentences": 220.0,
+      "management_tone": 0.1362,
+      "management_pct_positive": 0.3364,
+      "management_pct_negative": 0.2045,
+      "management_hedge_share": 0.0052,
+      "analyst_sentences": 61.0,
+      "analyst_tone": -0.0986,
+      "analyst_pct_positive": 0.0984,
+      "analyst_pct_negative": 0.1639,
+      "analyst_hedge_share": 0.0087,
+      "tone_gap": 0.2348,
+      "skipped": null
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "quarter": "FY25Q4",
+      "sentences": 712.0,
+      "management_sentences": 528.0,
+      "management_tone": 0.1533,
+      "management_pct_positive": 0.286,
+      "management_pct_negative": 0.1477,
+      "management_hedge_share": 0.0066,
+      "analyst_sentences": 184.0,
+      "analyst_tone": -0.0162,
+      "analyst_pct_positive": 0.0924,
+      "analyst_pct_negative": 0.1413,
+      "analyst_hedge_share": 0.014,
+      "tone_gap": 0.1695,
+      "skipped": null
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "quarter": "FY26Q1",
+      "sentences": 259.0,
+      "management_sentences": 196.0,
+      "management_tone": 0.0331,
+      "management_pct_positive": 0.2806,
+      "management_pct_negative": 0.2755,
+      "management_hedge_share": 0.0058,
+      "analyst_sentences": 63.0,
+      "analyst_tone": -0.0714,
+      "analyst_pct_positive": 0.127,
+      "analyst_pct_negative": 0.2381,
+      "analyst_hedge_share": 0.0135,
+      "tone_gap": 0.1045,
+      "skipped": null
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "quarter": "FY26Q2",
+      "sentences": 308.0,
+      "management_sentences": 221.0,
+      "management_tone": 0.1636,
+      "management_pct_positive": 0.3348,
+      "management_pct_negative": 0.19,
+      "management_hedge_share": 0.0057,
+      "analyst_sentences": 87.0,
+      "analyst_tone": 0.0866,
+      "analyst_pct_positive": 0.1724,
+      "analyst_pct_negative": 0.092,
+      "analyst_hedge_share": 0.015,
+      "tone_gap": 0.077,
+      "skipped": null
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "quarter": "FY26Q3",
+      "sentences": 650.0,
+      "management_sentences": 452.0,
+      "management_tone": 0.1862,
+      "management_pct_positive": 0.3119,
+      "management_pct_negative": 0.1416,
+      "management_hedge_share": 0.0043,
+      "analyst_sentences": 198.0,
+      "analyst_tone": 0.0279,
+      "analyst_pct_positive": 0.096,
+      "analyst_pct_negative": 0.0808,
+      "analyst_hedge_share": 0.0099,
+      "tone_gap": 0.1583,
+      "skipped": null
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "quarter": "FY26Q4",
+      "sentences": 675.0,
+      "management_sentences": 475.0,
+      "management_tone": 0.2256,
+      "management_pct_positive": 0.36,
+      "management_pct_negative": 0.1368,
+      "management_hedge_share": 0.0064,
+      "analyst_sentences": 200.0,
+      "analyst_tone": 0.0177,
+      "analyst_pct_positive": 0.145,
+      "analyst_pct_negative": 0.125,
+      "analyst_hedge_share": 0.0088,
+      "tone_gap": 0.2079,
+      "skipped": null
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "quarter": "FY27Q1",
+      "sentences": 284.0,
+      "management_sentences": 210.0,
+      "management_tone": 0.191,
+      "management_pct_positive": 0.3333,
+      "management_pct_negative": 0.1762,
+      "management_hedge_share": 0.0049,
+      "analyst_sentences": 74.0,
+      "analyst_tone": 0.1581,
+      "analyst_pct_positive": 0.2162,
+      "analyst_pct_negative": 0.0541,
+      "analyst_hedge_share": 0.0101,
+      "tone_gap": 0.0329,
+      "skipped": null
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "quarter": "FY25Q4",
+      "sentences": 477.0,
+      "management_sentences": 220.0,
+      "management_tone": 0.1237,
+      "management_pct_positive": 0.15,
+      "management_pct_negative": 0.0409,
+      "management_hedge_share": 0.006,
+      "analyst_sentences": 257.0,
+      "analyst_tone": 0.1063,
+      "analyst_pct_positive": 0.1595,
+      "analyst_pct_negative": 0.0661,
+      "analyst_hedge_share": 0.0094,
+      "tone_gap": 0.0174,
+      "skipped": null
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "quarter": "FY26Q1",
+      "sentences": 408.0,
+      "management_sentences": 205.0,
+      "management_tone": 0.2251,
+      "management_pct_positive": 0.2537,
+      "management_pct_negative": 0.039,
+      "management_hedge_share": 0.0073,
+      "analyst_sentences": 203.0,
+      "analyst_tone": 0.123,
+      "analyst_pct_positive": 0.1527,
+      "analyst_pct_negative": 0.0246,
+      "analyst_hedge_share": 0.0106,
+      "tone_gap": 0.102,
+      "skipped": null
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "quarter": "FY26Q2",
+      "sentences": 345.0,
+      "management_sentences": 174.0,
+      "management_tone": 0.2337,
+      "management_pct_positive": 0.2759,
+      "management_pct_negative": 0.0517,
+      "management_hedge_share": 0.0111,
+      "analyst_sentences": 171.0,
+      "analyst_tone": 0.0985,
+      "analyst_pct_positive": 0.1404,
+      "analyst_pct_negative": 0.0468,
+      "analyst_hedge_share": 0.0104,
+      "tone_gap": 0.1352,
+      "skipped": null
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "quarter": "FY26Q3",
+      "sentences": 375.0,
+      "management_sentences": 191.0,
+      "management_tone": 0.2221,
+      "management_pct_positive": 0.2304,
+      "management_pct_negative": 0.0314,
+      "management_hedge_share": 0.0074,
+      "analyst_sentences": 184.0,
+      "analyst_tone": 0.2253,
+      "analyst_pct_positive": 0.2337,
+      "analyst_pct_negative": 0.0326,
+      "analyst_hedge_share": 0.0078,
+      "tone_gap": -0.0032,
+      "skipped": null
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "quarter": "FY26Q4",
+      "sentences": 341.0,
+      "management_sentences": 174.0,
+      "management_tone": 0.2286,
+      "management_pct_positive": 0.2414,
+      "management_pct_negative": 0.0287,
+      "management_hedge_share": 0.0072,
+      "analyst_sentences": 167.0,
+      "analyst_tone": 0.1633,
+      "analyst_pct_positive": 0.2156,
+      "analyst_pct_negative": 0.0778,
+      "analyst_hedge_share": 0.0138,
+      "tone_gap": 0.0653,
+      "skipped": null
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "quarter": "FY27Q1",
+      "sentences": 405.0,
+      "management_sentences": 230.0,
+      "management_tone": 0.2636,
+      "management_pct_positive": 0.313,
+      "management_pct_negative": 0.0391,
+      "management_hedge_share": 0.0043,
+      "analyst_sentences": 175.0,
+      "analyst_tone": 0.1183,
+      "analyst_pct_positive": 0.2057,
+      "analyst_pct_negative": 0.0971,
+      "analyst_hedge_share": 0.0079,
+      "tone_gap": 0.1453,
+      "skipped": null
+    }
+  ],
+  "method": "FinBERT (ProsusAI/finbert) sentence scores; tone = P(pos) - P(neg); hedge share = uncertainty words / all words (subset of Loughran-McDonald-style terms)"
+}

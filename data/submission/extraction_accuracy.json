@@ -1,0 +1,481 @@
+{
+  "tolerance": 0.01,
+  "comparisons": 47,
+  "counts": {
+    "match": 44,
+    "definition difference": 3,
+    "extraction error": 0
+  },
+  "rows": [
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Revenue",
+      "reference": "Yahoo",
+      "ai": 64468,
+      "ref": 63763.0,
+      "gap": 0.0110565688565469,
+      "status": "definition difference",
+      "note": "Yahoo 'Total Revenue' appears to exclude other operating revenue"
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Net profit to owners",
+      "reference": "Yahoo",
+      "ai": 15040,
+      "ref": 15040.0,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Basic EPS",
+      "reference": "Yahoo",
+      "ai": 64.01,
+      "ref": 64.01,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Equity to owners",
+      "reference": "Yahoo",
+      "ai": 48739,
+      "ref": 48738.0,
+      "gap": 2.0517871065698223e-05,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Debt incl. leases",
+      "reference": "Yahoo",
+      "ai": 1478,
+      "ref": 1478.0,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Cash and equivalents",
+      "reference": "Yahoo",
+      "ai": 2583,
+      "ref": 2583.0,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Shares (crore)",
+      "reference": "Yahoo",
+      "ai": 235.0,
+      "ref": 234.9591262,
+      "gap": 0.000173961321107493,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Operating cash flow",
+      "reference": "Yahoo",
+      "ai": 10999,
+      "ref": 10999.0,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Dividends paid",
+      "reference": "Yahoo",
+      "ai": -10124,
+      "ref": -10124.0,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Revenue",
+      "reference": "Screener",
+      "ai": 64468,
+      "ref": 64468,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Net profit",
+      "reference": "Screener",
+      "ai": 15040,
+      "ref": 15059,
+      "gap": -0.001261703964406667,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "EPS",
+      "reference": "Screener",
+      "ai": 64.01,
+      "ref": 64.01,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Equity (capital + reserves)",
+      "reference": "Screener",
+      "ai": 48739,
+      "ref": 48739,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Borrowings incl. leases",
+      "reference": "Screener",
+      "ai": 1478,
+      "ref": 1478,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "field": "Operating cash flow",
+      "reference": "Screener",
+      "ai": 10999,
+      "ref": 10999,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Revenue",
+      "reference": "Yahoo",
+      "ai": 58462.04,
+      "ref": 58220.11,
+      "gap": 0.004155437013087064,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Net profit to owners",
+      "reference": "Yahoo",
+      "ai": 11479.42,
+      "ref": 11479.42,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Basic EPS",
+      "reference": "Yahoo",
+      "ai": 47.8,
+      "ref": 47.8,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Equity to owners",
+      "reference": "Yahoo",
+      "ai": 83570.09,
+      "ref": 83570.09,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Debt incl. leases",
+      "reference": "Yahoo",
+      "ai": 4627.32,
+      "ref": 4627.32,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Cash and equivalents",
+      "reference": "Yahoo",
+      "ai": 9770.51,
+      "ref": 9770.51,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Shares (crore)",
+      "reference": "Yahoo",
+      "ai": 239.93,
+      "ref": 239.933497,
+      "gap": -1.457487196955102e-05,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Operating cash flow",
+      "reference": "Yahoo",
+      "ai": 12419.18,
+      "ref": 12419.18,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Dividends paid",
+      "reference": "Yahoo",
+      "ai": -3933.9,
+      "ref": -3933.9,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Revenue",
+      "reference": "Screener",
+      "ai": 58462.04,
+      "ref": 58462,
+      "gap": 6.842051247113187e-07,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Net profit",
+      "reference": "Screener",
+      "ai": 11479.42,
+      "ref": 11509,
+      "gap": -0.002570162481536183,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "EPS",
+      "reference": "Screener",
+      "ai": 47.8,
+      "ref": 47.84,
+      "gap": -0.0008361204013379233,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Equity (capital + reserves)",
+      "reference": "Screener",
+      "ai": 83570.09,
+      "ref": 83570,
+      "gap": 1.07694148613746e-06,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "field": "Borrowings incl. leases",
+      "reference": "Screener",
+      "ai": 4627.32,
+      "ref": 4627,
+      "gap": 6.915928247238144e-05,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Interest earned",
+      "reference": "Yahoo",
+      "ai": 195218.46,
+      "ref": 195218.4591,
+      "gap": 4.610219692795666e-09,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Interest expended",
+      "reference": "Yahoo",
+      "ai": 89028.58,
+      "ref": 89028.5812,
+      "gap": -1.3478817505734672e-08,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Net interest income",
+      "reference": "Yahoo",
+      "ai": 106189.87999999999,
+      "ref": 106189.8779,
+      "gap": 1.9775896016256046e-08,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Net profit to owners",
+      "reference": "Yahoo",
+      "ai": 54207.7,
+      "ref": 54207.7028,
+      "gap": -5.165317579230874e-08,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Basic EPS",
+      "reference": "Yahoo",
+      "ai": 75.89,
+      "ref": 75.89,
+      "gap": 0.0,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Equity to owners",
+      "reference": "Yahoo",
+      "ai": 360378.35,
+      "ref": 363060.4157,
+      "gap": -0.007387381229178809,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Borrowings",
+      "reference": "Yahoo",
+      "ai": 220264.28,
+      "ref": 207617.341,
+      "gap": 0.060914656449626785,
+      "status": "definition difference",
+      "note": "Yahoo 'Total Debt' for banks is defined differently from the borrowings schedule"
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Cash",
+      "reference": "Yahoo",
+      "ai": 121237.19,
+      "ref": 290248.9464,
+      "gap": -0.5822992934040845,
+      "status": "definition difference",
+      "note": "Yahoo adds balances with other banks and money at call; we took cash and RBI balances only"
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Shares (crore)",
+      "reference": "Yahoo",
+      "ai": 716.12,
+      "ref": 716.0112569,
+      "gap": 0.0001518734502454296,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Operating cash flow",
+      "reference": "Yahoo",
+      "ai": 67325.42,
+      "ref": 67325.4189,
+      "gap": 1.6338554026279298e-08,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Dividends paid",
+      "reference": "Yahoo",
+      "ai": -7853.15,
+      "ref": -7853.1534,
+      "gap": 4.329471012893715e-07,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Interest earned",
+      "reference": "Screener",
+      "ai": 195218.46,
+      "ref": 195218,
+      "gap": 2.3563400915481714e-06,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Net profit (before minority)",
+      "reference": "Screener",
+      "ai": 57936.25,
+      "ref": 57936,
+      "gap": 4.315106324219829e-06,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "EPS",
+      "reference": "Screener",
+      "ai": 75.89,
+      "ref": 75.71,
+      "gap": 0.0023774930656453156,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Equity (capital + reserves)",
+      "reference": "Screener",
+      "ai": 360378.35,
+      "ref": 363060,
+      "gap": -0.00738624469784615,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Deposits",
+      "reference": "Screener",
+      "ai": 1830020.12,
+      "ref": 1830020,
+      "gap": 6.557305390747572e-08,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Borrowings",
+      "reference": "Screener",
+      "ai": 220264.28,
+      "ref": 220264,
+      "gap": 1.2712018305253507e-06,
+      "status": "match",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "field": "Operating cash flow",
+      "reference": "Screener",
+      "ai": 67325.42,
+      "ref": 67325,
+      "gap": 6.238395841043502e-06,
+      "status": "match",
+      "note": ""
+    }
+  ]
+}

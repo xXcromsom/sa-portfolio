@@ -1,0 +1,56 @@
+{
+  "latest_price_date": "2026-10-13",
+  "securities": {
+    "HINDUNILVR.NS": {
+      "name": "Hindustan Unilever",
+      "model": "Two-stage DDM",
+      "workbook_price": 1861.9,
+      "latest_price": 1861.9,
+      "cost_of_equity": 0.097792,
+      "intrinsic_value": 1079.12,
+      "comps_value": 2104.76,
+      "blended_value": 1591.94,
+      "market_implied_growth": 0.074139,
+      "upside_vs_latest": {
+        "intrinsic": -0.420418,
+        "comps": 0.130435,
+        "blended": -0.144991
+      },
+      "workbook_verdict": "Fairly valued"
+    },
+    "SUNPHARMA.NS": {
+      "name": "Sun Pharma",
+      "model": "Two-stage residual income",
+      "workbook_price": 1759.8,
+      "latest_price": 1759.8,
+      "cost_of_equity": 0.100893,
+      "intrinsic_value": 747.63,
+      "comps_value": 1701.84,
+      "blended_value": 1224.73,
+      "market_implied_growth": 0.086324,
+      "upside_vs_latest": {
+        "intrinsic": -0.575164,
+        "comps": -0.032934,
+        "blended": -0.304049
+      },
+      "workbook_verdict": "Overvalued"
+    },
+    "ICICIBANK.NS": {
+      "name": "ICICI Bank",
+      "model": "Two-stage residual income (bank)",
+      "workbook_price": 1350.5,
+      "latest_price": 1350.5,
+      "cost_of_equity": 0.146729,
+      "intrinsic_value": 574.65,
+      "comps_value": 1139.04,
+      "blended_value": 856.84,
+      "market_implied_growth": 0.138877,
+      "upside_vs_latest": {
+        "intrinsic": -0.574493,
+        "comps": -0.156578,
+        "blended": -0.365535
+      },
+      "workbook_verdict": "Overvalued"
+    }
+  }
+}
