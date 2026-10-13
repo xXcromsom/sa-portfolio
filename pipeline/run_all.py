@@ -24,6 +24,7 @@ from src.config import load_config, project_path
 from src.data_ingest import load_prices
 from src.metrics import add_dividend_yield, correlation_check, metrics_table
 from src.valuation import read_summary, valuation_record
+from pipeline.phase3 import run_phase3
 
 
 def _frame_to_dict(df: pd.DataFrame) -> dict:
@@ -304,10 +305,31 @@ def _print_phase2(ctx, views, profiles, oos, mc_out, sip_out, sensitivity) -> No
               + f"  (invested {d['total_invested']:,.0f})")
 
 
+def _print_phase3(res: dict, labels: dict) -> None:
+    print("\nPhase 3: AI-augmented analysis")
+    ex = res["extraction"]
+    print(f"  AI ratio extraction: {ex['counts']} of {ex['comparisons']} comparisons")
+    fr = res["framing"]
+    print(f"  Headlines: {fr['irrelevant_share']:.0%} irrelevant; FinBERT-LLM agreement {fr['finbert_vs_llm_agreement']:.0%};"
+          f" {fr['share_with_bias_cue']:.0%} carry a bias cue")
+    for t, f in res["forecasts"].items():
+        a = f["analyst_target_upside"]
+        print(f"  {labels[t]:<20} analysts {a:+.0%} | our comps on FY28 EPS {f['our_comps_fwd_upside']:+.0%} | "
+              f"model {f['our_model_upside']:+.0%}" if a is not None else f"  {labels[t]}: no consensus")
+    if "event_study" in res:
+        e = res["event_study"]
+        print(f"  Event study: {e['events']} results; mean 3-day CAR {e['mean_car_positive_surprise']:+.2%} after beats, "
+              f"{e['mean_car_negative_surprise']:+.2%} after misses; corr {e['correlation']:.2f}")
+    print("  Stress (portfolio P vs Nifty):", {k: f"{v['Portfolio P']:+.1%} vs {v['Nifty 50']:+.1%}"
+                                              for k, v in res["risk"]["stress"].items()})
+
+
 def main(refresh: bool = False) -> None:
     ctx = Context(refresh)
     run_phase1(ctx)
     run_phase2(ctx)
+    res = run_phase3(ctx, refresh)
+    _print_phase3(res, ctx.labels)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,72 @@
+{
+  "task": "Aspect sentiment and guidance from the latest earnings calls (brief: sentiment analysis of earnings calls; forecasting inputs)",
+  "read_by": "Claude (claude-opus-5-5) via Claude Code, 13 Oct 2026; instruction in docs/ai_prompts.md (P4)",
+  "source": "Q1 FY27 transcripts (Apr-Jun 2026) in data/raw/<ticker>/transcripts_FY27Q1.pdf; management prepared remarks plus, for Sun Pharma, management answers in the Q&A",
+  "companies": {
+    "HINDUNILVR.NS": {
+      "call": "Q1 FY27, 4 Aug 2026 (CEO Priya Nair, CFO Niranjan Gupta)",
+      "headline_numbers": {"turnover_cr": 17184, "underlying_sales_growth": 0.10, "underlying_volume_growth": 0.05,
+                           "ebitda_margin": 0.23, "ebitda_growth": 0.08, "pat_before_exceptional_growth": 0.09},
+      "guidance": [
+        {"item": "FY27 vs FY26", "statement": "FY27 expected to be better than FY26", "quantified": false},
+        {"item": "EBITDA margin", "statement": "Expected to stay around the current guided range (Q1: 23%)", "quantified": true}
+      ],
+      "aspects": [
+        {"aspect": "Demand / volume", "sentiment": "positive", "evidence": "USG 10%, highest in 13 quarters; half from volume (UVG 5%); growth up from 3% in H1 FY26"},
+        {"aspect": "Market share", "sentiment": "positive", "evidence": "Gaining turnover-weighted market share"},
+        {"aspect": "Pricing", "sentiment": "neutral", "evidence": "Calibrated price increases (crude derivatives, palm oil)"},
+        {"aspect": "Input costs", "sentiment": "negative", "evidence": "Inflation in crude-linked derivatives; palm oil inflation for a second year"},
+        {"aspect": "Margins", "sentiment": "neutral", "evidence": "EBITDA margin 23%, within the guided range"},
+        {"aspect": "Brand investment", "sentiment": "positive", "evidence": "A&P Rs 1,657 Cr, highest in 11 quarters"},
+        {"aspect": "Segments", "sentiment": "positive", "evidence": "Home Care 14% USG, Beauty & Wellbeing 12%, Foods 7%; Personal Care 4% (price-led)"},
+        {"aspect": "Macro / external", "sentiment": "neutral", "evidence": "Uncertain global environment; watching the monsoon; FMCG demand stable"}
+      ],
+      "overall_tone": "positive",
+      "watch_items": ["Commodity and currency inflation vs pricing power", "Monsoon and rural demand", "Health & Wellbeing (OZiva) soft"]
+    },
+    "SUNPHARMA.NS": {
+      "call": "Q1 FY27, Aug 2026 (Dilip Shanghvi, MD Kirti Ganorkar, CFO Jayashree Satagopan, US CEO Richard Ascroft)",
+      "headline_numbers": {"sales_cr": 15184, "sales_growth": 0.101, "innovative_medicines_usd_mn": 351,
+                           "innovative_medicines_growth": 0.128, "india_formulations_cr": 5475, "india_growth": 0.16,
+                           "rd_pct_sales": 0.054},
+      "guidance": [
+        {"item": "FY27 revenue", "statement": "High single-digit growth for the full year (guidance maintained)", "quantified": true},
+        {"item": "Organon acquisition", "statement": "Shareholders approved; completion expected in Q4 FY27", "quantified": false},
+        {"item": "Innovative medicines (US)", "statement": "Healthy growth expected, driven by new launches; no product-wise guidance", "quantified": false}
+      ],
+      "aspects": [
+        {"aspect": "India business", "sentiment": "positive", "evidence": "+16%; growing above the market; 50-60% of growth from volume and new products"},
+        {"aspect": "US specialty (innovative)", "sentiment": "positive", "evidence": "+12.8% to USD 351 mn; Leqselvi passed 1,000 prescribers; Unloxcyt added to formularies"},
+        {"aspect": "US generics", "sentiment": "negative", "evidence": "Lower sales from Lenalidomide erosion and extra competition"},
+        {"aspect": "Rest of world", "sentiment": "neutral", "evidence": "USD 218 mn, marginally lower; semaglutide launches in South Africa and Brazil"},
+        {"aspect": "Margins", "sentiment": "positive", "evidence": "Healthier product mix lifting gross margin"},
+        {"aspect": "Costs / R&D", "sentiment": "neutral", "evidence": "R&D 5.4% of sales (30% innovative); launch spending described as sustained, not one-off"},
+        {"aspect": "M&A (Organon)", "sentiment": "neutral", "evidence": "Large acquisition (>USD 10 bn reported); management declined questions on it"}
+      ],
+      "overall_tone": "positive",
+      "watch_items": ["Organon integration and the debt it may add", "US generic price erosion", "Specialty launch ramp (Leqselvi, Unloxcyt)", "Indian drug-price controls"]
+    },
+    "ICICIBANK.NS": {
+      "call": "Q1 FY27, 18 Jul 2026 (MD & CEO Sandeep Bakhshi, Group CFO Anindya Banerjee)",
+      "headline_numbers": {"pat_cr": 14805, "pat_growth": 0.159, "pbt_ex_treasury_growth": 0.209, "loan_growth": 0.196,
+                           "deposit_growth": 0.140, "nim": 0.0436, "net_npa": 0.0035, "pcr": 0.747, "cet1": 0.1619},
+      "guidance": [
+        {"item": "Strategy", "statement": "Risk-calibrated profitable growth; grow market share across key segments", "quantified": false},
+        {"item": "Balance sheet", "statement": "Maintain a strong balance sheet, prudent provisioning and healthy capital", "quantified": false}
+      ],
+      "aspects": [
+        {"aspect": "Loan growth", "sentiment": "positive", "evidence": "+19.6% YoY; business banking +28.2%, rural incl. gold +35.4%, corporate +18.5%"},
+        {"aspect": "Deposits / funding", "sentiment": "neutral", "evidence": "+14.0% YoY, slower than loans; liquidity coverage about 124%"},
+        {"aspect": "Margins", "sentiment": "positive", "evidence": "NIM 4.36% (4.32% last quarter); cost of deposits falling to 4.41%"},
+        {"aspect": "Asset quality", "sentiment": "positive", "evidence": "Net NPA 0.35%; PCR 74.7%; contingency provisions Rs 13,100 Cr (0.8% of advances)"},
+        {"aspect": "Costs", "sentiment": "neutral", "evidence": "Opex +10.4%; 97 new branches"},
+        {"aspect": "Capital", "sentiment": "positive", "evidence": "CET-1 16.19%, total capital adequacy 16.84%"},
+        {"aspect": "Subsidiaries", "sentiment": "neutral", "evidence": "Life and AMC profits up; general insurance profit halved (combined ratio 107.2%)"},
+        {"aspect": "Rate sensitivity", "sentiment": "neutral", "evidence": "57% of domestic loans linked to repo / external benchmarks"}
+      ],
+      "overall_tone": "positive",
+      "watch_items": ["Loan growth outpacing deposits (funding cost)", "Credit card book shrinking", "General insurance claims"]
+    }
+  },
+  "cross_check": "Compare overall_tone with FinBERT management tone for the same quarter in data/latest/transcript_tone.csv"
+}

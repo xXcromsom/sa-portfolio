@@ -1,0 +1,63 @@
+{
+  "task": "AI ratio extraction from annual-report PDFs (brief: 'Use AI to pull key financials from PDFs or Screener.in')",
+  "extracted_by": "Claude (claude-opus-5-5) via Claude Code, 13 Oct 2026, reading pypdf text of the consolidated statement pages; prompt in docs/ai_prompts.md (P1)",
+  "units": "Rs crore unless the field name says otherwise; source units converted (HUL Rs crore, Sun Pharma Rs million / 10, ICICI Rs '000 / 10,000)",
+  "period": "FY26 (year ended 31 Mar 2026), consolidated",
+  "companies": {
+    "HINDUNILVR.NS": {
+      "source": "data/raw/HINDUNILVR.NS/annual_report_FY26.pdf, pp. 185-188 (balance sheet, P&L, cash flow)",
+      "source_units": "Rs crore",
+      "revenue_from_operations": 64468,
+      "net_profit_attributable": 15040,
+      "net_profit_continuing_operations": 10652,
+      "one_off_profit_discontinued_operations": 4407,
+      "eps_basic_rs": 64.01,
+      "eps_basic_continuing_rs": 45.25,
+      "total_equity_attributable": 48739,
+      "borrowings": 0,
+      "lease_liabilities": 1478,
+      "cash_and_equivalents": 2583,
+      "operating_cash_flow": 10999,
+      "dividends_paid": 10124,
+      "shares_crore": 235.0,
+      "notes": "Equity = share capital 235 + other equity 48,504 (excludes non-controlling interests of 269). Profit includes the Kwality Wall's demerger gain booked in discontinued operations (4,407); continuing EPS 45.25."
+    },
+    "SUNPHARMA.NS": {
+      "source": "data/raw/SUNPHARMA.NS/annual_report_FY26.pdf, pp. 241-247 (balance sheet, P&L, cash flow)",
+      "source_units": "Rs million",
+      "revenue_from_operations": 58462.04,
+      "net_profit_attributable": 11479.42,
+      "exceptional_items_charge": 1307.48,
+      "eps_basic_rs": 47.8,
+      "total_equity_attributable": 83570.09,
+      "borrowings": 4081.61,
+      "lease_liabilities": 545.71,
+      "cash_and_equivalents": 9770.51,
+      "operating_cash_flow": 12419.18,
+      "dividends_paid": 3933.90,
+      "shares_crore": 239.93,
+      "notes": "Borrowings = non-current 312.6 + current 40,503.5 (Rs mn). Capex line not extracted: the PDF text splits it across lines, so it was left out rather than guessed."
+    },
+    "ICICIBANK.NS": {
+      "source": "data/raw/ICICIBANK.NS/annual_report_FY26.pdf, pp. 373-375 (balance sheet, P&L, cash flow)",
+      "source_units": "Rs '000",
+      "interest_earned": 195218.46,
+      "other_income": 116899.90,
+      "interest_expended": 89028.58,
+      "operating_expenses": 140393.62,
+      "provisions_and_contingencies": 25022.77,
+      "net_profit_before_minority": 57936.25,
+      "net_profit_attributable": 54207.70,
+      "eps_basic_rs": 75.89,
+      "total_equity_attributable": 360378.35,
+      "deposits": 1830020.12,
+      "advances": 1644657.97,
+      "borrowings": 220264.28,
+      "cash_and_equivalents": 121237.19,
+      "operating_cash_flow": 67325.42,
+      "dividends_paid": 7853.15,
+      "shares_crore": 716.12,
+      "notes": "Equity = capital 1,432.2 + reserves and surplus 358,946.1 (excludes employee stock options outstanding 2,682.1 and minority interest). Cash = cash and balances with RBI only. Shares = capital / face value Rs 2."
+    }
+  }
+}

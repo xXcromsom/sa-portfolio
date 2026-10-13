@@ -2,7 +2,7 @@
 
 A group project for Security Analysis (BBAT35F97) at TAPMI. It values three NSE stocks using the course's methods, adds AI-based analysis, and builds a portfolio from them. The full plan is in `../PLAN_v2.md`.
 
-**Status:** Phase 1 (data and traditional analysis) and Phase 2 (portfolio) are done; Phase 3 (AI) is in progress.
+**Status:** Phases 1–3 are done: data and traditional analysis, portfolio, and AI-augmented analysis. Phases 4–5 (dashboard, report, deck) are next.
 
 **Stocks:** Hindustan Unilever, Sun Pharma, ICICI Bank. Sun Pharma replaced Infosys on 13 Oct 2026; the reasons are in `docs/macro_industry.md` §5.
 
@@ -28,6 +28,18 @@ python -m pipeline.run_all --refresh
 | `portfolio.json`, `figures/frontier.png`, `figures/indifference.png` | Efficient frontiers under history and forward-looking (CAPM) expected returns; the optimal risky portfolio P; CAL vs CML; complete portfolios and certainty equivalents for A = 2, 4, 6; an out-of-sample test |
 | `mc.json`, `figures/mc_fan.png`, `figures/mc_hist.png` | One-year Monte Carlo of each profile: parametric (Cholesky), block bootstrap and current-volatility (EWMA) runs; percentiles, VaR/CVaR 95/99, probability of loss, drawdown distribution |
 | `sip.json`, `figures/sip.png` | 15-year SIP: core-satellite equity (Nifty index + the 3 stocks) with a glide path; corpus percentiles and the probability of reaching ₹50 L / ₹75 L / ₹1 Cr |
+
+**Phase 3: AI-augmented analysis.** Run `python -m pipeline.text_step` first; it's slow the first time, because FinBERT scores about 15k sentences. The main pipeline then assembles everything:
+
+| Brief item | Output |
+|---|---|
+| AI ratio extraction from PDFs | `data/ai/ratio_extraction.json` (Claude read the FY26 annual reports), scored in `extraction_accuracy.json`: **44 of 47 comparisons within 1% of Yahoo/Screener, 0 extraction errors** |
+| Sentiment on earnings calls and news | `sentiment.json`, `transcript_tone.csv` (FinBERT, management vs analysts); `data/ai/concall_aspects.json` (aspects and guidance); `figures/sentiment.png` |
+| Behavioural bias and news framing | `data/ai/headline_framing.json`: 120 headlines tagged for framing, anchoring, authority, herding, hype, fear and recency, and compared with FinBERT |
+| Forecasting; is technical analysis possible? | `figures/ta.png` (50/200-DMA and RSI rules vs buy-and-hold after costs); analyst consensus vs our targets; earnings-surprise event study (`figures/event_study.png`) |
+| Risk heatmaps | `corr_heatmap.png`, `rolling_corr.png`, `risk_contrib.png`, `stress.png` |
+
+Everything is summarised in `data/latest/ai_analysis.json`. Every prompt used is listed in `docs/ai_prompts.md`.
 
 The valuation itself is in `workbook/valuation.xlsx`, which has live formulas:
 - a two-stage DDM for HUL (high payout)

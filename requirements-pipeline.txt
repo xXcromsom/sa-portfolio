@@ -1,11 +1,17 @@
 pandas==2.3.3
 numpy==2.2.6
+scipy==1.17.1
 yfinance==1.2.0
 curl_cffi==0.13.0
+requests==2.32.5
 pyarrow==24.0.0
 PyYAML==6.0.3
 python-dotenv==1.2.1
 matplotlib==3.10.8
 openpyxl==3.1.5
+pypdf==6.12.1
+transformers==5.19.0
 pytest==9.1.1
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1   # CPU build; FinBERT sentiment (pipeline/text_step.py) only
 pywin32==311; sys_platform == "win32"   # scripts/recalc_excel.py only
