@@ -10,6 +10,10 @@ require("module").Module._initPaths(); // lets the skill's apply_theme.js find t
 const fs = require("fs");
 const pptxgen = require("pptxgenjs");
 const QRCode = require("qrcode");
+const React = require("react");
+const { renderToStaticMarkup } = require("react-dom/server");
+const fa = require("react-icons/fa");
+const sharp = require("sharp");
 const D = require("./data");
 
 const SKILL = process.env.PPTX_SKILL || "C:/Users/abhay.ABHAYSLAPTOP/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/603515dc-4b72-4f9a-b223-f734b83beecd/b2a81119-0cca-429f-b56c-4b6607e72c29/skills/pptx";
@@ -21,7 +25,7 @@ const OUT = path.join(__dirname, "out", "SA_Portfolio_Deck.pptx");
 // Reference deck palette (measured from its XML).
 const HEX = { navy: "1D2C62", cream: "FFFAED", slate: "5A6590", gold: "EBB24D", orange: "C84D00",
   teal: "3A7C74", brick: "B95142", tan: "D9CBB0", sand: "EADFC8", white: "FFFFFF" };
-const THEME = { name: "SA Portfolio", headFontFace: "Arial", bodyFontFace: "Arial",
+const THEME = { name: "SA Portfolio", headFontFace: "Century Gothic", bodyFontFace: "Calibri",
   colors: { dk1: HEX.navy, lt1: HEX.white, dk2: HEX.slate, lt2: HEX.cream, accent1: HEX.orange, accent2: HEX.gold,
     accent3: HEX.teal, accent4: HEX.brick, accent5: HEX.tan, accent6: HEX.sand, hlink: HEX.orange, folHlink: HEX.slate } };
 
@@ -53,8 +57,8 @@ const slideNo = (color) => ({ x: W - 1.1, y: 6.98, w: 0.5, h: 0.3, fontSize: 9, 
 pres.defineSlideMaster({ title: "COVER", background: { color: CREAM }, objects: [
   { rect: { x: 8.43, y: 0, w: W - 8.43, h: 7.5, fill: { color: NAVY } } }, strap(WHITE, 9.0, 3.73),
   label(NAVY, 7.4),
-  ph("title", "title", { x: M, y: 1.15, w: 7.6, h: 1.15, fontSize: 60, bold: true, color: ORANGE }),
-  ph("sub", "body", { x: M, y: 2.5, w: 7.3, h: 1.35, fontSize: 24, bold: true, color: NAVY }),
+  ph("title", "title", { x: M, y: 1.05, w: 7.4, h: 1.8, fontSize: 44, bold: true, color: ORANGE }),
+  ph("sub", "body", { x: M, y: 3.0, w: 7.0, h: 0.9, fontSize: 18, color: NAVY }),
 ] });
 pres.defineSlideMaster({ title: "CREAM", background: { color: CREAM }, slideNumber: slideNo(SLATE), objects: [
   strap(SLATE, 8.4, 4.33), label(ORANGE, 7.4), title(ORANGE, 12.1), sub(NAVY, 12.1)] });
@@ -68,7 +72,10 @@ pres.defineSlideMaster({ title: "PANEL_LEFT", background: { color: CREAM }, slid
   label(GOLD, PANEL_L - 2 * M), title(WHITE, PANEL_L - 2 * M), sub(CREAM, PANEL_L - 2 * M, M, 1.95)] });
 
 // ------------------------------------------------------------------ helpers
-const text = (slide, value, o) => slide.addText(value, { isTextBox: true, margin: 0, valign: "top", ...o });
+const text = (slide, value, o) => slide.addText(value, { isTextBox: true, margin: 0, valign: "top",
+  ...(o.fontSize >= 20 && o.bold ? { fontFace: THEME.headFontFace } : {}), ...o }); // "+mj-lt" does not resolve in text runs
+const icon = async (Icon) => "image/png;base64," + (await sharp(Buffer.from(renderToStaticMarkup(
+  React.createElement(Icon, { size: 256, color: "#FFFFFF" })))).png().toBuffer()).toString("base64");
 const card = (slide, x, y, w, h, name, fill = WHITE) =>
   slide.addShape(pres.shapes.RECTANGLE, { x, y, w, h, fill: { color: fill }, line: { color: SAND, width: 0.75 }, objectName: name });
 const rule = (slide, x, y, w, color = TAN) =>
@@ -84,7 +91,7 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
 const qr = async (url) => (await QRCode.toDataURL(url, { margin: 1, width: 600, color: { dark: "#1D2C62", light: "#FFFFFF" } }))
   .replace(/^data:/, "");
 const w100 = (t) => Math.round(D.P.weights[t] * 100);
-const weights = D.STOCKS.map(w100).join(" \u00B7 ");
+const weights = D.STOCKS.map(w100).join(" / "); // not a middle dot: Century Gothic lacks a matching glyph
 const spoken = (items) => items.slice(0, -1).join(", ") + " and " + items[items.length - 1];
 
 async function build() {
@@ -103,41 +110,44 @@ async function build() {
   // ================================================================ 1. cover
   pres.addSection({ title: "Opening" });
   let s = pres.addSlide({ masterName: "COVER", sectionTitle: "Opening" });
-  fill(s, `SECURITY ANALYSIS (BBAT35F97) \u00B7 DATA AS OF ${D.date(D.asOf).toUpperCase()}`, "\u20B910,000 A MONTH",
-    "INTO HUL, SUN PHARMA AND ICICI BANK: HOW A STUDENT SHOULD OWN THEM");
-  text(s, `Median 15-year corpus ${D.lakh(median)} from ${D.lakh(invested)} invested, for a Balanced investor (A = 4), `
-    + "from a 10,000-path Monte Carlo of our portfolio.", { x: M, y: 3.95, w: 7.2, h: 0.9, fontSize: 14, color: SLATE });
-  [[`${D.P.sharpe.toFixed(2)} vs ${D.fwd.market.sharpe.toFixed(2)}`, "SHARPE RATIO: OUR 3 STOCKS VS THE NIFTY"],
-    [`${D.extraction.counts.match} / ${D.extraction.comparisons}`, "AI-EXTRACTED FIGURES WITHIN 1%"],
-    [`${D.taWins} of ${D.taRules.length}`, "TRADING RULES THAT BEAT BUY-AND-HOLD"]].forEach(([v, l], i) => {
-    const x = M + i * 2.45;
-    text(s, v, { x, y: 5.15, w: 2.3, h: 0.5, fontSize: 24, bold: true, color: NAVY });
-    text(s, l, { x, y: 5.68, w: 2.2, h: 0.5, fontSize: 10, bold: true, color: SLATE });
-  });
-  text(s, "TAPMI \u00B7 BBA(H) SEMESTER V \u00B7 GROUP PROJECT", { x: M, y: 6.75, w: 7.4, h: 0.3, fontSize: 10, bold: true,
-    color: NAVY, charSpacing: 1.5 });
-  text(s, "OUR ANSWER IN THREE MOVES", { x: 9.0, y: 1.35, w: 3.7, h: 0.3, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5 });
-  const moves = [["PICK", `Three sectors, three macro drivers, correlations of ${corrRange}`],
-    ["PRICE", "All three trade above our blended value, so we buy slowly, through a SIP"],
-    ["PORTFOLIO", `${weights} satellite around a Nifty 50 index core`]];
-  moves.forEach(([h, d], i) => {
-    const y = 1.85 + i * 1.22;
-    text(s, `0${i + 1}`, { x: 9.0, y: y + 0.05, w: 0.5, h: 0.3, fontSize: 11, bold: true, color: GOLD });
-    text(s, h, { x: 9.55, y, w: 3.2, h: 0.4, fontSize: 20, bold: true, color: WHITE });
-    text(s, d, { x: 9.55, y: y + 0.45, w: 3.2, h: 0.55, fontSize: 12, color: SAND });
-    rule(s, 9.0, y + 1.08, 3.73);
-  });
-  if (qrData) {
-    s.addImage({ data: qrData, x: 9.0, y: 5.75, w: 1.0, h: 1.0, objectName: "qr-dashboard" });
-    text(s, ["TRY THE DASHBOARD", URL.replace(/^https?:\/\//, "")].map((v, i) => ({ text: v, options: {
-      bold: i === 0, fontSize: i === 0 ? 10 : 11, color: i === 0 ? GOLD : WHITE, breakLine: i === 0 } })),
-      { x: 10.15, y: 5.95, w: 2.6, h: 0.6 });
+  fill(s, "SECURITY ANALYSIS (BBAT35F97) · TAPMI · BBA(H) SEMESTER V", "AI-AUGMENTED SECURITY ANALYSIS",
+    "Valuing Hindustan Unilever, Sun Pharma and ICICI Bank, and building a long-term portfolio from them");
+  const tiles = [["HINDUNILVR.NS", "FMCG", TEAL, fa.FaShoppingBasket], ["SUNPHARMA.NS", "PHARMA", GOLD, fa.FaPills],
+    ["ICICIBANK.NS", "PRIVATE BANK", ORANGE, fa.FaUniversity]];
+  for (const [i, [t, sector, color, Icon]] of tiles.entries()) {
+    const x = M + i * (2.3 + 0.2), y = 4.2;
+    card(s, x, y, 2.3, 1.95, `cover-${D.SHORT[t]}`);
+    s.addShape(pres.shapes.OVAL, { x: x + 0.2, y: y + 0.22, w: 0.62, h: 0.62, fill: { color }, line: { color, width: 0 } });
+    s.addImage({ data: await icon(Icon), x: x + 0.335, y: y + 0.355, w: 0.35, h: 0.35, objectName: `cover-icon-${D.SHORT[t]}` });
+    text(s, [{ text: sector, options: { fontSize: 10, bold: true, color: SLATE, charSpacing: 1, breakLine: true } },
+      { text: `${w100(t)}% OF P`, options: { fontSize: 13, bold: true, color: NAVY } }], { x: x + 0.98, y: y + 0.26, w: 1.25, h: 0.6 });
+    text(s, D.LONG[t], { x: x + 0.2, y: y + 1.05, w: 2.0, h: 0.35, fontSize: 15, bold: true, color: NAVY });
+    text(s, `β ${sec[t].beta.toFixed(2)} · CAGR ${D.pct(sec[t].cagr, 1)}`, { x: x + 0.2, y: y + 1.45, w: 2.0, h: 0.3,
+      fontSize: 11, color: SLATE });
   }
-  s.addNotes("[0:30] Ten thousand rupees a month. That is what each of us expects to invest after graduation, and this "
-    + "project asks one question: should that money own Hindustan Unilever, Sun Pharma and ICICI Bank, and how? Our answer "
-    + `has three moves. Pick three businesses whose returns don't move together. Price them honestly: all three trade above `
-    + `our blended values, so we buy slowly. And size the portfolio to each of us: ${weights.replace(/ \u00B7 /g, ", ")} `
-    + "percent, as a satellite around a Nifty index core.");
+  text(s, `GROUP PROJECT · DATA AS OF ${D.date(D.asOf).toUpperCase()}`, { x: M, y: 6.75, w: 6.2, h: 0.3, fontSize: 10,
+    bold: true, color: SLATE, charSpacing: 1.5 });
+  if (qrData) s.addImage({ data: qrData, x: 7.1, y: 6.35, w: 0.8, h: 0.8, objectName: "qr-dashboard" });
+  text(s, "THE PORTFOLIO WE BUILT", { x: 9.0, y: 1.2, w: 3.8, h: 0.3, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5 });
+  s.addChart(pres.charts.DOUGHNUT, [{ name: "Weight in P", labels: D.STOCKS.map((t) => D.SHORT[t]), values: D.STOCKS.map((t) => D.P.weights[t]) }],
+    { x: 9.4, y: 1.5, w: 2.95, h: 2.95, holeSize: 62, chartColors: [HEX.teal, HEX.gold, HEX.orange], dataBorder: { pt: 2, color: HEX.navy },
+      showLegend: false, showPercent: true, showValue: false, dataLabelColor: HEX.white, dataLabelFontSize: 12, dataLabelFontBold: true,
+      dataLabelFontFace: "+mn-lt", objectName: "cover-weights" });
+  text(s, "P", { x: 10.275, y: 2.55, w: 1.2, h: 0.55, fontSize: 30, bold: true, color: WHITE, align: "center" });
+  text(s, `SHARPE ${D.P.sharpe.toFixed(2)}`, { x: 10.075, y: 3.1, w: 1.6, h: 0.3, fontSize: 10, bold: true, color: SAND, align: "center", charSpacing: 1 });
+  [[D.lakh(D.sipRes.Balanced.Parametric.terminal_percentiles.p50), "MEDIAN 15-YEAR CORPUS FROM A ₹10,000 MONTHLY SIP"],
+    [`${D.extraction.counts.match} / ${D.extraction.comparisons}`, "AI-EXTRACTED FIGURES WITHIN 1% OF YAHOO AND SCREENER"],
+    [`${D.taWins} of ${D.taRules.length}`, "TRADING RULES THAT BEAT BUY-AND-HOLD AFTER COSTS"]].forEach(([v, l], i) => {
+    const y = 4.7 + i * 0.78;
+    rule(s, 9.0, y - 0.1, 3.85);
+    text(s, v, { x: 9.0, y, w: 1.95, h: 0.5, fontSize: 20, bold: true, color: WHITE, valign: "middle" });
+    text(s, l, { x: 11.0, y, w: 1.85, h: 0.5, fontSize: 9, bold: true, color: SAND, valign: "middle" });
+  });
+  s.addNotes("[0:30] Our project is an AI-augmented security analysis of three companies, Hindustan Unilever, Sun Pharma and "
+    + "ICICI Bank, built around one practical question: if each of us invests ten thousand rupees a month after graduation, "
+    + "should that money own them, and how? Our answer has three moves. Pick three businesses whose returns don't move "
+    + "together. Price them honestly: all three trade above our blended values, so we buy slowly. And size the portfolio to "
+    + `each of us: ${weights.replace(/ \/ /g, ", ")} percent, as a satellite around a Nifty index core.`);
 
   // ================================================================ 2. the picks
   pres.addSection({ title: "Analysis" });
