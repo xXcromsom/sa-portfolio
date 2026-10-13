@@ -74,15 +74,18 @@ git tag submission-v1 && git push --tags
 
 **Automatic refresh** (`.github/workflows/refresh.yml`). The workflow runs on GitHub Actions at 18:00 IST, Monday to Friday. It re-downloads prices and consensus, then reruns the metrics, portfolio, Monte Carlo and SIP. On Saturdays it also rescores news headlines. It commits `data/latest` only after the pipeline's own validation, the tests and `scripts/check_dashboard.py` all pass. Otherwise the dashboard keeps the last good data. Transcript tone is not refreshed there, because the PDFs are not in the repository; rerun `python -m pipeline.text_step` locally after adding a new quarter's transcript.
 
-**Hosting on Streamlit Community Cloud.**
-1. Push this folder to a GitHub repository.
-2. At share.streamlit.io, sign in with GitHub. Create the app from that repository, branch `main`, main file `app.py`.
-3. Optionally, under Settings → Secrets, add:
+**Hosting on Streamlit Community Cloud.** The code is in the private repository `xXcromsom/sa-portfolio`.
+1. At share.streamlit.io, sign in with GitHub. In your workspace's linked-accounts settings, grant Streamlit access to private repositories (a second authorization step). Streamlit then reads the code through a read-only deploy key.
+2. Create the app from `xXcromsom/sa-portfolio`, branch `main`, main file `app.py`.
+3. **Make it public.** An app from a private repo is private by default. Go to the app's Settings → Sharing → "Who can view this app" and choose public, or use Share → "Make this app public". Otherwise the professor can't open it. Community Cloud allows only one private app at a time. The repository itself stays private.
+4. Optionally, under Settings → Secrets, add:
    ```toml
    ANTHROPIC_API_KEY = "..."
    CHAT_PASSCODE = "..."
    ```
-4. Each push (including the nightly data commit) redeploys the app automatically.
+5. Each push (including the nightly data commit) redeploys the app automatically. Test the link logged out, in an incognito window.
+
+The nightly workflow runs on GitHub Actions minutes, which a private repository draws from the free monthly allowance. *Estimate:* about 6 minutes a weekday run and 10 on Saturdays, so under 200 minutes a month.
 
 ## Report and deck (`deliverables/`)
 
