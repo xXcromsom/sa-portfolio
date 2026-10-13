@@ -7,16 +7,22 @@ universe:
   stocks:
     HINDUNILVR.NS:
       name: Hindustan Unilever
+      news_query: Hindustan Unilever
       sector: FMCG
       driver: Domestic and rural consumption, input-cost inflation
       valuation_method: two_stage_ddm
-    INFY.NS:
-      name: Infosys
-      sector: IT Services
-      driver: USD/INR, US enterprise tech spending
+    # Replaced Infosys on 13 Oct 2026 (group decision): pharma adds a defensive,
+    # non-cyclical driver plus US export exposure (keeping a rupee hedge), with the
+    # lowest correlation to the other two picks. See docs/macro_industry.md.
+    SUNPHARMA.NS:
+      name: Sun Pharma
+      news_query: Sun Pharma
+      sector: Pharmaceuticals
+      driver: India chronic-therapy demand, US specialty and generics pricing, USD/INR
       valuation_method: two_stage_ddm
     ICICIBANK.NS:
       name: ICICI Bank
+      news_query: ICICI Bank
       sector: Private Bank
       driver: Credit growth, repo rate
       valuation_method: justified_pb   # free cash flow is not meaningful for a bank
@@ -129,6 +135,9 @@ sip:
   goals: [5000000, 7500000, 10000000]
   inflation: 0.04                # RBI's CPI target; used to show the real value
   bootstrap_block_months: 12
+
+text:
+  news_months: 12               # Google News RSS, one query per company per month
 
 # Set to the freeze date D when data/latest is copied to data/submission.
 snapshot_date: null

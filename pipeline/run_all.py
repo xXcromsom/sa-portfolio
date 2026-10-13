@@ -93,7 +93,7 @@ def run_phase1(ctx: Context) -> None:
 
     workbook = project_path("workbook/valuation.xlsx")
     if workbook.exists():
-        record = valuation_record(read_summary(workbook), ctx.prices.iloc[-1], ctx.meta["last_date"])
+        record = valuation_record(read_summary(workbook), ctx.prices.iloc[-1], ctx.meta["last_date"], ctx.stocks)
         _dump(record, ctx.out / "valuation.json")
         _print_valuation(record)
 

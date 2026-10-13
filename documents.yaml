@@ -1,0 +1,46 @@
+# Source documents for the AI tasks (Phase 3). Downloaded by
+#   python scripts/fetch_documents.py
+# into data/raw/<ticker>/ (kept out of git; this list is the record of what was used).
+# Links were taken from each company's Screener.in "Documents" section on 13 Oct 2026.
+# Quarters follow the Indian fiscal year (FY27 Q1 = Apr-Jun 2026).
+
+HINDUNILVR.NS:
+  annual_report:
+    FY26: https://www.bseindia.com/xml-data/corpfiling/AttachHis/881493e4-75af-4a7f-8c64-9d0886e63f1d.pdf
+  transcripts:
+    FY27Q1: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f8bf7fdd-0f7d-4440-a443-08ea9a8e6d04.pdf
+    FY26Q4: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=55988411-440d-4801-8c08-90a5908c4a04.pdf
+    FY26Q3: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=38a5c0b9-6eee-4de5-bdd8-98ac200204cc.pdf
+    FY26Q2: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2eb875fe-ef79-4b40-88b8-228ccc8be17e.pdf
+    FY26Q1: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a09d1d2b-2f6b-4b73-a607-6f61164694af.pdf
+    FY25Q4: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=57aad284-8283-4c21-8035-99627387a92d.pdf
+    FY25Q3: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f5b86e3e-937f-42e9-940b-ce01bf35a1bc.pdf
+
+SUNPHARMA.NS:
+  # Replaced Infosys on 13 Oct 2026. Quarter labels were set after reading each
+  # file's first page. The second May-2026 file is an investor meet, not an
+  # earnings call, so it is kept apart from the quarterly sentiment series.
+  annual_report:
+    FY26: https://www.bseindia.com/xml-data/corpfiling/AttachHis/cb65dea5-416a-4f98-95e2-0b58761b7442.pdf
+  transcripts:
+    FY27Q1: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=34be7c92-1d9f-4010-ba30-2344c959bc5e.pdf
+    FY26Q4: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=287022b2-8de5-487d-8d0d-77b819ee3eb4.pdf
+    FY26Q3: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1082d0ab-d6fb-40f5-873e-d7301397cd05.pdf
+    FY26Q2: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=97dcb020-6882-4de1-8e04-97d06256d293.pdf
+    FY26Q1: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e9f2ef68-3852-4c76-b699-37803a05f264.pdf
+    FY25Q4: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3466942d-443e-4c97-8148-54b3f242e619.pdf
+  investor_meet:
+    MAY2026: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=293c1789-7308-4864-982a-192b016de087.pdf
+
+ICICIBANK.NS:
+  annual_report:
+    FY26: https://www.bseindia.com/xml-data/corpfiling/AttachHis/01c30537-c969-4503-bbae-a07d51eb09a5.pdf
+  transcripts:
+    FY27Q1: https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/docs/about-us/2027/transcript-for-earnings-call-held-on-july-18-2026.pdf
+    FY26Q4: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=50d0e36c-8e96-4fde-9d2e-d33a9443ec34.pdf
+    FY26Q3: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2941b192-7144-4566-874a-a0d4124a003f.pdf
+    # Screener's S3 copy returned 403; this is the same call on ICICI's own site.
+    FY26Q2: https://www.icicibank.com/content/dam/icicibank/india/managed-assets/docs/about-us/2026/transcript-for-earnings-call-held-on-october-18-2025.pdf
+    FY26Q1: https://www.icicibank.com/content/dam/icicibank/india/managed-assets/docs/about-us/2026/transcript-for-earnings-call-held-on-july-19-2025.pdf
+    FY25Q4: https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1a691340-05c5-4029-a15f-cdd78f457400.pdf
+    FY25Q3: https://www.icicibank.com/content/dam/icicibank/india/managed-assets/docs/about-us/2025/2025-01-q3-2025-transcript-for-earnings-call-held-on-january-25-2025.pdf

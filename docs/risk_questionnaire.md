@@ -23,9 +23,9 @@ Use 2 and 4 for answers between the columns.
 
 | Total score | Profile | A | y\* on our P (forward-looking) | Share in T-bills |
 |---|---|---|---|---|
-| 8–18 | Conservative | 6 | 30% | 70% |
-| 19–29 | Balanced | 4 | 46% | 54% |
-| 30–40 | Aggressive | 2 | 91% | 9% |
+| 8–18 | Conservative | 6 | 29% | 71% |
+| 19–29 | Balanced | 4 | 44% | 56% |
+| 30–40 | Aggressive | 2 | 87% | 13% |
 
 The y\* values come from `data/latest/portfolio.json` and change when the data does. y\* = (E[r_P] − r_f) / (A·σ_P²), capped at 100% because a student can't borrow at the T-bill rate.
 

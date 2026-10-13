@@ -30,8 +30,16 @@ def read_summary(path: Path) -> pd.DataFrame:
     return df.set_index("ticker")
 
 
-def valuation_record(summary: pd.DataFrame, latest_prices: pd.Series, as_of: str) -> dict:
-    """Workbook values plus upside against the latest close, one entry per ticker."""
+def valuation_record(summary: pd.DataFrame, latest_prices: pd.Series, as_of: str,
+                     stocks: list[str] | None = None) -> dict:
+    """Workbook values plus upside against the latest close, one entry per ticker.
+
+    Raises ValueError if the workbook covers different stocks from the config
+    (e.g. after a stock swap), so a stale valuation is never published.
+    """
+    if stocks is not None and set(summary.index) != set(stocks):
+        raise ValueError(f"valuation workbook covers {sorted(summary.index)} but config.yaml lists "
+                         f"{sorted(stocks)}; update scripts/build_valuation_workbook.py and rebuild it")
     record = {"latest_price_date": as_of, "securities": {}}
     for ticker, row in summary.iterrows():
         latest = float(latest_prices[ticker])

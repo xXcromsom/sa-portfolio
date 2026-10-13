@@ -7,671 +7,671 @@
   "risk_free_rate": 0.055199,
   "covariance": {
     "HINDUNILVR.NS": {
-      "HINDUNILVR.NS": 0.048371,
-      "INFY.NS": 0.013275,
-      "ICICIBANK.NS": 0.015393
+      "HINDUNILVR.NS": 0.048362,
+      "SUNPHARMA.NS": 0.009726,
+      "ICICIBANK.NS": 0.015387
     },
-    "INFY.NS": {
-      "HINDUNILVR.NS": 0.013275,
-      "INFY.NS": 0.07221,
-      "ICICIBANK.NS": 0.017776
+    "SUNPHARMA.NS": {
+      "HINDUNILVR.NS": 0.009726,
+      "SUNPHARMA.NS": 0.074053,
+      "ICICIBANK.NS": 0.017888
     },
     "ICICIBANK.NS": {
-      "HINDUNILVR.NS": 0.015393,
-      "INFY.NS": 0.017776,
-      "ICICIBANK.NS": 0.088501
+      "HINDUNILVR.NS": 0.015387,
+      "SUNPHARMA.NS": 0.017888,
+      "ICICIBANK.NS": 0.0885
     }
   },
   "volatility": {
-    "HINDUNILVR.NS": 0.21993465579165505,
-    "INFY.NS": 0.2687186459228816,
-    "ICICIBANK.NS": 0.2974907076860304
+    "HINDUNILVR.NS": 0.21991454610084882,
+    "SUNPHARMA.NS": 0.27212628589727955,
+    "ICICIBANK.NS": 0.2974889097834246
   },
   "views": {
     "history": {
       "expected_returns": {
-        "HINDUNILVR.NS": 0.1142005422308568,
-        "INFY.NS": 0.12632984350066326,
-        "ICICIBANK.NS": 0.21852627996284052
+        "HINDUNILVR.NS": 0.11536652393183304,
+        "SUNPHARMA.NS": 0.1202816598673227,
+        "ICICIBANK.NS": 0.21863840471679016
       },
       "tangency": {
         "weights": {
-          "HINDUNILVR.NS": 0.21848660379552046,
-          "INFY.NS": 0.18151339620447962,
+          "HINDUNILVR.NS": 0.24694156173976634,
+          "SUNPHARMA.NS": 0.15305843826023363,
           "ICICIBANK.NS": 0.6
         },
-        "expected_return": 0.1789976155371169,
-        "volatility": 0.21332882137802858,
-        "sharpe": 0.580318283940359
+        "expected_return": 0.1780819554329301,
+        "volatility": 0.21242473000084114,
+        "sharpe": 0.5784776350307401
       },
       "min_variance": {
         "weights": {
-          "HINDUNILVR.NS": 0.5014608016238131,
-          "INFY.NS": 0.29020133721893027,
-          "ICICIBANK.NS": 0.20833786115725658
+          "HINDUNILVR.NS": 0.507285794337447,
+          "SUNPHARMA.NS": 0.29708508901023184,
+          "ICICIBANK.NS": 0.19562911665232105
         },
-        "expected_return": 0.13945548274162028,
-        "volatility": 0.17696294751560535,
-        "sharpe": 0.47612499635942257
+        "expected_return": 0.13702972434171035,
+        "volatility": 0.17445118894680803,
+        "sharpe": 0.469075188513971
       },
       "equal_weight": {
         "weights": {
           "HINDUNILVR.NS": 0.3333333333333333,
-          "INFY.NS": 0.3333333333333333,
+          "SUNPHARMA.NS": 0.3333333333333333,
           "ICICIBANK.NS": 0.3333333333333333
         },
-        "expected_return": 0.15301888856478685,
-        "volatility": 0.18317306483539028,
-        "sharpe": 0.5340298730749161
+        "expected_return": 0.15142886283864862,
+        "volatility": 0.1816336839552446,
+        "sharpe": 0.5298018558185502
       },
       "market": {
-        "expected_return": 0.1259575922018263,
-        "volatility": 0.16136384573517207,
-        "sharpe": 0.4385033827091247
+        "expected_return": 0.12604233644203222,
+        "volatility": 0.16136338322128002,
+        "sharpe": 0.43902981598299595
       },
       "frontier": [
         {
-          "return": 0.139455,
-          "volatility": 0.176963,
-          "HINDUNILVR.NS": 0.501461,
-          "INFY.NS": 0.290202,
-          "ICICIBANK.NS": 0.208338
+          "return": 0.13703,
+          "volatility": 0.174451,
+          "HINDUNILVR.NS": 0.507285,
+          "SUNPHARMA.NS": 0.297086,
+          "ICICIBANK.NS": 0.195629
         },
         {
-          "return": 0.140506,
-          "volatility": 0.176991,
-          "HINDUNILVR.NS": 0.493969,
-          "INFY.NS": 0.287282,
-          "ICICIBANK.NS": 0.218749
+          "return": 0.138101,
+          "volatility": 0.17448,
+          "HINDUNILVR.NS": 0.500503,
+          "SUNPHARMA.NS": 0.293316,
+          "ICICIBANK.NS": 0.206181
         },
         {
-          "return": 0.141557,
-          "volatility": 0.177076,
-          "HINDUNILVR.NS": 0.486477,
-          "INFY.NS": 0.284363,
-          "ICICIBANK.NS": 0.22916
+          "return": 0.139172,
+          "volatility": 0.174566,
+          "HINDUNILVR.NS": 0.493722,
+          "SUNPHARMA.NS": 0.289546,
+          "ICICIBANK.NS": 0.216732
         },
         {
-          "return": 0.142608,
-          "volatility": 0.177218,
-          "HINDUNILVR.NS": 0.478985,
-          "INFY.NS": 0.281444,
-          "ICICIBANK.NS": 0.239572
+          "return": 0.140243,
+          "volatility": 0.174709,
+          "HINDUNILVR.NS": 0.48694,
+          "SUNPHARMA.NS": 0.285776,
+          "ICICIBANK.NS": 0.227283
         },
         {
-          "return": 0.143658,
-          "volatility": 0.177415,
-          "HINDUNILVR.NS": 0.471493,
-          "INFY.NS": 0.278524,
-          "ICICIBANK.NS": 0.249983
+          "return": 0.141314,
+          "volatility": 0.174909,
+          "HINDUNILVR.NS": 0.480159,
+          "SUNPHARMA.NS": 0.282006,
+          "ICICIBANK.NS": 0.237835
         },
         {
-          "return": 0.144709,
-          "volatility": 0.177669,
-          "HINDUNILVR.NS": 0.464001,
-          "INFY.NS": 0.275605,
-          "ICICIBANK.NS": 0.260394
+          "return": 0.142385,
+          "volatility": 0.175166,
+          "HINDUNILVR.NS": 0.473377,
+          "SUNPHARMA.NS": 0.278237,
+          "ICICIBANK.NS": 0.248386
         },
         {
-          "return": 0.14576,
-          "volatility": 0.177979,
-          "HINDUNILVR.NS": 0.456509,
-          "INFY.NS": 0.272686,
-          "ICICIBANK.NS": 0.270805
+          "return": 0.143457,
+          "volatility": 0.17548,
+          "HINDUNILVR.NS": 0.466595,
+          "SUNPHARMA.NS": 0.274467,
+          "ICICIBANK.NS": 0.258938
         },
         {
-          "return": 0.146811,
-          "volatility": 0.178345,
-          "HINDUNILVR.NS": 0.449017,
-          "INFY.NS": 0.269766,
-          "ICICIBANK.NS": 0.281217
+          "return": 0.144528,
+          "volatility": 0.17585,
+          "HINDUNILVR.NS": 0.459814,
+          "SUNPHARMA.NS": 0.270697,
+          "ICICIBANK.NS": 0.269489
         },
         {
-          "return": 0.147861,
-          "volatility": 0.178766,
-          "HINDUNILVR.NS": 0.441525,
-          "INFY.NS": 0.266847,
-          "ICICIBANK.NS": 0.291628
+          "return": 0.145599,
+          "volatility": 0.176276,
+          "HINDUNILVR.NS": 0.453032,
+          "SUNPHARMA.NS": 0.266927,
+          "ICICIBANK.NS": 0.280041
         },
         {
-          "return": 0.148912,
-          "volatility": 0.179242,
-          "HINDUNILVR.NS": 0.434033,
-          "INFY.NS": 0.263928,
-          "ICICIBANK.NS": 0.302039
+          "return": 0.14667,
+          "volatility": 0.176758,
+          "HINDUNILVR.NS": 0.446251,
+          "SUNPHARMA.NS": 0.263157,
+          "ICICIBANK.NS": 0.290592
         },
         {
-          "return": 0.149963,
-          "volatility": 0.179772,
-          "HINDUNILVR.NS": 0.426541,
-          "INFY.NS": 0.261008,
-          "ICICIBANK.NS": 0.31245
+          "return": 0.147741,
+          "volatility": 0.177295,
+          "HINDUNILVR.NS": 0.439469,
+          "SUNPHARMA.NS": 0.259387,
+          "ICICIBANK.NS": 0.301144
         },
         {
-          "return": 0.151014,
-          "volatility": 0.180357,
-          "HINDUNILVR.NS": 0.419049,
-          "INFY.NS": 0.258089,
-          "ICICIBANK.NS": 0.322861
+          "return": 0.148812,
+          "volatility": 0.177886,
+          "HINDUNILVR.NS": 0.432687,
+          "SUNPHARMA.NS": 0.255617,
+          "ICICIBANK.NS": 0.311695
         },
         {
-          "return": 0.152064,
-          "volatility": 0.180995,
-          "HINDUNILVR.NS": 0.411558,
-          "INFY.NS": 0.25517,
-          "ICICIBANK.NS": 0.333273
+          "return": 0.149883,
+          "volatility": 0.178531,
+          "HINDUNILVR.NS": 0.425906,
+          "SUNPHARMA.NS": 0.251848,
+          "ICICIBANK.NS": 0.322247
         },
         {
-          "return": 0.153115,
-          "volatility": 0.181685,
-          "HINDUNILVR.NS": 0.404066,
-          "INFY.NS": 0.25225,
-          "ICICIBANK.NS": 0.343684
+          "return": 0.150955,
+          "volatility": 0.17923,
+          "HINDUNILVR.NS": 0.419124,
+          "SUNPHARMA.NS": 0.248078,
+          "ICICIBANK.NS": 0.332798
         },
         {
-          "return": 0.154166,
-          "volatility": 0.182429,
-          "HINDUNILVR.NS": 0.396574,
-          "INFY.NS": 0.249331,
-          "ICICIBANK.NS": 0.354095
+          "return": 0.152026,
+          "volatility": 0.179982,
+          "HINDUNILVR.NS": 0.412343,
+          "SUNPHARMA.NS": 0.244308,
+          "ICICIBANK.NS": 0.34335
         },
         {
-          "return": 0.155217,
-          "volatility": 0.183224,
-          "HINDUNILVR.NS": 0.389082,
-          "INFY.NS": 0.246412,
-          "ICICIBANK.NS": 0.364506
+          "return": 0.153097,
+          "volatility": 0.180786,
+          "HINDUNILVR.NS": 0.405561,
+          "SUNPHARMA.NS": 0.240538,
+          "ICICIBANK.NS": 0.353901
         },
         {
-          "return": 0.156268,
-          "volatility": 0.184069,
-          "HINDUNILVR.NS": 0.38159,
-          "INFY.NS": 0.243492,
-          "ICICIBANK.NS": 0.374918
+          "return": 0.154168,
+          "volatility": 0.181641,
+          "HINDUNILVR.NS": 0.398779,
+          "SUNPHARMA.NS": 0.236768,
+          "ICICIBANK.NS": 0.364453
         },
         {
-          "return": 0.157318,
-          "volatility": 0.184966,
-          "HINDUNILVR.NS": 0.374098,
-          "INFY.NS": 0.240573,
-          "ICICIBANK.NS": 0.385329
+          "return": 0.155239,
+          "volatility": 0.182548,
+          "HINDUNILVR.NS": 0.391998,
+          "SUNPHARMA.NS": 0.232998,
+          "ICICIBANK.NS": 0.375004
         },
         {
-          "return": 0.158369,
-          "volatility": 0.185911,
-          "HINDUNILVR.NS": 0.366606,
-          "INFY.NS": 0.237654,
-          "ICICIBANK.NS": 0.39574
+          "return": 0.15631,
+          "volatility": 0.183504,
+          "HINDUNILVR.NS": 0.385216,
+          "SUNPHARMA.NS": 0.229228,
+          "ICICIBANK.NS": 0.385555
         },
         {
-          "return": 0.15942,
-          "volatility": 0.186906,
-          "HINDUNILVR.NS": 0.359114,
-          "INFY.NS": 0.234734,
-          "ICICIBANK.NS": 0.406151
+          "return": 0.157381,
+          "volatility": 0.18451,
+          "HINDUNILVR.NS": 0.378434,
+          "SUNPHARMA.NS": 0.225459,
+          "ICICIBANK.NS": 0.396107
         },
         {
-          "return": 0.160471,
-          "volatility": 0.187949,
-          "HINDUNILVR.NS": 0.351622,
-          "INFY.NS": 0.231815,
-          "ICICIBANK.NS": 0.416563
+          "return": 0.158453,
+          "volatility": 0.185564,
+          "HINDUNILVR.NS": 0.371653,
+          "SUNPHARMA.NS": 0.221689,
+          "ICICIBANK.NS": 0.406658
         },
         {
-          "return": 0.161521,
-          "volatility": 0.189039,
-          "HINDUNILVR.NS": 0.34413,
-          "INFY.NS": 0.228896,
-          "ICICIBANK.NS": 0.426974
+          "return": 0.159524,
+          "volatility": 0.186665,
+          "HINDUNILVR.NS": 0.364871,
+          "SUNPHARMA.NS": 0.217919,
+          "ICICIBANK.NS": 0.41721
         },
         {
-          "return": 0.162572,
-          "volatility": 0.190175,
-          "HINDUNILVR.NS": 0.336638,
-          "INFY.NS": 0.225977,
-          "ICICIBANK.NS": 0.437385
+          "return": 0.160595,
+          "volatility": 0.187814,
+          "HINDUNILVR.NS": 0.35809,
+          "SUNPHARMA.NS": 0.214149,
+          "ICICIBANK.NS": 0.427761
         },
         {
-          "return": 0.163623,
-          "volatility": 0.191357,
-          "HINDUNILVR.NS": 0.329146,
-          "INFY.NS": 0.223057,
-          "ICICIBANK.NS": 0.447796
+          "return": 0.161666,
+          "volatility": 0.189008,
+          "HINDUNILVR.NS": 0.351308,
+          "SUNPHARMA.NS": 0.210379,
+          "ICICIBANK.NS": 0.438313
         },
         {
-          "return": 0.164674,
-          "volatility": 0.192584,
-          "HINDUNILVR.NS": 0.321655,
-          "INFY.NS": 0.220138,
-          "ICICIBANK.NS": 0.458208
+          "return": 0.162737,
+          "volatility": 0.190248,
+          "HINDUNILVR.NS": 0.344526,
+          "SUNPHARMA.NS": 0.206609,
+          "ICICIBANK.NS": 0.448864
         },
         {
-          "return": 0.165724,
-          "volatility": 0.193855,
-          "HINDUNILVR.NS": 0.314163,
-          "INFY.NS": 0.217219,
-          "ICICIBANK.NS": 0.468619
+          "return": 0.163808,
+          "volatility": 0.191531,
+          "HINDUNILVR.NS": 0.337745,
+          "SUNPHARMA.NS": 0.202839,
+          "ICICIBANK.NS": 0.459416
         },
         {
-          "return": 0.166775,
-          "volatility": 0.195169,
-          "HINDUNILVR.NS": 0.306671,
-          "INFY.NS": 0.214299,
-          "ICICIBANK.NS": 0.47903
+          "return": 0.164879,
+          "volatility": 0.192858,
+          "HINDUNILVR.NS": 0.330963,
+          "SUNPHARMA.NS": 0.19907,
+          "ICICIBANK.NS": 0.469967
         },
         {
-          "return": 0.167826,
-          "volatility": 0.196525,
-          "HINDUNILVR.NS": 0.299179,
-          "INFY.NS": 0.21138,
-          "ICICIBANK.NS": 0.489441
+          "return": 0.165951,
+          "volatility": 0.194228,
+          "HINDUNILVR.NS": 0.324182,
+          "SUNPHARMA.NS": 0.1953,
+          "ICICIBANK.NS": 0.480519
         },
         {
-          "return": 0.168877,
-          "volatility": 0.197922,
-          "HINDUNILVR.NS": 0.291687,
-          "INFY.NS": 0.208461,
-          "ICICIBANK.NS": 0.499853
+          "return": 0.167022,
+          "volatility": 0.195639,
+          "HINDUNILVR.NS": 0.3174,
+          "SUNPHARMA.NS": 0.19153,
+          "ICICIBANK.NS": 0.49107
         },
         {
-          "return": 0.169927,
-          "volatility": 0.19936,
-          "HINDUNILVR.NS": 0.284195,
-          "INFY.NS": 0.205541,
-          "ICICIBANK.NS": 0.510264
+          "return": 0.168093,
+          "volatility": 0.19709,
+          "HINDUNILVR.NS": 0.310618,
+          "SUNPHARMA.NS": 0.18776,
+          "ICICIBANK.NS": 0.501622
         },
         {
-          "return": 0.170978,
-          "volatility": 0.200838,
-          "HINDUNILVR.NS": 0.276703,
-          "INFY.NS": 0.202622,
-          "ICICIBANK.NS": 0.520675
+          "return": 0.169164,
+          "volatility": 0.198582,
+          "HINDUNILVR.NS": 0.303837,
+          "SUNPHARMA.NS": 0.18399,
+          "ICICIBANK.NS": 0.512173
         },
         {
-          "return": 0.172029,
-          "volatility": 0.202354,
-          "HINDUNILVR.NS": 0.269211,
-          "INFY.NS": 0.199703,
-          "ICICIBANK.NS": 0.531086
+          "return": 0.170235,
+          "volatility": 0.200112,
+          "HINDUNILVR.NS": 0.297055,
+          "SUNPHARMA.NS": 0.18022,
+          "ICICIBANK.NS": 0.522724
         },
         {
-          "return": 0.17308,
-          "volatility": 0.203908,
-          "HINDUNILVR.NS": 0.261719,
-          "INFY.NS": 0.196783,
-          "ICICIBANK.NS": 0.541498
+          "return": 0.171306,
+          "volatility": 0.20168,
+          "HINDUNILVR.NS": 0.290274,
+          "SUNPHARMA.NS": 0.176451,
+          "ICICIBANK.NS": 0.533276
         },
         {
-          "return": 0.17413,
-          "volatility": 0.205499,
-          "HINDUNILVR.NS": 0.254227,
-          "INFY.NS": 0.193864,
-          "ICICIBANK.NS": 0.551909
+          "return": 0.172377,
+          "volatility": 0.203285,
+          "HINDUNILVR.NS": 0.283492,
+          "SUNPHARMA.NS": 0.172681,
+          "ICICIBANK.NS": 0.543827
         },
         {
-          "return": 0.175181,
-          "volatility": 0.207127,
-          "HINDUNILVR.NS": 0.246735,
-          "INFY.NS": 0.190945,
-          "ICICIBANK.NS": 0.56232
+          "return": 0.173448,
+          "volatility": 0.204927,
+          "HINDUNILVR.NS": 0.27671,
+          "SUNPHARMA.NS": 0.168911,
+          "ICICIBANK.NS": 0.554379
         },
         {
-          "return": 0.176232,
-          "volatility": 0.208789,
-          "HINDUNILVR.NS": 0.239243,
-          "INFY.NS": 0.188025,
-          "ICICIBANK.NS": 0.572731
+          "return": 0.17452,
+          "volatility": 0.206604,
+          "HINDUNILVR.NS": 0.269929,
+          "SUNPHARMA.NS": 0.165141,
+          "ICICIBANK.NS": 0.56493
         },
         {
-          "return": 0.177283,
-          "volatility": 0.210486,
-          "HINDUNILVR.NS": 0.231751,
-          "INFY.NS": 0.185106,
-          "ICICIBANK.NS": 0.583143
+          "return": 0.175591,
+          "volatility": 0.208315,
+          "HINDUNILVR.NS": 0.263147,
+          "SUNPHARMA.NS": 0.161371,
+          "ICICIBANK.NS": 0.575482
         },
         {
-          "return": 0.178333,
-          "volatility": 0.212217,
-          "HINDUNILVR.NS": 0.22426,
-          "INFY.NS": 0.182187,
-          "ICICIBANK.NS": 0.593554
+          "return": 0.176662,
+          "volatility": 0.210061,
+          "HINDUNILVR.NS": 0.256365,
+          "SUNPHARMA.NS": 0.157601,
+          "ICICIBANK.NS": 0.586033
         },
         {
-          "return": 0.179384,
-          "volatility": 0.214217,
-          "HINDUNILVR.NS": 0.186629,
-          "INFY.NS": 0.213371,
-          "ICICIBANK.NS": 0.6
+          "return": 0.177733,
+          "volatility": 0.211839,
+          "HINDUNILVR.NS": 0.249584,
+          "SUNPHARMA.NS": 0.153831,
+          "ICICIBANK.NS": 0.596585
         },
         {
-          "return": 0.180435,
-          "volatility": 0.218828,
+          "return": 0.178804,
+          "volatility": 0.21881,
           "HINDUNILVR.NS": 0.1,
-          "INFY.NS": 0.3,
+          "SUNPHARMA.NS": 0.3,
           "ICICIBANK.NS": 0.6
         }
       ]
     },
     "forward": {
       "expected_returns": {
-        "HINDUNILVR.NS": 0.0977927218575628,
-        "INFY.NS": 0.11326855440720242,
-        "ICICIBANK.NS": 0.14672931276464662
+        "HINDUNILVR.NS": 0.0977892846511346,
+        "SUNPHARMA.NS": 0.10089019752251943,
+        "ICICIBANK.NS": 0.14672846354158106
       },
       "tangency": {
         "weights": {
-          "HINDUNILVR.NS": 0.2571961733691247,
-          "INFY.NS": 0.2779349945523467,
-          "ICICIBANK.NS": 0.46486883207852864
+          "HINDUNILVR.NS": 0.30685972985808274,
+          "SUNPHARMA.NS": 0.19248607535269438,
+          "ICICIBANK.NS": 0.500654194789223
         },
-        "expected_return": 0.12484309315382072,
-        "volatility": 0.19512919278291146,
-        "sharpe": 0.3569127313067009
+        "expected_return": 0.12288777240080034,
+        "volatility": 0.19699004951543142,
+        "sharpe": 0.3436151854741164
       },
       "min_variance": {
         "weights": {
-          "HINDUNILVR.NS": 0.5014608016238131,
-          "INFY.NS": 0.29020133721893027,
-          "ICICIBANK.NS": 0.20833786115725658
+          "HINDUNILVR.NS": 0.507285794337447,
+          "SUNPHARMA.NS": 0.29708508901023184,
+          "ICICIBANK.NS": 0.19562911665232105
         },
-        "expected_return": 0.11247917383995396,
-        "volatility": 0.17696294751560535,
-        "sharpe": 0.32368456020943454
+        "expected_return": 0.10828444796357088,
+        "volatility": 0.17445118894680803,
+        "sharpe": 0.3042997200767556
       },
       "equal_weight": {
         "weights": {
           "HINDUNILVR.NS": 0.3333333333333333,
-          "INFY.NS": 0.3333333333333333,
+          "SUNPHARMA.NS": 0.3333333333333333,
           "ICICIBANK.NS": 0.3333333333333333
         },
-        "expected_return": 0.1192635296764706,
-        "volatility": 0.18317306483539028,
-        "sharpe": 0.3497486365369418
+        "expected_return": 0.11513598190507834,
+        "volatility": 0.1816336839552446,
+        "sharpe": 0.3299882521781979
       },
       "market": {
         "expected_return": 0.125999,
-        "volatility": 0.16136384573517207,
-        "sharpe": 0.43875999408315974
+        "volatility": 0.16136338322128002,
+        "sharpe": 0.4387612516955653
       },
       "frontier": [
         {
-          "return": 0.112479,
-          "volatility": 0.176963,
-          "HINDUNILVR.NS": 0.501461,
-          "INFY.NS": 0.290201,
-          "ICICIBANK.NS": 0.208338
+          "return": 0.108284,
+          "volatility": 0.174451,
+          "HINDUNILVR.NS": 0.507285,
+          "SUNPHARMA.NS": 0.297086,
+          "ICICIBANK.NS": 0.195629
         },
         {
-          "return": 0.112975,
-          "volatility": 0.176994,
-          "HINDUNILVR.NS": 0.491675,
-          "INFY.NS": 0.28971,
-          "ICICIBANK.NS": 0.218615
+          "return": 0.108792,
+          "volatility": 0.17448,
+          "HINDUNILVR.NS": 0.500318,
+          "SUNPHARMA.NS": 0.29345,
+          "ICICIBANK.NS": 0.206233
         },
         {
-          "return": 0.11347,
-          "volatility": 0.177086,
-          "HINDUNILVR.NS": 0.481889,
-          "INFY.NS": 0.289219,
-          "ICICIBANK.NS": 0.228893
+          "return": 0.1093,
+          "volatility": 0.174567,
+          "HINDUNILVR.NS": 0.49335,
+          "SUNPHARMA.NS": 0.289813,
+          "ICICIBANK.NS": 0.216836
         },
         {
-          "return": 0.113965,
-          "volatility": 0.177239,
-          "HINDUNILVR.NS": 0.472103,
-          "INFY.NS": 0.288727,
-          "ICICIBANK.NS": 0.23917
+          "return": 0.109807,
+          "volatility": 0.174712,
+          "HINDUNILVR.NS": 0.486383,
+          "SUNPHARMA.NS": 0.286177,
+          "ICICIBANK.NS": 0.22744
         },
         {
-          "return": 0.114461,
-          "volatility": 0.177453,
-          "HINDUNILVR.NS": 0.462317,
-          "INFY.NS": 0.288236,
-          "ICICIBANK.NS": 0.249448
+          "return": 0.110315,
+          "volatility": 0.174915,
+          "HINDUNILVR.NS": 0.479416,
+          "SUNPHARMA.NS": 0.282541,
+          "ICICIBANK.NS": 0.238044
         },
         {
-          "return": 0.114956,
-          "volatility": 0.177728,
-          "HINDUNILVR.NS": 0.45253,
-          "INFY.NS": 0.287744,
-          "ICICIBANK.NS": 0.259725
+          "return": 0.110823,
+          "volatility": 0.175175,
+          "HINDUNILVR.NS": 0.472448,
+          "SUNPHARMA.NS": 0.278905,
+          "ICICIBANK.NS": 0.248647
         },
         {
-          "return": 0.115451,
-          "volatility": 0.178063,
-          "HINDUNILVR.NS": 0.442744,
-          "INFY.NS": 0.287253,
-          "ICICIBANK.NS": 0.270003
+          "return": 0.11133,
+          "volatility": 0.175492,
+          "HINDUNILVR.NS": 0.465481,
+          "SUNPHARMA.NS": 0.275268,
+          "ICICIBANK.NS": 0.259251
         },
         {
-          "return": 0.115947,
-          "volatility": 0.178459,
-          "HINDUNILVR.NS": 0.432958,
-          "INFY.NS": 0.286761,
-          "ICICIBANK.NS": 0.28028
+          "return": 0.111838,
+          "volatility": 0.175866,
+          "HINDUNILVR.NS": 0.458513,
+          "SUNPHARMA.NS": 0.271632,
+          "ICICIBANK.NS": 0.269854
         },
         {
-          "return": 0.116442,
-          "volatility": 0.178914,
-          "HINDUNILVR.NS": 0.423172,
-          "INFY.NS": 0.28627,
-          "ICICIBANK.NS": 0.290558
+          "return": 0.112346,
+          "volatility": 0.176297,
+          "HINDUNILVR.NS": 0.451546,
+          "SUNPHARMA.NS": 0.267996,
+          "ICICIBANK.NS": 0.280458
         },
         {
-          "return": 0.116937,
-          "volatility": 0.179429,
-          "HINDUNILVR.NS": 0.413386,
-          "INFY.NS": 0.285778,
-          "ICICIBANK.NS": 0.300835
+          "return": 0.112853,
+          "volatility": 0.176784,
+          "HINDUNILVR.NS": 0.444579,
+          "SUNPHARMA.NS": 0.26436,
+          "ICICIBANK.NS": 0.291062
         },
         {
-          "return": 0.117433,
-          "volatility": 0.180002,
-          "HINDUNILVR.NS": 0.4036,
-          "INFY.NS": 0.285287,
-          "ICICIBANK.NS": 0.311113
+          "return": 0.113361,
+          "volatility": 0.177327,
+          "HINDUNILVR.NS": 0.437611,
+          "SUNPHARMA.NS": 0.260724,
+          "ICICIBANK.NS": 0.301665
         },
         {
-          "return": 0.117928,
-          "volatility": 0.180634,
-          "HINDUNILVR.NS": 0.393814,
-          "INFY.NS": 0.284796,
-          "ICICIBANK.NS": 0.32139
+          "return": 0.113869,
+          "volatility": 0.177925,
+          "HINDUNILVR.NS": 0.430644,
+          "SUNPHARMA.NS": 0.257087,
+          "ICICIBANK.NS": 0.312269
         },
         {
-          "return": 0.118423,
-          "volatility": 0.181323,
-          "HINDUNILVR.NS": 0.384028,
-          "INFY.NS": 0.284304,
-          "ICICIBANK.NS": 0.331668
+          "return": 0.114376,
+          "volatility": 0.178578,
+          "HINDUNILVR.NS": 0.423676,
+          "SUNPHARMA.NS": 0.253451,
+          "ICICIBANK.NS": 0.322873
         },
         {
-          "return": 0.118919,
-          "volatility": 0.18207,
-          "HINDUNILVR.NS": 0.374242,
-          "INFY.NS": 0.283813,
-          "ICICIBANK.NS": 0.341945
+          "return": 0.114884,
+          "volatility": 0.179285,
+          "HINDUNILVR.NS": 0.416709,
+          "SUNPHARMA.NS": 0.249815,
+          "ICICIBANK.NS": 0.333476
         },
         {
-          "return": 0.119414,
-          "volatility": 0.182873,
-          "HINDUNILVR.NS": 0.364456,
-          "INFY.NS": 0.283321,
-          "ICICIBANK.NS": 0.352223
+          "return": 0.115392,
+          "volatility": 0.180045,
+          "HINDUNILVR.NS": 0.409742,
+          "SUNPHARMA.NS": 0.246179,
+          "ICICIBANK.NS": 0.34408
         },
         {
-          "return": 0.119909,
-          "volatility": 0.183731,
-          "HINDUNILVR.NS": 0.35467,
-          "INFY.NS": 0.28283,
-          "ICICIBANK.NS": 0.3625
+          "return": 0.115899,
+          "volatility": 0.180858,
+          "HINDUNILVR.NS": 0.402774,
+          "SUNPHARMA.NS": 0.242542,
+          "ICICIBANK.NS": 0.354683
         },
         {
-          "return": 0.120405,
-          "volatility": 0.184644,
-          "HINDUNILVR.NS": 0.344884,
-          "INFY.NS": 0.282338,
-          "ICICIBANK.NS": 0.372778
+          "return": 0.116407,
+          "volatility": 0.181723,
+          "HINDUNILVR.NS": 0.395807,
+          "SUNPHARMA.NS": 0.238906,
+          "ICICIBANK.NS": 0.365287
         },
         {
-          "return": 0.1209,
-          "volatility": 0.185611,
-          "HINDUNILVR.NS": 0.335098,
-          "INFY.NS": 0.281847,
-          "ICICIBANK.NS": 0.383055
+          "return": 0.116915,
+          "volatility": 0.182639,
+          "HINDUNILVR.NS": 0.388839,
+          "SUNPHARMA.NS": 0.23527,
+          "ICICIBANK.NS": 0.375891
         },
         {
-          "return": 0.121395,
-          "volatility": 0.186631,
-          "HINDUNILVR.NS": 0.325312,
-          "INFY.NS": 0.281355,
-          "ICICIBANK.NS": 0.393333
+          "return": 0.117422,
+          "volatility": 0.183606,
+          "HINDUNILVR.NS": 0.381872,
+          "SUNPHARMA.NS": 0.231634,
+          "ICICIBANK.NS": 0.386494
         },
         {
-          "return": 0.121891,
-          "volatility": 0.187703,
-          "HINDUNILVR.NS": 0.315526,
-          "INFY.NS": 0.280864,
-          "ICICIBANK.NS": 0.40361
+          "return": 0.11793,
+          "volatility": 0.184623,
+          "HINDUNILVR.NS": 0.374905,
+          "SUNPHARMA.NS": 0.227998,
+          "ICICIBANK.NS": 0.397098
         },
         {
-          "return": 0.122386,
-          "volatility": 0.188827,
-          "HINDUNILVR.NS": 0.30574,
-          "INFY.NS": 0.280373,
-          "ICICIBANK.NS": 0.413888
+          "return": 0.118438,
+          "volatility": 0.185688,
+          "HINDUNILVR.NS": 0.367937,
+          "SUNPHARMA.NS": 0.224361,
+          "ICICIBANK.NS": 0.407701
         },
         {
-          "return": 0.122881,
-          "volatility": 0.190001,
-          "HINDUNILVR.NS": 0.295954,
-          "INFY.NS": 0.279881,
-          "ICICIBANK.NS": 0.424165
+          "return": 0.118945,
+          "volatility": 0.186802,
+          "HINDUNILVR.NS": 0.36097,
+          "SUNPHARMA.NS": 0.220725,
+          "ICICIBANK.NS": 0.418305
         },
         {
-          "return": 0.123377,
-          "volatility": 0.191225,
-          "HINDUNILVR.NS": 0.286168,
-          "INFY.NS": 0.27939,
-          "ICICIBANK.NS": 0.434443
+          "return": 0.119453,
+          "volatility": 0.187963,
+          "HINDUNILVR.NS": 0.354002,
+          "SUNPHARMA.NS": 0.217089,
+          "ICICIBANK.NS": 0.428909
         },
         {
-          "return": 0.123872,
-          "volatility": 0.192497,
-          "HINDUNILVR.NS": 0.276382,
-          "INFY.NS": 0.278898,
-          "ICICIBANK.NS": 0.44472
+          "return": 0.119961,
+          "volatility": 0.18917,
+          "HINDUNILVR.NS": 0.347035,
+          "SUNPHARMA.NS": 0.213453,
+          "ICICIBANK.NS": 0.439512
         },
         {
-          "return": 0.124367,
-          "volatility": 0.193817,
-          "HINDUNILVR.NS": 0.266596,
-          "INFY.NS": 0.278407,
-          "ICICIBANK.NS": 0.454998
+          "return": 0.120468,
+          "volatility": 0.190422,
+          "HINDUNILVR.NS": 0.340068,
+          "SUNPHARMA.NS": 0.209816,
+          "ICICIBANK.NS": 0.450116
         },
         {
-          "return": 0.124863,
-          "volatility": 0.195184,
-          "HINDUNILVR.NS": 0.25681,
-          "INFY.NS": 0.277915,
-          "ICICIBANK.NS": 0.465275
+          "return": 0.120976,
+          "volatility": 0.19172,
+          "HINDUNILVR.NS": 0.3331,
+          "SUNPHARMA.NS": 0.20618,
+          "ICICIBANK.NS": 0.46072
         },
         {
-          "return": 0.125358,
-          "volatility": 0.196596,
-          "HINDUNILVR.NS": 0.247023,
-          "INFY.NS": 0.277424,
-          "ICICIBANK.NS": 0.475553
+          "return": 0.121484,
+          "volatility": 0.193061,
+          "HINDUNILVR.NS": 0.326133,
+          "SUNPHARMA.NS": 0.202544,
+          "ICICIBANK.NS": 0.471323
         },
         {
-          "return": 0.125853,
-          "volatility": 0.198053,
-          "HINDUNILVR.NS": 0.237237,
-          "INFY.NS": 0.276933,
-          "ICICIBANK.NS": 0.48583
+          "return": 0.121991,
+          "volatility": 0.194444,
+          "HINDUNILVR.NS": 0.319165,
+          "SUNPHARMA.NS": 0.198908,
+          "ICICIBANK.NS": 0.481927
         },
         {
-          "return": 0.126349,
-          "volatility": 0.199554,
-          "HINDUNILVR.NS": 0.227451,
-          "INFY.NS": 0.276441,
-          "ICICIBANK.NS": 0.496108
+          "return": 0.122499,
+          "volatility": 0.19587,
+          "HINDUNILVR.NS": 0.312198,
+          "SUNPHARMA.NS": 0.195272,
+          "ICICIBANK.NS": 0.49253
         },
         {
-          "return": 0.126844,
-          "volatility": 0.201098,
-          "HINDUNILVR.NS": 0.217665,
-          "INFY.NS": 0.27595,
-          "ICICIBANK.NS": 0.506385
+          "return": 0.123006,
+          "volatility": 0.197337,
+          "HINDUNILVR.NS": 0.305231,
+          "SUNPHARMA.NS": 0.191635,
+          "ICICIBANK.NS": 0.503134
         },
         {
-          "return": 0.127339,
-          "volatility": 0.202683,
-          "HINDUNILVR.NS": 0.207879,
-          "INFY.NS": 0.275458,
-          "ICICIBANK.NS": 0.516662
+          "return": 0.123514,
+          "volatility": 0.198843,
+          "HINDUNILVR.NS": 0.298263,
+          "SUNPHARMA.NS": 0.187999,
+          "ICICIBANK.NS": 0.513738
         },
         {
-          "return": 0.127835,
-          "volatility": 0.204309,
-          "HINDUNILVR.NS": 0.198093,
-          "INFY.NS": 0.274967,
-          "ICICIBANK.NS": 0.52694
+          "return": 0.124022,
+          "volatility": 0.200389,
+          "HINDUNILVR.NS": 0.291296,
+          "SUNPHARMA.NS": 0.184363,
+          "ICICIBANK.NS": 0.524341
         },
         {
-          "return": 0.12833,
-          "volatility": 0.205975,
-          "HINDUNILVR.NS": 0.188307,
-          "INFY.NS": 0.274475,
-          "ICICIBANK.NS": 0.537217
+          "return": 0.124529,
+          "volatility": 0.201973,
+          "HINDUNILVR.NS": 0.284328,
+          "SUNPHARMA.NS": 0.180727,
+          "ICICIBANK.NS": 0.534945
         },
         {
-          "return": 0.128825,
-          "volatility": 0.20768,
-          "HINDUNILVR.NS": 0.178521,
-          "INFY.NS": 0.273984,
-          "ICICIBANK.NS": 0.547495
+          "return": 0.125037,
+          "volatility": 0.203595,
+          "HINDUNILVR.NS": 0.277361,
+          "SUNPHARMA.NS": 0.17709,
+          "ICICIBANK.NS": 0.545549
         },
         {
-          "return": 0.129321,
-          "volatility": 0.209423,
-          "HINDUNILVR.NS": 0.168735,
-          "INFY.NS": 0.273492,
-          "ICICIBANK.NS": 0.557772
+          "return": 0.125545,
+          "volatility": 0.205253,
+          "HINDUNILVR.NS": 0.270394,
+          "SUNPHARMA.NS": 0.173454,
+          "ICICIBANK.NS": 0.556152
         },
         {
-          "return": 0.129816,
-          "volatility": 0.211203,
-          "HINDUNILVR.NS": 0.158949,
-          "INFY.NS": 0.273001,
-          "ICICIBANK.NS": 0.56805
+          "return": 0.126052,
+          "volatility": 0.206946,
+          "HINDUNILVR.NS": 0.263426,
+          "SUNPHARMA.NS": 0.169818,
+          "ICICIBANK.NS": 0.566756
         },
         {
-          "return": 0.130311,
-          "volatility": 0.213018,
-          "HINDUNILVR.NS": 0.149163,
-          "INFY.NS": 0.27251,
-          "ICICIBANK.NS": 0.578327
+          "return": 0.12656,
+          "volatility": 0.208675,
+          "HINDUNILVR.NS": 0.256459,
+          "SUNPHARMA.NS": 0.166182,
+          "ICICIBANK.NS": 0.577359
         },
         {
-          "return": 0.130807,
-          "volatility": 0.214869,
-          "HINDUNILVR.NS": 0.139377,
-          "INFY.NS": 0.272018,
-          "ICICIBANK.NS": 0.588605
+          "return": 0.127068,
+          "volatility": 0.210437,
+          "HINDUNILVR.NS": 0.249491,
+          "SUNPHARMA.NS": 0.162545,
+          "ICICIBANK.NS": 0.587963
         },
         {
-          "return": 0.131302,
-          "volatility": 0.216755,
-          "HINDUNILVR.NS": 0.129591,
-          "INFY.NS": 0.271527,
-          "ICICIBANK.NS": 0.598882
+          "return": 0.127575,
+          "volatility": 0.212232,
+          "HINDUNILVR.NS": 0.242524,
+          "SUNPHARMA.NS": 0.158909,
+          "ICICIBANK.NS": 0.598567
         },
         {
-          "return": 0.131797,
-          "volatility": 0.218828,
+          "return": 0.128083,
+          "volatility": 0.21881,
           "HINDUNILVR.NS": 0.1,
-          "INFY.NS": 0.3,
+          "SUNPHARMA.NS": 0.3,
           "ICICIBANK.NS": 0.6
         }
       ]
@@ -681,50 +681,50 @@
   "profiles": {
     "Aggressive": {
       "risk_aversion": 2,
-      "y_star": 0.9145549320848667,
-      "y": 0.9145549320848667,
-      "expected_return": 0.11889234888440464,
-      "volatility": 0.17845636565335046,
-      "certainty_equivalent": 0.08704567444220232
+      "y_star": 0.8721638131452902,
+      "y": 0.8721638131452902,
+      "expected_return": 0.1142346978442057,
+      "volatility": 0.1718075927370582,
+      "certainty_equivalent": 0.08471684892210285
     },
     "Balanced": {
       "risk_aversion": 4,
-      "y_star": 0.45727746604243336,
-      "y": 0.45727746604243336,
-      "expected_return": 0.08704567444220232,
-      "volatility": 0.08922818282667523,
-      "certainty_equivalent": 0.07112233722110116
+      "y_star": 0.4360819065726451,
+      "y": 0.4360819065726451,
+      "expected_return": 0.08471684892210285,
+      "volatility": 0.0859037963685291,
+      "certainty_equivalent": 0.06995792446105142
     },
     "Conservative": {
       "risk_aversion": 6,
-      "y_star": 0.3048516440282889,
-      "y": 0.3048516440282889,
-      "expected_return": 0.07643011629480155,
-      "volatility": 0.059485455217783485,
-      "certainty_equivalent": 0.06581455814740078
+      "y_star": 0.2907212710484301,
+      "y": 0.2907212710484301,
+      "expected_return": 0.07487756594806858,
+      "volatility": 0.0572691975790194,
+      "certainty_equivalent": 0.06503828297403429
     }
   },
   "certainty_equivalents": {
     "Aggressive": {
-      "Hindustan Unilever": 0.04942146903936901,
-      "Infosys": 0.04105884374057542,
-      "ICICI Bank": 0.05822859160511143,
-      "Optimal risky P": 0.08676769127771009,
-      "Nifty 50": 0.09996070928955558
+      "Hindustan Unilever": 0.049426877064392236,
+      "Sun Pharma": 0.02683748204627151,
+      "ICICI Bank": 0.05822881209745051,
+      "Optimal risky P": 0.08408269279270822,
+      "Nifty 50": 0.09996085855538232
     },
     "Balanced": {
-      "Hindustan Unilever": 0.0010502162211752236,
-      "Infosys": -0.031150866926051582,
-      "ICICI Bank": -0.030272129554423766,
-      "Optimal risky P": 0.04869228940159946,
-      "Nifty 50": 0.07392241857911118
+      "Hindustan Unilever": 0.0010644694776498764,
+      "Sun Pharma": -0.04721523342997641,
+      "ICICI Bank": -0.03027083934668004,
+      "Optimal risky P": 0.045277613184616095,
+      "Nifty 50": 0.07392271711076465
     },
     "Conservative": {
-      "Hindustan Unilever": -0.047321036597018556,
-      "Infosys": -0.10336057759267857,
-      "ICICI Bank": -0.11877285071395893,
-      "Optimal risky P": 0.010616887525488838,
-      "Nifty 50": 0.047884127868666776
+      "Hindustan Unilever": -0.04729793810909247,
+      "Sun Pharma": -0.12126794890622433,
+      "ICICI Bank": -0.11877049079081062,
+      "Optimal risky P": 0.00647253357652397,
+      "Nifty 50": 0.04788457566614698
     }
   },
   "out_of_sample": {
@@ -732,54 +732,54 @@
     "test": "2023-01-02 to 2026-10-13",
     "History-based P": {
       "weights": {
-        "HINDUNILVR.NS": 0.4249458647023668,
-        "INFY.NS": 0.31414778330315124,
-        "ICICIBANK.NS": 0.2609063519944819
+        "HINDUNILVR.NS": 0.5541941974509611,
+        "SUNPHARMA.NS": 0.1,
+        "ICICIBANK.NS": 0.345805802549039
       },
       "portfolio": {
-        "cagr": -0.0066487632275407105,
-        "volatility": 0.14274106101197603,
-        "sharpe": -0.35192884249173156,
-        "max_drawdown": -0.2833023841890818,
-        "beta": 0.7438174287268486,
-        "treynor": -0.06753632603631018,
-        "jensen_alpha": -0.0690003171009922
+        "cagr": 0.0319960697949202,
+        "volatility": 0.13669285291596003,
+        "sharpe": -0.09441918422658119,
+        "max_drawdown": -0.20374164694160013,
+        "beta": 0.6538011531345033,
+        "treynor": -0.019740600945795245,
+        "jensen_alpha": -0.02955899126900045
       },
       "market": {
-        "cagr": 0.07353147610300104,
-        "volatility": 0.12645381185153304,
-        "sharpe": 0.19950999548454515,
+        "cagr": 0.07379095015573167,
+        "volatility": 0.12645248423998726,
+        "sharpe": 0.20142253302020224,
         "max_drawdown": -0.15322995631656133,
-        "beta": 1.0,
-        "treynor": 0.025228799431502878,
-        "jensen_alpha": 0.0
+        "beta": 0.9999999999999998,
+        "treynor": 0.025470379682315445,
+        "jensen_alpha": 6.830473686658678e-18
       },
       "start": "2023-01-02",
       "end": "2026-10-13"
     },
     "Forward-looking P": {
       "weights": {
-        "HINDUNILVR.NS": 0.27586327350183315,
-        "INFY.NS": 0.2924687650050081,
-        "ICICIBANK.NS": 0.4316679614931588
+        "HINDUNILVR.NS": 0.33788465415392543,
+        "SUNPHARMA.NS": 0.18190452261693005,
+        "ICICIBANK.NS": 0.48021082322914455
       },
       "portfolio": {
-        "cagr": 0.02578317149615561,
-        "volatility": 0.13935917894819366,
-        "sharpe": -0.133387957195068,
-        "max_drawdown": -0.2295149773257681,
-        "beta": 0.8068647655010299,
-        "treynor": -0.023038354122129213,
-        "jensen_alpha": -0.03894506553345355
+        "cagr": 0.07884306777822814,
+        "volatility": 0.12773067618490808,
+        "sharpe": 0.23726317370297398,
+        "max_drawdown": -0.16489541756184734,
+        "beta": 0.7105973972150952,
+        "treynor": 0.04264832059564203,
+        "jensen_alpha": 0.012206600102524575
       },
       "market": {
-        "cagr": 0.07353147610300104,
-        "volatility": 0.12645381185153304,
-        "sharpe": 0.19950999548454515,
+        "cagr": 0.07379095015573167,
+        "volatility": 0.12645248423998726,
+        "sharpe": 0.20142253302020224,
         "max_drawdown": -0.15322995631656133,
-        "beta": 1.0,
-        "treynor": 0.025228799431502878,
-        "jensen_alpha": 0.0
+        "beta": 0.9999999999999998,
+        "treynor": 0.025470379682315445,
+        "jensen_alpha": 6.830473686658678e-18
       },
       "start": "2023-01-02",
       "end": "2026-10-13"
@@ -787,26 +787,26 @@
     "Equal weight": {
       "weights": {
         "HINDUNILVR.NS": 0.3333333333333333,
-        "INFY.NS": 0.3333333333333333,
+        "SUNPHARMA.NS": 0.3333333333333333,
         "ICICIBANK.NS": 0.3333333333333333
       },
       "portfolio": {
-        "cagr": 0.007219506770615336,
-        "volatility": 0.1418285805831134,
-        "sharpe": -0.25737585126729295,
-        "max_drawdown": -0.26255776649700713,
-        "beta": 0.7819349094029195,
-        "treynor": -0.04668323567940497,
-        "jensen_alpha": -0.0562305306594273
+        "cagr": 0.08738132852254488,
+        "volatility": 0.12273723549049832,
+        "sharpe": 0.3060891103133937,
+        "max_drawdown": -0.17617403355344008,
+        "beta": 0.6494605500183374,
+        "treynor": 0.0578457478480431,
+        "jensen_alpha": 0.021026524415959653
       },
       "market": {
-        "cagr": 0.07353147610300104,
-        "volatility": 0.12645381185153304,
-        "sharpe": 0.19950999548454515,
+        "cagr": 0.07379095015573167,
+        "volatility": 0.12645248423998726,
+        "sharpe": 0.20142253302020224,
         "max_drawdown": -0.15322995631656133,
-        "beta": 1.0,
-        "treynor": 0.025228799431502878,
-        "jensen_alpha": 0.0
+        "beta": 0.9999999999999998,
+        "treynor": 0.025470379682315445,
+        "jensen_alpha": 6.830473686658678e-18
       },
       "start": "2023-01-02",
       "end": "2026-10-13"

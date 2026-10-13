@@ -4,51 +4,51 @@
     "HINDUNILVR.NS": {
       "name": "Hindustan Unilever",
       "model": "Two-stage DDM",
-      "workbook_price": 1836.0,
-      "latest_price": 1839.1,
-      "cost_of_equity": 0.097707,
-      "intrinsic_value": 1081.28,
-      "comps_value": 2075.48,
-      "blended_value": 1578.38,
-      "market_implied_growth": 0.07373,
+      "workbook_price": 1861.9,
+      "latest_price": 1861.9,
+      "cost_of_equity": 0.097792,
+      "intrinsic_value": 1079.12,
+      "comps_value": 2104.76,
+      "blended_value": 1591.94,
+      "market_implied_growth": 0.074139,
       "upside_vs_latest": {
-        "intrinsic": -0.412059,
-        "comps": 0.128529,
-        "blended": -0.141765
+        "intrinsic": -0.420418,
+        "comps": 0.130435,
+        "blended": -0.144991
       },
       "workbook_verdict": "Fairly valued"
     },
-    "INFY.NS": {
-      "name": "Infosys",
-      "model": "Two-stage DDM",
-      "workbook_price": 1035.0,
-      "latest_price": 1040.4,
-      "cost_of_equity": 0.113333,
-      "intrinsic_value": 965.0,
-      "comps_value": 1073.33,
-      "blended_value": 1019.17,
-      "market_implied_growth": 0.063988,
+    "SUNPHARMA.NS": {
+      "name": "Sun Pharma",
+      "model": "Two-stage residual income",
+      "workbook_price": 1759.8,
+      "latest_price": 1759.8,
+      "cost_of_equity": 0.100893,
+      "intrinsic_value": 747.63,
+      "comps_value": 1701.84,
+      "blended_value": 1224.73,
+      "market_implied_growth": 0.086324,
       "upside_vs_latest": {
-        "intrinsic": -0.072471,
-        "comps": 0.031654,
-        "blended": -0.020408
+        "intrinsic": -0.575164,
+        "comps": -0.032934,
+        "blended": -0.304049
       },
-      "workbook_verdict": "Fairly valued"
+      "workbook_verdict": "Overvalued"
     },
     "ICICIBANK.NS": {
       "name": "ICICI Bank",
-      "model": "Two-stage P/B (residual income)",
-      "workbook_price": 1310.6,
-      "latest_price": 1348.9,
-      "cost_of_equity": 0.146878,
-      "intrinsic_value": 573.45,
+      "model": "Two-stage residual income (bank)",
+      "workbook_price": 1350.5,
+      "latest_price": 1350.5,
+      "cost_of_equity": 0.146729,
+      "intrinsic_value": 574.65,
       "comps_value": 1139.04,
-      "blended_value": 856.25,
-      "market_implied_growth": 0.138725,
+      "blended_value": 856.84,
+      "market_implied_growth": 0.138877,
       "upside_vs_latest": {
-        "intrinsic": -0.574873,
-        "comps": -0.155578,
-        "blended": -0.365225
+        "intrinsic": -0.574493,
+        "comps": -0.156578,
+        "blended": -0.365535
       },
       "workbook_verdict": "Overvalued"
     }

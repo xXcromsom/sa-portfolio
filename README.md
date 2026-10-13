@@ -1,8 +1,10 @@
-# AI-Augmented Security Analysis: HUL, Infosys, ICICI Bank
+# AI-Augmented Security Analysis: HUL, Sun Pharma, ICICI Bank
 
 A group project for Security Analysis (BBAT35F97) at TAPMI. It values three NSE stocks using the course's methods, adds AI-based analysis, and builds a portfolio from them. The full plan is in `../PLAN_v2.md`.
 
-**Status:** Phase 1 (data and traditional analysis) and Phase 2 (portfolio) are done. Phases 3–5 are next.
+**Status:** Phase 1 (data and traditional analysis) and Phase 2 (portfolio) are done; Phase 3 (AI) is in progress.
+
+**Stocks:** Hindustan Unilever, Sun Pharma, ICICI Bank. Sun Pharma replaced Infosys on 13 Oct 2026; the reasons are in `docs/macro_industry.md` §5.
 
 ## Setup
 
@@ -28,8 +30,8 @@ python -m pipeline.run_all --refresh
 | `sip.json`, `figures/sip.png` | 15-year SIP: core-satellite equity (Nifty index + the 3 stocks) with a glide path; corpus percentiles and the probability of reaching ₹50 L / ₹75 L / ₹1 Cr |
 
 The valuation itself is in `workbook/valuation.xlsx`, which has live formulas:
-- a two-stage DDM for HUL and Infosys
-- a two-stage P/B (residual income) model for ICICI Bank
+- a two-stage DDM for HUL (high payout)
+- a two-stage residual-income (P/B) model for Sun Pharma (low payout) and ICICI Bank (a bank)
 - peer comparables
 - r × g sensitivity grids
 
