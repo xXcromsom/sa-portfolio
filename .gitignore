@@ -8,3 +8,6 @@ __pycache__/
 
 # Source documents (PDFs, Screener exports) stay local
 data/raw/
+
+# Streamlit secrets (API key, passcode) stay local / in the Streamlit Cloud settings
+.streamlit/secrets.toml

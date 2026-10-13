@@ -1,0 +1,7 @@
+# Dashboard only (Streamlit Community Cloud installs this). The analysis pipeline uses
+# requirements-pipeline.txt; heavy libraries (torch, transformers) never install on the host.
+streamlit==1.65.0
+pandas==2.3.3
+numpy==2.2.6
+pyarrow==24.0.0
+anthropic==1.13.0   # live Q&A only, when ANTHROPIC_API_KEY is set as a secret

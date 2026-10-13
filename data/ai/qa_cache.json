@@ -1,0 +1,34 @@
+{
+  "prepared_by": "Claude (claude-opus-5-5) via Claude Code from the project data, 13 Oct 2026. Every number is copied from the file named in brackets.",
+  "as_of": "2026-10-13",
+  "questions": [
+    {
+      "q": "Why is ICICI Bank the largest weight in the portfolio?",
+      "a": "Because the optimiser rewards expected return per unit of risk, and on forward-looking CAPM returns ICICI's higher beta (1.29) earns it the highest expected return of the three. The recommended risky portfolio is HUL 31%, Sun Pharma 19%, ICICI 50% [portfolio.json: views.forward.tangency]. The cost is concentration: ICICI supplies about 57% of the portfolio's variance with 50% of the weight [ai_analysis.json: risk.risk_share_latest]. On history alone the optimiser would push ICICI to the 60% cap [views.history.tangency]. That is hindsight, which is why we use the forward view."
+    },
+    {
+      "q": "Which stock looks most overvalued, and why?",
+      "a": "ICICI Bank. Its blended value (residual-income model plus ROE-adjusted peer P/B) is 37% below the price [valuation.json]. But the market's implied perpetual growth, about 13.9%, is close to ICICI's current loan growth of 19.6% and PAT growth of 15.9% [ai_analysis / concall_aspects.json]. So the gap comes mainly from our 14.7% CAPM cost of equity, which is driven by its daily beta of 1.29, not from unrealistic expectations. Sun Pharma is −30% blended; HUL −14% (fairly valued). Analysts are far more bullish: mean targets +24% to +29% [ai_analysis.json: forecasts]."
+    },
+    {
+      "q": "How risky is the Balanced portfolio over one year?",
+      "a": "For ₹1 lakh in the Balanced complete portfolio (44% in the three-stock portfolio, 56% in T-bills), the one-year Monte Carlo gives a median of about ₹1,08,463 and a 5th percentile of ₹94,418. 95% VaR is ₹5,582 (parametric) or ₹5,465 (bootstrap), and the chance of a loss is 17% or 16% [mc.json]. The two methods agree, so fat tails matter little at this horizon. At today's lower volatility (EWMA), the chance of a loss falls to about 8%."
+    },
+    {
+      "q": "Can technical analysis beat buy-and-hold for these stocks?",
+      "a": "Not here. After a 0.25% round-trip cost, buy-and-hold has the higher Sharpe ratio than both a 50/200-day moving-average rule and an RSI mean-reversion rule, for all three stocks and the Nifty. For example, ICICI scores 0.56 buy-and-hold against 0.33 (trend) and 0.22 (RSI) [ai_analysis.json: technical_analysis]. The rules do cut drawdowns, so they are risk controls, not return engines. That is consistent with weak-form market efficiency."
+    },
+    {
+      "q": "What did the AI find in the earnings calls and news?",
+      "a": "FinBERT finds HUL's management far more upbeat than the analysts questioning it: an average tone gap of 0.28, against 0.08 for Sun Pharma [ai_analysis.json: sentiment]. In 120 sampled headlines, 14% were not about the company at all (name collisions such as ICICI Securities), and 41% carried a behavioural cue, mostly broker authority or 'do you own any?' herding. Sun Pharma's coverage was 60% gain-framed and only 3% loss-framed, a warning sign of one-sided optimism [ai_analysis.json: framing]."
+    },
+    {
+      "q": "Why Sun Pharma instead of Infosys?",
+      "a": "Pharma adds a defensive, non-cyclical driver (chronic-therapy demand in India) and keeps the rupee hedge Infosys gave us, because Sun's US business earns in dollars. Its beta is lower (0.65 vs 0.82), and it has the lowest correlation with our other two picks (0.15 with HUL, 0.20 with ICICI) [metrics.json]. Honesty note: we chose it partly after its strong recent run (Nifty Pharma +7.5% above its 200-day average), so our 2023–26 out-of-sample test flatters the new line-up [docs/macro_industry.md]."
+    },
+    {
+      "q": "How would a monthly SIP grow over 15 years?",
+      "a": "A ₹10,000 monthly SIP rising 10% a year puts in about ₹38.1 lakh. It goes into a core-satellite mix (50% Nifty index fund, 50% our three stocks), gliding toward 40% equity. For the Balanced profile, the median corpus after 15 years is about ₹64.8 lakh. The chance of reaching ₹75 lakh is 19% (parametric) or 11% (bootstrap), against 36% or 29% for Aggressive [sip.json]. All three profiles reach ₹50 lakh at least 95% of the time."
+    }
+  ]
+}
