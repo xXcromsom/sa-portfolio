@@ -1,9 +1,13 @@
 # Dashboard only (Streamlit Community Cloud installs this). The analysis pipeline uses
 # requirements-pipeline.txt; heavy libraries (torch, transformers, scipy) never install on the host.
-streamlit==1.65.0
-altair==6.3.0
-pandas==2.3.3
-numpy==2.2.6
-pyarrow==24.0.0
-requests==2.32.5         # live Q&A via OpenRouter, only when OPENROUTER_API_KEY is set
-python-dotenv==1.2.1     # reads OPENROUTER_API_KEY from .env when running locally
+#
+# Ranges, not exact pins: the cloud's Python version is chosen at deploy time, and exact pins
+# have no prebuilt wheels on some versions (numpy 2.2.6 on Python 3.14, altair 6.3 on 3.10),
+# which makes the whole install fail. Lower bounds are the versions tested locally.
+streamlit==1.65.0        # exact: the theme in .streamlit/config.toml uses options from this release
+altair>=5.5,<7
+pandas>=2.2,<3
+numpy>=2.2,<3
+pyarrow>=16,<26
+requests>=2.32,<3        # live Q&A via OpenRouter, only when OPENROUTER_API_KEY is set
+python-dotenv>=1.0,<2    # reads OPENROUTER_API_KEY from .env when running locally
