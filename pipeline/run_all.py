@@ -19,6 +19,7 @@ from src import charts
 from src import monte_carlo as mc
 from src import portfolio as pf
 from src import quant_utils as qu
+from src import scenario
 from src import sip
 from src.config import load_config, project_path
 from src.data_ingest import load_prices
@@ -165,19 +166,12 @@ def run_phase2(ctx: Context) -> None:
     rng = np.random.default_rng(mcc["seed"])
     n, horizon, v0 = mcc["n_sims"], mcc["horizon_days"], mcc["initial_value"]
     target = (capm if mcc["expected_returns"] == "capm" else mu_hist).to_numpy() / periods
-    hist = stock_r.to_numpy()
-    ewma = mc.ewma_cov(stock_r, mcc["ewma_lambda"]).to_numpy()
-    draws = {
-        "Parametric": mc.simulate_parametric(target, stock_r.cov().to_numpy(), n, horizon, rng),
-        "Bootstrap": mc.simulate_bootstrap(mc.shift_means(hist, target), n, horizon,
-                                           mcc["bootstrap_block_days"], rng),
-        "Parametric, current volatility (EWMA)": mc.simulate_parametric(target, ewma, n, horizon, rng),
-    }
+    ewma = mc.ewma_cov(stock_r, mcc["ewma_lambda"]).to_numpy()  # reported in mc.json settings
     w_p = np.array([P["weights"][t] for t in ctx.stocks])
     rf_d = qu.periodic_rf(rf, periods)
     mc_out, fans, terminals, var95 = {}, {}, {}, {}
     focus = "Balanced"
-    for mode, x in draws.items():
+    for mode, x in scenario.one_year_draws(stock_r, target, mcc, rng):  # shared with the dashboard
         mc_out[mode] = {}
         for name, p in profiles.items():
             wealth = mc.wealth_paths(x, w_p, p["y"], rf_d, mcc["rebalance"])
@@ -186,7 +180,6 @@ def run_phase2(ctx: Context) -> None:
                 fans[mode] = mc.fan(wealth, v0)
                 terminals[mode] = wealth[:, -1] * v0
                 var95[mode] = mc_out[mode][name]["var_95"]
-    del draws
     _dump({"as_of": ctx.meta["last_date"],
            "settings": {**mcc, "risky_portfolio": P["weights"],
                         "annual_vol_ewma_vs_sample": {t: [float(np.sqrt(ewma[i, i] * periods)), float(vol[t])]
@@ -200,16 +193,17 @@ def run_phase2(ctx: Context) -> None:
     amounts = sip.contributions(sc["monthly_amount"], sc["annual_step_up"], months)
     rf_m = qu.periodic_rf(rf, 12)
     four = ctx.stocks + [ctx.bench]
-    w_sleeve = np.append((1 - core) * w_p, core)
+    w_sleeve = scenario.sleeve_weights(w_p, core)
     cov_m = r[four].cov().to_numpy() * periods / 12
     monthly_hist = ctx.prices[four].resample("ME").last().pct_change().dropna()
     monthly_hist[ctx.bench] += qu.periodic_rf(cfg["universe"]["benchmark_dividend_yield"], 12)
+    # The dashboard re-runs these simulations for any A from exactly these inputs.
+    r[four].to_parquet(ctx.out / "returns_daily.parquet")
+    monthly_hist.to_parquet(ctx.out / "returns_monthly.parquet")
 
     def sleeve_draws(mu_annual: np.ndarray) -> dict:
-        mu_m = mu_annual / 12
-        boot_hist = mc.shift_means(monthly_hist.to_numpy(), mu_m) @ w_sleeve
-        return {"Parametric": mc.simulate_parametric(mu_m, cov_m, n, months, rng) @ w_sleeve,
-                "Bootstrap": sip.monthly_bootstrap(boot_hist, n, months, sc["bootstrap_block_months"], rng)}
+        return scenario.sleeve_draws(monthly_hist, cov_m, mu_annual, w_sleeve, n, months,
+                                     sc["bootstrap_block_months"], rng)
 
     forward = sleeve_draws(np.append(capm.to_numpy(), rf + erp))
     sip_out, sip_fans = {}, {}

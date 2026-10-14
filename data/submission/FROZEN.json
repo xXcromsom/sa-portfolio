@@ -1,7 +1,7 @@
 {
-  "frozen_at": "2026-10-13T18:59:47",
+  "frozen_at": "2026-10-14T17:49:47",
   "data_as_of": "2026-10-13",
-  "code_commit": "a5eab7d",
+  "code_commit": "82e503e",
   "files": [
     "ai_analysis.json",
     "consensus.json",
@@ -28,6 +28,8 @@
     "portfolio.json",
     "prices.parquet",
     "prices_meta.json",
+    "returns_daily.parquet",
+    "returns_monthly.parquet",
     "sentiment.json",
     "sip.json",
     "transcript_tone.csv",

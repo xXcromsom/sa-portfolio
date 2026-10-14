@@ -8,9 +8,10 @@ mean. The 10-60% weight bounds and the out-of-sample test are the guards.
 """
 from __future__ import annotations
 
+import math
+
 import numpy as np
 import pandas as pd
-from scipy.optimize import minimize
 
 from src import quant_utils as qu
 
@@ -30,6 +31,8 @@ def portfolio_vol(w: np.ndarray, cov: pd.DataFrame) -> float:
 
 
 def _solve(objective, n: int, bounds: tuple[float, float], constraints=()) -> np.ndarray:
+    from scipy.optimize import minimize  # here, so the dashboard can import this module without scipy
+
     cons = [{"type": "eq", "fun": lambda w: w.sum() - 1.0}, *constraints]
     res = minimize(objective, np.full(n, 1.0 / n), method="SLSQP",
                    bounds=[bounds] * n, constraints=cons, options={"ftol": 1e-12, "maxiter": 500})
@@ -67,10 +70,23 @@ def utility(expected_return: float, volatility: float, risk_aversion: float) -> 
 
 
 def complete_portfolio(er_p: float, vol_p: float, rf: float, risk_aversion: float,
-                       allow_borrowing: bool = False) -> dict:
-    """Optimal split between P and T-bills: y* = (E[r_P] - rf) / (A sigma_P^2)."""
-    y_star = (er_p - rf) / (risk_aversion * vol_p ** 2)
-    y = y_star if allow_borrowing else min(max(y_star, 0.0), 1.0)
+                       allow_borrowing: bool = False, max_leverage: float | None = None) -> dict:
+    """Optimal split between P and T-bills: y* = (E[r_P] - rf) / (A sigma_P^2).
+
+    A > 0 is risk aversion. At A <= 0 (risk-neutral or risk-seeking) utility never penalises
+    risk, so y* is unbounded and the investor holds as much P as allowed: 100% without
+    borrowing, or `max_leverage` with it.
+    """
+    y_star = (er_p - rf) / (risk_aversion * vol_p ** 2) if risk_aversion > 0 else math.inf
+    if not allow_borrowing:
+        cap = 1.0
+    elif max_leverage is not None:
+        cap = max_leverage
+    elif math.isinf(y_star):
+        raise ValueError("A <= 0 with unlimited borrowing has no finite optimum; pass max_leverage")
+    else:
+        cap = math.inf
+    y = min(max(y_star, 0.0), cap)
     er_c, vol_c = rf + y * (er_p - rf), y * vol_p
     # Utility = the certainty-equivalent return: the risk-free rate this investor
     # would accept instead of holding the complete portfolio.

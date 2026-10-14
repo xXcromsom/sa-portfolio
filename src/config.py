@@ -4,7 +4,6 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-import yaml
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +22,8 @@ if os.getenv("CA_BUNDLE"):
 
 def load_config(path: Path = ROOT / "config.yaml") -> dict:
     """Return the parsed config. Paths inside it are relative to the project root."""
+    import yaml  # here, so the dashboard can import this module (for .env) without PyYAML
+
     with open(path, encoding="utf-8") as f:
         return yaml.safe_load(f)
 

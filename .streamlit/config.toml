@@ -1,11 +1,24 @@
-# Light theme to match the report figures (they are rendered on a light surface).
 [theme]
-base = "light"
-primaryColor = "#2a78d6"
-backgroundColor = "#fcfcfb"
-secondaryBackgroundColor = "#f3f2ef"
-textColor = "#0b0b0b"
-font = "sans serif"
+# Terminal look: black background, amber accents, monospace, square corners.
+base = "dark"
+primaryColor = "#FF9F1C"
+backgroundColor = "#000000"
+secondaryBackgroundColor = "#0B0E11"
+textColor = "#E6E6E6"
+font = "monospace"
+headingFont = "monospace"
+codeFont = "monospace"
+baseFontSize = 14
+baseRadius = "none"
+buttonRadius = "none"
+borderColor = "#2A2F36"
+dataframeBorderColor = "#2A2F36"
+dataframeHeaderBackgroundColor = "#14181D"
+showWidgetBorder = true
+linkColor = "#4FC3F7"
+greenColor = "#3DDC84"
+redColor = "#FF5252"
+chartCategoricalColors = ["#FF9F1C", "#4FC3F7", "#C792EA", "#3DDC84", "#FF5252", "#FFD166"]
 
 [browser]
 gatherUsageStats = false

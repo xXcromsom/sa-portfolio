@@ -66,15 +66,23 @@ def wealth_paths(asset_returns: np.ndarray, weights: np.ndarray, y: float, rf_pe
     """Growth of 1 invested: y in the risky mix, 1 - y in T-bills. Shape (n_sims, horizon + 1)."""
     n_sims, horizon, _ = asset_returns.shape
     if rebalance == "constant_mix":
-        port = y * (asset_returns @ weights) + (1 - y) * rf_period
-        growth = np.cumprod(1 + port, axis=1)
-    elif rebalance == "buy_and_hold":
+        return wealth_from_risky(asset_returns @ weights, y, rf_period)
+    if rebalance == "buy_and_hold":
         risky = (y * weights) * np.cumprod(1 + asset_returns, axis=1)   # each asset drifts
         safe = (1 - y) * (1 + rf_period) ** np.arange(1, horizon + 1)
         growth = risky.sum(axis=2) + safe
-    else:
-        raise ValueError(f"unknown rebalance rule {rebalance!r}")
-    return np.hstack([np.ones((n_sims, 1)), growth])
+        return np.hstack([np.ones((n_sims, 1)), growth])
+    raise ValueError(f"unknown rebalance rule {rebalance!r}")
+
+
+def wealth_from_risky(risky_returns: np.ndarray, y: float, rf_period: float) -> np.ndarray:
+    """Constant-mix growth of 1 from the risky mix's period returns, shape (n_sims, horizon).
+
+    The dashboard keeps only these mix-level returns (P's weights don't depend on A), so it can
+    re-price any A instantly with exactly the pipeline's arithmetic.
+    """
+    growth = np.cumprod(1 + (y * risky_returns + (1 - y) * rf_period), axis=1)
+    return np.hstack([np.ones((risky_returns.shape[0], 1)), growth])
 
 
 def summarize(wealth: np.ndarray, initial_value: float) -> dict:

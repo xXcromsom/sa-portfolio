@@ -91,6 +91,12 @@ const chartText = { catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-l
 const qr = async (url) => (await QRCode.toDataURL(url, { margin: 1, width: 600, color: { dark: "#1D2C62", light: "#FFFFFF" } }))
   .replace(/^data:/, "");
 const w100 = (t) => Math.round(D.P.weights[t] * 100);
+const pngSize = (file) => { const b = fs.readFileSync(file); return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) }; };
+const fit = (file, x, y, w, h) => {  // contain the image in the box, centred
+  const { w: pw, h: ph } = pngSize(file);
+  const scale = Math.min(w / pw, h / ph);
+  return { x: x + (w - pw * scale) / 2, y: y + (h - ph * scale) / 2, w: pw * scale, h: ph * scale };
+};
 const weights = D.STOCKS.map(w100).join(" / "); // not a middle dot: Century Gothic lacks a matching glyph
 const spoken = (items) => items.slice(0, -1).join(", ") + " and " + items[items.length - 1];
 
@@ -291,9 +297,10 @@ async function build() {
   s = pres.addSlide({ masterName: "PANEL_LEFT", sectionTitle: "Analysis" });
   fill(s, "04 - LIVE DEMO", "SEE IT LIVE", "Two minutes, four stops on our dashboard.");
   const y2 = D.prof.Aggressive.y, y4 = D.prof.Balanced.y;
-  [["AI INSIGHTS", "Monthly sentiment; news framing"], ["RISK", "Correlation heatmap; stress tests"],
-    ["ASK THE PORTFOLIO", "One question, answered with its sources"],
-    ["YOUR OWN PORTFOLIO", `Slide A from 4 to 2: your share in P goes from ${D.pct(y4)} to ${D.pct(y2)}`]].forEach(([h, d], i) => {
+  [["RISK QUESTIONNAIRE", "Ten answers set your risk aversion A"],
+    ["YOUR PORTFOLIO", `The rupee split for your A; slide A from 4 to 2: ${D.pct(y4)} \u2192 ${D.pct(y2)} in P`],
+    ["RISK", "Your rupee loss in four real sell-offs"],
+    ["ASK THE PORTFOLIO", "One question, answered with its sources"]].forEach(([h, d], i) => {
     const y = 2.65 + i * 0.86;
     text(s, `0${i + 1}`, { x: M, y: y + 0.03, w: 0.45, h: 0.3, fontSize: 11, bold: true, color: GOLD });
     text(s, [{ text: h, options: { fontSize: 15, bold: true, color: WHITE, breakLine: true } },
@@ -307,18 +314,23 @@ async function build() {
       { text: "streamlit run app.py", options: { fontSize: 12, color: WHITE } }], { x: M, y: 6.3, w: 3.2, h: 0.6 });
   }
   card(s, 4.95, 1.0, 7.78, 4.66, "demo-screenshot-frame");
-  s.addImage({ path: D.asset("dash_ai.png"), x: 5.0, y: 1.05, w: 7.68, h: 4.56, objectName: "demo-screenshot" });
+  s.addImage({ path: D.asset("dash_portfolio.png"), ...fit(D.asset("dash_portfolio.png"), 5.0, 1.05, 7.68, 4.56),
+    objectName: "demo-screenshot" });
   text(s, [{ text: "IF ANYTHING TAKES MORE THAN 10 SECONDS", options: { fontSize: 10, bold: true, color: ORANGE, breakLine: true } },
     { text: "1 Live link  \u2192  2 Local copy  \u2192  3 Recorded walkthrough  \u2192  4 Screenshots (A3)",
       options: { fontSize: 13, color: NAVY } }], { x: 4.95, y: 5.95, w: 7.78, h: 0.7 });
-  s.addNotes("[2:00] DEMO DRIVER: open the dashboard on Submission data, so the screen matches the slides. "
-    + "(1) AI insights: 'This is a year of headlines and every earnings call, scored by FinBERT. Notice HUL's management "
-    + "sounds far more positive than the analysts asking the questions.' "
-    + `(2) Risk: 'The heatmap shows why these three diversify; in all ${D.stressBetter === 4 ? "four" : D.stressBetter} sell-offs since 2020 our portfolio fell `
-    + "less than the Nifty.' "
-    + "(3) Ask the portfolio: pick 'Why is ICICI Bank the largest weight?'. 'Every number in the answer cites the file it came from.' "
-    + `(4) Sidebar: move risk aversion from 4 to 2. 'This is your own portfolio: your share in P goes from ${D.pct(y4)} to ${D.pct(y2)}.' `
-    + "Then flip the data selector to Latest and say what has changed since submission. "
+  const lakhInvested = 100000, split = D.STOCKS.map((t) => `${D.rupee(y4 * D.P.weights[t] * lakhInvested)} ${D.SHORT[t]}`);
+  const covidHit = y4 * D.stress["COVID crash (Feb-Mar 2020)"]["Portfolio P"] * lakhInvested;
+  s.addNotes("[2:00] DEMO DRIVER: open the dashboard (Submission data, so the screen matches the slides). "
+    + "(1) Questionnaire: 'Ten questions turn your answers into a risk-aversion number, A.' Click the middle answer each time "
+    + "(that is our Balanced investor, A = 4) and press BUILD MY PORTFOLIO. "
+    + `(2) Portfolio: 'For A = 4, one lakh splits into ${split.join(", ")} and ${D.rupee((1 - y4) * lakhInvested)} of T-bills. `
+    + `The one-year 95% VaR is ${D.rupee(D.mcB.par.var_95)}.' Now move A from 4 to 2: 'your share in P goes from ${D.pct(y4)} to `
+    + `${D.pct(y2)}, and every number recomputes: the rupee split, the VaR, the Monte Carlo fan and the 15-year SIP.' `
+    + `(3) Risk tab: 'In a COVID-style crash this portfolio would have lost about ${D.rupee(-covidHit)}; our stocks fell less `
+    + `than the Nifty in all ${D.stressBetter === 4 ? "four" : D.stressBetter} sell-offs.' `
+    + "(4) Ask: pick 'Why is ICICI Bank the largest weight?'. 'Every number in the answer cites the file it came from.' "
+    + "Then flip the data selector to LATEST and say what has changed since submission. "
     + "If any step takes more than 10 seconds, drop down the backup ladder without apologising.");
 
   // ================================================================ 6. technical analysis
@@ -497,11 +509,12 @@ async function build() {
 
   s = pres.addSlide({ masterName: "NAVY", sectionTitle: "Appendix" });
   fill(s, "APPENDIX A3 - DEMO BACKUP", "THE DASHBOARD, IF THE DEMO FAILS", "Rung 4 of the backup ladder: the same screens as the live demo.");
-  [["dash_overview.png", "OVERVIEW: P, VALUATION, VERDICTS"], ["dash_risk.png", "RISK: HEATMAPS AND STRESS"],
-    ["dash_ask.png", "ASK THE PORTFOLIO: SAVED ANSWERS"]].forEach(([f, cap], i) => {
-    const x = M + i * (3.93 + 0.17);
-    s.addShape(pres.shapes.RECTANGLE, { x, y: 2.6, w: 3.93, h: 2.7, fill: { color: WHITE }, line: { color: WHITE, width: 0 } });
-    s.addImage({ path: D.asset(f.replace(".png", "_crop.png")), x: x + 0.04, y: 2.64, w: 3.85, h: 2.62, objectName: `backup-${i + 1}` });
+  [["dash_quiz.png", "STEP 1: RISK QUESTIONNAIRE"], ["dash_portfolio.png", "YOUR PORTFOLIO IN RUPEES"],
+    ["dash_risk.png", "RISK: HEATMAPS AND STRESS"]].forEach(([f, cap], i) => {
+    const x = M + i * (3.93 + 0.17), box = fit(D.asset(f), x, 2.6, 3.93, 2.7);
+    s.addShape(pres.shapes.RECTANGLE, { x: box.x - 0.03, y: box.y - 0.03, w: box.w + 0.06, h: box.h + 0.06,
+      fill: { color: TAN }, line: { color: TAN, width: 0 } });
+    s.addImage({ path: D.asset(f), ...box, objectName: `backup-${i + 1}` });
     text(s, cap, { x, y: 5.45, w: 3.93, h: 0.3, fontSize: 10, bold: true, color: GOLD, charSpacing: 1 });
   });
   s.addNotes("Use only if the live link, the local copy and the recorded walkthrough all fail.");

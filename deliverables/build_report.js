@@ -245,7 +245,8 @@ async function build() {
     P([["Link: ", { b: true }], URL || "added once the app is deployed on Streamlit Community Cloud (see README)."]),
     bullet("If you see “This app has gone to sleep”, click the button; it loads in about a minute. Free apps sleep when idle."),
     bullet("The data selector opens on Submission, the numbers in this report. Latest is refreshed every weekday evening after the NSE close."),
-    bullet("The risk-aversion slider recomputes your share in P and the complete portfolio for any A. “Ask the portfolio” answers questions from the computed results, citing the file behind each number."),
+    bullet("It opens with a 10-question risk questionnaire that sets your risk aversion A (or skip it with A = 4). The terminal then shows your portfolio in rupees, and every figure (allocation, one-year VaR, the 15-year SIP, stress losses) recomputes when you move A or the amount."),
+    bullet("“Ask the portfolio” shows saved answers; live questions use a free OpenRouter model and cite the file behind each number."),
     P([["Code and data: ", { b: true }], REPO || "GitHub repository (link added once published); a ZIP of the tagged submission is attached."], { before: 60 }),
     H("B. What we submit"),
     table(["File", "Contents"], [

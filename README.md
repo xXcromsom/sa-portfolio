@@ -59,7 +59,21 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The dashboard has six tabs: Overview, Companies, Portfolio, AI insights, Risk, and Ask the portfolio. It reads only files already on disk, so a failed download can never blank a chart during the presentation. The risk-aversion slider recomputes y*, the complete portfolio's return and volatility, and the certainty equivalent for any A.
+A terminal-style interface: black background, amber labels, monospace type (theme in `.streamlit/config.toml`, styling in `src/terminal.py`).
+
+1. **Step 1 is a 10-question risk questionnaire** (`src/questionnaire.py`, mirrored in `docs/risk_questionnaire.md`). It sets the investor's risk aversion A, along with the amount to invest today and the monthly SIP. You can also skip it (Balanced, A = 4) or type an A.
+2. **Then the terminal**, with six function tabs: 1 PORTFOLIO, 2 COMPANIES, 3 AI, 4 RISK, 5 ASK, 6 PROFILE.
+3. **The PORTFOLIO tab highlights your portfolio:**
+   - the rupee split between HUL, Sun Pharma, ICICI Bank and T-bills
+   - the frontier and CAL, with your point and your indifference curve
+   - a one-year Monte Carlo (VaR, CVaR, chance of a loss) on your amount
+   - the 15-year SIP projection on your monthly amount
+4. **Everything recomputes when A, the amounts or the borrowing switch change.** That includes the stress-test losses in rupees (RISK tab). The A slider runs from −2 to 10: A ≤ 0 is risk-neutral or risk-seeking.
+
+How the live numbers stay consistent with the report:
+- The app reruns the pipeline's own Monte Carlo and SIP draws (`src/scenario.py`), with the same seed and the same inputs (`returns_daily.parquet`, `returns_monthly.parquet`).
+- So at A = 4 the dashboard shows exactly the report's figures.
+- Only files on disk are read, so a failed download can never blank a chart during the presentation.
 
 **Two datasets.** *Submission (frozen)* (`data/submission/`) holds the numbers in the report. *Latest* (`data/latest/`) is refreshed on weekdays. Freeze once the report's numbers are final:
 
@@ -70,7 +84,17 @@ git add data/submission && git commit -m "Freeze submission data"
 git tag submission-v1 && git push --tags
 ```
 
-**Ask the portfolio.** Seven rehearsed questions are answered in `data/ai/qa_cache.json`, with no API key needed. Free-form questions go to Claude (`src/chat.py`) only when `ANTHROPIC_API_KEY` is set, as an environment variable or a Streamlit secret. The model is told to use only the dashboard's computed results and to cite the key behind every number. An optional `CHAT_PASSCODE` secret and a 10-question limit per session cap the cost.
+**Ask the portfolio.** Seven rehearsed questions are answered in `data/ai/qa_cache.json`, with no API key needed.
+
+Free-form questions go to a free model on OpenRouter (`src/chat.py`), only when `OPENROUTER_API_KEY` is set:
+- **Models:** `nvidia/nemotron-3-super-120b-a12b:free`, with automatic fallback to `thinkingmachines/inkling:free` and `google/gemma-4-31b-it:free`.
+- **Grounding:** the model is told to use only the dashboard's computed results, including the viewer's own portfolio, and to cite the key behind every number.
+- **Limits:** a free OpenRouter account allows 50 requests a day (1,000 a day after a one-time $10 credit purchase). An optional `CHAT_PASSCODE` and a 10-question limit per session protect that budget.
+- **Privacy setting:** if OpenRouter reports "no endpoints match your data policy", allow free models at openrouter.ai/settings/privacy.
+
+Where the key goes:
+- **Locally:** one line in `.env`, `OPENROUTER_API_KEY=sk-or-v1-...`, with no quotes and no `export`.
+- **On Streamlit Cloud:** Settings → Secrets, as `OPENROUTER_API_KEY = "sk-or-v1-..."`, at the top of the box with no `[section]` header above it.
 
 **Automatic refresh** (`.github/workflows/refresh.yml`). The workflow runs on GitHub Actions at 18:00 IST, Monday to Friday. It re-downloads prices and consensus, then reruns the metrics, portfolio, Monte Carlo and SIP. On Saturdays it also rescores news headlines. It commits `data/latest` only after the pipeline's own validation, the tests and `scripts/check_dashboard.py` all pass. Otherwise the dashboard keeps the last good data. Transcript tone is not refreshed there, because the PDFs are not in the repository; rerun `python -m pipeline.text_step` locally after adding a new quarter's transcript.
 
@@ -80,7 +104,7 @@ git tag submission-v1 && git push --tags
 3. **Make it public.** An app from a private repo is private by default. Go to the app's Settings → Sharing → "Who can view this app" and choose public, or use Share → "Make this app public". Otherwise the professor can't open it. Community Cloud allows only one private app at a time. The repository itself stays private.
 4. Optionally, under Settings → Secrets, add:
    ```toml
-   ANTHROPIC_API_KEY = "..."
+   OPENROUTER_API_KEY = "sk-or-v1-..."
    CHAT_PASSCODE = "..."
    ```
 5. Each push (including the nightly data commit) redeploys the app automatically. Test the link logged out, in an incognito window.
