@@ -1,6 +1,6 @@
 {
   "source": "Yahoo Finance via yfinance (auto_adjust=True)",
-  "fetched_at_utc": "2026-11-03T07:50:33+00:00",
+  "fetched_at_utc": "2026-11-03T08:08:25+00:00",
   "first_date": "2016-01-04",
   "last_date": "2026-11-03",
   "observations": 2670,
