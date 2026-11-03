@@ -8,8 +8,10 @@ pyarrow==24.0.0
 PyYAML==6.0.3
 python-dotenv==1.2.1
 matplotlib==3.10.8
+seaborn==0.13.2         # python_project.py heatmap only
 openpyxl==3.1.5
 pypdf==6.12.1
+lxml==6.0.2             # pandas.read_html inside yfinance earnings_dates (event study); without it Yahoo returns nothing
 transformers==5.19.0
 pytest==9.1.1
 --extra-index-url https://download.pytorch.org/whl/cpu

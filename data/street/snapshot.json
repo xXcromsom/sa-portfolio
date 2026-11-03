@@ -1,0 +1,72 @@
+{
+  "as_of": "2026-11-03",
+  "note": "Entered by hand on 3 Nov 2026, after the Q2 FY27 results. The 13 Oct freeze is unchanged; this block only says what has moved since. Press figures are second-hand summaries of broker notes.",
+  "sources": {
+    "consensus": "Yahoo Finance analysis pages (ratings, price targets, EPS estimates), read 3 Nov 2026",
+    "fundamentals": "Screener.in consolidated pages, read 3 Nov 2026",
+    "mood": "https://www.tickertape.in/market-mood-index",
+    "mood_method": "https://help.tickertape.in/support/solutions/articles/82000143107-how-is-mmi-built-"
+  },
+  "nifty": 23617.0,
+  "securities": {
+    "HINDUNILVR.NS": {
+      "price": 1935.0,
+      "ratings": {"strong_buy": 8, "buy": 19, "hold": 9, "sell": 1, "strong_sell": 2},
+      "target": {"mean": 2255.71, "median": 2222.5, "low": 1800.0, "high": 2750.0},
+      "eps": {"FY27": {"value": 48.10, "analysts": 19}, "FY28": {"value": 53.32, "analysts": 20}},
+      "at_freeze": {"target_mean": 2395.68, "eps_FY27": 47.97, "eps_FY28": 53.02},
+      "screener": {"pe": 40.4, "book_value": 208, "roe": 0.31, "dividend_yield": 0.0213},
+      "holdings_jun25_sep26": {"fii": [10.18, 9.26], "dii": [15.99, 17.05]},
+      "q2": {"date": "2026-10-28", "points": ["Revenue +15% to Rs 18,226 cr", "Underlying volume +7%", "EBITDA margin down 142 bp to 22.6%", "PAT +4% to Rs 2,790 cr; margin guidance kept at 22-24%"]}
+    },
+    "SUNPHARMA.NS": {
+      "price": 1750.4,
+      "ratings": {"strong_buy": 10, "buy": 18, "hold": 1, "sell": 1, "strong_sell": 3},
+      "target": {"mean": 2136.41, "median": 2150.0, "low": 1830.0, "high": 2366.0},
+      "eps": {"FY27": {"value": 53.24, "analysts": 27}, "FY28": {"value": 63.33, "analysts": 28}},
+      "at_freeze": {"target_mean": 2174.34, "eps_FY27": 54.66, "eps_FY28": 64.79},
+      "screener": {"pe": 34.2, "book_value": 372, "roe": 0.16, "dividend_yield": 0.009},
+      "holdings_jun25_sep26": {"fii": [17.26, 14.36], "dii": [19.38, 22.27]},
+      "q2": {"date": "2026-10-30", "points": ["Revenue about +12% to about Rs 16,100 cr", "India +17.3%; US -8.2% on lenalidomide erosion", "Innovative medicines $356M, +6.9%", "Reported PAT -36% to Rs 1,988 cr on Organon and litigation one-offs"]}
+    },
+    "ICICIBANK.NS": {
+      "price": 1401.7,
+      "ratings": {"strong_buy": 5, "buy": 37, "hold": 0, "sell": 0, "strong_sell": 0},
+      "target": {"mean": 1768.79, "median": 1751.0, "low": 1645.0, "high": 2040.0},
+      "eps": {"FY27": {"value": 83.50, "analysts": 39}, "FY28": {"value": 97.77, "analysts": 36}},
+      "at_freeze": {"target_mean": 1746.74, "eps_FY27": 81.14, "eps_FY28": 93.53},
+      "screener": {"pe": 17.0, "book_value": 540, "roe": 0.159, "dividend_yield": 0.0085},
+      "holdings_jun25_sep26": null,
+      "q2": {"date": "2026-10-17", "points": ["PAT +20% to about Rs 14,840 cr", "NIM 4.18%, down 18 bp", "Advances +30% (+24% excluding FCNR-B)", "Gross NPA 1.20%; normalised credit cost up to 50 bp"]}
+    }
+  },
+  "organon": {
+    "summary": "Sun Pharma is buying Organon, a women's-health company, for about $11.75bn enterprise value ($14 a share, all cash), funded with about $2-2.5bn of cash and about $9.25-9.75bn of debt. Close expected in Q4 FY27, leverage about 2.3x net debt/EBITDA. Organon CY26 sales about $6.2bn, EBITDA about $1.92bn.",
+    "why_it_matters": "It turns a net-cash company (net cash $3.3bn) into a levered one, so a beta measured on the old balance sheet understates the new risk. Hamada gives roughly 14% higher equity beta (our rough estimate). Nirmal Bang and Nuvama leave it out of their estimates, so their targets do not price it either.",
+    "sources": ["https://www.moneylife.in/article/sun-pharma-to-acquire-organon-in-1175bn-cash-deal-shares-surge-nearly-7-percentage/80312.html", "https://www.businesstoday.in/amp/markets/stocks/story/what-is-the-organon-deal-and-why-are-sun-pharmas-shares-falling-527283-2026-04-24"],
+    "beta_uplift_rough": 0.14
+  },
+  "icici_bridge_inputs": {
+    "subsidiaries_per_share": 265,
+    "subsidiaries_source": "Motilal Oswal sum of the parts, after a 20% holding-company discount (press summary, 18 Oct 2026)",
+    "roe_high": 0.17,
+    "roe_stable": 0.16,
+    "roe_source": "Jefferies FY28 ROE 17%; Motilal FY28E 17.6%. We use 17% for five years, then 16%"
+  },
+  "market_mood": {
+    "value": 62.66,
+    "zone": "Greed",
+    "read": "3 Nov 2026, 9:30 AM IST",
+    "comparison_value": 40.90,
+    "comparison_zone": "Fear",
+    "comparison_note": "Earlier value shown on the page; the page does not label the period",
+    "extreme_fear_below": 30,
+    "extreme_greed_above": 70,
+    "factors": ["FII activity", "Volatility and skew", "Momentum", "Market breadth", "Price strength", "Demand for gold"]
+  },
+  "literature": [
+    {"cite": "Harshita, Singh & Yadav (2018), Theoretical Economics Letters 8(14)", "finding": "Post-earnings drift exists in Nifty 500 stocks, Q4 2002 to Q3 2017: a long-short SUE portfolio earned about 6% over 64 days", "url": "https://www.scirp.org/journal/paperinformation?paperid=88060"},
+    {"cite": "Sharda (2022), review, emerald xjm 19(1)", "finding": "Evidence on analyst recommendations is mixed; 57.6% of Buy targets were reached within a year (Sayed & Chaklader, 2014)", "url": "https://www.emerald.com/xjm/article/19/1/2/389322/The-short-term-impact-of-analyst-recommendations"},
+    {"cite": "SPIVA India, via Angel One (Oct 2025)", "finding": "73% of large-cap funds lagged their benchmark over 10 years, 90% over 5", "url": "https://www.angelone.in/news/mutual-funds/most-indian-equity-funds-underperform-s-p-indices-over-10-years"}
+  ]
+}

@@ -1,0 +1,673 @@
+{
+  "as_of": "2026-11-03",
+  "note": "Entered by hand on 3 Nov 2026, after the Q2 FY27 results. The 13 Oct freeze is unchanged; this block only says what has moved since. Press figures are second-hand summaries of broker notes.",
+  "sources": {
+    "consensus": "Yahoo Finance analysis pages (ratings, price targets, EPS estimates), read 3 Nov 2026",
+    "fundamentals": "Screener.in consolidated pages, read 3 Nov 2026",
+    "mood": "https://www.tickertape.in/market-mood-index",
+    "mood_method": "https://help.tickertape.in/support/solutions/articles/82000143107-how-is-mmi-built-"
+  },
+  "consensus": {
+    "HINDUNILVR.NS": {
+      "price": 1935.0,
+      "analysts": 39,
+      "buy_share": 0.6923076923076923,
+      "ratings": {
+        "strong_buy": 8,
+        "buy": 19,
+        "hold": 9,
+        "sell": 1,
+        "strong_sell": 2
+      },
+      "target": {
+        "mean": 2255.71,
+        "median": 2222.5,
+        "low": 1800.0,
+        "high": 2750.0
+      },
+      "upside_to_mean": 0.16574160206718358,
+      "target_change_since_freeze": -0.058426000133573686,
+      "eps_fy28": 53.32,
+      "eps_fy28_change_since_freeze": 0.0056582421727648935,
+      "pe_fy28": 36.29032258064516,
+      "brokers_after_q2": 5,
+      "lowest_broker": {
+        "broker": "Motilal Oswal",
+        "rating": "Buy",
+        "target": 2150.0
+      },
+      "highest_broker": {
+        "broker": "UBS",
+        "rating": "Buy",
+        "target": 2700.0
+      },
+      "q2": {
+        "date": "2026-10-28",
+        "points": [
+          "Revenue +15% to Rs 18,226 cr",
+          "Underlying volume +7%",
+          "EBITDA margin down 142 bp to 22.6%",
+          "PAT +4% to Rs 2,790 cr; margin guidance kept at 22-24%"
+        ]
+      },
+      "screener": {
+        "pe": 40.4,
+        "book_value": 208,
+        "roe": 0.31,
+        "dividend_yield": 0.0213
+      },
+      "holdings_jun25_sep26": {
+        "fii": [
+          10.18,
+          9.26
+        ],
+        "dii": [
+          15.99,
+          17.05
+        ]
+      }
+    },
+    "SUNPHARMA.NS": {
+      "price": 1750.4,
+      "analysts": 33,
+      "buy_share": 0.8484848484848485,
+      "ratings": {
+        "strong_buy": 10,
+        "buy": 18,
+        "hold": 1,
+        "sell": 1,
+        "strong_sell": 3
+      },
+      "target": {
+        "mean": 2136.41,
+        "median": 2150.0,
+        "low": 1830.0,
+        "high": 2366.0
+      },
+      "upside_to_mean": 0.22052673674588652,
+      "target_change_since_freeze": -0.017444373924961232,
+      "eps_fy28": 63.33,
+      "eps_fy28_change_since_freeze": -0.022534341719401274,
+      "pe_fy28": 27.639349439444185,
+      "brokers_after_q2": 11,
+      "lowest_broker": {
+        "broker": "Bank of America",
+        "rating": "Underperform",
+        "target": 1850.0
+      },
+      "highest_broker": {
+        "broker": "Nuvama",
+        "rating": "Buy",
+        "target": 2320.0
+      },
+      "q2": {
+        "date": "2026-10-30",
+        "points": [
+          "Revenue about +12% to about Rs 16,100 cr",
+          "India +17.3%; US -8.2% on lenalidomide erosion",
+          "Innovative medicines $356M, +6.9%",
+          "Reported PAT -36% to Rs 1,988 cr on Organon and litigation one-offs"
+        ]
+      },
+      "screener": {
+        "pe": 34.2,
+        "book_value": 372,
+        "roe": 0.16,
+        "dividend_yield": 0.009
+      },
+      "holdings_jun25_sep26": {
+        "fii": [
+          17.26,
+          14.36
+        ],
+        "dii": [
+          19.38,
+          22.27
+        ]
+      }
+    },
+    "ICICIBANK.NS": {
+      "price": 1401.7,
+      "analysts": 42,
+      "buy_share": 1.0,
+      "ratings": {
+        "strong_buy": 5,
+        "buy": 37,
+        "hold": 0,
+        "sell": 0,
+        "strong_sell": 0
+      },
+      "target": {
+        "mean": 1768.79,
+        "median": 1751.0,
+        "low": 1645.0,
+        "high": 2040.0
+      },
+      "upside_to_mean": 0.2618891346222443,
+      "target_change_since_freeze": 0.01262351580658816,
+      "eps_fy28": 97.77,
+      "eps_fy28_change_since_freeze": 0.045333048219822425,
+      "pe_fy28": 14.3367086018206,
+      "brokers_after_q2": 12,
+      "lowest_broker": {
+        "broker": "JM Financial",
+        "rating": "Buy",
+        "target": 1710.0
+      },
+      "highest_broker": {
+        "broker": "Goldman Sachs",
+        "rating": "Buy",
+        "target": 2025.0
+      },
+      "q2": {
+        "date": "2026-10-17",
+        "points": [
+          "PAT +20% to about Rs 14,840 cr",
+          "NIM 4.18%, down 18 bp",
+          "Advances +30% (+24% excluding FCNR-B)",
+          "Gross NPA 1.20%; normalised credit cost up to 50 bp"
+        ]
+      },
+      "screener": {
+        "pe": 17.0,
+        "book_value": 540,
+        "roe": 0.159,
+        "dividend_yield": 0.0085
+      },
+      "holdings_jun25_sep26": null
+    }
+  },
+  "must_believe": {
+    "betas": {
+      "HINDUNILVR.NS": {
+        "full": 0.6015576928126356,
+        "5y": 0.5784052982972597,
+        "3y": 0.5034722693917566,
+        "1y": 0.7832158978362704
+      },
+      "SUNPHARMA.NS": {
+        "full": 0.6453558972107265,
+        "5y": 0.5632234831092152,
+        "3y": 0.5221038951022583,
+        "1y": 0.46077296431803394
+      },
+      "ICICIBANK.NS": {
+        "full": 1.2927890330731788,
+        "5y": 0.9624360110545513,
+        "3y": 0.9235806760453238,
+        "1y": 0.910386244258926
+      }
+    },
+    "stocks": {
+      "HINDUNILVR.NS": {
+        "model": "DividendDiscountModel",
+        "our_r": 0.09779228,
+        "our_value": 1079.1244462035838,
+        "r_5y_beta": 0.09615009511944599,
+        "value_at_5y_beta": 1122.396974435305,
+        "r_needed_for_price": 0.07891710049776283,
+        "r_needed_for_target": 0.07552505412357056
+      },
+      "SUNPHARMA.NS": {
+        "model": "ResidualIncomeModel",
+        "our_r": 0.10089332,
+        "our_value": 747.6266602208118,
+        "r_5y_beta": 0.09507522260413244,
+        "value_at_5y_beta": 865.6631873454805,
+        "r_needed_for_price": 0.07559772037233878,
+        "r_needed_for_target": 0.07200127509318272
+      },
+      "ICICIBANK.NS": {
+        "model": "ResidualIncomeModel",
+        "our_r": 0.14672924,
+        "our_value": 574.6477515705311,
+        "r_5y_beta": 0.12333946958266223,
+        "value_at_5y_beta": 830.6196956804683,
+        "r_needed_for_price": 0.09891948582452229,
+        "r_needed_for_target": 0.0907892121164418
+      }
+    },
+    "hul_growth_paths": [
+      {
+        "path": "10% for 10 years, 8% for 10 years, then 5.5%",
+        "value": 1673.203418713586
+      },
+      {
+        "path": "12% for 10 years, 9% for 10 years, then 6.0%",
+        "value": 2248.6325822127465
+      }
+    ],
+    "icici_bridge": [
+      {
+        "step": "Our model (full-sample beta)",
+        "detail": "r = 14.67%, ROE 16% then 15%",
+        "value": 574.6477515705311
+      },
+      {
+        "step": "Use the 5-year beta",
+        "detail": "beta 0.96, so r = 12.33%",
+        "value": 830.6196956804683
+      },
+      {
+        "step": "Add the subsidiaries",
+        "detail": "Rs 265 a share (Motilal's sum of the parts)",
+        "value": 1095.6196956804683
+      },
+      {
+        "step": "Use the Street's ROE",
+        "detail": "17% for five years, then 16%",
+        "value": 1213.3683087190184
+      },
+      {
+        "step": "Price, 3 Nov",
+        "detail": "The gap left is what the market pays for growth above 5.5%",
+        "value": 1401.7
+      },
+      {
+        "step": "Analysts' mean target",
+        "detail": "Yahoo consensus, 3 Nov",
+        "value": 1768.79
+      }
+    ]
+  },
+  "at_5y_beta": {
+    "weights": {
+      "HINDUNILVR.NS": 0.3916826986230242,
+      "SUNPHARMA.NS": 0.20865452679288907,
+      "ICICIBANK.NS": 0.39966277458408667
+    },
+    "expected_return": 0.10679239894057527,
+    "volatility": 0.18485203769607067,
+    "sharpe": 0.27910646581783377,
+    "y": 0.3774728010798751
+  },
+  "organon": {
+    "summary": "Sun Pharma is buying Organon, a women's-health company, for about $11.75bn enterprise value ($14 a share, all cash), funded with about $2-2.5bn of cash and about $9.25-9.75bn of debt. Close expected in Q4 FY27, leverage about 2.3x net debt/EBITDA. Organon CY26 sales about $6.2bn, EBITDA about $1.92bn.",
+    "why_it_matters": "It turns a net-cash company (net cash $3.3bn) into a levered one, so a beta measured on the old balance sheet understates the new risk. Hamada gives roughly 14% higher equity beta (our rough estimate). Nirmal Bang and Nuvama leave it out of their estimates, so their targets do not price it either.",
+    "sources": [
+      "https://www.moneylife.in/article/sun-pharma-to-acquire-organon-in-1175bn-cash-deal-shares-surge-nearly-7-percentage/80312.html",
+      "https://www.businesstoday.in/amp/markets/stocks/story/what-is-the-organon-deal-and-why-are-sun-pharmas-shares-falling-527283-2026-04-24"
+    ],
+    "beta_uplift_rough": 0.14
+  },
+  "literature": [
+    {
+      "cite": "Harshita, Singh & Yadav (2018), Theoretical Economics Letters 8(14)",
+      "finding": "Post-earnings drift exists in Nifty 500 stocks, Q4 2002 to Q3 2017: a long-short SUE portfolio earned about 6% over 64 days",
+      "url": "https://www.scirp.org/journal/paperinformation?paperid=88060"
+    },
+    {
+      "cite": "Sharda (2022), review, emerald xjm 19(1)",
+      "finding": "Evidence on analyst recommendations is mixed; 57.6% of Buy targets were reached within a year (Sayed & Chaklader, 2014)",
+      "url": "https://www.emerald.com/xjm/article/19/1/2/389322/The-short-term-impact-of-analyst-recommendations"
+    },
+    {
+      "cite": "SPIVA India, via Angel One (Oct 2025)",
+      "finding": "73% of large-cap funds lagged their benchmark over 10 years, 90% over 5",
+      "url": "https://www.angelone.in/news/mutual-funds/most-indian-equity-funds-underperform-s-p-indices-over-10-years"
+    }
+  ],
+  "brokers": [
+    {
+      "ticker": "HINDUNILVR.NS",
+      "broker": "UBS",
+      "rating": "Buy",
+      "target": 2700,
+      "basis": "",
+      "as_of": "2026-10-29",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:c644c2331094b:0-hul-stock-rating-brokerages-bullish-after-q2-results-amid-improving-volumes-but-cautious-over-margin-pressure/",
+      "note": "Another report gives 2600"
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "broker": "Morgan Stanley",
+      "rating": "Equal-weight",
+      "target": 2480,
+      "basis": "",
+      "as_of": "2026-10-29",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:c644c2331094b:0-hul-stock-rating-brokerages-bullish-after-q2-results-amid-improving-volumes-but-cautious-over-margin-pressure/",
+      "note": "Another report gives 2170"
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "broker": "Jefferies",
+      "rating": "Buy",
+      "target": 2350,
+      "basis": "",
+      "as_of": "2026-10-29",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:c644c2331094b:0-hul-stock-rating-brokerages-bullish-after-q2-results-amid-improving-volumes-but-cautious-over-margin-pressure/",
+      "note": "Cut from 2450"
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "broker": "HSBC",
+      "rating": "Buy",
+      "target": 2220,
+      "basis": "",
+      "as_of": "2026-10-29",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:c644c2331094b:0-hul-stock-rating-brokerages-bullish-after-q2-results-amid-improving-volumes-but-cautious-over-margin-pressure/",
+      "note": "Raised from 2210"
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "broker": "Motilal Oswal",
+      "rating": "Buy",
+      "target": 2150,
+      "basis": "",
+      "as_of": "2026-10-29",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.whalesbook.com/news/English/brokerage-reports/Motilal-Oswal-Cuts-Hindustan-Unilever-Target-to-indian-rupee2150/6ae2b9264fc30694db513cbd",
+      "note": "Cut on inflation and weak rural demand"
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "broker": "JM Financial",
+      "rating": "Buy",
+      "target": 2425,
+      "basis": "39x FY28E EPS",
+      "as_of": "2026-07-01",
+      "after_q2": "no",
+      "source_type": "broker PDF",
+      "source": "https://bsmedia.business-standard.com/_media/bs/data/market-reports/equity-brokertips/2026-07/17853033970.16031100.pdf",
+      "note": "Before Q2 results; month only, day not recorded"
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "broker": "Prabhudas Lilladher",
+      "rating": "Accumulate",
+      "target": 2609,
+      "basis": "DCF",
+      "as_of": "2026-02-12",
+      "after_q2": "no",
+      "source_type": "broker PDF",
+      "source": "https://plindia.com/ResReport/HUVR-12-2-26-PL.pdf",
+      "note": "Older note; before Q2 results"
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Nirmal Bang",
+      "rating": "Buy",
+      "target": 2254,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:f4865384a094b:0-sun-pharma-shares-fall-3-after-q2-profit-plunges-36-brokerages-bullish-but-slash-target-prices/",
+      "note": "Cut from 2437; excludes Organon"
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Nuvama",
+      "rating": "Buy",
+      "target": 2320,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:f4865384a094b:0-sun-pharma-shares-fall-3-after-q2-profit-plunges-36-brokerages-bullish-but-slash-target-prices/",
+      "note": "Cut from 2360; excludes Organon"
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Emkay",
+      "rating": "Add",
+      "target": 2000,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:f4865384a094b:0-sun-pharma-shares-fall-3-after-q2-profit-plunges-36-brokerages-bullish-but-slash-target-prices/",
+      "note": "Cut from 2100"
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Prabhudas Lilladher",
+      "rating": "Buy",
+      "target": 2150,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:f4865384a094b:0-sun-pharma-shares-fall-3-after-q2-profit-plunges-36-brokerages-bullish-but-slash-target-prices/",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "JM Financial",
+      "rating": "Add",
+      "target": 2020,
+      "basis": "20x EPS",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moneycontrol:f4865384a094b:0-sun-pharma-shares-fall-3-after-q2-profit-plunges-36-brokerages-bullish-but-slash-target-prices/",
+      "note": "Cut from 2150; multiple cut from 22x"
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Bank of America",
+      "rating": "Underperform",
+      "target": 1850,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moodys:d404d72ebf344:0-sun-pharma-slides-nearly-2-as-ilumya-concerns-weigh-on-analyst-estimates/",
+      "note": "FY27 EPS cut to 48.40 from 53.93"
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "HSBC",
+      "rating": "Buy",
+      "target": 2050,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moodys:d404d72ebf344:0-sun-pharma-slides-nearly-2-as-ilumya-concerns-weigh-on-analyst-estimates/",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Citi",
+      "rating": "Buy",
+      "target": 2280,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moodys:d404d72ebf344:0-sun-pharma-slides-nearly-2-as-ilumya-concerns-weigh-on-analyst-estimates/",
+      "note": "EBITDA estimates cut 8-12%"
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Elara",
+      "rating": "Buy",
+      "target": 2238,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moodys:d404d72ebf344:0-sun-pharma-slides-nearly-2-as-ilumya-concerns-weigh-on-analyst-estimates/",
+      "note": "Upgraded from Accumulate"
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Motilal Oswal",
+      "rating": "Buy",
+      "target": 2070,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moodys:d404d72ebf344:0-sun-pharma-slides-nearly-2-as-ilumya-concerns-weigh-on-analyst-estimates/",
+      "note": ""
+    },
+    {
+      "ticker": "SUNPHARMA.NS",
+      "broker": "Choice",
+      "rating": "Buy",
+      "target": 2300,
+      "basis": "",
+      "as_of": "2026-11-02",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.tradingview.com/news/moodys:d404d72ebf344:0-sun-pharma-slides-nearly-2-as-ilumya-concerns-weigh-on-analyst-estimates/",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Motilal Oswal",
+      "rating": "Buy",
+      "target": 1750,
+      "basis": "2.5x Mar-28E ABV; core 1485 + subsidiaries 265",
+      "as_of": "2026-10-18",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://topnews.in/icici-bank-share-price-target-rs-1750-motilal-oswal-issues-bullish-outlook-private-sector-lender",
+      "note": "FY28E ROE 17.6%, ROA 2.4%, EPS 102.8; top sector pick"
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Goldman Sachs",
+      "rating": "Buy",
+      "target": 2025,
+      "basis": "",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.businesstoday.in/markets/stocks/story/icici-bank-shares-close-lower-after-q2-earnings-3-brokerages-remain-bullish-562481-2026-10-19",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Macquarie",
+      "rating": "Outperform",
+      "target": 1730,
+      "basis": "",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.businesstoday.in/markets/stocks/story/icici-bank-shares-close-lower-after-q2-earnings-3-brokerages-remain-bullish-562481-2026-10-19",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Jefferies",
+      "rating": "Buy",
+      "target": 1750,
+      "basis": "2.2x FY28E adjusted P/B",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.goodreturns.in/news/icici-bank-shares-volatile-strong-q2-results-5-brokers-recommend-buy-upgrades-target-36-upside-seen-1542441.html",
+      "note": "FY28 ROE 17%"
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Axis Securities",
+      "rating": "Buy",
+      "target": 1865,
+      "basis": "",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.goodreturns.in/news/icici-bank-shares-volatile-strong-q2-results-5-brokers-recommend-buy-upgrades-target-36-upside-seen-1542441.html",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Emkay",
+      "rating": "Buy",
+      "target": 1785,
+      "basis": "2.6x Sep-28E ABV + subsidiaries 300",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.goodreturns.in/news/icici-bank-shares-volatile-strong-q2-results-5-brokers-recommend-buy-upgrades-target-36-upside-seen-1542441.html",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "JM Financial",
+      "rating": "Buy",
+      "target": 1710,
+      "basis": "2.4x FY28E core P/BV",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.goodreturns.in/news/icici-bank-shares-volatile-strong-q2-results-5-brokers-recommend-buy-upgrades-target-36-upside-seen-1542441.html",
+      "note": ""
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "PL Capital",
+      "rating": "Buy",
+      "target": 1900,
+      "basis": "2.6x Sep-28 core ABV",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "press summary",
+      "source": "https://www.goodreturns.in/news/icici-bank-shares-volatile-strong-q2-results-5-brokers-recommend-buy-upgrades-target-36-upside-seen-1542441.html",
+      "note": "Raised from 1850"
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "JPMorgan",
+      "rating": "Overweight",
+      "target": 1800,
+      "basis": "",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "search summary",
+      "source": "",
+      "note": "Raised from 1735; article not opened"
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Bernstein",
+      "rating": "Outperform",
+      "target": 1800,
+      "basis": "",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "search summary",
+      "source": "",
+      "note": "Article not opened"
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Citi",
+      "rating": "Buy",
+      "target": 1770,
+      "basis": "",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "search summary",
+      "source": "",
+      "note": "Article not opened"
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "broker": "Nirmal Bang",
+      "rating": "Buy",
+      "target": 1840,
+      "basis": "Bank 1600 + subsidiaries 240",
+      "as_of": "2026-10-19",
+      "after_q2": "yes",
+      "source_type": "search summary",
+      "source": "",
+      "note": "Article not opened"
+    }
+  ],
+  "nifty_change_since_freeze": 0.04867269262207108
+}

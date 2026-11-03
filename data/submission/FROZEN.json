@@ -5,6 +5,7 @@
   "files": [
     "ai_analysis.json",
     "consensus.json",
+    "emh.json",
     "extraction_accuracy.json",
     "figures/corr_heatmap.png",
     "figures/event_study.png",
@@ -19,12 +20,15 @@
     "figures/sml.png",
     "figures/stress.png",
     "figures/ta.png",
+    "india_vix.parquet",
     "mc.json",
     "metrics.json",
     "metrics_table.csv",
+    "mood.json",
     "news.parquet",
     "news_scored.parquet",
     "news_scores.parquet",
+    "performance.json",
     "portfolio.json",
     "prices.parquet",
     "prices_meta.json",
@@ -32,8 +36,10 @@
     "returns_monthly.parquet",
     "sentiment.json",
     "sip.json",
+    "street.json",
     "transcript_tone.csv",
     "valuation.json",
     "yahoo_statements.json"
-  ]
+  ],
+  "extras_added_at": "2026-11-03T13:33:13"
 }

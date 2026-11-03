@@ -1,0 +1,162 @@
+{
+  "as_of": "2026-10-13",
+  "components": {
+    "momentum": "Price vs its 125-day average",
+    "rsi": "14-day RSI",
+    "calm": "Low 20-day volatility",
+    "near_high": "Distance from the 250-day high"
+  },
+  "stocks": {
+    "HINDUNILVR.NS": {
+      "as_of": "2026-10-13",
+      "mood": 16.833333333333332,
+      "zone": "Extreme fear",
+      "components": {
+        "momentum": 4.266666666666667,
+        "rsi": 27.066666666666666,
+        "calm": 34.0,
+        "near_high": 2.0
+      },
+      "excess_after_fear": 0.014794253904592675,
+      "excess_after_greed": -0.02224834134907388,
+      "fear_days": 420,
+      "greed_days": 183,
+      "p_nonoverlapping": 0.09859517340281515,
+      "n_nonoverlapping": 107
+    },
+    "SUNPHARMA.NS": {
+      "as_of": "2026-10-13",
+      "mood": 17.933333333333334,
+      "zone": "Extreme fear",
+      "components": {
+        "momentum": 5.6000000000000005,
+        "rsi": 3.5999999999999996,
+        "calm": 45.33333333333333,
+        "near_high": 17.2
+      },
+      "excess_after_fear": 0.014382878406170236,
+      "excess_after_greed": 0.005347258399396124,
+      "fear_days": 269,
+      "greed_days": 512,
+      "p_nonoverlapping": 0.5217976175034371,
+      "n_nonoverlapping": 107
+    },
+    "ICICIBANK.NS": {
+      "as_of": "2026-10-13",
+      "mood": 35.766666666666666,
+      "zone": "Fear",
+      "components": {
+        "momentum": 31.733333333333334,
+        "rsi": 36.53333333333333,
+        "calm": 53.333333333333336,
+        "near_high": 21.46666666666667
+      },
+      "excess_after_fear": 0.003698476856863111,
+      "excess_after_greed": 0.0013568044871842414,
+      "fear_days": 301,
+      "greed_days": 310,
+      "p_nonoverlapping": 0.9337533021753772,
+      "n_nonoverlapping": 107
+    }
+  },
+  "vix": {
+    "as_of": "2026-10-13",
+    "level": 14.119999885559082,
+    "one_year_percentile": 0.68,
+    "quintiles": [
+      {
+        "quintile": 1,
+        "low": 9.149999618530273,
+        "high": 12.40999984741211,
+        "forward": 0.007103664089426796,
+        "days": 524.0
+      },
+      {
+        "quintile": 2,
+        "low": 12.420000076293945,
+        "high": 14.079999923706055,
+        "forward": 0.0015882133566716631,
+        "days": 517.0
+      },
+      {
+        "quintile": 3,
+        "low": 14.09000015258789,
+        "high": 16.030000686645508,
+        "forward": 0.00573887614871524,
+        "days": 522.0
+      },
+      {
+        "quintile": 4,
+        "low": 16.040000915527344,
+        "high": 19.200000762939453,
+        "forward": 0.00466320008482772,
+        "days": 527.0
+      },
+      {
+        "quintile": 5,
+        "low": 19.229999542236328,
+        "high": 83.61000061035156,
+        "forward": 0.0289149836551655,
+        "days": 528.0
+      }
+    ],
+    "slope_all": {
+      "n": 131,
+      "slope_per_point": 0.00184302919640582,
+      "r": 0.2431268827579582,
+      "p": 0.005139494182337041
+    },
+    "slope_without_covid": {
+      "n": 126,
+      "slope_per_point": 0.0018860316813810393,
+      "r": 0.20083314566325175,
+      "p": 0.024139276960414978
+    },
+    "same_day_correlation": -0.5601148808613754
+  },
+  "vix_error": null,
+  "tone": {
+    "HINDUNILVR.NS": {
+      "next_r": 0.00909556537142173,
+      "next_p": 0.9527138687051134,
+      "next_n": 45,
+      "same_day_r": 0.03827104197041612,
+      "same_day_p": 0.5705684843171003,
+      "same_day_n": 222
+    },
+    "SUNPHARMA.NS": {
+      "next_r": 0.03901878388260247,
+      "next_p": 0.803810801402696,
+      "next_n": 43,
+      "same_day_r": 0.13133766867803856,
+      "same_day_p": 0.05449268528788648,
+      "same_day_n": 215
+    },
+    "ICICIBANK.NS": {
+      "next_r": -0.07717262467304592,
+      "next_p": 0.6185460561882385,
+      "next_n": 44,
+      "same_day_r": 0.025143757993025383,
+      "same_day_p": 0.7107296704646109,
+      "same_day_n": 220
+    }
+  },
+  "market_mood_snapshot": {
+    "value": 62.66,
+    "zone": "Greed",
+    "read": "3 Nov 2026, 9:30 AM IST",
+    "comparison_value": 40.9,
+    "comparison_zone": "Fear",
+    "comparison_note": "Earlier value shown on the page; the page does not label the period",
+    "extreme_fear_below": 30,
+    "extreme_greed_above": 70,
+    "factors": [
+      "FII activity",
+      "Volatility and skew",
+      "Momentum",
+      "Market breadth",
+      "Price strength",
+      "Demand for gold"
+    ]
+  }
+}

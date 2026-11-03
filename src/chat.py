@@ -51,6 +51,10 @@ def build_context(data: dict, mine: dict | None = None) -> str:
         "ai_analysis": {k: data["ai"].get(k) for k in ("technical_analysis", "risk", "forecasts", "extraction",
                                                        "sentiment", "framing")},
         "concall_aspects": data.get("aspects", {}),
+        "market_efficiency": data.get("emh"),
+        "performance_measures": data.get("performance"),
+        "street_view": {k: v for k, v in (data.get("street") or {}).items() if k != "brokers"},
+        "mood": data.get("mood"),
     }
     if mine:
         keep["your_portfolio"] = mine

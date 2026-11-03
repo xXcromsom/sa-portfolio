@@ -18,7 +18,7 @@ from src import questionnaire as quiz  # noqa: E402
 
 FILES = ["metrics.json", "valuation.json", "portfolio.json", "mc.json", "sip.json", "ai_analysis.json",
          "sentiment.json", "extraction_accuracy.json", "prices.parquet", "returns_daily.parquet",
-         "returns_monthly.parquet"]
+         "returns_monthly.parquet", "emh.json", "performance.json", "street.json", "mood.json"]
 
 
 def problems_of(at: AppTest) -> list[str]:

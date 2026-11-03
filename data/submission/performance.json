@@ -1,0 +1,175 @@
+{
+  "as_of": "2026-10-13",
+  "risk_free_rate": 0.055199,
+  "equity_risk_premium": 0.0708,
+  "newey_west_lags": 5,
+  "full_sample": {
+    "period": "2016-01-05 to 2026-10-13",
+    "rows": {
+      "HINDUNILVR.NS": {
+        "cagr": 0.09563393345319615,
+        "volatility": 0.2199145461008488,
+        "excess_return": 0.06163142092340494,
+        "excess_over_market": -0.01067581251019919,
+        "sharpe": 0.2802516796462472,
+        "beta": 0.6015576928126356,
+        "treynor": 0.1024530509039654,
+        "jensen_alpha": 0.018134448405421378,
+        "alpha_t": 0.31857978242227036,
+        "information_ratio": 0.09188081396849031,
+        "max_drawdown": -0.3585685823293614
+      },
+      "SUNPHARMA.NS": {
+        "cagr": 0.08681227729144791,
+        "volatility": 0.27212628589727955,
+        "excess_return": 0.0665465568588946,
+        "excess_over_market": -0.005760676574709541,
+        "sharpe": 0.24454292109074005,
+        "beta": 0.6453558972107265,
+        "treynor": 0.1031160591334386,
+        "jensen_alpha": 0.01988265735152556,
+        "alpha_t": 0.2598201449755489,
+        "information_ratio": 0.07906890307317478,
+        "max_drawdown": -0.6230919575225573
+      },
+      "ICICIBANK.NS": {
+        "cagr": 0.1905590714471559,
+        "volatility": 0.2974889097834246,
+        "excess_return": 0.1649033017083621,
+        "excess_over_market": 0.09259606827475797,
+        "sharpe": 0.5543174763335332,
+        "beta": 1.2927890330731788,
+        "treynor": 0.12755623500019875,
+        "jensen_alpha": 0.07142530331353639,
+        "alpha_t": 1.1664557284985555,
+        "information_ratio": 0.33670593802230736,
+        "max_drawdown": -0.4830724421798098
+      },
+      "^NSEI": {
+        "cagr": 0.11952690410925793,
+        "volatility": 0.16136338322128002,
+        "excess_return": 0.07230723343360414,
+        "excess_over_market": 0.0,
+        "sharpe": 0.4481018679092031,
+        "beta": 1.0000000000000004,
+        "treynor": 0.07230723343360411,
+        "jensen_alpha": 0.0,
+        "alpha_t": 0.0,
+        "information_ratio": 0.0,
+        "max_drawdown": -0.3829895258889907
+      },
+      "P at today's weights": {
+        "cagr": 0.16017071757020362,
+        "volatility": 0.19699004951543142,
+        "excess_return": 0.11428101646821372,
+        "excess_over_market": 0.04197378303460959,
+        "sharpe": 0.5801359852912844,
+        "beta": 0.9560561073559368,
+        "treynor": 0.11953379680222809,
+        "jensen_alpha": 0.045151244338005096,
+        "alpha_t": 1.2894676408973689,
+        "information_ratio": 0.3685263418332699,
+        "max_drawdown": -0.34800150650796735
+      }
+    }
+  },
+  "out_of_sample": {
+    "period": "2023-01-02 to 2026-10-13",
+    "weights_fitted_on": "2016-01-05 to 2022-12-30",
+    "rows": {
+      "Forward-looking P": {
+        "cagr": 0.07884306777822814,
+        "volatility": 0.12773067618490808,
+        "excess_return": 0.030305785610858168,
+        "excess_over_market": 0.004835405928542749,
+        "sharpe": 0.23726317370297398,
+        "beta": 0.7105973972150952,
+        "treynor": 0.04264832059564203,
+        "jensen_alpha": 0.012206600102524575,
+        "alpha_t": 0.2736690549188348,
+        "information_ratio": 0.13439227445685611,
+        "max_drawdown": -0.16489541756184734
+      },
+      "Equal weight": {
+        "cagr": 0.08738132852254488,
+        "volatility": 0.12273723549049832,
+        "excess_return": 0.03756853121361212,
+        "excess_over_market": 0.012098151531296704,
+        "sharpe": 0.3060891103133937,
+        "beta": 0.6494605500183374,
+        "treynor": 0.0578457478480431,
+        "jensen_alpha": 0.021026524415959653,
+        "alpha_t": 0.4739282216614052,
+        "information_ratio": 0.2303978016812845,
+        "max_drawdown": -0.17617403355344008
+      },
+      "History-based P": {
+        "cagr": 0.0319960697949202,
+        "volatility": 0.13669285291596003,
+        "excess_return": -0.012906427661928996,
+        "excess_over_market": -0.03837680734424443,
+        "sharpe": -0.09441918422658119,
+        "beta": 0.6538011531345033,
+        "treynor": -0.019740600945795245,
+        "jensen_alpha": -0.02955899126900045,
+        "alpha_t": -0.554953098278279,
+        "information_ratio": -0.2713939575591142,
+        "max_drawdown": -0.20374164694160013
+      },
+      "Nifty 50": {
+        "cagr": 0.07379095015573167,
+        "volatility": 0.12645248423998726,
+        "excess_return": 0.025470379682315438,
+        "excess_over_market": 0.0,
+        "sharpe": 0.20142253302020224,
+        "beta": 0.9999999999999998,
+        "treynor": 0.025470379682315445,
+        "jensen_alpha": 0.0,
+        "alpha_t": 0.0,
+        "information_ratio": 0.0,
+        "max_drawdown": -0.15322995631656133
+      }
+    },
+    "weights": {
+      "Forward-looking P": {
+        "HINDUNILVR.NS": 0.33788465415392543,
+        "SUNPHARMA.NS": 0.18190452261693005,
+        "ICICIBANK.NS": 0.48021082322914455
+      },
+      "Equal weight": {
+        "HINDUNILVR.NS": 0.3333333333333333,
+        "SUNPHARMA.NS": 0.3333333333333333,
+        "ICICIBANK.NS": 0.3333333333333333
+      },
+      "History-based P": {
+        "HINDUNILVR.NS": 0.5541941974509611,
+        "SUNPHARMA.NS": 0.1,
+        "ICICIBANK.NS": 0.345805802549039
+      }
+    }
+  },
+  "forward_view": {
+    "alpha": 0.0,
+    "treynor": 0.0708,
+    "p_sharpe": 0.3436151854741164,
+    "market_sharpe": 0.4387612516955653,
+    "note": "With CAPM returns as inputs, every asset has alpha 0 and Treynor = ERP by construction, so these can only be measured on realised returns."
+  },
+  "by_profile": {
+    "Aggressive": {
+      "A": 2,
+      "y": 0.8721638131452902,
+      "alpha_on_your_money": 0.010646154890957524
+    },
+    "Balanced": {
+      "A": 4,
+      "y": 0.4360819065726451,
+      "alpha_on_your_money": 0.005323077445478762
+    },
+    "Conservative": {
+      "A": 6,
+      "y": 0.2907212710484301,
+      "alpha_on_your_money": 0.0035487182969858415
+    }
+  }
+}

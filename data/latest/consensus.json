@@ -3,24 +3,30 @@
     "ticker": "HINDUNILVR.NS",
     "eps_estimates": {
       "0y": {
-        "avg": 47.96564,
-        "analysts": 21,
-        "growth": 0.038
+        "avg": 48.09792,
+        "analysts": 19,
+        "growth": 0.040900003
       },
       "+1y": {
-        "avg": 53.02293,
-        "analysts": 21,
-        "growth": 0.105399996
+        "avg": 53.32189,
+        "analysts": 20,
+        "growth": 0.1086
       }
     },
     "price_targets": {
-      "current": 1875.5,
-      "high": 2820.0,
-      "low": 1804.0,
-      "mean": 2395.6843,
-      "median": 2407.5
+      "current": 1941.1,
+      "high": 2750.0,
+      "low": 1800.0,
+      "mean": 2255.7104,
+      "median": 2222.5
     },
     "surprises": [
+      {
+        "date": "2026-10-28",
+        "estimate": 19.83,
+        "reported": 11.86,
+        "surprise_pct": -40.17
+      },
       {
         "date": "2026-07-28",
         "estimate": 11.7,
@@ -158,12 +164,6 @@
         "estimate": 8.72,
         "reported": 8.31,
         "surprise_pct": -4.71
-      },
-      {
-        "date": "2020-10-20",
-        "estimate": 8.73,
-        "reported": 8.66,
-        "surprise_pct": -0.81
       }
     ]
   },
@@ -171,24 +171,30 @@
     "ticker": "SUNPHARMA.NS",
     "eps_estimates": {
       "0y": {
-        "avg": 54.66056,
-        "analysts": 32,
-        "growth": 0.0509
+        "avg": 53.24155,
+        "analysts": 27,
+        "growth": 0.023599999
       },
       "+1y": {
-        "avg": 64.78952,
-        "analysts": 29,
-        "growth": 0.18530001
+        "avg": 63.3313,
+        "analysts": 28,
+        "growth": 0.1895
       }
     },
     "price_targets": {
-      "current": 1770.7,
-      "high": 2400.0,
+      "current": 1769.0,
+      "high": 2366.0,
       "low": 1830.0,
-      "mean": 2174.3438,
-      "median": 2165.0
+      "mean": 2136.4062,
+      "median": 2150.0
     },
     "surprises": [
+      {
+        "date": "2026-10-30",
+        "estimate": 13.16,
+        "reported": 11.5,
+        "surprise_pct": -12.64
+      },
       {
         "date": "2026-07-31",
         "estimate": 12.48,
@@ -326,12 +332,6 @@
         "estimate": 5.48,
         "reported": 7.72,
         "surprise_pct": 40.8
-      },
-      {
-        "date": "2020-11-03",
-        "estimate": 4.86,
-        "reported": 7.56,
-        "surprise_pct": 55.46
       }
     ]
   },
@@ -339,24 +339,30 @@
     "ticker": "ICICIBANK.NS",
     "eps_estimates": {
       "0y": {
-        "avg": 81.14303,
-        "analysts": 38,
-        "growth": 0.1726
+        "avg": 83.49898,
+        "analysts": 39,
+        "growth": 0.2066
       },
       "+1y": {
-        "avg": 93.52652,
-        "analysts": 38,
-        "growth": 0.1526
+        "avg": 97.76662,
+        "analysts": 36,
+        "growth": 0.1728
       }
     },
     "price_targets": {
-      "current": 1360.2,
-      "high": 2000.0,
-      "low": 1592.0,
-      "mean": 1746.7382,
-      "median": 1733.5
+      "current": 1427.5,
+      "high": 2040.0,
+      "low": 1645.0,
+      "mean": 1768.7858,
+      "median": 1751.0
     },
     "surprises": [
+      {
+        "date": "2026-10-17",
+        "estimate": 19.55,
+        "reported": 20.45,
+        "surprise_pct": 4.61
+      },
       {
         "date": "2026-07-18",
         "estimate": 18.67,
@@ -494,12 +500,6 @@
         "estimate": 6.44,
         "reported": 7.05,
         "surprise_pct": 9.44
-      },
-      {
-        "date": "2020-10-31",
-        "estimate": 4.78,
-        "reported": 6.29,
-        "surprise_pct": 31.65
       }
     ]
   }

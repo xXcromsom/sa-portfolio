@@ -150,6 +150,35 @@ def jensen_alpha(returns: Returns, market: pd.Series, rf_annual: float = 0.0,
     return ((returns - rf).mean() - b * (market - rf).mean()) * periods
 
 
+def alpha_significance(returns: pd.Series, market: pd.Series, rf_annual: float = 0.0, periods: int = 252,
+                       lags: int = 5) -> dict:
+    """Jensen's alpha from the CAPM regression, with a Newey-West t-stat and the information ratio.
+
+    Newey-West standard errors allow for volatility clustering and short-run autocorrelation in the
+    residuals, which daily returns have. Alpha equals `jensen_alpha`. The information ratio is alpha
+    divided by annualised residual volatility (BKM Ch 24).
+    """
+    _check_aligned(returns, market)
+    rf = periodic_rf(rf_annual, periods)
+    y, z = (returns - rf).to_numpy(), (market - rf).to_numpy()
+    b = np.cov(y, z)[0, 1] / z.var(ddof=1)
+    a = y.mean() - b * z.mean()
+    e = y - a - b * z
+    residual_vol = e.std(ddof=2) * np.sqrt(periods)
+    if residual_vol < 1e-12:    # the market against itself: no residuals, so nothing to test
+        return {"alpha": 0.0, "t": 0.0, "information_ratio": 0.0}
+    x = np.column_stack([np.ones(len(z)), z])
+    u = x * e[:, None]
+    s = u.T @ u
+    for lag in range(1, lags + 1):
+        g = u[lag:].T @ u[:-lag]
+        s += (1 - lag / (lags + 1)) * (g + g.T)
+    xx_inv = np.linalg.inv(x.T @ x)
+    variance = xx_inv @ s @ xx_inv
+    return {"alpha": float(a * periods), "t": float(a / np.sqrt(variance[0, 0])),
+            "information_ratio": float(a * periods / residual_vol)}
+
+
 def capm_required_return(beta_value: float | pd.Series, rf_annual: float,
                          equity_risk_premium: float) -> float | pd.Series:
     """Forward-looking CAPM required return: rf + beta * ERP. Used as the discount rate."""

@@ -74,7 +74,8 @@ def load(folder: str, stamp: str) -> dict:
     data = {k: read(n) for k, n in [("metrics", "metrics.json"), ("valuation", "valuation.json"),
                                       ("portfolio", "portfolio.json"), ("mc", "mc.json"), ("sip", "sip.json"),
                                       ("ai", "ai_analysis.json"), ("sentiment", "sentiment.json"),
-                                      ("extraction", "extraction_accuracy.json")]}
+                                      ("extraction", "extraction_accuracy.json"), ("emh", "emh.json"),
+                                      ("performance", "performance.json"), ("street", "street.json"), ("mood", "mood.json")]}
     data["aspects"] = json.loads((ROOT / "data/ai/concall_aspects.json").read_text(encoding="utf-8"))["companies"]
     data["qa"] = json.loads((ROOT / "data/ai/qa_cache.json").read_text(encoding="utf-8"))
     for key, name in [("prices", "prices.parquet"), ("daily", "returns_daily.parquet"),
@@ -287,6 +288,8 @@ def portfolio_tab(D, P, mkt, rf, cp, alloc, tbills, one, sipo, threshold, amount
             ring.mark_text(radius=148, fontWeight="bold").encode(text=alt.Text("share:Q", format=".0%"),
                                                                 color=alt.value(T.WHITE))), 330)
 
+    performance_panel(D, y)
+
     H(T.head(f"One year ahead: {T.inr(amount)} invested", "10,000 simulated paths · same draws as the report"))
     H(T.table(["Method", "Median", "5th pct", "95th pct", "95% VaR", "95% CVaR", "P(loss)"],
               [[m.replace("Parametric, current volatility (EWMA)", "Parametric, today's volatility"),
@@ -334,6 +337,63 @@ def portfolio_tab(D, P, mkt, rf, cp, alloc, tbills, one, sipo, threshold, amount
         H(T.table(["Sleeve", "₹ / month"], split))
         H(T.note(f"Rebalanced yearly; equity glides to {D['sip']['settings']['glide_path_end_equity']:.0%} by year {yrs}. "
                  "Pre-tax, no fees."))
+
+
+def signed(x: float, d: int = 2) -> str:
+    return f"{x:+.{d}f}".replace("-", T.MINUS)
+
+
+def performance_panel(D, y) -> None:
+    perf = D["performance"]
+    oos, rows = perf["out_of_sample"], perf["out_of_sample"]["rows"]
+    fp, nifty = rows["Forward-looking P"], rows["Nifty 50"]
+    # The viewer holds y in P and the rest in T-bills: excess return, beta and alpha scale with y; Sharpe and Treynor do not.
+    yours = {**fp, "excess_return": y * fp["excess_return"], "excess_over_market": y * fp["excess_return"] - nifty["excess_return"],
+             "volatility": y * fp["volatility"], "beta": y * fp["beta"], "jensen_alpha": y * fp["jensen_alpha"]}
+    header = ["Portfolio", "CAGR", "Excess over T-bills", "Excess over Nifty", "Volatility", "Beta", "Sharpe", "Treynor", "Jensen's alpha", "Alpha t-stat", "Max drawdown"]
+
+    def row(name, r, market=False, own=False):
+        return [T.esc(name), "–" if own else T.pct(r["cagr"]), T.pct(r["excess_return"], 1, True), "–" if market else T.pct(r["excess_over_market"], 1, True),
+                T.pct(r["volatility"]), f"{r['beta']:.2f}", signed(r["sharpe"]), T.pct(r["treynor"]), T.pct(r["jensen_alpha"], 1, True),
+                "–" if market else signed(r["alpha_t"]), "–" if own else T.pct(r["max_drawdown"])]
+
+    H(T.head("Did it beat the market? Excess return, Sharpe, Treynor and Jensen's alpha",
+             f"realised returns {oos['period']} · weights fitted on {oos['weights_fitted_on']}"))
+    H(T.table(header, [row(name, r, market=name == "Nifty 50") for name, r in rows.items()]
+              + [row(f"Your portfolio ({T.pct(y, 0)} in P)", yours, own=True)], hl={len(rows)}))
+    significant = [n for n, r in rows.items() if abs(r["alpha_t"]) >= 2]
+    H(T.note("Excess return = Rp − Rf. Sharpe = excess return / σ. Treynor = excess return / β. α = excess return − β × the Nifty's excess return, "
+             "with Newey-West t-stats. "
+             + ("No alpha here is statistically significant (|t| below 2). " if not significant else f"Significant alpha: {', '.join(significant)}. ")
+             + f"Sharpe and Treynor do not change with A; the alpha on your money does: {T.pct(fp['jensen_alpha'], 1, True)} × your "
+             f"{T.pct(y, 0)} in P = {T.pct(fp['jensen_alpha'] * y, 2, True)} a year. On forward-looking CAPM returns every asset has "
+             f"α = 0 and Treynor = the ERP ({T.pct(perf['equity_risk_premium'], 2)}) by construction, so these measures can only be "
+             "judged on realised returns."))
+    points = pd.DataFrame([{"name": name, "vol": r["volatility"], "beta": r["beta"], "excess": r["excess_return"]}
+                           for name, r in {**rows, "Your portfolio": yours}.items()])
+    c1, c2 = st.columns(2, gap="medium")
+    with c1:
+        chart(excess_chart(points, "vol", "Volatility", ".0%", nifty["sharpe"], 0.18, "Excess return vs total risk: slope = Sharpe; above the Nifty line = better Sharpe"), 280)
+    with c2:
+        chart(excess_chart(points, "beta", "Beta vs Nifty 50", ".1f", nifty["excess_return"], 1.2, "Excess return vs beta: slope = Treynor; height above the line = Jensen's α"), 280)
+    full = perf["full_sample"]
+    H(T.head("The same measures over the whole sample", f"{full['period']} · today's weights are chosen with hindsight, so that row is not a test"))
+    H(T.table(header, [row(NAMES.get(name, name), r, market=name == BENCH) for name, r in full["rows"].items()]))
+
+
+def excess_chart(points: pd.DataFrame, x: str, x_title: str, x_format: str, slope: float, x_max: float, title: str) -> alt.LayerChart:
+    """Excess return against a risk measure. The line runs from the origin through the Nifty 50."""
+    sx = alt.Scale(domain=[0, x_max])
+    line = pd.DataFrame({x: [0, x_max], "excess": [0, slope * x_max]})
+    mine = points["name"] == "Your portfolio"
+    y = alt.Y("excess:Q", title="Excess return over T-bills", axis=alt.Axis(format=".0%"))
+    return alt.layer(
+        alt.Chart(pd.DataFrame({"zero": [0]})).mark_rule(color=T.MUTED, strokeDash=[3, 3]).encode(y="zero:Q"),
+        alt.Chart(line).mark_line(color=T.AMBER).encode(x=alt.X(f"{x}:Q", title=x_title, scale=sx, axis=alt.Axis(format=x_format)), y=y),
+        alt.Chart(points[~mine]).mark_point(filled=True, size=90, color=T.CYAN).encode(x=alt.X(f"{x}:Q", scale=sx), y=y, tooltip=["name:N", alt.Tooltip("excess:Q", format=".2%")]),
+        alt.Chart(points[mine]).mark_point(filled=True, size=120, color=T.YELLOW).encode(x=alt.X(f"{x}:Q", scale=sx), y=y, tooltip=["name:N", alt.Tooltip("excess:Q", format=".2%")]),
+        alt.Chart(points).mark_text(align="left", dx=8, color=T.TEXT).encode(x=alt.X(f"{x}:Q", scale=sx), y=y, text="name:N"),
+    ).properties(title=title)
 
 
 def fan_chart(fan: pd.DataFrame, x_title: str, start: float | None, invested: bool = False) -> alt.LayerChart:
@@ -441,12 +501,54 @@ def companies_tab(D, rf) -> None:
                 x=alt.X("beta:Q", scale=sx), y="ly:Q", text="label:N"),
         ).properties(title="Security Market Line (ex-post, 2016–2026): above the line = beat CAPM"), 320)
     H(T.head("Risk and return, 2016 to date", "daily data; Nifty 50 includes an estimated 1.22%/yr dividend"))
-    cols = [("cagr", "CAGR", 1), ("volatility", "Volatility", 1), ("sharpe", "Sharpe", None), ("sortino", "Sortino", None),
+    full = D["performance"]["full_sample"]["rows"]
+    cols = [("cagr", "CAGR", 1), ("excess_return", "Excess over T-bills", 1), ("volatility", "Volatility", 1), ("sharpe", "Sharpe", None), ("sortino", "Sortino", None),
             ("max_drawdown", "Max drawdown", 0), ("beta", "Beta", None), ("treynor", "Treynor", 1),
-            ("jensen_alpha", "Jensen α", 1), ("var_95_daily", "Daily VaR 95%", 1), ("capm_required_return", "CAPM r", 1)]
+            ("jensen_alpha", "Jensen's alpha", 1), ("var_95_daily", "Daily VaR 95%", 1), ("capm_required_return", "CAPM r", 1)]
     H(T.table(["Security"] + [c[1] for c in cols],
-              [[NAMES[t]] + [T.pct(sec[t][k], d) if d is not None else f"{sec[t][k]:.2f}" for k, _, d in cols]
+              [[NAMES[t]] + [T.pct({**sec[t], "excess_return": full[t]["excess_return"]}[k], d) if d is not None else f"{sec[t][k]:.2f}" for k, _, d in cols]
                for t in STOCKS + [BENCH]]))
+    H(T.note("Jensen α t-stats (Newey-West): " + ", ".join(f"{SHORT[t]} {signed(full[t]['alpha_t'])}" for t in STOCKS)
+             + (". None reaches 2, so this much data cannot tell these alphas from zero." if all(abs(full[t]["alpha_t"]) < 2 for t in STOCKS) else ".")))
+    street_panel(D)
+
+
+def street_panel(D) -> None:
+    street, must = D["street"], D["street"]["must_believe"]
+    cons = street["consensus"]
+    as_of = f"{date.fromisoformat(street['as_of']):%d %b %Y}"
+    H(T.head(f"Street vs our view, updated {as_of}", "after the Q2 results · the 13 Oct model numbers above do not change"))
+    H(T.table(["Stock", "Price", "Analysts", "Buy share", "Mean target", "Upside", "Target since 13 Oct", "P/E FY28", "Lowest call", "Highest call"],
+              [[NAMES[t], T.inr(c["price"]), str(c["analysts"]), T.pct(c["buy_share"], 0), T.inr(c["target"]["mean"]), T.chg(c["upside_to_mean"], 0),
+                T.pct(c["target_change_since_freeze"], 1, True), f"{c['pe_fy28']:.1f}",
+                f"{T.esc(c['lowest_broker']['broker'])} {T.inr(c['lowest_broker']['target'])}",
+                f"{T.esc(c['highest_broker']['broker'])} {T.inr(c['highest_broker']['target'])}"] for t, c in cons.items()]))
+    H(T.note("Consensus: Yahoo Finance, read by hand. The Street's conviction runs almost opposite to our verdicts: it likes ICICI most. "
+             "That is a difference in inputs, which the next two panels pull apart."))
+    left, right = st.columns([3, 2], gap="medium")
+    with left:
+        H(T.head("What each price requires", "the same cash flows, solving for the discount rate"))
+        H(T.table(["Stock", "Our r", "Value at our r", "r on 5-yr beta", "Value at 5-yr beta", "r needed for the price", "r needed for the target"],
+                  [[NAMES[t], T.pct(s["our_r"]), T.inr(s["our_value"]), T.pct(s["r_5y_beta"]), T.inr(s["value_at_5y_beta"]),
+                    T.pct(s["r_needed_for_price"]), T.pct(s["r_needed_for_target"])] for t, s in must["stocks"].items()]))
+        paths = must["hul_growth_paths"]
+        H(T.note("A needed r below the CAPM r means the price is betting on faster or longer growth than our two stages, not that the "
+                 f"market is wrong. HUL at r = {T.pct(must['stocks']['HINDUNILVR.NS']['our_r'])}: {paths[0]['path']} gives {T.inr(paths[0]['value'])}; "
+                 f"{paths[1]['path']} gives {T.inr(paths[1]['value'])}. The 5-year beta is shown for reconciliation only; our base case stays on the full sample."))
+    with right:
+        H(T.head("ICICI Bank: from our value to the price", "one assumption at a time"))
+        bridge = pd.DataFrame(must["icici_bridge"])
+        y_axis = alt.Y("step:N", sort=None, title=None, axis=alt.Axis(labelLimit=240))
+        chart(alt.layer(
+            alt.Chart(bridge).mark_bar(color=T.AMBER).encode(y=y_axis, x=alt.X("value:Q", title="₹ per share"),
+                                                             tooltip=["step:N", "detail:N", alt.Tooltip("value:Q", format=",.0f")]),
+            alt.Chart(bridge).mark_text(align="left", dx=4, color=T.WHITE).encode(y=y_axis, x="value:Q", text=alt.Text("value:Q", format=",.0f"))), 250)
+    H(T.warn(f"Sun Pharma and Organon: {street['organon']['summary']} {street['organon']['why_it_matters']}"))
+    with st.expander("Q2 FY27 results and broker calls (second-hand press summaries unless marked; check the originals before citing)"):
+        for t, c in cons.items():
+            st.markdown(f"**{NAMES[t]}**, results of {c['q2']['date']}: " + "; ".join(c["q2"]["points"]) + ".")
+        st.dataframe(pd.DataFrame(street["brokers"])[["ticker", "broker", "rating", "target", "basis", "as_of", "after_q2", "source_type", "note"]]
+                     .assign(ticker=lambda d: d["ticker"].map(SHORT)), hide_index=True, width="stretch")
 
 
 # ---------------------------------------------------------------- 3 AI
@@ -492,17 +594,23 @@ def ai_tab(D) -> None:
                             legend=alt.Legend(title=None)),
             tooltip=["stock:N", "rule:N", alt.Tooltip("sharpe:Q", format=".2f"), alt.Tooltip("max_drawdown:Q", format=".0%")]), 300)
     with right:
-        es = D["ai"]["event_study"]
-        H(T.head("Do prices react to earnings surprises?",
-                 f"{es['events']} results · CAR[−1,+1] {T.pct(es['mean_car_positive_surprise'], 1, True)} after beats, "
-                 f"{T.pct(es['mean_car_negative_surprise'], 1, True)} after misses"))
-        ev = pd.DataFrame(es["rows"]).assign(stock=lambda d: d.ticker.map(SHORT))
-        chart(alt.Chart(ev).mark_point(filled=True, size=60).encode(
-            x=alt.X("surprise_pct:Q", title="EPS surprise (%)", axis=alt.Axis(format=".0f")),  # already in percent
-            y=alt.Y("car:Q", title="3-day abnormal return", axis=alt.Axis(format=".0%")),
-            color=alt.Color("stock:N", scale=alt.Scale(domain=[SHORT[t] for t in STOCKS], range=[COLOR[t] for t in STOCKS]),
-                            legend=alt.Legend(title=None)),
-            tooltip=["stock:N", "date:N", alt.Tooltip("surprise_pct:Q", format=".1f", title="surprise %"), alt.Tooltip("car:Q", format=".2%")]), 300)
+        es = D["ai"].get("event_study")
+        if es is None:  # Yahoo gave no earnings dates at the last refresh; see surprises_error in consensus.json
+            H(T.head("Do prices react to earnings surprises?"))
+            H(T.warn("No earnings dates in this dataset: Yahoo returned none at the last refresh. Switch to SUBMISSION to see the study."))
+        else:
+            H(T.head("Do prices react to earnings surprises?",
+                     f"{es['events']} results · CAR[−1,+1] {T.pct(es['mean_car_positive_surprise'], 1, True)} after beats, "
+                     f"{T.pct(es['mean_car_negative_surprise'], 1, True)} after misses"))
+            ev = pd.DataFrame(es["rows"]).assign(stock=lambda d: d.ticker.map(SHORT))
+            chart(alt.Chart(ev).mark_point(filled=True, size=60).encode(
+                x=alt.X("surprise_pct:Q", title="EPS surprise (%)", axis=alt.Axis(format=".0f")),  # already in percent
+                y=alt.Y("car:Q", title="3-day abnormal return", axis=alt.Axis(format=".0%")),
+                color=alt.Color("stock:N", scale=alt.Scale(domain=[SHORT[t] for t in STOCKS], range=[COLOR[t] for t in STOCKS]),
+                                legend=alt.Legend(title=None)),
+                tooltip=["stock:N", "date:N", alt.Tooltip("surprise_pct:Q", format=".1f", title="surprise %"), alt.Tooltip("car:Q", format=".2%")]), 300)
+    emh_panel(D)
+    mood_panel(D)
     H(T.head("Latest earnings calls: guidance and aspects", "Claude, from the transcripts (data/ai/concall_aspects.json)"))
     for t in STOCKS:
         a = D["aspects"][t]
@@ -513,6 +621,80 @@ def ai_tab(D) -> None:
                                                      for x in a["aspects"]], text=True))
     with st.expander("AI ratio extraction vs Yahoo and Screener (every comparison)"):
         st.dataframe(pd.DataFrame(ex["rows"]).assign(ticker=lambda d: d["ticker"].map(NAMES)), hide_index=True, width="stretch")
+
+
+def emh_panel(D) -> None:
+    e = D["emh"]
+    H(T.head("Market efficiency: weak and semi-strong form", e["strong_form"]))
+    left, right = st.columns(2, gap="medium")
+    with left:
+        H(T.head("Weak form: do past returns predict?", "z in brackets; a random walk gives ρ = 0, VR = 1"))
+        cell = lambda v: f"{v['vr']:.2f} ({signed(v['z'], 1)})"  # noqa: E731
+        H(T.table(["Series", "Lag-1 ρ", "VR(5)", "VR(20)", "VR(60)"],
+                  [[SHORT[t], f"{signed(w['rho'], 3)} ({signed(w['z'], 1)})"] + [cell(w["variance_ratios"][q]) for q in ("5", "20", "60")]
+                   for t, w in e["weak_form"].items()]))
+        rules = e["trading_rules"]
+        zs = [abs(w["z"]) for w in e["weak_form"].values()] + [abs(v["z"]) for w in e["weak_form"].values() for v in w["variance_ratios"].values()]
+        H(T.note(f"Robust z (Lo-MacKinlay). The largest |z| is {max(zs):.1f}"
+                 + (", below the 2 that would flag a pattern" if max(zs) < 2 else "")
+                 + f", and {rules['beat_buy_and_hold']} of {rules['tested']} trading rules beat buy-and-hold after costs."))
+    with right:
+        s = e["semi_strong"]
+        if s is None:
+            H(T.head("Semi-strong form: reaction and drift"))
+            H(T.warn("No earnings dates in this dataset: Yahoo returned none at the last refresh."))
+            return
+        H(T.head("Semi-strong form: reaction and drift", f"{s['events']} results · abnormal return, mean (t)"))
+        labels = {"pre": "Before: days −20 to −2", "ev": "Reaction: days −1 to +1", "d20": "After: days +2 to +20", "d60": "After: days +2 to +60"}
+        cell = lambda v: f"{T.pct(v['mean'], 2, True)} ({signed(v['t'], 1)})"  # noqa: E731
+        gap = lambda w: (f"{T.pct(s['beat_minus_miss'][w]['diff'], 2, True)} [{T.pct(s['beat_minus_miss'][w]['low'], 1, True)}, "  # noqa: E731
+                         f"{T.pct(s['beat_minus_miss'][w]['high'], 1, True)}]") if w in s["beat_minus_miss"] else "–"
+        H(T.table(["Window", f"Beats (n {s['beats']['ev']['n']})", f"Misses (n {s['misses']['ev']['n']})", "Beat − miss [95% CI]"],
+                  [[labels[w], cell(s["beats"][w]), cell(s["misses"][w]), gap(w)] for w in labels]))
+        bm = s["beat_minus_miss"]
+        reacts = bm["ev"]["low"] > 0
+        no_drift = all(bm[w]["low"] < 0 < bm[w]["high"] for w in ("d20", "d60"))
+        H(T.note(("The beat-miss gap is clear in the 3-day window. " if reacts else "The beat-miss gap in the 3-day window is not clear of zero. ")
+                 + ("Afterwards it cannot be told from zero, so we detect no later drift. " if no_drift else "A gap persists afterwards, which would be evidence of drift. ")
+                 + f"With {s['events']} events we could miss a small drift; Harshita et al. (2018) found about 6% over 64 days in Nifty 500 stocks. "
+                 f"Surprises of {s['clean_limit_pct']:.0f}% or more are flagged in emh.json, including a bad Yahoo row (HUL, 12 Feb 2026)."))
+
+
+def mood_panel(D) -> None:
+    m, street = D["mood"], D["street"]
+    snap, vix = m["market_mood_snapshot"], m["vix"]
+    H(T.head("Fear and greed", f"0 = fear, 100 = greed · stock scores as of {date.fromisoformat(m['as_of']):%d %b %Y}"))
+    tiles = [("Market Mood Index", f"{snap['value']:.1f}", f"{T.esc(snap['zone'])} · Tickertape, {T.esc(snap['read'])}")]
+    if vix:
+        tiles.append(("India VIX", f"{vix['level']:.1f}", f"{vix['one_year_percentile']:.0%} percentile of the past year"))
+    tiles += [(f"{SHORT[t]} mood", f"{m['stocks'][t]['mood']:.0f}", T.esc(m["stocks"][t]["zone"])) for t in STOCKS]
+    H(T.kpis(tiles))
+    left, right = st.columns([3, 2], gap="medium")
+    with left:
+        H(T.head("Stock mood: four price signals, ranked against the stock's own last 3 years"))
+        H(T.table(["Stock", "Momentum", "RSI", "Calm", "Near high", "Mood", "20d excess after fear", "after greed", "p"],
+                  [[SHORT[t]] + [f"{s['components'][k]:.0f}" for k in ("momentum", "rsi", "calm", "near_high")]
+                   + [f"{s['mood']:.0f}", T.pct(s["excess_after_fear"], 1, True), T.pct(s["excess_after_greed"], 1, True), f"{s['p_nonoverlapping']:.2f}"]
+                   for t, s in ((t, m["stocks"][t]) for t in STOCKS)]))
+        H(T.table(["FinBERT tone vs excess return", "Next 5 days r", "p", "Same day r", "p"],
+                  [[SHORT[t], signed(x["next_r"]), f"{x['next_p']:.2f}", signed(x["same_day_r"]), f"{x['same_day_p']:.2f}"]
+                   for t, x in ((t, m["tone"][t]) for t in STOCKS)]))
+        hits = [SHORT[t] for t in STOCKS if m["stocks"][t]["p_nonoverlapping"] < 0.05 or m["tone"][t]["next_p"] < 0.05]
+        H(T.note("The stock score is built from prices, so it describes mood rather than measuring it independently. "
+                 + ("No test reaches p below 0.05 for stock mood or next-week tone: sentiment here describes the crowd, it does not time it. "
+                    if not hits else f"p is below 0.05 for {', '.join(hits)}, before allowing for having run six tests. ")
+                 + f"The Market Mood Index is one hand reading on {street['as_of']}; we hold no history of it."))
+    with right:
+        if vix is None:
+            H(T.warn(f"India VIX is unavailable: {T.esc(m.get('vix_error') or 'no data')}."))
+        else:
+            H(T.head("Nifty over the next 20 days, by India VIX level", f"non-overlapping slope p = {vix['slope_all']['p']:.3f}, "
+                     f"without COVID {vix['slope_without_covid']['p']:.3f}"))
+            q = pd.DataFrame(vix["quintiles"]).assign(band=lambda d: d.low.map("{:.0f}".format) + "–" + d.high.map("{:.0f}".format))
+            chart(alt.Chart(q).mark_bar(color=T.CYAN).encode(x=alt.X("band:N", sort=None, title="India VIX band", axis=alt.Axis(labelAngle=0)),
+                                                             y=alt.Y("forward:Q", title="Mean 20-day return", axis=alt.Axis(format=".1%")),
+                                                             tooltip=["band:N", alt.Tooltip("forward:Q", format=".2%"), "days:Q"]), 250)
+            H(T.note("Fear has been followed by higher returns, but that may be a risk premium rather than a mispricing, and one quintile carries it."))
 
 
 # ---------------------------------------------------------------- 4 risk

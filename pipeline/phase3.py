@@ -108,6 +108,9 @@ def run_phase3(ctx, refresh: bool = False) -> dict:
     # 3. Forecasts vs analyst consensus; earnings-surprise event study.
     session = make_session()
     consensus = _cached(out / "consensus.json", lambda: {t: fc.consensus(t, session) for t in stocks}, refresh)
+    for t in stocks:
+        if consensus[t].get("surprises_error"):
+            print(f"  WARNING: no earnings dates for {t} ({consensus[t]['surprises_error']}); the event study will lack this stock")
     valuation = json.loads((out / "valuation.json").read_text(encoding="utf-8"))["securities"]
     wb = load_workbook(project_path("workbook/valuation.xlsx"), data_only=True)["Inputs"]
     eps_ttm = {t: float(wb[f"{c}17"].value) for t, c in zip(stocks, "BCD")}

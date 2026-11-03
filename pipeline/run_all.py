@@ -25,6 +25,7 @@ from src.config import load_config, project_path
 from src.data_ingest import load_prices
 from src.metrics import add_dividend_yield, correlation_check, metrics_table
 from src.valuation import read_summary, valuation_record
+from pipeline.extras import run_extras
 from pipeline.phase3 import run_phase3
 
 
@@ -324,6 +325,7 @@ def main(refresh: bool = False) -> None:
     run_phase2(ctx)
     res = run_phase3(ctx, refresh)
     _print_phase3(res, ctx.labels)
+    run_extras("latest", refresh)
 
 
 if __name__ == "__main__":
