@@ -2,7 +2,7 @@
 
 A group project for Security Analysis (BBAT35F97) at TAPMI. It values three NSE stocks using the course's methods, adds AI-based analysis, and builds a portfolio from them. The full plan is in `../PLAN_v2.md`.
 
-**Status:** Phases 1–5 are done: data and traditional analysis, portfolio, AI-augmented analysis, the dashboard, and the report and deck. Still to do: publish the repository, deploy the dashboard, and record the backup video.
+**Status:** Phases 1–5 are done: data and traditional analysis, portfolio, AI-augmented analysis, the dashboard, and the report and deck. The project now also covers market efficiency, a Street check, portfolio performance measures and sentiment, and it serves as the Python course project (`python_project.py`). The nightly refresh is working again. Still to do: make the hosted dashboard public and record the backup video.
 
 **Stocks:** Hindustan Unilever, Sun Pharma, ICICI Bank. Sun Pharma replaced Infosys on 13 Oct 2026; the reasons are in `docs/macro_industry.md` §5.
 
@@ -52,6 +52,15 @@ Edit the Inputs sheet in Excel and save, then run the pipeline. Supporting docum
 - `risk_questionnaire.md`: estimating each member's A
 - `investment_policy_statement.md`: the long-term plan
 
+**Extras** (`pipeline/extras.py`, run by `pipeline/run_all.py`):
+
+| File | Contents |
+|---|---|
+| `emh.json` | Weak form: robust autocorrelation and variance ratios, trading rules. Semi-strong form: reaction and later drift after 72 results, with confidence ranges (`src/emh_tests.py`) |
+| `performance.json` | Excess return over T-bills and over the Nifty, Sharpe, Treynor, Jensen's alpha with a Newey-West t-statistic, for the full sample and the 2023–26 out-of-sample test |
+| `street.json` | Consensus, what each price requires, the ICICI bridge, the five-year beta case and the Organon note (`src/street.py`). Hand-entered, dated inputs are in `data/street/`; many are second-hand press summaries, and each row names its source |
+| `mood.json` | Stock mood score, India VIX and forward returns, FinBERT tone against same-day and next-five-day returns, and a dated Tickertape snapshot (`src/mood.py`) |
+
 ## Dashboard (`app.py`)
 
 ```bash
@@ -74,6 +83,8 @@ How the live numbers stay consistent with the report:
 - The app reruns the pipeline's own Monte Carlo and SIP draws (`src/scenario.py`), with the same seed and the same inputs (`returns_daily.parquet`, `returns_monthly.parquet`).
 - So at A = 4 the dashboard shows exactly the report's figures.
 - Only files on disk are read, so a failed download can never blank a chart during the presentation.
+
+**Where the performance measures are.** PORTFOLIO tab, "Did it beat the market? Excess return, Sharpe, Treynor and Jensen's alpha", which also has a row for your own portfolio and two charts. COMPANIES tab, "Risk and return", has them stock by stock.
 
 **Two datasets.** *Submission (frozen)* (`data/submission/`) holds the numbers in the report. *Latest* (`data/latest/`) is refreshed on weekdays. Freeze once the report's numbers are final:
 
@@ -118,15 +129,32 @@ Both files are generated from the frozen dataset (`data/submission/`), so every 
 ```bash
 cd deliverables
 npm install
-npm run deck      # out/SA_Portfolio_Deck.pptx (13 slides, speaker notes, timings)
-npm run report    # out/SA_Portfolio_Report.docx (4 pages + appendix)
+npm run deck          # out/SA_Portfolio_Deck.pptx (13 slides + backup, speaker notes, timings)
+npm run report        # out/SA_Portfolio_Report.docx (4 pages + appendix)
+npm run python-deck   # out/Python_Project_Deck.pptx (15 slides, code read from python_project.py)
 ```
+
+- Presenter names for the Security Analysis deck are in `SPEAKERS` in `deliverables/data.js`. Preparation notes are in `docs/presentation_prep.md`.
+- After changing `python_project.py`, refresh the Python deck's charts and saved output first: `python python_project.py --charts deliverables/assets/python > deliverables/assets/python/tour_output.txt`.
 
 - Set `DASHBOARD_URL` (and `REPO_URL` for the report) before building to add the live link and QR codes.
 - `python shots.py` re-captures the dashboard screenshots for the demo-backup slide while `streamlit run app.py` is running.
-- The deck follows the group's reference deck: cream and navy panels, burnt-orange titles, Arial. The report follows the reference Word report: A4, Calibri, navy tables.
+- The decks follow the group's reference deck: cream and navy panels, burnt-orange titles. The report follows the reference Word report: A4, Calibri, navy tables.
 - PDFs are exported from PowerPoint and Word, which give the most faithful rendering.
 - The deck build uses the pptx skill's `apply_theme.js`; point `PPTX_SKILL` at it if the default path differs.
+
+## Python course project (`python_project.py`)
+
+The Python course (BBAT5E07) uses this same project. `python_project.py` holds all the course code in one file and imports nothing else from this repository: classes, inheritance, recursion, sorting and searching, files and exceptions, NumPy, SciPy, Pandas, Matplotlib, Seaborn, Transformers, pypdf, yfinance and Streamlit.
+
+```bash
+python python_project.py
+python python_project.py --charts out/
+streamlit run python_project.py
+python -m pytest tests/test_python_project.py
+```
+
+`--fetch` downloads fresh prices (on a machine with Avast, it uses `.certs/ca-bundle.pem` when that file exists), `--finbert` scores sample headlines, and `--pdf FILE` reads a PDF. The tests check that the file reproduces the workbook and the pipeline's outputs. `docs/python_walkthrough.md` has the function map, likely questions, the AI disclosure, differences from the proposal and the demo script.
 
 ## Assumptions and known limitations
 
@@ -140,4 +168,6 @@ npm run report    # out/SA_Portfolio_Report.docx (4 pages + appendix)
 - **HUL demerger:** HUL's Kwality Wall's demerger (5 Dec 2025, 1:1) is not adjusted by Yahoo. Prices before that date are multiplied by 1 − 40.20/2462.20. The ₹40.20 is KWIL's implied price from NSE's special pre-open session. Without this fix, the value handed to shareholders would show up as a 5% one-day loss.
 - **HUL earnings:** HUL's FY26 EPS includes a one-off gain of about ₹3,900 Cr. The valuation uses price ÷ Screener P/E (~₹47), which excludes it.
 - **Cost of equity:** r = rf + β × ERP, with Damodaran's India ERP of 7.08%. The valuations are very sensitive to r and g, so see the Sensitivity sheet.
+- **Broker data:** most Street figures in `data/street/` are press summaries dated 3 Nov 2026, not the original research PDFs. They are shown as second-hand. The 13 Oct model numbers don't use them.
+- **Beta after Organon:** Sun Pharma's beta was measured on its old balance sheet, and the acquisition adds a lot of debt. The roughly 14% uplift in `street.json` is a rough Hamada estimate, not used in the base case.
 - **Data source:** yfinance is an unofficial Yahoo scraper. Every download is validated, and the pipeline writes nothing if validation fails.

@@ -1,5 +1,5 @@
 {
-  "prepared_by": "Claude (claude-opus-5-5) via Claude Code from the project data, 13 Oct 2026. Every number is copied from the file named in brackets.",
+  "prepared_by": "Claude (claude-opus-5-5) via Claude Code from the project data, 13 Oct 2026, extended 3 Nov 2026. Every number is copied from the file named in brackets.",
   "as_of": "2026-10-13",
   "questions": [
     {
@@ -7,8 +7,8 @@
       "a": "Because the optimiser rewards expected return per unit of risk, and on forward-looking CAPM returns ICICI's higher beta (1.29) earns it the highest expected return of the three. The recommended risky portfolio is HUL 31%, Sun Pharma 19%, ICICI 50% [portfolio.json: views.forward.tangency]. The cost is concentration: ICICI supplies about 57% of the portfolio's variance with 50% of the weight [ai_analysis.json: risk.risk_share_latest]. On history alone the optimiser would push ICICI to the 60% cap [views.history.tangency]. That is hindsight, which is why we use the forward view."
     },
     {
-      "q": "Which stock looks most overvalued, and why?",
-      "a": "ICICI Bank. Its blended value (residual-income model plus ROE-adjusted peer P/B) is 37% below the price [valuation.json]. But the market's implied perpetual growth, about 13.9%, is close to ICICI's current loan growth of 19.6% and PAT growth of 15.9% [ai_analysis / concall_aspects.json]. So the gap comes mainly from our 14.7% CAPM cost of equity, which is driven by its daily beta of 1.29, not from unrealistic expectations. Sun Pharma is −30% blended; HUL −14% (fairly valued). Analysts are far more bullish: mean targets +24% to +29% [ai_analysis.json: forecasts]."
+      "q": "Which stock has the widest valuation gap, and why?",
+      "a": "ICICI Bank. Its blended value (residual-income model plus ROE-adjusted peer P/B) is 37% below the price [valuation.json]. But the market's implied perpetual growth, about 13.9%, is close to ICICI's current loan growth of 19.6% and PAT growth of 15.9% [ai_analysis / concall_aspects.json]. So the gap comes mainly from our 14.7% CAPM cost of equity, which is driven by its daily beta of 1.29, not from unrealistic expectations. Sun Pharma is −30% blended and HUL −14%. We read these gaps as what each price requires, not as mispricing, and the call on all three is Hold. Analysts are far more bullish: mean targets +24% to +29% [ai_analysis.json: forecasts]."
     },
     {
       "q": "How risky is the Balanced portfolio over one year?",
@@ -29,6 +29,26 @@
     {
       "q": "How would a monthly SIP grow over 15 years?",
       "a": "A ₹10,000 monthly SIP rising 10% a year puts in about ₹38.1 lakh. It goes into a core-satellite mix (50% Nifty index fund, 50% our three stocks), gliding toward 40% equity. For the Balanced profile, the median corpus after 15 years is about ₹64.8 lakh. The chance of reaching ₹75 lakh is 19% (parametric) or 11% (bootstrap), against 36% or 29% for Aggressive [sip.json]. All three profiles reach ₹50 lakh at least 95% of the time."
+    },
+    {
+      "q": "Did the portfolio beat the market? Show excess return, Sharpe, Treynor and alpha.",
+      "a": "A little, but with no alpha we can tell from zero. On weights fitted before the test, from 2023 to Oct 2026 the forward-looking portfolio earned +3.0% a year over T-bills against +2.5% for the Nifty, or +0.5% over the Nifty. Sharpe was 0.24 against 0.20, and Treynor 4.3% against 2.5%. Jensen's alpha was +1.2% with a t-statistic of 0.27, far below 2. Equal weights did better (Sharpe 0.31, alpha +2.1%), so this shows no weighting skill [performance.json: out_of_sample.rows]."
+    },
+    {
+      "q": "When should I use Sharpe and when Treynor?",
+      "a": "Both divide excess return by a measure of risk. Sharpe uses total risk (volatility), so it suits a whole portfolio. Treynor uses beta, so it suits a piece of a diversified portfolio, which is how the three stocks sit around a Nifty core. Jensen's alpha is the return left after the beta exposure: excess return minus beta times the Nifty's excess return. Sharpe and Treynor don't change with risk aversion, while excess return, beta and alpha scale with your share in P [performance.json: out_of_sample.rows, by_profile]."
+    },
+    {
+      "q": "Are these stocks consistent with the efficient market hypothesis?",
+      "a": "Our tests fit the weak and semi-strong forms. Weak form: 0 of 8 trading rules beat buy-and-hold on Sharpe after costs, and no autocorrelation or variance-ratio test reaches significance. Semi-strong form: after 72 results, beats beat misses by 2.79% over three days (p = 0.003), but the later gaps of -0.53% by day 20 and +1.64% by day 60 both have ranges that include zero, so there is no drift we can detect. The ranges are wide, and one published study of Indian stocks did find drift. Strong form was not tested [emh.json: weak_form, trading_rules, semi_strong]."
+    },
+    {
+      "q": "Do analysts agree with your stock selection?",
+      "a": "On the businesses, yes. On the ranking, almost the opposite. On 3 Nov, Buy shares were 100% for ICICI Bank, 85% for Sun Pharma and 69% for HUL, while our models show the widest gap for ICICI. The disagreement is about inputs: ICICI's price needs a discount rate of 9.9% against our 14.7%. Moving ICICI from our ₹575 through the five-year beta, subsidiaries and the Street's ROE reaches ₹1,213, against a price of ₹1,402 and a mean target of ₹1,769. Most broker figures are press summaries [street.json: consensus, must_believe]."
+    },
+    {
+      "q": "What does Sun Pharma's Organon deal change?",
+      "a": "Sun Pharma is buying Organon for about $11.75bn in cash, mostly funded by debt, with closing expected in Q4 FY27. That takes it from net cash to about 2.3 times net debt/EBITDA. Our 2016-2026 beta of 0.65 was measured on the old balance sheet, so it understates future risk; a rough Hamada estimate says about 14% higher. We show this as a risk and did not change the 13 Oct model inputs [street.json: organon, must_believe.betas]."
     }
   ]
 }

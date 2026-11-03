@@ -4,6 +4,7 @@
   "description": "Builds the report and deck from data/submission",
   "scripts": {
     "deck": "node build_deck.js",
+    "python-deck": "node build_python_deck.js",
     "report": "node build_report.js"
   },
   "author": "",

@@ -99,6 +99,10 @@ const fit = (file, x, y, w, h) => {  // contain the image in the box, centred
 };
 const weights = D.STOCKS.map(w100).join(" / "); // not a middle dot: Century Gothic lacks a matching glyph
 const spoken = (items) => items.slice(0, -1).join(", ") + " and " + items[items.length - 1];
+const say = (who, time) => `[${D.SPEAKERS[who]} · ${time}] `; // opens each slide's speaker notes
+const head = (h, align = "left") => ({ text: h, options: { bold: true, color: WHITE, fill: { color: NAVY }, align } });
+const tableStyle = { fontSize: 12, border: { type: "solid", pt: 0.75, color: HEX.sand }, margin: [0.03, 0.08, 0.03, 0.08], valign: "middle" };
+const signed2 = (x) => D.spct(x, 2);
 
 async function build() {
   const qrData = URL ? await qr(URL) : null;
@@ -131,7 +135,7 @@ async function build() {
     text(s, `β ${sec[t].beta.toFixed(2)} · CAGR ${D.pct(sec[t].cagr, 1)}`, { x: x + 0.2, y: y + 1.45, w: 2.0, h: 0.3,
       fontSize: 11, color: SLATE });
   }
-  text(s, `GROUP PROJECT · DATA AS OF ${D.date(D.asOf).toUpperCase()}`, { x: M, y: 6.75, w: 6.2, h: 0.3, fontSize: 10,
+  text(s, `DATA AS OF ${D.date(D.asOf).toUpperCase()} · STREET UPDATE ${D.date(D.street.as_of).toUpperCase()}`, { x: M, y: 6.75, w: 6.2, h: 0.3, fontSize: 10,
     bold: true, color: SLATE, charSpacing: 1.5 });
   if (qrData) s.addImage({ data: qrData, x: 7.1, y: 6.35, w: 0.8, h: 0.8, objectName: "qr-dashboard" });
   text(s, "THE PORTFOLIO WE BUILT", { x: 9.0, y: 1.2, w: 3.8, h: 0.3, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5 });
@@ -149,17 +153,17 @@ async function build() {
     text(s, v, { x: 9.0, y, w: 1.95, h: 0.5, fontSize: 20, bold: true, color: WHITE, valign: "middle" });
     text(s, l, { x: 11.0, y, w: 1.85, h: 0.5, fontSize: 9, bold: true, color: SAND, valign: "middle" });
   });
-  s.addNotes("[0:30] Our project is an AI-augmented security analysis of three companies, Hindustan Unilever, Sun Pharma and "
-    + "ICICI Bank, built around one practical question: if each of us invests ten thousand rupees a month after graduation, "
-    + "should that money own them, and how? Our answer has three moves. Pick three businesses whose returns don't move "
-    + "together. Price them honestly: all three trade above our blended values, so we buy slowly. And size the portfolio to "
+  s.addNotes(say("A", "0:30") + "Our project is an AI-augmented security analysis of Hindustan Unilever, Sun Pharma and "
+    + "ICICI Bank, built around one question: if each of us invests ten thousand rupees a month after graduation, "
+    + "should that money own them, and how? Three moves. Pick businesses whose returns don't move "
+    + "together. Ask what each price requires you to believe. And size the portfolio to "
     + `each of us: ${weights.replace(/ \/ /g, ", ")} percent, as a satellite around a Nifty index core.`);
 
   // ================================================================ 2. the picks
   pres.addSection({ title: "Analysis" });
   s = pres.addSlide({ masterName: "PANEL_RIGHT", sectionTitle: "Analysis" });
   fill(s, "01 - THE PICKS", "THREE SECTORS, THREE DIFFERENT DRIVERS",
-    "Top-down: an investment-led economy, then three businesses driven by different demand.");
+    "Four tests: a different macro driver, correlation of 0.5 or less, Nifty 50 liquidity with six quarters of transcripts, and a model that fits.");
   D.macro.forEach((m, i) => {
     const x = M + i * (1.84 + 0.17);
     card(s, x, 2.55, 1.84, 0.98, `macro-${i}`);
@@ -199,19 +203,20 @@ async function build() {
       { text: d, options: { color: SAND, fontSize: 12 } }], { x: 9.3, y, w: 3.5, h: [1.05, 0.8, 0.55][i] });
   });
   source(s, "Sources: MOSPI, RBI, Zerodha Aftermarket Report (12 Oct 2026). Full funnel: docs/macro_industry.md.", 8.1);
-  s.addNotes("[1:30] We worked top-down. The economy is growing 7.8%, led by investment, up 11.9%, rather than consumption. "
-    + "So we wanted three different engines. ICICI Bank is the credit engine of an investment-led cycle. Hindustan Unilever "
-    + `is the defensive anchor: the lowest beta, ${sec["HINDUNILVR.NS"].beta.toFixed(2)}, in the weakest sector right now, so we are buying `
-    + "out-of-favour quality rather than chasing. Sun Pharma's demand doesn't follow the cycle, and its US business earns "
-    + `dollars. The proof that they diversify each other: pairwise correlations of only ${corrRange}. Just as important is `
+  s.addNotes(say("A", "1:30") + "We worked top-down. The economy is growing 7.8%, led by investment, up 11.9%, rather than consumption. "
+    + "So we set four tests: a different macro driver, low correlation, enough liquidity and transcripts, and a business a standard model can value. "
+    + "ICICI Bank is the credit engine of an investment-led cycle. Hindustan Unilever "
+    + `is the defensive anchor: the lowest beta, ${sec["HINDUNILVR.NS"].beta.toFixed(2)}, in the weakest sector right now. `
+    + "Sun Pharma's demand doesn't follow the cycle, and its US business earns "
+    + `dollars. The proof that they diversify each other: pairwise correlations of only ${corrRange}. None of these tests claims the stocks will beat the market. Just as important is `
     + "what we rejected. Media was the strongest sector, 11% above its 200-day average. But on our class utility function a "
     + "balanced investor would refuse it, with certainty equivalents of minus 8 to minus 38 percent. Buying it would be "
     + "recency bias, the behaviour our own policy statement bans.");
 
   // ================================================================ 3. valuation
   s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Analysis" });
-  fill(s, "02 - VALUATION", "PRICED FOR MORE GROWTH THAN WE CAN JUSTIFY",
-    "Intrinsic value from our Excel models at CAPM discount rates, against today's price and the analysts' targets.");
+  fill(s, "02 - VALUATION", "WHAT THESE PRICES REQUIRE YOU TO BELIEVE",
+    "Intrinsic value from our Excel models at CAPM discount rates, against the 13 Oct price and the analysts' targets.");
   card(s, M, 2.5, 7.75, 4.3, "valuation-chart-card");
   const names = D.STOCKS.map((t) => D.SHORT[t]);
   s.addChart(pres.charts.BAR, [
@@ -240,18 +245,85 @@ async function build() {
     { x: 8.85, y: 5.98, w: 3.75, h: 0.75, fontSize: 12, color: WHITE, valign: "middle" });
   source(s, "Two-stage DDM (HUL), two-stage residual income (Sun Pharma, ICICI Bank), peer P/E and ROE-adjusted P/B: workbook/valuation.xlsx. "
     + "Blended = average of model and peer values. Analyst targets: Yahoo Finance consensus.");
-  s.addNotes("[1:30] Excel is our source of truth: a two-stage dividend discount model for HUL, which pays out most of its "
-    + "profit, and residual income for Sun Pharma and for ICICI, a bank. Against today's prices, the blended values are "
+  s.addNotes(say("A", "1:30") + "Excel is our source of truth: a two-stage dividend discount model for HUL, which pays out most of its "
+    + "profit, and residual income for Sun Pharma and for ICICI, a bank. Against the 13 October prices, the blended values are "
     + spoken(D.STOCKS.map((t, i) => `${D.pct(-val[t].upside_vs_latest.blended)}${i ? "" : " below"} for ${D.SHORT[t]}`))
-    + ". So is the market wrong? Reverse the model and ask what growth the price implies: "
+    + ". So is the market wrong? We don't say that, and you'll see why when we test efficiency. Instead, reverse the model and ask what the price requires: growth of "
     + spoken(D.STOCKS.map((t, i) => `${D.pct(val[t].market_implied_growth, 1)}${i ? "" : " a year for ever"} for ${D.SHORT[t]}`))
     + `. ICICI grew loans ${(icici.loan_growth * 100).toFixed(1)}% last quarter, so its implied growth is not crazy; the gap comes mostly from our `
     + `${D.pct(val["ICICIBANK.NS"].cost_of_equity, 1)} cost of equity, driven by a beta of ${sec["ICICIBANK.NS"].beta.toFixed(2)}. Analysts are far more `
-    + "bullish, with mean targets well above the price. Our honest reading: good companies at full prices.");
+    + "bullish, with mean targets well above the price. Why is the next slide.");
 
-  // ================================================================ 4. AI tasks
+  // ================================================================ 4. Street vs our view
+  const street = D.street, cons = street.consensus, must = street.must_believe.stocks, bridge = street.must_believe.icici_bridge, at5y = street.at_5y_beta;
+  s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Analysis" });
+  fill(s, "03 - STREET CHECK", "THE STREET RANKS THEM ALMOST OPPOSITE TO OUR MODELS",
+    `Consensus on ${D.date(street.as_of)}, after the Q2 results. Our 13 Oct model inputs do not change.`);
+  s.addTable([["Stock", "Buy share", "Mean target", "Our r", "r the price needs", "r the target needs"].map((h, j) => head(h, j ? "right" : "left")),
+    ...D.STOCKS.map((t) => [D.SHORT[t], `${D.pct(cons[t].buy_share)} of ${cons[t].analysts}`, `${D.rupee(cons[t].target.mean)} (${D.spct(cons[t].upside_to_mean)})`,
+      D.pct(must[t].our_r, 1), D.pct(must[t].r_needed_for_price, 1), D.pct(must[t].r_needed_for_target, 1)]
+      .map((c, j) => ({ text: c, options: { color: NAVY, bold: j === 0, fill: { color: WHITE }, align: j ? "right" : "left" } })))],
+  { x: M, y: 2.5, w: 6.6, colW: [1.25, 1.1, 1.55, 0.7, 1.0, 1.0], rowH: [0.55, 0.42, 0.42, 0.42], objectName: "street-table", ...tableStyle });
+  text(s, "WHERE THE GAP COMES FROM", { x: M, y: 4.5, w: 6.6, h: 0.28, fontSize: 10, bold: true, color: ORANGE, charSpacing: 1.5 });
+  [["BETA WINDOW", `ICICI's beta is ${street.must_believe.betas["ICICIBANK.NS"].full.toFixed(2)} over 10.8 years, ${street.must_believe.betas["ICICIBANK.NS"]["5y"].toFixed(2)} over five.`],
+    ["SUBSIDIARIES", "Brokers add about ₹265 a share; our residual-income model does not."],
+    ["ROE", "The Street assumes 17% then 16%; we use 16% then 15%."]].forEach(([h, d], i) => {
+    text(s, [{ text: `${h}  `, options: { bold: true, color: NAVY } }, { text: d, options: { color: NAVY } }], { x: M, y: 4.8 + i * 0.32, w: 6.6, h: 0.3, fontSize: 13 });
+  });
+  card(s, M, 5.85, 6.6, 0.95, "street-callout", NAVY);
+  text(s, `A difference in inputs, not facts. We keep our base case: changing beta after seeing the Street's answer would be tuning. With the 5-year beta, P would be ${D.STOCKS.map((t) => Math.round(at5y.weights[t] * 100)).join(" / ")}.`,
+    { x: M + 0.15, y: 5.92, w: 6.3, h: 0.82, fontSize: 13, color: WHITE, valign: "middle" });
+  card(s, 7.45, 2.5, 5.28, 4.3, "bridge-card");
+  text(s, "ICICI BANK: FROM OUR VALUE TO THE PRICE, ONE ASSUMPTION AT A TIME", { x: 7.6, y: 2.58, w: 5.0, h: 0.3, fontSize: 10, bold: true, color: ORANGE, charSpacing: 0.5 });
+  const bridgeLabels = ["Our model", "5-year beta", "+ Subsidiaries", "+ Street's ROE", "Price, 3 Nov", "Mean target"];
+  s.addChart(pres.charts.BAR, [{ name: "ICICI Bank, rupees per share", labels: bridgeLabels, values: bridge.map((b) => b.value) }],
+    { x: 7.55, y: 2.9, w: 5.08, h: 3.85, barDir: "bar", barGapWidthPct: 40, chartColors: [HEX.orange, HEX.gold, HEX.gold, HEX.gold, HEX.navy, HEX.teal],
+      catAxisOrientation: "maxMin", showLegend: false, showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 12, dataLabelColor: HEX.navy,
+      dataLabelFormatCode: "#,##0", catAxisLabelColor: HEX.navy, catAxisLabelFontSize: 12, valAxisHidden: true, valAxisMaxVal: 2100, valAxisMinVal: 0,
+      valGridLine: { style: "none" }, catGridLine: { style: "none" }, catAxisLineShow: true, catAxisLineColor: HEX.tan, objectName: "icici-bridge", ...chartText });
+  source(s, "Yahoo Finance consensus, read 3 Nov 2026. Broker figures are mostly second-hand press summaries: data/street/street_views.csv marks each one.");
+  s.addNotes(say("A", "2:00") + `Here is the check we were asked to make: is our selection backed by the analysts? On the businesses, yes. On the ranking, almost the opposite. ICICI has `
+    + `${D.pct(cons["ICICIBANK.NS"].buy_share)} Buy ratings, Sun Pharma ${D.pct(cons["SUNPHARMA.NS"].buy_share)} and HUL ${D.pct(cons["HINDUNILVR.NS"].buy_share)}, while our models show the widest gap for ICICI. `
+    + `Rather than call either side wrong, we solved for the discount rate each price needs: ICICI's price needs ${D.pct(must["ICICIBANK.NS"].r_needed_for_price, 1)} against our ${D.pct(must["ICICIBANK.NS"].our_r, 1)}. `
+    + `The chart walks our ICICI value to the price, one assumption at a time. We start at ${D.rupee(bridge[0].value)}. Use the five-year beta and it is ${D.rupee(bridge[1].value)}. Add the subsidiaries, which brokers value at about 265 rupees a share, and it is ${D.rupee(bridge[2].value)}. `
+    + `Use the Street's return on equity and it is ${D.rupee(bridge[3].value)}. The price is ${D.rupee(bridge[4].value)} and the mean target ${D.rupee(bridge[5].value)}. So the disagreement is about inputs, not facts. `
+    + "We kept our base case, because switching beta after seeing the answer would be tuning, and we show the effect openly. One caution: most broker numbers here are press summaries, and we mark which.");
+
+  // ================================================================ 5. mosaic
   s = pres.addSlide({ masterName: "NAVY", sectionTitle: "Analysis" });
-  fill(s, "03 - AI-AUGMENTED ANALYSIS", "FIVE AI TASKS, EACH CHECKED AGAINST A BENCHMARK",
+  fill(s, "04 - MOSAIC", "THE MOSAIC: PUBLIC PIECES THAT TEST EACH THESIS",
+    "Mosaic theory allows public and non-material non-public information; ours is all public. Under semi-strong efficiency it tests a thesis; it does not promise alpha.");
+  const held = (t) => { const h = cons[t].holdings_jun25_sep26; return h ? `FIIs ${h.fii[0].toFixed(1)}% → ${h.fii[1].toFixed(1)}%, DIIs ${h.dii[0].toFixed(1)}% → ${h.dii[1].toFixed(1)}% (Jun 25 to Sep 26).` : "Not used: a jump in Mar 2026 looks like a reclassification."; };
+  const qp = (t) => cons[t].q2.points;
+  [["HINDUNILVR.NS", TEAL, WHITE, `${D.pct(cons["HINDUNILVR.NS"].buy_share)} Buy; mean target cut ${D.pct(-cons["HINDUNILVR.NS"].target_change_since_freeze, 1)} since 13 Oct. Morgan Stanley is Equal-weight.`,
+    `${qp("HINDUNILVR.NS")[1]}; ${qp("HINDUNILVR.NS")[2].replace("EBITDA margin", "margin")}.`,
+    "Still the defensive anchor, but no bargain: \"fairly valued\" was a close call at the freeze and the price has since risen."],
+  ["SUNPHARMA.NS", GOLD, NAVY, `${D.pct(cons["SUNPHARMA.NS"].buy_share)} Buy; Bank of America says Underperform at ₹1,850.`,
+    `${qp("SUNPHARMA.NS")[1]}; reported profit −36% on Organon and litigation one-offs.`,
+    "Organon ($11.75bn, all cash) means about 2.3× net debt/EBITDA. Our beta understates that, and the \"defensive\" label is weaker."],
+  ["ICICIBANK.NS", ORANGE, WHITE, `${D.pct(cons["ICICIBANK.NS"].buy_share)} Buy; targets rest on 2.2–2.6× book value plus subsidiaries.`,
+    `${qp("ICICIBANK.NS")[0].replace(" to about Rs 14,840 cr", "")}; ${qp("ICICIBANK.NS")[1]}; ${qp("ICICIBANK.NS")[3].split(";")[0]}.`,
+    `Growth engine confirmed. The most liked stock is also ${D.pct(D.ai.risk.risk_share_latest["ICICI Bank"])} of our risk, so we watch crowding.`]]
+    .forEach(([t, color, ink, streetView, q2, forUs], i) => {
+      const x = M + i * (3.93 + 0.17), y = 2.55;
+      card(s, x, y, 3.93, 4.25, `mosaic-${D.SHORT[t]}`);
+      s.addShape(pres.shapes.RECTANGLE, { x, y, w: 3.93, h: 0.48, fill: { color }, line: { color, width: 0 } });
+      text(s, D.LONG[t], { x: x + 0.15, y, w: 3.6, h: 0.48, fontSize: 15, bold: true, color: ink, valign: "middle" });
+      [["STREET", streetView, 0.95], ["Q2 FY27", q2, 0.95], ["WHO IS BUYING", held(t), 0.74], ["WHAT IT CHANGES FOR US", forUs, 1.0]].reduce((top, [h, d, tall]) => {
+        text(s, [{ text: h, options: { fontSize: 10, bold: true, color: h.startsWith("WHAT") ? ORANGE : SLATE, breakLine: true } }, { text: d, options: { fontSize: 12, color: NAVY } }],
+          { x: x + 0.15, y: top, w: 3.63, h: tall });
+        return top + tall;
+      }, y + 0.56);
+    });
+  source(s, "Yahoo Finance, Screener, press summaries of broker notes, read 3 Nov 2026. Sun Pharma's Q2 figures differ between sources.", 11.4, TAN);
+  s.addNotes(say("B", "2:00") + "The mosaic idea is that an analyst builds a view from many small pieces. Everything here is public, so under semi-strong efficiency we do not expect it to find alpha. We use it to check whether each thesis still stands after the Q2 results. "
+    + `HUL: volumes grew 7%, which supports the defensive thesis, but margins fell 142 basis points and the Street trimmed its target. Domestic institutions are buying as foreign investors sell. So it stays an anchor, not a bargain. `
+    + "Sun Pharma is where the mosaic changed our view most. It is buying Organon for 11.75 billion dollars in cash, mostly debt. A net-cash company becomes one with about 2.3 times net debt to EBITDA. Our beta was measured on the old balance sheet, so it understates future risk. Our original report did not cover this; it does now. "
+    + `ICICI: profit up 20%, margins down 18 basis points, every analyst says Buy. That confirms the growth thesis, but a stock everyone likes is also ${D.pct(D.ai.risk.risk_share_latest["ICICI Bank"])} of our portfolio's risk.`);
+
+  // ================================================================ 6. AI tasks
+  s = pres.addSlide({ masterName: "NAVY", sectionTitle: "Analysis" });
+  fill(s, "05 - AI-AUGMENTED ANALYSIS", "FIVE AI TASKS, EACH CHECKED AGAINST A BENCHMARK",
     "AI reads and labels; Python computes every number. Each task reports how far it can be trusted.");
   const fr = D.ai.framing, ex = D.extraction.counts;
   const hulGap = D.calls["HINDUNILVR.NS"].tone_gap;
@@ -285,7 +357,7 @@ async function build() {
   });
   source(s, "Prompts: docs/ai_prompts.md. Extraction: data/ai/ratio_extraction.json (page references for every figure). "
     + "FinBERT: ProsusAI/finbert. Headlines: Google News RSS, last 12 months.", 11.4, TAN);
-  s.addNotes(`[1:00] The brief asked how AI can augment this, so we ran five tasks, and each one is checked against `
+  s.addNotes(say("B", "1:00") + `The brief asked how AI can augment this, so we ran five tasks, and each one is checked against `
     + `something independent. Claude read the FY26 annual reports and extracted ${D.extraction.comparisons} numbers: ${ex.match} match Yahoo `
     + `and Screener within 1%, and the rest are definition differences, not errors. FinBERT scored over `
     + `${(Math.floor(D.headlineCount / 100) * 100).toLocaleString("en-IN")} headlines and every earnings-call sentence: HUL's management is far more upbeat than the `
@@ -295,7 +367,7 @@ async function build() {
 
   // ================================================================ 5. live demo
   s = pres.addSlide({ masterName: "PANEL_LEFT", sectionTitle: "Analysis" });
-  fill(s, "04 - LIVE DEMO", "SEE IT LIVE", "Two minutes, four stops on our dashboard.");
+  fill(s, "06 - LIVE DEMO", "SEE IT LIVE", "Two minutes, four stops on our dashboard.");
   const y2 = D.prof.Aggressive.y, y4 = D.prof.Balanced.y;
   [["RISK QUESTIONNAIRE", "Ten answers set your risk aversion A"],
     ["YOUR PORTFOLIO", `The rupee split for your A; slide A from 4 to 2: ${D.pct(y4)} \u2192 ${D.pct(y2)} in P`],
@@ -321,7 +393,7 @@ async function build() {
       options: { fontSize: 13, color: NAVY } }], { x: 4.95, y: 5.95, w: 7.78, h: 0.7 });
   const lakhInvested = 100000, split = D.STOCKS.map((t) => `${D.rupee(y4 * D.P.weights[t] * lakhInvested)} ${D.SHORT[t]}`);
   const covidHit = y4 * D.stress["COVID crash (Feb-Mar 2020)"]["Portfolio P"] * lakhInvested;
-  s.addNotes("[2:00] DEMO DRIVER: open the dashboard (Submission data, so the screen matches the slides). "
+  s.addNotes(say("B", "2:00") + "DEMO DRIVER: open the dashboard (Submission data, so the screen matches the slides). "
     + "(1) Questionnaire: 'Ten questions turn your answers into a risk-aversion number, A.' Click the middle answer each time "
     + "(that is our Balanced investor, A = 4) and press BUILD MY PORTFOLIO. "
     + `(2) Portfolio: 'For A = 4, one lakh splits into ${split.join(", ")} and ${D.rupee((1 - y4) * lakhInvested)} of T-bills. `
@@ -333,41 +405,88 @@ async function build() {
     + "Then flip the data selector to LATEST and say what has changed since submission. "
     + "If any step takes more than 10 seconds, drop down the backup ladder without apologising.");
 
-  // ================================================================ 6. technical analysis
+  // ================================================================ 8. market efficiency
+  const em = D.emh.semi_strong, weak = D.emh.weak_form;
+  const maxZ = Math.max(...Object.values(weak).flatMap((r) => [r.z, ...Object.values(r.variance_ratios).map((v) => v.z)]).map(Math.abs));
   s = pres.addSlide({ masterName: "PANEL_RIGHT", sectionTitle: "Analysis" });
-  fill(s, "05 - FORECASTING", "TECHNICAL ANALYSIS LOSES AFTER COSTS",
-    "The brief asked: is technical analysis possible? Sharpe ratio 2016\u20132026, after a 0.25% round-trip cost.");
-  card(s, M, 2.5, 7.9, 4.3, "ta-chart-card");
+  fill(s, "07 - MARKET EFFICIENCY", "WE FOUND NO RELIABLE WAY TO BEAT THESE PRICES",
+    "Top: Sharpe ratio of trading rules against buy-and-hold, after a 0.25% cost. Below: abnormal returns around 72 earnings results.");
+  card(s, M, 2.5, 7.9, 2.28, "ta-chart-card");
   const series = [...D.STOCKS, "^NSEI"];
   const rules = [["Buy and hold", "Buy and hold"], ["Trend (50/200 DMA)", "Trend: 50/200-day average"], ["RSI mean reversion", "RSI mean reversion"]];
   s.addChart(pres.charts.BAR, rules.map(([rule, nm]) => ({ name: nm, labels: series.map((t) => D.SHORT[t]),
     values: series.map((t) => D.ta.find((r) => r.ticker === t && r.rule === rule).sharpe) })),
-  { x: M + 0.15, y: 2.6, w: 7.6, h: 4.1, barDir: "col", barGrouping: "clustered", barGapWidthPct: 55,
+  { x: M + 0.1, y: 2.53, w: 7.7, h: 2.22, barDir: "col", barGrouping: "clustered", barGapWidthPct: 55,
     chartColors: [HEX.navy, HEX.gold, HEX.brick], showLegend: true, legendPos: "t", legendFontSize: 11, legendColor: HEX.navy,
     showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 10, dataLabelColor: HEX.navy, dataLabelFormatCode: "0.00",
-    catAxisLabelColor: HEX.navy, catAxisLabelFontSize: 12, valAxisHidden: true, valGridLine: { style: "none" },
+    catAxisLabelColor: HEX.navy, catAxisLabelFontSize: 11, valAxisHidden: true, valGridLine: { style: "none" },
     catGridLine: { style: "none" }, catAxisLineShow: true, catAxisLineColor: HEX.tan, objectName: "ta-chart", ...chartText });
-  const es = D.ai.event_study;
-  text(s, "WEAK-FORM EFFICIENCY", { x: 9.3, y: 1.35, w: 3.5, h: 0.3, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5 });
-  text(s, `${D.taWins} OF ${D.taRules.length}`, { x: 9.3, y: 1.7, w: 3.5, h: 0.8, fontSize: 44, bold: true, color: WHITE });
-  text(s, "RULES THAT BEAT BUY-AND-HOLD", { x: 9.3, y: 2.5, w: 3.5, h: 0.3, fontSize: 10, bold: true, color: SAND });
-  text(s, "The rules cut drawdowns, so they are risk controls, not return engines.", { x: 9.3, y: 2.85, w: 3.5, h: 0.6, fontSize: 12, color: SAND });
-  rule(s, 9.3, 3.65, 3.5);
-  text(s, "SEMI-STRONG: NEWS IS PRICED FAST", { x: 9.3, y: 3.85, w: 3.5, h: 0.3, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5 });
-  text(s, `${D.spct(es.mean_car_positive_surprise, 1)} / ${D.spct(es.mean_car_negative_surprise, 1)}`, { x: 9.3, y: 4.2, w: 3.5, h: 0.65, fontSize: 32, bold: true, color: WHITE });
-  text(s, "3-DAY ABNORMAL RETURN AFTER EARNINGS BEATS / MISSES", { x: 9.3, y: 4.85, w: 3.5, h: 0.5, fontSize: 10, bold: true, color: SAND });
-  text(s, `${es.events} results announcements since 2016; market-model CAR over days \u22121 to +1.`, { x: 9.3, y: 5.4, w: 3.5, h: 0.6, fontSize: 12, color: SAND });
-  source(s, "Prices: Yahoo Finance, 2016\u20132026. Earnings surprises: Yahoo Finance earnings dates. Figure: data/submission/figures/ta.png.", 8.1);
-  s.addNotes(`[0:45] Is technical analysis possible? We tested two classic rules, a 50/200-day moving-average crossover and RSI mean `
-    + `reversion, after a 0.25% trading cost. Buy-and-hold has the higher Sharpe ratio in ${D.taWins ? `${D.taRules.length - D.taWins} of ${D.taRules.length}` : `all ${D.taRules.length}`} cases. `
-    + "The rules do cut drawdowns, so they're risk controls, not return engines. That is weak-form efficiency. And prices "
-    + `digest news fast: across ${es.events} earnings announcements, stocks rose ${D.pct(es.mean_car_positive_surprise, 1)} in three days after a beat `
-    + `and fell ${D.pct(-es.mean_car_negative_surprise, 1)} after a miss.`);
+  const ev = (x) => `${signed2(x.mean)} (t ${x.t.toFixed(1)})`.replace("t -", "t \u2212");
+  const gap = (x) => (x ? `${signed2(x.diff)} [${signed2(x.low)}, ${signed2(x.high)}]` : "\u2013");
+  s.addTable([[`Window (trading days)`, `Beats (${em.beats.ev.n})`, `Misses (${em.misses.ev.n})`, "Beat minus miss [95% CI]"].map((h, j) => head(h, j ? "right" : "left")),
+    ...[["Before: \u221220 to \u22122", "pre"], ["Reaction: \u22121 to +1", "ev"], ["After: +2 to +20", "d20"], ["After: +2 to +60", "d60"]].map(([nm, k]) =>
+      [nm, ev(em.beats[k]), ev(em.misses[k]), gap(em.beat_minus_miss[k])].map((c, j) => ({ text: c, options: { color: NAVY, bold: j === 0 || k === "ev", fill: { color: WHITE }, align: j ? "right" : "left" } })))],
+  { x: M, y: 4.88, w: 7.9, colW: [2.2, 1.5, 1.5, 2.7], rowH: 0.38, objectName: "event-table", ...tableStyle });
+  text(s, "WEAK FORM", { x: 9.3, y: 1.0, w: 3.5, h: 0.28, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5 });
+  text(s, `${D.taWins} OF ${D.taRules.length}`, { x: 9.3, y: 1.28, w: 3.5, h: 0.7, fontSize: 40, bold: true, color: WHITE });
+  text(s, "RULES THAT BEAT BUY-AND-HOLD", { x: 9.3, y: 1.98, w: 3.5, h: 0.28, fontSize: 10, bold: true, color: SAND });
+  text(s, `Autocorrelation and variance ratios: largest |z| is ${maxZ.toFixed(1)}, below the 2 that would flag a pattern.`, { x: 9.3, y: 2.28, w: 3.5, h: 0.65, fontSize: 12, color: SAND });
+  rule(s, 9.3, 3.03, 3.5);
+  text(s, "SEMI-STRONG FORM", { x: 9.3, y: 3.15, w: 3.5, h: 0.28, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5 });
+  text(s, signed2(em.beat_minus_miss.ev.diff), { x: 9.3, y: 3.43, w: 3.5, h: 0.7, fontSize: 40, bold: true, color: WHITE });
+  text(s, "BEAT MINUS MISS, IN THREE DAYS", { x: 9.3, y: 4.13, w: 3.5, h: 0.28, fontSize: 10, bold: true, color: SAND });
+  text(s, "After that, no drift we can detect: both later ranges include zero. But 72 events can miss a small drift; Harshita et al. (2018) found about 6% over 64 days in the Nifty 500.", { x: 9.3, y: 4.43, w: 3.5, h: 1.05, fontSize: 12, color: SAND });
+  rule(s, 9.3, 5.58, 3.5);
+  text(s, "STRONG FORM", { x: 9.3, y: 5.7, w: 3.5, h: 0.28, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5 });
+  text(s, "Not tested: it needs inside information we do not have.", { x: 9.3, y: 5.98, w: 3.5, h: 0.55, fontSize: 12, color: SAND });
+  source(s, `Yahoo Finance, 2016\u20132026. Market-model abnormal returns; 250-day estimation window. Results: data/submission/emh.json.`, 8.1);
+  s.addNotes(say("B", "1:45") + `This slide explains why we make no valuation-based Buy. Weak form first: can past prices predict? We tested two classic rules, a moving-average crossover and RSI mean reversion, after a 0.25% cost. `
+    + `${D.taWins === 0 ? "None" : D.taWins} of ${D.taRules.length} beat buy-and-hold on Sharpe. The rules cut drawdowns, so they are risk controls, not return engines. Formal tests agree: the largest z on autocorrelation and variance ratios is ${maxZ.toFixed(1)}. `
+    + `Semi-strong next. A reaction alone is not enough; the real test is whether anything is left afterwards. Across ${em.events} results, beats beat misses by ${D.pct(em.beat_minus_miss.ev.diff, 2)} in three days, and that gap is significant. `
+    + `From day two onwards, the gap is ${D.pct(Math.abs(em.beat_minus_miss.d20.diff), 2)} the other way by day 20 and ${D.pct(em.beat_minus_miss.d60.diff, 2)} by day 60, and both ranges include zero. So no drift we can detect. Be careful with that sentence: the ranges are wide, and a published study of Indian stocks did find drift. `
+    + "Strong form we did not test. So: our work fits weak and semi-strong efficiency, which is why we don't claim to generate alpha.");
 
-  // ================================================================ 7. portfolio
+  // ================================================================ 9. sentiment
+  const mood = D.mood, moodThen = D.moodAtFreeze, mmi = mood.market_mood_snapshot, vix = moodThen.vix;
+  s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Analysis" });
+  fill(s, "08 - SENTIMENT", "FEAR AND GREED DESCRIBES THE CROWD; IT DOES NOT TIME IT",
+    `CNN's Fear & Greed index is American. In India: Tickertape's Market Mood Index, India VIX, and our own score for each stock.`);
+  [[mmi.value.toFixed(1), `MARKET MOOD INDEX: ${mmi.zone.toUpperCase()}`, "3 Nov, one hand reading"],
+    [mood.vix.level.toFixed(1), "INDIA VIX", `${D.pct(mood.vix.one_year_percentile)} percentile of the past year`]].forEach(([v, l, n], i) => {
+    const x = M + i * (3.2 + 0.15);
+    card(s, x, 2.5, 3.2, 1.2, `market-mood-${i}`);
+    text(s, v, { x: x + 0.15, y: 2.56, w: 2.9, h: 0.55, fontSize: 28, bold: true, color: ORANGE });
+    text(s, [{ text: l, options: { fontSize: 10, bold: true, color: NAVY, breakLine: true } }, { text: n, options: { fontSize: 11, color: SLATE } }], { x: x + 0.15, y: 3.12, w: 2.9, h: 0.5 });
+  });
+  text(s, "OUR STOCK SCORE, 0 = FEAR, 100 = GREED: 3 NOV (13 OCT)", { x: M, y: 3.85, w: 6.55, h: 0.28, fontSize: 10, bold: true, color: ORANGE, charSpacing: 1 });
+  D.STOCKS.forEach((t, i) => {
+    const x = M + i * (2.08 + 0.155), m = mood.stocks[t];
+    card(s, x, 4.15, 2.08, 1.08, `stock-mood-${D.SHORT[t]}`);
+    text(s, `${m.mood.toFixed(0)}`, { x: x + 0.13, y: 4.2, w: 0.85, h: 0.55, fontSize: 28, bold: true, color: m.mood < 50 ? TEAL : ORANGE });
+    text(s, m.zone.toUpperCase(), { x: x + 1.0, y: 4.32, w: 1.0, h: 0.3, fontSize: 10, bold: true, color: SLATE });
+    text(s, `${D.SHORT[t]} (${moodThen.stocks[t].mood.toFixed(0)})`, { x: x + 0.13, y: 4.78, w: 1.85, h: 0.35, fontSize: 13, bold: true, color: NAVY });
+  });
+  card(s, M, 5.38, 6.55, 1.42, "sentiment-callout", NAVY);
+  text(s, [{ text: "No stock-level test reaches p < 0.05. ", options: { bold: true, color: GOLD } },
+    { text: `The score is built from prices, so it describes mood rather than measuring it independently. FinBERT tone says nothing about the next five days (|r| \u2264 ${Math.max(...D.STOCKS.map((t) => Math.abs(moodThen.tone[t].next_r))).toFixed(2)}).`, options: { color: WHITE } }],
+  { x: M + 0.15, y: 5.45, w: 6.25, h: 1.28, fontSize: 13, valign: "middle" });
+  card(s, 7.3, 2.5, 5.43, 4.3, "vix-card");
+  text(s, "NIFTY OVER THE NEXT 20 DAYS, BY INDIA VIX LEVEL", { x: 7.45, y: 2.58, w: 5.13, h: 0.3, fontSize: 10, bold: true, color: ORANGE, charSpacing: 0.5 });
+  s.addChart(pres.charts.BAR, [{ name: "Mean next-20-day return", labels: vix.quintiles.map((q) => `${q.low.toFixed(0)}\u2013${q.high.toFixed(0)}`), values: vix.quintiles.map((q) => q.forward) }],
+    { x: 7.4, y: 2.88, w: 5.23, h: 2.85, barDir: "col", barGapWidthPct: 45, chartColors: [HEX.gold, HEX.gold, HEX.gold, HEX.gold, HEX.orange], showLegend: false,
+      showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 12, dataLabelColor: HEX.navy, dataLabelFormatCode: "0.0%", catAxisLabelColor: HEX.navy, catAxisLabelFontSize: 12,
+      valAxisHidden: true, valGridLine: { style: "none" }, catGridLine: { style: "none" }, catAxisLineShow: true, catAxisLineColor: HEX.tan, objectName: "vix-chart", ...chartText });
+  text(s, `Fear has been followed by higher returns (r = ${vix.slope_all.r.toFixed(2)}, p = ${vix.slope_all.p.toFixed(3)}; without COVID, r = ${vix.slope_without_covid.r.toFixed(2)}, p = ${vix.slope_without_covid.p.toFixed(3)}), but one quintile carries it, and it may be a risk premium rather than a mispricing.`,
+    { x: 7.45, y: 5.75, w: 5.13, h: 1.0, fontSize: 12, color: NAVY });
+  source(s, "Tickertape MMI, 3 Nov 2026, 9:30 AM. ^INDIAVIX, Yahoo Finance. Score: momentum, RSI, calm and distance from the high, ranked over 750 days.");
+  s.addNotes(say("C", "1:15") + `We also looked at the crowd. CNN's Fear and Greed index is American, so we used India's equivalents. Tickertape's Market Mood Index read ${mmi.value.toFixed(0)}, Greed, on 3 November, but that is one reading with no history, so we can't test it. `
+    + `For each stock we built a score from four price signals, ranked against its own last three years. HUL and Sun Pharma were at extreme fear on 13 October and have recovered to fear; ICICI moved from fear to greed. Because it uses prices, it describes the mood rather than measuring it independently. `
+    + `Does it predict? At stock level, no test passes. FinBERT's news tone says nothing about the next five days. At market level, a higher India VIX was followed by higher Nifty returns, even without COVID, but the top band carries it, and that could simply be a risk premium. So sentiment tells us about the crowd, and it is a reason to stick to a monthly plan, not a timing tool.`);
+
+  // ================================================================ 10. portfolio
   pres.addSection({ title: "Portfolio" });
   s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Portfolio" });
-  fill(s, "06 - PORTFOLIO", `${weights}, SIZED TO EACH INVESTOR`,
+  fill(s, "09 - PORTFOLIO", `${weights}, SIZED TO EACH INVESTOR`,
     `Forward-looking (CAPM) expected returns, 10\u201360% per stock. History alone would put ${D.pct(D.hist.weights["ICICIBANK.NS"])} in last decade's winner.`);
   card(s, M, 2.42, 8.0, 3.62, "frontier-card");
   s.addImage({ path: D.figure("frontier.png"), x: M + 0.12, y: 2.48, w: 7.76, h: 3.46, objectName: "frontier" });
@@ -390,7 +509,7 @@ async function build() {
     + `(2023\u201326): forward P ${D.spct(o["Forward-looking P"].portfolio.cagr, 1)}/yr, Nifty ${D.spct(o["Equal weight"].market.cagr, 1)}, `
     + `history-based P ${D.spct(o["History-based P"].portfolio.cagr, 1)}.`,
   { x: 4.0, y: 6.18, w: 8.55, h: 0.72, fontSize: 12, color: WHITE, valign: "middle" });
-  s.addNotes(`[1:30] Now the portfolio. On history alone, the optimiser puts the maximum ${D.pct(D.hist.weights["ICICIBANK.NS"])} in ICICI, `
+  s.addNotes(say("C", "1:30") + `Now the portfolio. On history alone, the optimiser puts the maximum ${D.pct(D.hist.weights["ICICIBANK.NS"])} in ICICI, `
     + "because it was the last decade's winner. That's hindsight. So we use forward-looking CAPM returns and get "
     + `${D.STOCKS.map((t) => `${w100(t)}% ${D.SHORT[t]}`).join(", ")}. Here's the honest part: that portfolio's Sharpe ratio is `
     + `${D.P.sharpe.toFixed(2)}, below the Nifty's ${D.fwd.market.sharpe.toFixed(2)}. Three stocks can't beat the market's diversification, which is `
@@ -398,11 +517,40 @@ async function build() {
     + `${D.pct(D.prof.Aggressive.y)} in P; with 4, ${D.pct(D.prof.Balanced.y)}; with 6, ${D.pct(D.prof.Conservative.y)}. The rest goes to T-bills. `
     + `Out of sample, weights fitted on 2016 to 2022 earned ${D.pct(o["Forward-looking P"].portfolio.cagr, 1)} a year from 2023, against `
     + `${D.pct(o["Equal weight"].market.cagr, 1)} for the Nifty and ${D.pct(o["History-based P"].portfolio.cagr, 1)} for the history-based weights, `
-    + "with the caveat that we chose Sun Pharma after its run.");
+    + "with the caveat that we chose Sun Pharma after its run. "
+    + "One more honest point: the same beta of 1.29 makes ICICI both our largest weight and our widest valuation gap. That's consistent once you read the portfolio as taking prices as efficient, and the valuation as asking what must be true.");
 
-  // ================================================================ 8. SIP + IPS
+  // ================================================================ 11. performance measures
+  const perf = D.performance, oosRows = perf.out_of_sample.rows, fullRows = perf.full_sample.rows;
+  const fp = oosRows["Forward-looking P"], niftyT = oosRows["Nifty 50"];
+  s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Portfolio" });
+  fill(s, "10 - PERFORMANCE MEASURES", "DID IT BEAT THE MARKET? A LITTLE, BUT NO ALPHA WE CAN PROVE",
+    `Realised returns. 2023\u201326 weights were fitted on 2016\u201322, so that block is a real test; the 2016\u201326 block is the stocks over the whole sample.`);
+  const perfLine = (nm, r, bold) => [nm, D.pct(r.cagr, 1), D.spct(r.excess_return, 1), r.excess_over_market === 0 ? "\u2013" : D.spct(r.excess_over_market, 1), D.pct(r.volatility, 1), r.beta.toFixed(2),
+    D.num(r.sharpe), D.pct(r.treynor, 1), D.spct(r.jensen_alpha, 1), r.excess_over_market === 0 ? "\u2013" : D.num(r.alpha_t)]
+    .map((c, j) => ({ text: c, options: { color: NAVY, bold: j === 0 || bold, fill: { color: bold ? HEX.sand : WHITE }, align: j ? "right" : "left" } }));
+  s.addTable([["Portfolio", "CAGR", "Rp \u2212 Rf", "Rp \u2212 Rm", "\u03C3", "\u03B2", "Sharpe", "Treynor", "Jensen's \u03B1", "t(\u03B1)"].map((h, j) => head(h, j ? "right" : "left")),
+    perfLine("2023\u201326: Forward-looking P", fp, true), perfLine("2023\u201326: Equal weight", oosRows["Equal weight"]), perfLine("2023\u201326: History-based P", oosRows["History-based P"]), perfLine("2023\u201326: Nifty 50", niftyT),
+    ...D.STOCKS.map((t) => perfLine(`2016\u201326: ${D.SHORT[t]}`, fullRows[t])), perfLine("2016\u201326: Nifty 50", fullRows["^NSEI"])],
+  { x: M, y: 2.5, w: 12.13, colW: [3.33, 0.9, 1.0, 1.0, 0.9, 0.8, 0.9, 1.0, 1.3, 1.0], rowH: 0.3, objectName: "performance-table", ...tableStyle });
+  [["SHARPE = (Rp \u2212 Rf) / \u03C3", `${fp.sharpe.toFixed(2)} vs ${niftyT.sharpe.toFixed(2)}`, "Rewards total risk: the test for a whole portfolio."],
+    ["TREYNOR = (Rp \u2212 Rf) / \u03B2", `${D.pct(fp.treynor, 1)} vs ${D.pct(niftyT.treynor, 1)}`, "Rewards market risk: the test for a piece of a diversified one, like our satellite."],
+    ["ALPHA = (Rp \u2212 Rf) \u2212 \u03B2(Rm \u2212 Rf)", `${D.spct(fp.jensen_alpha, 1)}, t ${fp.alpha_t.toFixed(2)}`, `No \u03B1 here reaches t = 2. On your money it scales with y: ${D.pct(perf.by_profile.Balanced.alpha_on_your_money, 2)} at A = 4.`]].forEach(([h, v, d], i) => {
+    const x = M + i * (3.93 + 0.17);
+    card(s, x, 5.3, 3.93, 1.52, `measure-${i}`);
+    text(s, h, { x: x + 0.15, y: 5.36, w: 3.65, h: 0.26, fontSize: 10, bold: true, color: SLATE });
+    text(s, v, { x: x + 0.15, y: 5.62, w: 3.65, h: 0.46, fontSize: 22, bold: true, color: ORANGE });
+    text(s, d, { x: x + 0.15, y: 6.1, w: 3.65, h: 0.66, fontSize: 12, color: NAVY });
+  });
+  source(s, `Newey-West t-statistics, ${perf.newey_west_lags} lags. Nifty 50 with estimated dividends. Rp \u2212 Rm is the plain gap to the index. Results: data/submission/performance.json.`);
+  s.addNotes(say("C", "1:45") + `The measures from the second half of the course. Excess return first: over 2023 to 2026, on weights fitted before that period, our forward-looking portfolio earned ${D.pct(fp.excess_return, 1)} a year over T-bills, against ${D.pct(niftyT.excess_return, 1)} for the Nifty. `
+    + `Sharpe divides excess return by total risk: ${fp.sharpe.toFixed(2)} against ${niftyT.sharpe.toFixed(2)}. Treynor divides by beta: ${D.pct(fp.treynor, 1)} against ${D.pct(niftyT.treynor, 1)}. Sharpe is the right test for a whole portfolio; Treynor and alpha suit a piece of a diversified one, which is how we use these stocks around an index core. `
+    + `Jensen's alpha is ${D.spct(fp.jensen_alpha, 1)}, but its t-statistic is only ${fp.alpha_t.toFixed(2)}, and no alpha here reaches 2. Even ICICI's ${D.spct(fullRows["ICICIBANK.NS"].jensen_alpha, 1)} over ten years has a t of ${fullRows["ICICIBANK.NS"].alpha_t.toFixed(2)}. Equal weights did better than ours, so this shows no weighting skill. `
+    + `Two details. Sharpe and Treynor don't change with risk aversion, but alpha on your money scales with your share in P. And going forward, with CAPM inputs every asset has alpha zero and Treynor equal to the risk premium, ${D.pct(perf.forward_view.treynor, 2)}, by construction, so these measures only mean something on realised returns.`);
+
+  // ================================================================ 12. SIP + IPS
   s = pres.addSlide({ masterName: "PANEL_LEFT", sectionTitle: "Portfolio" });
-  fill(s, "07 - THE LONG GAME", "OVER THE YEARS", "\u20B910,000 a month for 15 years, under our Investment Policy Statement.");
+  fill(s, "11 - THE LONG GAME", "OVER THE YEARS", "\u20B910,000 a month for 15 years, under our Investment Policy Statement.");
   [["RETURN", "Beat 4% inflation clearly; target \u20B975 lakh"], ["RISK", "Balanced (A = 4) unless the questionnaire says otherwise"],
     ["LIQUIDITY", "6 months of expenses kept outside the portfolio"], ["REBALANCE", "Once a year, with new SIP money first"],
     ["BEHAVIOUR", "No selling in the month after a 20% fall"]].forEach(([h, d], i) => {
@@ -423,31 +571,31 @@ async function build() {
   text(s, "50% Nifty 50 index fund + 50% our three stocks, gliding to 40% equity. Parametric and bootstrap Monte Carlo, "
     + `10,000 paths, pre-tax. Aggressive: ${D.pct(D.goal("Aggressive", "Parametric", 7500000))} / `
     + `${D.pct(D.goal("Aggressive", "Bootstrap", 7500000))} chance of \u20B975 lakh.`, { x: 4.95, y: 5.98, w: 7.78, h: 0.6, fontSize: 12, color: SLATE });
-  s.addNotes(`[1:00] How do you build this over the years? A ten-thousand-rupee SIP rising 10% a year puts in ${D.lakh(invested)} over 15 years. `
+  s.addNotes(say("C", "1:00") + `How do you build this over the years? A ten-thousand-rupee SIP rising 10% a year puts in ${D.lakh(invested)} over 15 years. `
     + "Half goes to a Nifty index fund and half to our three stocks, and equity glides down to 40% as the goal nears. For a "
     + `balanced investor the median outcome is ${D.lakh(median)}. The chance of reaching 75 lakh is ${D.pct(D.goal("Balanced", "Parametric", 7500000))} `
     + `with normal returns and ${D.pct(D.goal("Balanced", "Bootstrap", 7500000))} when we resample real history. Our investment policy statement `
     + "adds the discipline: an emergency fund outside the portfolio, yearly rebalancing with new money, and behavioural rules, "
     + "starting with no selling in the month after a 20% fall.");
 
-  // ================================================================ 9. recommendation
+  // ================================================================ 13. recommendation
   pres.addSection({ title: "Close" });
   s = pres.addSlide({ masterName: "PANEL_LEFT", sectionTitle: "Close" });
-  fill(s, "08 - RECOMMENDATION", "OUR CALL", "Range: our blended value to the analysts' mean target.");
+  fill(s, "12 - RECOMMENDATION", "OUR CALL", "Range: our blended value to the analysts' mean target. Prices of 13 Oct.");
   D.STOCKS.forEach((t, i) => {
     const r = D.recommendation[t], y = 2.75 + i * 1.32;
     text(s, D.LONG[t].toUpperCase(), { x: M, y, w: 3.3, h: 0.3, fontSize: 12, bold: true, color: SAND, charSpacing: 1 });
-    text(s, r.action, { x: M, y: y + 0.3, w: 3.3, h: 0.6, fontSize: 30, bold: true, color: r.action === "BUY" ? GOLD : WHITE });
+    text(s, r.action, { x: M, y: y + 0.3, w: 3.3, h: 0.6, fontSize: 30, bold: true, color: WHITE });
     text(s, `${D.rupee(r.low)}\u2013${D.rupee(r.high).slice(1)} \u00B7 price ${D.rupee(r.price)}`, { x: M, y: y + 0.88, w: 3.3, h: 0.3, fontSize: 12, color: SAND });
   });
-  text(s, "BUY THE PORTFOLIO SLOWLY, THROUGH THE SIP", { x: 4.95, y: 0.95, w: 7.78, h: 0.95, fontSize: 28, bold: true, color: ORANGE });
+  text(s, "HOLD AT THESE WEIGHTS, ADD ONLY THROUGH THE SIP", { x: 4.95, y: 0.95, w: 7.78, h: 0.95, fontSize: 28, bold: true, color: ORANGE });
   text(s, "Good businesses at full prices: own them, but let monthly buying average the entry price.",
     { x: 4.95, y: 1.95, w: 7.78, h: 0.4, fontSize: 14, color: NAVY });
   text(s, "RISKS WE ARE WATCHING", { x: 4.95, y: 2.65, w: 7.78, h: 0.3, fontSize: 10, bold: true, color: ORANGE, charSpacing: 1.5 });
   const growths = D.STOCKS.map((t) => val[t].market_implied_growth);
   [["CONCENTRATION", `ICICI is ${D.pct(D.P.weights["ICICIBANK.NS"])} of the weight but ${D.pct(D.ai.risk.risk_share_latest["ICICI Bank"])} of the risk.`],
-    ["VALUATION", `Today's prices assume ${D.pct(Math.min(...growths), 1)} to ${D.pct(Math.max(...growths), 1)} growth a year, for ever.`],
-    ["REGULATION", "Proposed caps on trade margins for anti-cancer drugs (Sun Pharma)."]].forEach(([h, d], i) => {
+    ["VALUATION", `Prices require ${D.pct(Math.min(...growths), 1)} to ${D.pct(Math.max(...growths), 1)} growth a year for ever, or a lower discount rate.`],
+    ["SUN PHARMA", "Organon's debt, and proposed caps on trade margins for anti-cancer drugs."]].forEach(([h, d], i) => {
     const y = 3.05 + i * 0.62;
     text(s, `0${i + 1}`, { x: 4.95, y: y + 0.02, w: 0.45, h: 0.3, fontSize: 11, bold: true, color: ORANGE });
     text(s, [{ text: `${h}  `, options: { bold: true, color: NAVY } }, { text: d, options: { color: NAVY } }],
@@ -456,13 +604,13 @@ async function build() {
   rule(s, 4.95, 5.0, 7.78);
   text(s, "LIMITATIONS", { x: 4.95, y: 5.15, w: 7.78, h: 0.3, fontSize: 10, bold: true, color: ORANGE, charSpacing: 1.5 });
   text(s, "One risk-free rate for 2016\u201326 \u00B7 Nifty total return estimated (+1.22%/yr dividends) \u00B7 Sun Pharma chosen after "
-    + "its run \u00B7 pre-tax, no fees \u00B7 coursework, not investment advice.", { x: 4.95, y: 5.5, w: qrData ? 6.4 : 7.78, h: 0.75, fontSize: 12, color: SLATE });
+    + "its run \u00B7 broker views mostly second-hand press summaries \u00B7 pre-tax, no fees \u00B7 coursework, not investment advice.", { x: 4.95, y: 5.5, w: qrData ? 6.4 : 7.78, h: 0.75, fontSize: 12, color: SLATE });
   if (qrData) s.addImage({ data: qrData, x: 11.73, y: 5.2, w: 1.0, h: 1.0, objectName: "qr-dashboard" });
-  s.addNotes("[1:00] So, our recommendation. HUL: buy; our models call it fairly valued. Sun Pharma and ICICI Bank: hold. Our models "
-    + "say they are expensive and analysts say they are cheap, so add only through the SIP, never as a lump sum. Each range "
+  s.addNotes(say("C", "1:00") + "So, our recommendation is the same for all three: hold at the portfolio weights, and add only through the SIP, never as a lump sum. "
+    + "We could not justify a Buy: we found no reliable way to beat these prices and no alpha we can tell from zero, and our models and the Street disagree because of inputs. Each range "
     + "runs from our blended value to the analysts' mean target. "
-    + `The risks we are watching: ICICI is half the weight but ${D.pct(D.ai.risk.risk_share_latest["ICICI Bank"])} of the risk; drug-price `
-    + "regulation for Sun Pharma; and all three prices assume growth for ever. The limitations are on the slide, and every "
+    + `The risks we are watching: ICICI is half the weight but ${D.pct(D.ai.risk.risk_share_latest["ICICI Bank"])} of the risk; Organon's debt and drug-price `
+    + "regulation for Sun Pharma; and what all three prices require. The limitations are on the slide, and every "
     + "number here is live on our dashboard. Thank you.");
 
   // ================================================================ appendix
@@ -481,9 +629,9 @@ async function build() {
     ["Monte Carlo", `${st.n_sims.toLocaleString("en-IN")} paths, 1 year; normal (Cholesky), ${st.bootstrap_block_days}-day block bootstrap, EWMA \u03BB = ${st.ewma_lambda}`, `numpy, seed ${st.seed}`],
     ["SIP", `\u20B9${ss.monthly_amount.toLocaleString("en-IN")}/month, +${D.pct(ss.annual_step_up)}/yr, ${ss.years} years; ${D.pct(ss.core_index_share)} Nifty core; glide to ${D.pct(ss.glide_path_end_equity)} equity`, "Pre-tax, no fees"],
     ["AI", "FinBERT sentiment; Claude for extraction, aspects and headline tagging", "docs/ai_prompts.md"],
+    ["Efficiency tests", "Robust lag-1 autocorrelation, Lo-MacKinlay variance ratios, event windows to day +60", "src/emh_tests.py"],
   ];
-  const head = ["Item", "Choice", "Source"].map((h) => ({ text: h, options: { bold: true, color: WHITE, fill: { color: NAVY } } }));
-  s.addTable([head, ...rows.map((r) => r.map((c, j) => ({ text: c, options: { bold: j === 0, color: NAVY, fill: { color: WHITE } } })))],
+  s.addTable([["Item", "Choice", "Source"].map((h) => head(h)), ...rows.map((r) => r.map((c, j) => ({ text: c, options: { bold: j === 0, color: NAVY, fill: { color: WHITE } } })))],
     { x: M, y: 2.5, w: 12.13, colW: [2.2, 6.73, 3.2], fontSize: 12, border: { type: "solid", pt: 0.75, color: HEX.sand },
       rowH: 0.36, margin: [0.04, 0.1, 0.04, 0.1], valign: "middle", objectName: "methods-table" });
   s.addNotes("Backup slide for questions on method.");
@@ -529,10 +677,11 @@ async function build() {
   col(M, "DATA", ["Prices, statements, analyst consensus: Yahoo Finance (yfinance)", "Ten-year financials: Screener.in public pages",
     "Annual reports and earnings-call transcripts: BSE filings and company IR sites", "Risk-free rate and repo rate: Reserve Bank of India",
     "GDP and demand mix: MOSPI press note, 31 Aug 2026", "Equity risk premium: Damodaran, India, Jan 2026",
-    "Headlines: Google News RSS, 12 months", "Sector momentum: Zerodha Aftermarket Report, 12 Oct 2026"]);
+    "Headlines: Google News RSS, 12 months", "Sector momentum: Zerodha Aftermarket Report, 12 Oct 2026",
+    "Broker views: mostly press summaries, marked in data/street/street_views.csv", "Mood: Tickertape MMI (one reading, 3 Nov 2026); India VIX"]);
   col(6.83, "AI AND METHOD", ["FinBERT: ProsusAI/finbert (Hugging Face)", "Claude (Anthropic): ratio extraction, concall aspects, headline tagging",
-    "Prompts P1\u2013P5 and outputs: docs/ai_prompts.md, data/ai/", "Bodie, Kane & Marcus, Investments: Ch 6, 7, 12, 17, 18, 24",
-    "Valuation workbook: workbook/valuation.xlsx (live formulas)", "Code, tests and the nightly refresh: GitHub repository"]);
+    "Prompts P1\u2013P5 and outputs: docs/ai_prompts.md, data/ai/", "Bodie, Kane & Marcus, Investments: Ch 6, 7, 9, 11, 12, 17, 18, 24",
+    "Harshita, Singh & Yadav (2018), post-earnings drift in the Nifty 500; SPIVA India", "Valuation workbook: workbook/valuation.xlsx (live formulas)", "Code, tests and the nightly refresh: GitHub repository"]);
   s.addNotes("Backup slide: sources.");
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });

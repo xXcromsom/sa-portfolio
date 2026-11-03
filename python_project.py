@@ -870,7 +870,7 @@ def save_charts(folder: Path, daily: pd.DataFrame, frontier: pd.DataFrame, portf
     fig, ax = plt.subplots(figsize=(5, 4))
     names = daily.rename(columns=SHORT)
     sns.heatmap(names.corr(), annot=True, fmt=".2f", cmap="Blues", vmin=0, vmax=1, square=True, ax=ax)
-    ax.set_title("Correlation of daily returns, 2016-2026")
+    ax.set(xlabel="", ylabel="", title="Correlation of daily returns, 2016-2026")
     saved.append(folder / "correlation_heatmap.png")
     fig.savefig(saved[-1], dpi=150, bbox_inches="tight")
     plt.close(fig)
@@ -883,7 +883,7 @@ def save_charts(folder: Path, daily: pd.DataFrame, frontier: pd.DataFrame, portf
     for s in portfolio.securities:
         ax.annotate(s.name, (s.volatility, s.expected_return), textcoords="offset points", xytext=(6, 4))
         ax.scatter([s.volatility], [s.expected_return], color="grey", zorder=3)
-    ax.set(xlabel="Volatility", ylabel="Expected return", title="Forward-looking (CAPM) frontier")
+    ax.set(xlim=(0, 0.36), xlabel="Volatility", ylabel="Expected return", title="Forward-looking (CAPM) frontier")
     ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
     ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
     ax.legend(frameon=False)

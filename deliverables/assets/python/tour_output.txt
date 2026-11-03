@@ -1,0 +1,67 @@
+
+1. DATA: files read and validated
+    2654 days of returns, 2016-01-05 to 2026-10-13
+    A missing file is caught, not ignored: C:\Users\abhay.ABHAYSLAPTOP\Desktop\year 3\sem 5\Security_Analysis\sa-portfolio\data\submission\does_not_exist.parquet not found; run the pipeline first
+
+2. RISK AND RETURN: Pandas, 2016 to date
+             cagr  volatility  sharpe   beta  treynor  jensen_alpha
+HUL         0.096       0.220   0.280  0.602    0.102         0.018
+Sun Pharma  0.087       0.272   0.245  0.645    0.103         0.020
+ICICI Bank  0.191       0.297   0.554  1.293    0.128         0.071
+Nifty 50    0.120       0.161   0.448  1.000    0.072        -0.000
+    ICICI Sharpe vs the pipeline's CSV                 0.554317  vs     0.554317  OK
+
+3. VALUATION: inheritance and recursion, against the Excel workbook
+  HUL (DividendDiscountModel)
+    Recursive value vs Excel (Rs)                   1079.124446  vs  1079.124446  OK
+    Recursive value vs closed form (Rs)             1079.124446  vs  1079.124446  OK
+    Bisection implied growth vs algebra                0.074139  vs     0.074139  OK
+  Sun Pharma (ResidualIncomeModel)
+    Recursive value vs Excel (Rs)                    747.626660  vs   747.626660  OK
+    Recursive value vs closed form (Rs)              747.626660  vs   747.626660  OK
+    Bisection implied growth vs algebra                0.086324  vs     0.086324  OK
+  ICICI Bank (ResidualIncomeModel)
+    Recursive value vs Excel (Rs)                    574.647752  vs   574.647752  OK
+    Recursive value vs closed form (Rs)              574.647752  vs   574.647752  OK
+    Bisection implied growth vs algebra                0.138877  vs     0.138877  OK
+    Bad inputs are refused: Bad input: the discount rate 5.00% must exceed terminal growth 6.00%
+
+4. THE OPTIMAL RISKY PORTFOLIO: SciPy, checked by exhaustive search
+    HUL weight vs portfolio.json                       0.306860  vs     0.306860  OK
+    Sun Pharma weight vs portfolio.json                0.192486  vs     0.192486  OK
+    ICICI Bank weight vs portfolio.json                0.500654  vs     0.500654  OK
+    SciPy Sharpe vs 1% grid search                     0.343615  vs     0.343612  OK
+    Grid search best: HUL 31%, Sun Pharma 19%, ICICI Bank 50%
+    Securities ranked by Sharpe (sorted with a key): ICICI Bank 0.31, HUL 0.19, Sun Pharma 0.17
+
+5. THE INVESTOR: questionnaire -> A -> rupees
+    Answering 3 to all ten questions gives A = 4 (Balanced)
+    HUL             Rs 13,382
+    Sun Pharma       Rs 8,394
+    ICICI Bank      Rs 21,833
+    T-bills         Rs 56,392
+    A = 4 share in P vs portfolio.json                 0.436082  vs     0.436082  OK
+
+6. SIMULATION: NumPy, 10,000 paths, the pipeline's seed and order
+    95% VaR vs mc.json (Rs)                         5581.647756  vs  5581.647756  OK
+    SIP median vs sip.json (Rs)                    6477639.795883  vs 6477639.795883  OK
+
+7. SORTING AND SEARCHING the simulated outcomes
+    Own merge sort vs Python's sorted (median)     108392.266001  vs 108392.266001  OK
+    Worst three: Rs 78,719, Rs 79,877, Rs 80,171
+    Best three:  Rs 1,46,320, Rs 1,46,757, Rs 1,47,604
+    Binary search: 17.1% of paths end below Rs 1,00,000
+
+8. MARKET EFFICIENCY: can past prices beat buy-and-hold?
+    0 of 8 trading rules beat buy-and-hold on Sharpe, after costs
+    Event study: 72 results dates, mean absolute 3-day reaction 3.0%
+
+9. TEXT: headlines already scored by FinBERT
+            headlines  mean_tone  positive  negative
+ticker                                              
+HUL               621      0.048     0.303     0.254
+ICICI Bank       1068      0.093     0.278     0.187
+Sun Pharma        739      0.211     0.384     0.154
+    Hedge share of a sample sentence: 38%
+
+10. CHARTS saved: deliverables\assets\python\correlation_heatmap.png, deliverables\assets\python\frontier.png, deliverables\assets\python\fan.png

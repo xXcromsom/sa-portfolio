@@ -22,6 +22,12 @@ const ai = read("ai_analysis.json");
 const sentiment = read("sentiment.json");
 const extraction = read("extraction_accuracy.json");
 const aspects = readAi("concall_aspects.json").companies;
+const emh = read("emh.json");
+const performance = read("performance.json");
+const street = read("street.json");
+const moodAtFreeze = read("mood.json");
+// The 3 Nov mood is a dated copy, so a nightly refresh cannot move a number in a document.
+const mood = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "street", "mood_2026-11-03.json"), "utf8"));
 
 const MINUS = "−";
 const pct = (x, d = 0) => `${(x * 100).toFixed(d).replace("-", MINUS)}%`;
@@ -67,18 +73,21 @@ const headlineCount = Object.values(sentiment.headlines).reduce((a, h) => a + h.
 const callSentences = sentiment.transcripts.reduce((a, t) => a + (t.sentences || 0), 0);
 const calls = ai.sentiment.calls_mean;
 
-// Recommendation: the workbook verdict decides the action; the range runs from our blended
+// Recommendation: the same call for all three, hold at the portfolio weights and add through the
+// SIP. We do not claim any of them is mispriced (see the EMH tests). The range runs from our blended
 // value to the analysts' mean target.
 const recommendation = Object.fromEntries(STOCKS.map((t) => {
   const v = valuation.securities[t];
   const f = ai.forecasts[t];
-  const action = v.workbook_verdict === "Fairly valued" ? "BUY" : v.workbook_verdict === "Undervalued" ? "BUY" : "HOLD";
-  return [t, { action, verdict: v.workbook_verdict, low: v.blended_value, high: f.analyst_target_mean, price: v.latest_price }];
+  return [t, { action: "HOLD", verdict: v.workbook_verdict, low: v.blended_value, high: f.analyst_target_mean, price: v.latest_price }];
 }));
 
+// Presenters: change the names here and rebuild. Each slide's notes open with its speaker and time.
+const SPEAKERS = { A: "Speaker A", B: "Speaker B", C: "Speaker C" };
+
 module.exports = {
-  ROOT, DATASET, STOCKS, SHORT, LONG, pct, spct, num, rupee, lakh, date, MINUS,
-  metrics, valuation, portfolio, mc, sip, ai, sentiment, extraction, aspects,
+  ROOT, DATASET, STOCKS, SHORT, LONG, pct, spct, num, rupee, lakh, date, MINUS, SPEAKERS,
+  metrics, valuation, portfolio, mc, sip, ai, sentiment, extraction, aspects, emh, performance, street, mood, moodAtFreeze,
   fwd, P, hist, oos, prof, mcB, sipRes, goal, ta, taBH, taRules, taWins, stress, stressBetter,
   headlineCount, callSentences, calls, recommendation, callToneAgreement,
   asOf: metrics.as_of,
