@@ -7,69 +7,69 @@
     "period": "2016-01-05 to 2026-11-03",
     "rows": {
       "HINDUNILVR.NS": {
-        "cagr": 0.09967569457494418,
-        "volatility": 0.22005734395739146,
-        "excess_return": 0.06534636671766697,
-        "excess_over_market": -0.011358571042555653,
-        "sharpe": 0.2969515379151338,
-        "beta": 0.604927228451222,
-        "treynor": 0.10802351695256207,
-        "jensen_alpha": 0.018945461309852012,
-        "alpha_t": 0.33378336156850613,
-        "information_ratio": 0.09603690193226296,
-        "max_drawdown": -0.36600998911299465
+        "cagr": 0.10054186947535038,
+        "volatility": 0.22016496171020697,
+        "excess_return": 0.0661570854302531,
+        "excess_over_market": -0.010841079299105933,
+        "sharpe": 0.30048871044854375,
+        "beta": 0.6054969960525846,
+        "treynor": 0.10926079875135776,
+        "jensen_alpha": 0.019534927985064135,
+        "alpha_t": 0.34395821889801287,
+        "information_ratio": 0.09899131277641027,
+        "max_drawdown": -0.36600998911299554
       },
       "SUNPHARMA.NS": {
-        "cagr": 0.08701852886947248,
-        "volatility": 0.27148037749489456,
-        "excess_return": 0.06656098179257117,
-        "excess_over_market": -0.010143955967651445,
-        "sharpe": 0.24517787402083197,
-        "beta": 0.6432588028511306,
-        "treynor": 0.10347465358818475,
-        "jensen_alpha": 0.017219855356159892,
-        "alpha_t": 0.22623253155397338,
-        "information_ratio": 0.0686291000756809,
-        "max_drawdown": -0.623091929075752
+        "cagr": 0.08689104419415394,
+        "volatility": 0.27148031937942635,
+        "excess_return": 0.06644362519662973,
+        "excess_over_market": -0.0105545395327293,
+        "sharpe": 0.2447456425147592,
+        "beta": 0.6429978235474101,
+        "treynor": 0.10333413701163274,
+        "jensen_alpha": 0.016933972858506927,
+        "alpha_t": 0.222463900588604,
+        "information_ratio": 0.06748684882003354,
+        "max_drawdown": -0.6230919006289419
       },
       "ICICIBANK.NS": {
-        "cagr": 0.19577814234125146,
-        "volatility": 0.2972097989057204,
-        "excess_return": 0.1691965567619159,
-        "excess_over_market": 0.0924916190016933,
-        "sharpe": 0.5692832382541589,
-        "beta": 1.29159323252026,
-        "treynor": 0.1309983302032065,
-        "jensen_alpha": 0.07012497824992463,
-        "alpha_t": 1.1496400189289127,
-        "information_ratio": 0.3308067344679354,
-        "max_drawdown": -0.4830723823033073
+        "cagr": 0.19539840253094698,
+        "volatility": 0.2971794430903753,
+        "excess_return": 0.1688698892763273,
+        "excess_over_market": 0.09187172454696826,
+        "sharpe": 0.5682421621100227,
+        "beta": 1.2913304109063566,
+        "treynor": 0.13077202228808443,
+        "jensen_alpha": 0.06943981757732876,
+        "alpha_t": 1.1380131893318084,
+        "information_ratio": 0.3276250468345565,
+        "max_drawdown": -0.48307250205629837
       },
       "^NSEI": {
-        "cagr": 0.12446737579646117,
-        "volatility": 0.16132082841399817,
-        "excess_return": 0.07670493776022261,
+        "cagr": 0.12479250445012302,
+        "volatility": 0.16134585348519942,
+        "excess_return": 0.07699816472935903,
         "excess_over_market": 0.0,
-        "sharpe": 0.4754806835195172,
-        "beta": 0.9999999999999999,
-        "treynor": 0.07670493776022262,
+        "sharpe": 0.4772243169944384,
+        "beta": 0.9999999999999996,
+        "treynor": 0.07699816472935905,
         "jensen_alpha": 0.0,
         "alpha_t": 0.0,
         "information_ratio": 0.0,
         "max_drawdown": -0.3829895258889907
       },
       "P at today's weights": {
-        "cagr": 0.1639323657785463,
-        "volatility": 0.19674277739991675,
-        "excess_return": 0.11747073623703302,
-        "excess_over_market": 0.04076579847681042,
-        "sharpe": 0.5970777570057966,
-        "beta": 0.9553928772073398,
-        "treynor": 0.12295542393031623,
-        "jensen_alpha": 0.04418738505428403,
-        "alpha_t": 1.2692955516545958,
-        "information_ratio": 0.36128399922205345,
-        "max_drawdown": -0.3476800584797519
+        "cagr": 0.16400400067734333,
+        "volatility": 0.19674679627817945,
+        "excess_return": 0.1175330618024024,
+        "excess_over_market": 0.040534897073043356,
+        "sharpe": 0.5973823412922207,
+        "beta": 0.9553707326068326,
+        "treynor": 0.1230235109690881,
+        "jensen_alpha": 0.04397126875553308,
+        "alpha_t": 1.2630600747976395,
+        "information_ratio": 0.3595733573106798,
+        "max_drawdown": -0.347671117463777
       }
     }
   },
@@ -78,52 +78,52 @@
     "weights_fitted_on": "2016-01-05 to 2022-12-30",
     "rows": {
       "Forward-looking P": {
-        "cagr": 0.09026968464360086,
-        "volatility": 0.1287050717747193,
-        "excess_return": 0.040968440257208874,
-        "excess_over_market": 0.002347927748240091,
-        "sharpe": 0.31831255514870893,
-        "beta": 0.7169549779537919,
-        "treynor": 0.05714227743300404,
-        "jensen_alpha": 0.013279271562777013,
-        "alpha_t": 0.3015400914352762,
-        "information_ratio": 0.14584557808677268,
-        "max_drawdown": -0.16489546085150253
+        "cagr": 0.09055742222931129,
+        "volatility": 0.1287542715420564,
+        "excess_return": 0.04123859843682641,
+        "excess_over_market": 0.0017907891195858305,
+        "sharpe": 0.32028916744215513,
+        "beta": 0.7173665995175157,
+        "treynor": 0.05748608656238323,
+        "jensen_alpha": 0.01294005760850218,
+        "alpha_t": 0.2939130230522053,
+        "information_ratio": 0.14219478106952485,
+        "max_drawdown": -0.1648954287321105
       },
       "Equal weight": {
-        "cagr": 0.09658052698513697,
-        "volatility": 0.12331933846351774,
-        "excess_return": 0.0460667683610627,
-        "excess_over_market": 0.007446255852093923,
-        "sharpe": 0.3735567262606659,
-        "beta": 0.6542464208402942,
-        "treynor": 0.07041195319325698,
-        "jensen_alpha": 0.020799436281052065,
-        "alpha_t": 0.47474533991329265,
-        "information_ratio": 0.2280491664108192,
-        "max_drawdown": -0.176174030039021
+        "cagr": 0.09695151194141638,
+        "volatility": 0.12337302046953899,
+        "excess_return": 0.046411643496790896,
+        "excess_over_market": 0.0069638341795503185,
+        "sharpe": 0.37618956981157814,
+        "beta": 0.6545939653589397,
+        "treynor": 0.07090142279472675,
+        "jensen_alpha": 0.020589345571095072,
+        "alpha_t": 0.4699938798288304,
+        "information_ratio": 0.22579953364850683,
+        "max_drawdown": -0.1761740276435274
       },
       "History-based P": {
-        "cagr": 0.04405127925427155,
-        "volatility": 0.13773850002894225,
-        "excess_return": -0.0011492004176930268,
-        "excess_over_market": -0.03976971292666181,
-        "sharpe": -0.008343349299226806,
-        "beta": 0.6641885251543329,
-        "treynor": -0.0017302322671503472,
-        "jensen_alpha": -0.02680050166172947,
-        "alpha_t": -0.5071247259207281,
-        "information_ratio": -0.2459353528167297,
-        "max_drawdown": -0.20374168293839312
+        "cagr": 0.044983326554804304,
+        "volatility": 0.13791238457481333,
+        "excess_return": -0.0002333643320243768,
+        "excess_over_market": -0.03968117364926495,
+        "sharpe": -0.0016921202018502092,
+        "beta": 0.6653720360002919,
+        "treynor": -0.00035072759208094287,
+        "jensen_alpha": -0.026480833533188013,
+        "alpha_t": -0.5007289733029233,
+        "information_ratio": -0.24287530947421127,
+        "max_drawdown": -0.20374168302033324
       },
       "Nifty 50": {
-        "cagr": 0.08793341412065603,
-        "volatility": 0.12694580649236906,
-        "excess_return": 0.038620512508968786,
+        "cagr": 0.08882114737408564,
+        "volatility": 0.1270365445628137,
+        "excess_return": 0.03944780931724056,
         "excess_over_market": 0.0,
-        "sharpe": 0.30422834417370326,
-        "beta": 1.0000000000000002,
-        "treynor": 0.03862051250896878,
+        "sharpe": 0.3105233179397086,
+        "beta": 1.0000000000000004,
+        "treynor": 0.03944780931724054,
         "jensen_alpha": 0.0,
         "alpha_t": 0.0,
         "information_ratio": 0.0,
@@ -132,9 +132,9 @@
     },
     "weights": {
       "Forward-looking P": {
-        "HINDUNILVR.NS": 0.3378851251636479,
-        "SUNPHARMA.NS": 0.18190447191877557,
-        "ICICIBANK.NS": 0.48021040291757666
+        "HINDUNILVR.NS": 0.33788463328712315,
+        "SUNPHARMA.NS": 0.18190478233983978,
+        "ICICIBANK.NS": 0.48021058437303704
       },
       "Equal weight": {
         "HINDUNILVR.NS": 0.3333333333333333,
@@ -142,34 +142,34 @@
         "ICICIBANK.NS": 0.3333333333333333
       },
       "History-based P": {
-        "HINDUNILVR.NS": 0.5541944821834343,
+        "HINDUNILVR.NS": 0.5541944183181514,
         "SUNPHARMA.NS": 0.1,
-        "ICICIBANK.NS": 0.3458055178165658
+        "ICICIBANK.NS": 0.3458055816818487
       }
     }
   },
   "forward_view": {
     "alpha": 0.0,
     "treynor": 0.0708,
-    "p_sharpe": 0.34380838066947156,
-    "market_sharpe": 0.4388769924879491,
+    "p_sharpe": 0.34379338900607775,
+    "market_sharpe": 0.43880892177061515,
     "note": "With CAPM returns as inputs, every asset has alpha 0 and Treynor = ERP by construction, so these can only be measured on realised returns."
   },
   "by_profile": {
     "Aggressive": {
       "A": 2,
-      "y": 0.8737509585183304,
-      "alpha_on_your_money": 0.011602776256401623
+      "y": 0.8736950118364055,
+      "alpha_on_your_money": 0.011305663785424082
     },
     "Balanced": {
       "A": 4,
-      "y": 0.4368754792591652,
-      "alpha_on_your_money": 0.005801388128200811
+      "y": 0.43684750591820276,
+      "alpha_on_your_money": 0.005652831892712041
     },
     "Conservative": {
       "A": 6,
-      "y": 0.29125031950611013,
-      "alpha_on_your_money": 0.0038675920854672075
+      "y": 0.2912316706121352,
+      "alpha_on_your_money": 0.0037685545951413606
     }
   }
 }

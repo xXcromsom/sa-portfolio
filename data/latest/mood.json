@@ -9,60 +9,60 @@
   "stocks": {
     "HINDUNILVR.NS": {
       "as_of": "2026-11-03",
-      "mood": 39.3,
+      "mood": 41.46666666666667,
       "zone": "Fear",
       "components": {
-        "momentum": 32.666666666666664,
-        "rsi": 85.06666666666666,
-        "calm": 13.733333333333334,
-        "near_high": 25.733333333333334
+        "momentum": 36.93333333333334,
+        "rsi": 88.4,
+        "calm": 11.866666666666667,
+        "near_high": 28.666666666666668
       },
-      "excess_after_fear": 0.014395193027660973,
-      "excess_after_greed": -0.02224833690335836,
+      "excess_after_fear": 0.014408424751015267,
+      "excess_after_greed": -0.022248337162241782,
       "fear_days": 426,
       "greed_days": 183,
-      "p_nonoverlapping": 0.0985953135177041,
+      "p_nonoverlapping": 0.09859547035843116,
       "n_nonoverlapping": 108
     },
     "SUNPHARMA.NS": {
       "as_of": "2026-11-03",
-      "mood": 37.766666666666666,
+      "mood": 37.0,
       "zone": "Fear",
       "components": {
-        "momentum": 8.4,
-        "rsi": 33.06666666666666,
+        "momentum": 7.866666666666666,
+        "rsi": 31.066666666666663,
         "calm": 88.4,
-        "near_high": 21.2
+        "near_high": 20.666666666666668
       },
-      "excess_after_fear": 0.014035212266293449,
-      "excess_after_greed": 0.00534726540029442,
+      "excess_after_fear": 0.01401874416682382,
+      "excess_after_greed": 0.005347262290542507,
       "fear_days": 271,
       "greed_days": 512,
-      "p_nonoverlapping": 0.5217989338970033,
+      "p_nonoverlapping": 0.5218000496736473,
       "n_nonoverlapping": 108
     },
     "ICICIBANK.NS": {
       "as_of": "2026-11-03",
-      "mood": 59.099999999999994,
+      "mood": 57.53333333333334,
       "zone": "Greed",
       "components": {
-        "momentum": 57.333333333333336,
-        "rsi": 81.33333333333333,
-        "calm": 25.466666666666665,
-        "near_high": 72.26666666666667
+        "momentum": 54.266666666666666,
+        "rsi": 78.53333333333333,
+        "calm": 27.866666666666667,
+        "near_high": 69.46666666666667
       },
-      "excess_after_fear": 0.003920928271639467,
-      "excess_after_greed": 0.0013568096870120025,
+      "excess_after_fear": 0.003920927562233071,
+      "excess_after_greed": 0.0013568155784236407,
       "fear_days": 303,
       "greed_days": 310,
-      "p_nonoverlapping": 0.9337528085879003,
+      "p_nonoverlapping": 0.9337532733771102,
       "n_nonoverlapping": 108
     }
   },
   "vix": {
     "as_of": "2026-11-03",
-    "level": 16.045000076293945,
-    "one_year_percentile": 0.744,
+    "level": 15.720000267028809,
+    "one_year_percentile": 0.732,
     "quintiles": [
       {
         "quintile": 1,
@@ -82,7 +82,7 @@
         "quintile": 3,
         "low": 14.109999656677246,
         "high": 16.020000457763672,
-        "forward": 0.006071426393671242,
+        "forward": 0.006077645095845646,
         "days": 519.0
       },
       {
@@ -112,7 +112,7 @@
       "r": 0.20318533766013483,
       "p": 0.021957854620107523
     },
-    "same_day_correlation": -0.5599366603738863
+    "same_day_correlation": -0.5600338619393685
   },
   "vix_error": null,
   "tone": {

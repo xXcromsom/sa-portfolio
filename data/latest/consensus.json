@@ -3,21 +3,21 @@
     "ticker": "HINDUNILVR.NS",
     "eps_estimates": {
       "0y": {
-        "avg": 48.09792,
-        "analysts": 19,
-        "growth": 0.040900003
+        "avg": 48.12803,
+        "analysts": 20,
+        "growth": 0.0416
       },
       "+1y": {
-        "avg": 53.32189,
-        "analysts": 20,
-        "growth": 0.1086
+        "avg": 53.34942,
+        "analysts": 21,
+        "growth": 0.108500004
       }
     },
     "price_targets": {
-      "current": 1946.4,
+      "current": 1977.1,
       "high": 2750.0,
       "low": 1800.0,
-      "mean": 2255.7104,
+      "mean": 2258.0264,
       "median": 2222.5
     },
     "surprises": [
@@ -171,22 +171,22 @@
     "ticker": "SUNPHARMA.NS",
     "eps_estimates": {
       "0y": {
-        "avg": 53.24155,
-        "analysts": 27,
-        "growth": 0.023599999
+        "avg": 53.10146,
+        "analysts": 28,
+        "growth": 0.0209
       },
       "+1y": {
-        "avg": 63.3313,
-        "analysts": 28,
-        "growth": 0.1895
+        "avg": 63.0682,
+        "analysts": 29,
+        "growth": 0.1877
       }
     },
     "price_targets": {
-      "current": 1771.4,
+      "current": 1773.4,
       "high": 2366.0,
       "low": 1830.0,
-      "mean": 2136.4062,
-      "median": 2150.0
+      "mean": 2128.697,
+      "median": 2142.0
     },
     "surprises": [
       {
@@ -350,7 +350,7 @@
       }
     },
     "price_targets": {
-      "current": 1429.6,
+      "current": 1424.1,
       "high": 2040.0,
       "low": 1645.0,
       "mean": 1768.7858,
