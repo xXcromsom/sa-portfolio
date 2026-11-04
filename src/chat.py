@@ -17,8 +17,10 @@ import json
 import requests
 
 URL = "https://openrouter.ai/api/v1/chat/completions"
+KEY_URL = "https://openrouter.ai/api/v1/key"
 # Free models, in priority order; OpenRouter moves down the list if one errors or is rate-limited.
-MODELS = ["nvidia/nemotron-3-super-120b-a12b:free", "thinkingmachines/inkling:free", "google/gemma-4-31b-it:free"]
+# Free models get retired without notice, so the last entry is OpenRouter's own router across whichever are live.
+MODELS = ["thinkingmachines/inkling:free", "google/gemma-4-31b-it:free", "openrouter/free"]
 SYSTEM = (
     "You answer questions about a student group's portfolio of three NSE stocks (Hindustan Unilever, "
     "Sun Pharma, ICICI Bank), built for a Security Analysis course. Use ONLY the JSON context provided "
@@ -30,12 +32,6 @@ SYSTEM = (
     "plain English for a classmate. This is coursework, not investment advice, and you should say so if "
     "asked what to buy."
 )
-ERRORS = {
-    401: "API key rejected",
-    402: "OpenRouter says the account needs credits",
-    404: "no free model matches your OpenRouter privacy settings (allow free models at openrouter.ai/settings/privacy)",
-    429: "free-model limit reached (50 requests a day on a free account); try later",
-}
 
 
 def build_context(data: dict, mine: dict | None = None) -> str:
@@ -61,6 +57,25 @@ def build_context(data: dict, mine: dict | None = None) -> str:
     return json.dumps(keep, sort_keys=True, separators=(",", ":"), default=str)
 
 
+def used_today(api_key: str) -> str:
+    """Free requests this key has used today. The per-minute limit and busy providers don't show in this count."""
+    try:
+        count = requests.get(KEY_URL, timeout=10, headers={"Authorization": f"Bearer {api_key}"}).json()
+        count = count["data"]["free_model_daily_requests"]
+        return f"{count['used']} of {count['limit']} free requests used today; the count resets at 05:30 IST"
+    except (requests.RequestException, ValueError, KeyError, TypeError):
+        return "today's request count is unavailable"
+
+
+def failure(code: int | str | None, error: dict, api_key: str) -> str:
+    """Why a request failed, in OpenRouter's own words.
+
+    A code alone can't say: 429 is the per-minute limit, the daily limit or a busy provider.
+    """
+    reason = str((error.get("metadata") or {}).get("raw") or error.get("message") or "no reason given")[:200]
+    return f"OpenRouter {code}: {reason}" + (f"; {used_today(api_key)}" if code == 429 else "")
+
+
 def ask(question: str, context: str, api_key: str, models: list[str] = MODELS,
         timeout: float = 45.0) -> tuple[str | None, str]:
     """Return (answer, status). status names the model that answered, or why there is no answer."""
@@ -78,12 +93,13 @@ def ask(question: str, context: str, api_key: str, models: list[str] = MODELS,
         return None, "timed out"
     except requests.RequestException:
         return None, "no connection"
-    if resp.status_code != 200:
-        return None, ERRORS.get(resp.status_code, f"API error {resp.status_code}")
-    body = resp.json()
-    if body.get("error"):
-        code = body["error"].get("code")
-        return None, ERRORS.get(code, f"API error {code}")
+    try:
+        body = resp.json()
+    except ValueError:  # an HTML error page from a gateway, not OpenRouter's JSON
+        return None, f"OpenRouter {resp.status_code}: the reply was not JSON"
+    if resp.status_code != 200 or body.get("error"):
+        error = body.get("error") or {}
+        return None, failure(error.get("code", resp.status_code), error, api_key)
     choices = body.get("choices") or []
     text = ((choices[0].get("message") or {}).get("content") or "").strip() if choices else ""
     return (text or None), (body.get("model", models[0]) if text else "empty answer")

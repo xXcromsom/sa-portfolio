@@ -98,9 +98,10 @@ git tag submission-v1 && git push --tags
 **Ask the portfolio.** Seven rehearsed questions are answered in `data/ai/qa_cache.json`, with no API key needed.
 
 Free-form questions go to a free model on OpenRouter (`src/chat.py`), only when `OPENROUTER_API_KEY` is set:
-- **Models:** `nvidia/nemotron-3-super-120b-a12b:free`, with automatic fallback to `thinkingmachines/inkling:free` and `google/gemma-4-31b-it:free`.
+- **Models:** `thinkingmachines/inkling:free`, with automatic fallback to `google/gemma-4-31b-it:free` and OpenRouter's `openrouter/free` router. Free models get retired without notice (`nvidia/nemotron-3-super-120b-a12b:free` was by Nov 2026), so check https://openrouter.ai/api/v1/models if answers stop.
 - **Grounding:** the model is told to use only the dashboard's computed results, including the viewer's own portfolio, and to cite the key behind every number.
-- **Limits:** a free OpenRouter account allows 50 requests a day (1,000 a day after a one-time $10 credit purchase). An optional `CHAT_PASSCODE` and a 10-question limit per session protect that budget.
+- **Limits:** a free OpenRouter account allows 20 requests a minute and 50 a day (1,000 a day after a one-time $10 credit purchase). An optional `CHAT_PASSCODE` and a 10-question limit per session protect that budget.
+- **When a question fails:** the dashboard shows OpenRouter's own reason. A 429 also shows how many free requests the key has used today, because that code covers the per-minute limit, the daily limit and a busy provider.
 - **Privacy setting:** if OpenRouter reports "no endpoints match your data policy", allow free models at openrouter.ai/settings/privacy.
 
 Where the key goes:
@@ -131,7 +132,7 @@ cd deliverables
 npm install
 npm run deck          # out/SA_Portfolio_Deck.pptx (13 slides + backup, speaker notes, timings)
 npm run report        # out/SA_Portfolio_Report.docx (4 pages + appendix)
-npm run python-deck   # out/Python_Project_Deck.pptx (15 slides, code read from python_project.py)
+npm run python-deck   # out/Python_Project_Deck.pptx (16 slides, notes explaining the code, Push transitions, automatic animations; code read from python_project.py)
 ```
 
 - Presenter names for the Security Analysis deck are in `SPEAKERS` in `deliverables/data.js`. Preparation notes are in `docs/presentation_prep.md`.
@@ -139,8 +140,9 @@ npm run python-deck   # out/Python_Project_Deck.pptx (15 slides, code read from 
 
 - Set `DASHBOARD_URL` (and `REPO_URL` for the report) before building to add the live link and QR codes.
 - `python shots.py` re-captures the dashboard screenshots for the demo-backup slide while `streamlit run app.py` is running.
-- The decks follow the group's reference deck: cream and navy panels, burnt-orange titles. The report follows the reference Word report: A4, Calibri, navy tables.
-- PDFs are exported from PowerPoint and Word, which give the most faithful rendering.
+- The Security Analysis deck follows the group's reference deck: cream and navy panels, burnt-orange titles. The report follows the reference Word report: A4, Calibri, navy tables.
+- The Python deck follows a Canva template (white pages, hairlines, magenta titles, glass shapes, artwork in `deliverables/assets/python_template/`). Its font is not available here, so the build script draws the titles as images and uses Bahnschrift for text.
+- Check decks and reports in the real Office apps. On the laptop this was built on, WPS Office is registered as the automation server for PowerPoint, Word and Excel, so a script that creates those objects reaches WPS. To reach real PowerPoint, start `POWERPNT.EXE` and attach with `GetActiveObject`. The Python deck's PDF was exported that way; the Security Analysis deck and report PDFs were exported through WPS.
 - The deck build uses the pptx skill's `apply_theme.js`; point `PPTX_SKILL` at it if the default path differs.
 
 ## Python course project (`python_project.py`)

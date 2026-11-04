@@ -831,7 +831,7 @@ def finbert_tone(texts: list[str]) -> list[float]:
             for row in classify(texts)]
 
 
-def ask_model(question: str, context: str, model: str = "nvidia/nemotron-3-super-120b-a12b:free") -> str | None:
+def ask_model(question: str, context: str, model: str = "thinkingmachines/inkling:free") -> str | None:
     """A question to a free OpenRouter model, answered from `context` only. None if no API key is set.
 
     The approved proposal listed the Anthropic SDK as optional; the project's live chat uses this free
@@ -869,20 +869,20 @@ def save_charts(folder: Path, daily: pd.DataFrame, frontier: pd.DataFrame, portf
 
     fig, ax = plt.subplots(figsize=(5, 4))
     names = daily.rename(columns=SHORT)
-    sns.heatmap(names.corr(), annot=True, fmt=".2f", cmap="Blues", vmin=0, vmax=1, square=True, ax=ax)
+    sns.heatmap(names.corr(), annot=True, fmt=".2f", cmap="RdPu", vmin=0, vmax=1, square=True, ax=ax)
     ax.set(xlabel="", ylabel="", title="Correlation of daily returns, 2016-2026")
     saved.append(folder / "correlation_heatmap.png")
     fig.savefig(saved[-1], dpi=150, bbox_inches="tight")
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(7, 4))
-    ax.plot(frontier["volatility"], frontier["return"], label="Efficient frontier")
+    ax.plot(frontier["volatility"], frontier["return"], color="#6858EF", label="Efficient frontier")
     top = 0.30
-    ax.plot([0, top], [rf, rf + portfolio.sharpe(rf) * top], linestyle="--", label="Capital allocation line")
-    ax.scatter([portfolio.volatility], [portfolio.expected_return], zorder=3, label="Tangency portfolio P")
+    ax.plot([0, top], [rf, rf + portfolio.sharpe(rf) * top], linestyle="--", color="#F600FF", label="Capital allocation line")
+    ax.scatter([portfolio.volatility], [portfolio.expected_return], zorder=3, color="#F600FF", label="Tangency portfolio P")
     for s in portfolio.securities:
         ax.annotate(s.name, (s.volatility, s.expected_return), textcoords="offset points", xytext=(6, 4))
-        ax.scatter([s.volatility], [s.expected_return], color="grey", zorder=3)
+        ax.scatter([s.volatility], [s.expected_return], color="#6858EF", zorder=3)
     ax.set(xlim=(0, 0.36), xlabel="Volatility", ylabel="Expected return", title="Forward-looking (CAPM) frontier")
     ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
     ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
@@ -894,9 +894,9 @@ def save_charts(folder: Path, daily: pd.DataFrame, frontier: pd.DataFrame, portf
     fig, ax = plt.subplots(figsize=(7, 4))
     days = np.arange(fan_wealth.shape[1])
     bands = {p: np.percentile(fan_wealth, p, axis=0) for p in (5, 25, 50, 75, 95)}
-    ax.fill_between(days, bands[5], bands[95], alpha=0.2, label="5th to 95th percentile")
-    ax.fill_between(days, bands[25], bands[75], alpha=0.35, label="25th to 75th percentile")
-    ax.plot(days, bands[50], label="Median")
+    ax.fill_between(days, bands[5], bands[95], color="#6858EF", alpha=0.18, label="5th to 95th percentile")
+    ax.fill_between(days, bands[25], bands[75], color="#F600FF", alpha=0.3, label="25th to 75th percentile")
+    ax.plot(days, bands[50], color="#2A1F7A", label="Median")
     ax.set(xlabel="Trading day", ylabel="Growth of 1", title="One year ahead, 10,000 simulated paths")
     ax.legend(frameon=False)
     saved.append(folder / "fan.png")
