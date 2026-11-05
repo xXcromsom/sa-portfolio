@@ -1,20 +1,20 @@
 {
-  "latest_price_date": "2026-11-03",
+  "latest_price_date": "2026-11-04",
   "securities": {
     "HINDUNILVR.NS": {
       "name": "Hindustan Unilever",
       "model": "Two-stage DDM",
       "workbook_price": 1861.9,
-      "latest_price": 1962.8,
+      "latest_price": 1977.1,
       "cost_of_equity": 0.097792,
       "intrinsic_value": 1079.12,
       "comps_value": 2104.76,
       "blended_value": 1591.94,
       "market_implied_growth": 0.074139,
       "upside_vs_latest": {
-        "intrinsic": -0.450212,
-        "comps": 0.072323,
-        "blended": -0.188944
+        "intrinsic": -0.454188,
+        "comps": 0.064568,
+        "blended": -0.19481
       },
       "workbook_verdict": "Fairly valued"
     },
@@ -22,16 +22,16 @@
       "name": "Sun Pharma",
       "model": "Two-stage residual income",
       "workbook_price": 1759.8,
-      "latest_price": 1769.9,
+      "latest_price": 1773.4,
       "cost_of_equity": 0.100893,
       "intrinsic_value": 747.63,
       "comps_value": 1701.84,
       "blended_value": 1224.73,
       "market_implied_growth": 0.086324,
       "upside_vs_latest": {
-        "intrinsic": -0.577588,
-        "comps": -0.038453,
-        "blended": -0.30802
+        "intrinsic": -0.578422,
+        "comps": -0.04035,
+        "blended": -0.309386
       },
       "workbook_verdict": "Overvalued"
     },
@@ -39,16 +39,16 @@
       "name": "ICICI Bank",
       "model": "Two-stage residual income (bank)",
       "workbook_price": 1350.5,
-      "latest_price": 1424.5,
+      "latest_price": 1424.1,
       "cost_of_equity": 0.146729,
       "intrinsic_value": 574.65,
       "comps_value": 1139.04,
       "blended_value": 856.84,
       "market_implied_growth": 0.138877,
       "upside_vs_latest": {
-        "intrinsic": -0.596597,
-        "comps": -0.200392,
-        "blended": -0.398495
+        "intrinsic": -0.596484,
+        "comps": -0.200168,
+        "blended": -0.398326
       },
       "workbook_verdict": "Overvalued"
     }
