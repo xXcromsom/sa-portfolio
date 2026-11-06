@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-04",
+  "as_of": "2026-11-05",
   "components": {
     "momentum": "Price vs its 125-day average",
     "rsi": "14-day RSI",
@@ -8,61 +8,61 @@
   },
   "stocks": {
     "HINDUNILVR.NS": {
-      "as_of": "2026-11-04",
-      "mood": 45.26666666666666,
+      "as_of": "2026-11-05",
+      "mood": 47.53333333333333,
       "zone": "Fear",
       "components": {
-        "momentum": 43.06666666666666,
-        "rsi": 90.26666666666667,
-        "calm": 17.066666666666666,
-        "near_high": 30.666666666666664
+        "momentum": 45.86666666666667,
+        "rsi": 91.06666666666666,
+        "calm": 21.6,
+        "near_high": 31.6
       },
-      "excess_after_fear": 0.014354091150538534,
-      "excess_after_greed": -0.022248334843717844,
-      "fear_days": 427,
+      "excess_after_fear": 0.014266730432486358,
+      "excess_after_greed": -0.022248342771611435,
+      "fear_days": 428,
       "greed_days": 183,
-      "p_nonoverlapping": 0.09859574914787393,
+      "p_nonoverlapping": 0.09859589209985374,
       "n_nonoverlapping": 108
     },
     "SUNPHARMA.NS": {
-      "as_of": "2026-11-04",
-      "mood": 39.733333333333334,
+      "as_of": "2026-11-05",
+      "mood": 49.06666666666667,
       "zone": "Fear",
       "components": {
-        "momentum": 8.799999999999999,
-        "rsi": 34.0,
-        "calm": 94.66666666666667,
-        "near_high": 21.46666666666667
+        "momentum": 24.133333333333333,
+        "rsi": 67.2,
+        "calm": 71.33333333333334,
+        "near_high": 33.6
       },
-      "excess_after_fear": 0.014018732733788175,
-      "excess_after_greed": 0.005347263465439658,
-      "fear_days": 271,
+      "excess_after_fear": 0.013751784897527888,
+      "excess_after_greed": 0.005347262599651117,
+      "fear_days": 272,
       "greed_days": 512,
-      "p_nonoverlapping": 0.5217980046437292,
+      "p_nonoverlapping": 0.5217988804337845,
       "n_nonoverlapping": 108
     },
     "ICICIBANK.NS": {
-      "as_of": "2026-11-04",
-      "mood": 57.4,
-      "zone": "Greed",
+      "as_of": "2026-11-05",
+      "mood": 73.6,
+      "zone": "Extreme greed",
       "components": {
-        "momentum": 53.733333333333334,
-        "rsi": 78.4,
-        "calm": 28.53333333333333,
-        "near_high": 68.93333333333334
+        "momentum": 90.26666666666667,
+        "rsi": 98.4,
+        "calm": 5.733333333333333,
+        "near_high": 100.0
       },
-      "excess_after_fear": 0.0039209209336468565,
-      "excess_after_greed": 0.0013568052974718625,
+      "excess_after_fear": 0.003920928302957481,
+      "excess_after_greed": 0.0013568120185603748,
       "fear_days": 303,
       "greed_days": 310,
-      "p_nonoverlapping": 0.9337542295614567,
+      "p_nonoverlapping": 0.9337531229336832,
       "n_nonoverlapping": 108
     }
   },
   "vix": {
-    "as_of": "2026-11-04",
-    "level": 15.1899995803833,
-    "one_year_percentile": 0.692,
+    "as_of": "2026-11-05",
+    "level": 15.579999923706055,
+    "one_year_percentile": 0.714,
     "quintiles": [
       {
         "quintile": 1,
@@ -75,8 +75,8 @@
         "quintile": 2,
         "low": 12.420000076293945,
         "high": 14.100000381469727,
-        "forward": 0.00149946147216574,
-        "days": 528.0
+        "forward": 0.001658335288491968,
+        "days": 529.0
       },
       {
         "quintile": 3,
@@ -112,7 +112,7 @@
       "r": 0.20318533766013483,
       "p": 0.021957854620107523
     },
-    "same_day_correlation": -0.5600946848711875
+    "same_day_correlation": -0.5591190230896231
   },
   "vix_error": null,
   "tone": {
@@ -125,11 +125,11 @@
       "same_day_n": 232
     },
     "SUNPHARMA.NS": {
-      "next_r": 0.04473038762677917,
-      "next_p": 0.770467951901846,
+      "next_r": 0.044730396208820196,
+      "next_p": 0.7704679090559702,
       "next_n": 45,
-      "same_day_r": 0.1300415235724167,
-      "same_day_p": 0.05141041062461486,
+      "same_day_r": 0.1300414845880397,
+      "same_day_p": 0.051410481096321216,
       "same_day_n": 225
     },
     "ICICIBANK.NS": {
