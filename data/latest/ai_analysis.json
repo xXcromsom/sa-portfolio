@@ -233,10 +233,10 @@
   },
   "event_study": {
     "events": 72,
-    "mean_car_positive_surprise": 0.009298060714149587,
-    "mean_car_negative_surprise": -0.014458046817474911,
-    "slope_car_on_surprise": 0.11111252247959912,
-    "correlation": 0.3557199375094458,
+    "mean_car_positive_surprise": 0.009298058481689539,
+    "mean_car_negative_surprise": -0.014458054030883287,
+    "slope_car_on_surprise": 0.11111245760196795,
+    "correlation": 0.3557198735082862,
     "rows": [
       {
         "date": "2026-10-28",
@@ -787,11 +787,11 @@
           "growth": 0.1737
         }
       },
-      "analyst_target_mean": 2128.697,
-      "analyst_target_upside": 0.14446075268817204,
+      "analyst_target_mean": 2111.9395,
+      "analyst_target_upside": 0.13545134408602144,
       "analyst_target_range": [
-        1830.0,
-        2366.0
+        1770.0,
+        2320.0
       ],
       "our_comps_on_next_year_eps": 2028.2054117288787,
       "our_comps_fwd_upside": 0.09043301705853701,
@@ -804,24 +804,24 @@
       "eps_ttm": 80.3869047619048,
       "consensus_eps": {
         "0y": {
-          "avg": 83.49898,
+          "avg": 83.58693,
           "analysts": 39,
-          "growth": 0.2066
+          "growth": 0.2079
         },
         "+1y": {
-          "avg": 97.76662,
+          "avg": 97.87134,
           "analysts": 36,
-          "growth": 0.1728
+          "growth": 0.1727
         }
       },
-      "analyst_target_mean": 1768.7858,
-      "analyst_target_upside": 0.12575474476100656,
+      "analyst_target_mean": 1769.7382,
+      "analyst_target_upside": 0.12636090567597447,
       "analyst_target_range": [
         1645.0,
-        2040.0
+        2070.0
       ],
-      "our_comps_on_next_year_eps": 1385.3013892577853,
-      "our_comps_fwd_upside": -0.11831629817416789,
+      "our_comps_on_next_year_eps": 1386.7852163705882,
+      "our_comps_fwd_upside": -0.11737190716161983,
       "our_model_value": 574.65,
       "our_model_upside": -0.6342604265157984,
       "our_blended_upside": -0.454656

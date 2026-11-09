@@ -14,7 +14,7 @@
       }
     },
     "price_targets": {
-      "current": 1998.4,
+      "current": 1990.3,
       "high": 2750.0,
       "low": 1800.0,
       "mean": 2258.0264,
@@ -182,11 +182,11 @@
       }
     },
     "price_targets": {
-      "current": 1860.0,
-      "high": 2366.0,
-      "low": 1830.0,
-      "mean": 2128.697,
-      "median": 2142.0
+      "current": 1904.5,
+      "high": 2320.0,
+      "low": 1770.0,
+      "mean": 2111.9395,
+      "median": 2140.0
     },
     "surprises": [
       {
@@ -339,21 +339,21 @@
     "ticker": "ICICIBANK.NS",
     "eps_estimates": {
       "0y": {
-        "avg": 83.49898,
+        "avg": 83.58693,
         "analysts": 39,
-        "growth": 0.2066
+        "growth": 0.2079
       },
       "+1y": {
-        "avg": 97.76662,
+        "avg": 97.87134,
         "analysts": 36,
-        "growth": 0.1728
+        "growth": 0.1727
       }
     },
     "price_targets": {
-      "current": 1571.2,
-      "high": 2040.0,
+      "current": 1589.0,
+      "high": 2070.0,
       "low": 1645.0,
-      "mean": 1768.7858,
+      "mean": 1769.7382,
       "median": 1751.0
     },
     "surprises": [

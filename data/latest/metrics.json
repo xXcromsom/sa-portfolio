@@ -14,7 +14,7 @@
   },
   "data": {
     "source": "Yahoo Finance via yfinance (auto_adjust=True)",
-    "fetched_at_utc": "2026-11-07T10:58:50+00:00",
+    "fetched_at_utc": "2026-11-09T22:38:12+00:00",
     "first_date": "2016-01-04",
     "last_date": "2026-11-06",
     "observations": 2673,
@@ -25,7 +25,8 @@
       "2019-01-01",
       "2019-10-27",
       "2020-11-14",
-      "2026-01-15"
+      "2026-01-15",
+      "2026-11-09"
     ],
     "demerger_adjustments": [
       {
@@ -49,13 +50,13 @@
       "sharpe": 0.307744,
       "sortino": 0.467061,
       "max_drawdown": -0.36601,
-      "skewness": 0.751915,
-      "excess_kurtosis": 8.325199,
+      "skewness": 0.751914,
+      "excess_kurtosis": 8.325208,
       "var_95_daily": 0.019684,
       "es_95_daily": 0.028717,
       "beta": 0.604231,
       "treynor": 0.112083,
-      "jensen_alpha": 0.018405,
+      "jensen_alpha": 0.018404,
       "capm_required_return": 0.097979
     },
     "SUNPHARMA.NS": {
@@ -65,7 +66,7 @@
       "sharpe": 0.261657,
       "sortino": 0.378896,
       "max_drawdown": -0.623092,
-      "skewness": 0.038676,
+      "skewness": 0.038675,
       "excess_kurtosis": 4.996662,
       "var_95_daily": 0.024852,
       "es_95_daily": 0.037649,
@@ -75,17 +76,17 @@
       "capm_required_return": 0.100834
     },
     "ICICIBANK.NS": {
-      "cagr": 0.206258,
+      "cagr": 0.206259,
       "mean_return": 0.231832,
       "volatility": 0.297792,
       "sharpe": 0.598057,
       "sortino": 0.899103,
-      "max_drawdown": -0.483073,
-      "skewness": 0.25229,
-      "excess_kurtosis": 9.556552,
+      "max_drawdown": -0.483072,
+      "skewness": 0.252289,
+      "excess_kurtosis": 9.55656,
       "var_95_daily": 0.025269,
       "es_95_daily": 0.040106,
-      "beta": 1.294526,
+      "beta": 1.294525,
       "treynor": 0.137577,
       "jensen_alpha": 0.072433,
       "capm_required_return": 0.146851
@@ -116,11 +117,11 @@
     "SUNPHARMA.NS": {
       "HINDUNILVR.NS": 0.162222,
       "SUNPHARMA.NS": 1.0,
-      "ICICIBANK.NS": 0.22348
+      "ICICIBANK.NS": 0.223481
     },
     "ICICIBANK.NS": {
       "HINDUNILVR.NS": 0.236171,
-      "SUNPHARMA.NS": 0.22348,
+      "SUNPHARMA.NS": 0.223481,
       "ICICIBANK.NS": 1.0
     }
   },

@@ -17,11 +17,11 @@
         "calm": 24.666666666666668,
         "near_high": 35.733333333333334
       },
-      "excess_after_fear": 0.014134547419830968,
-      "excess_after_greed": -0.022248334922149244,
+      "excess_after_fear": 0.014134536962633825,
+      "excess_after_greed": -0.022248329086715514,
       "fear_days": 429,
       "greed_days": 183,
-      "p_nonoverlapping": 0.09859537209993864,
+      "p_nonoverlapping": 0.09859585340464674,
       "n_nonoverlapping": 108
     },
     "SUNPHARMA.NS": {
@@ -34,11 +34,11 @@
         "calm": 70.8,
         "near_high": 43.2
       },
-      "excess_after_fear": 0.013448863939540166,
-      "excess_after_greed": 0.0053472617991410275,
+      "excess_after_fear": 0.013448877882476399,
+      "excess_after_greed": 0.005347258989335182,
       "fear_days": 273,
       "greed_days": 512,
-      "p_nonoverlapping": 0.5217988764620866,
+      "p_nonoverlapping": 0.521798919282455,
       "n_nonoverlapping": 108
     },
     "ICICIBANK.NS": {
@@ -51,11 +51,11 @@
         "calm": 4.533333333333333,
         "near_high": 100.0
       },
-      "excess_after_fear": 0.003920935459742355,
-      "excess_after_greed": 0.0013568053433328357,
+      "excess_after_fear": 0.003920928237420639,
+      "excess_after_greed": 0.0013568113556825165,
       "fear_days": 303,
       "greed_days": 310,
-      "p_nonoverlapping": 0.9337552322885895,
+      "p_nonoverlapping": 0.9337537594031933,
       "n_nonoverlapping": 108
     }
   },
@@ -125,11 +125,11 @@
       "same_day_n": 240
     },
     "SUNPHARMA.NS": {
-      "next_r": 0.0804849577935459,
-      "next_p": 0.5907201089858447,
+      "next_r": 0.0804850585505087,
+      "next_p": 0.5907196426203906,
       "next_n": 47,
-      "same_day_r": 0.13766168457277803,
-      "same_day_p": 0.035726928727607174,
+      "same_day_r": 0.13766166250292983,
+      "same_day_p": 0.035726958627789046,
       "same_day_n": 233
     },
     "ICICIBANK.NS": {
