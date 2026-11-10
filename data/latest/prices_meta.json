@@ -1,9 +1,9 @@
 {
   "source": "Yahoo Finance via yfinance (auto_adjust=True)",
-  "fetched_at_utc": "2026-11-09T22:38:12+00:00",
+  "fetched_at_utc": "2026-11-10T19:55:11+00:00",
   "first_date": "2016-01-04",
-  "last_date": "2026-11-06",
-  "observations": 2673,
+  "last_date": "2026-11-09",
+  "observations": 2674,
   "dropped_incomplete_dates": [
     "2016-01-01",
     "2016-08-12",
@@ -11,8 +11,7 @@
     "2019-01-01",
     "2019-10-27",
     "2020-11-14",
-    "2026-01-15",
-    "2026-11-09"
+    "2026-01-15"
   ],
   "demerger_adjustments": [
     {

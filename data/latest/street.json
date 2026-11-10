@@ -180,22 +180,22 @@
   "must_believe": {
     "betas": {
       "HINDUNILVR.NS": {
-        "full": 0.6042307367939195,
-        "5y": 0.5891846312225011,
-        "3y": 0.5265126694971488,
-        "1y": 0.7917076742356816
+        "full": 0.6042288119661919,
+        "5y": 0.5895623085376753,
+        "3y": 0.5263171808398995,
+        "1y": 0.7914667237180587
       },
       "SUNPHARMA.NS": {
-        "full": 0.6445620575520362,
-        "5y": 0.5572538986836122,
-        "3y": 0.5201759272915267,
-        "1y": 0.45847386701456505
+        "full": 0.6445688643202626,
+        "5y": 0.5554626799331737,
+        "3y": 0.5228456685615551,
+        "1y": 0.4589412667946404
       },
       "ICICIBANK.NS": {
-        "full": 1.2945251699738087,
-        "5y": 0.9742094057894054,
-        "3y": 0.9496780961751111,
-        "1y": 0.9914813823017874
+        "full": 1.2945285645238147,
+        "5y": 0.9760758923321888,
+        "3y": 0.9499603895600195,
+        "1y": 0.9901203158156499
       }
     },
     "stocks": {
@@ -203,8 +203,8 @@
         "model": "DividendDiscountModel",
         "our_r": 0.09779228,
         "our_value": 1079.1244462035838,
-        "r_5y_beta": 0.09691327189055307,
-        "value_at_5y_beta": 1101.864919460672,
+        "r_5y_beta": 0.09694001144446741,
+        "value_at_5y_beta": 1101.159088335498,
         "r_needed_for_price": 0.07891710049776283,
         "r_needed_for_target": 0.07552505412357056
       },
@@ -212,8 +212,8 @@
         "model": "ResidualIncomeModel",
         "our_r": 0.10089332,
         "our_value": 747.6266602208118,
-        "r_5y_beta": 0.09465257602679975,
-        "value_at_5y_beta": 875.5987608734224,
+        "r_5y_beta": 0.09452575773926869,
+        "value_at_5y_beta": 878.6217563852273,
         "r_needed_for_price": 0.07559772037233878,
         "r_needed_for_target": 0.07200127509318272
       },
@@ -221,8 +221,8 @@
         "model": "ResidualIncomeModel",
         "our_r": 0.14672924,
         "our_value": 574.6477515705311,
-        "r_5y_beta": 0.12417302592988991,
-        "value_at_5y_beta": 818.3976384529635,
+        "r_5y_beta": 0.12430517317711896,
+        "value_at_5y_beta": 816.4879099866517,
         "r_needed_for_price": 0.09891948582452229,
         "r_needed_for_target": 0.0907892121164418
       }
@@ -245,18 +245,18 @@
       },
       {
         "step": "Use the 5-year beta",
-        "detail": "beta 0.97, so r = 12.42%",
-        "value": 818.3976384529635
+        "detail": "beta 0.98, so r = 12.43%",
+        "value": 816.4879099866517
       },
       {
         "step": "Add the subsidiaries",
         "detail": "Rs 265 a share (Motilal's sum of the parts)",
-        "value": 1083.3976384529635
+        "value": 1081.4879099866516
       },
       {
         "step": "Use the Street's ROE",
         "detail": "17% for five years, then 16%",
-        "value": 1199.3607488022717
+        "value": 1197.172047924983
       },
       {
         "step": "Price, 3 Nov",
@@ -272,14 +272,14 @@
   },
   "at_5y_beta": {
     "weights": {
-      "HINDUNILVR.NS": 0.39788870000761645,
-      "SUNPHARMA.NS": 0.20121398043330865,
-      "ICICIBANK.NS": 0.4008973195590749
+      "HINDUNILVR.NS": 0.3983222594138907,
+      "SUNPHARMA.NS": 0.19955625205058244,
+      "ICICIBANK.NS": 0.40212148853552687
     },
-    "expected_return": 0.10738675060346795,
-    "volatility": 0.18522990089154254,
-    "sharpe": 0.2817458215562367,
-    "y": 0.38026503847400833
+    "expected_return": 0.107462351593508,
+    "volatility": 0.18534027439542633,
+    "sharpe": 0.28198594053013726,
+    "y": 0.38036247309167664
   },
   "organon": {
     "summary": "Sun Pharma is buying Organon, a women's-health company, for about $11.75bn enterprise value ($14 a share, all cash), funded with about $2-2.5bn of cash and about $9.25-9.75bn of debt. Close expected in Q4 FY27, leverage about 2.3x net debt/EBITDA. Organon CY26 sales about $6.2bn, EBITDA about $1.92bn.",
