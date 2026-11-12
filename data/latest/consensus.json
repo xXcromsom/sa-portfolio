@@ -14,7 +14,7 @@
       }
     },
     "price_targets": {
-      "current": 1990.3,
+      "current": 1974.0,
       "high": 2750.0,
       "low": 1800.0,
       "mean": 2258.0264,
@@ -29,9 +29,9 @@
       },
       {
         "date": "2026-07-28",
-        "estimate": 11.8,
-        "reported": 11.44,
-        "surprise_pct": -3.09
+        "estimate": 11.7,
+        "reported": 11.62,
+        "surprise_pct": -0.72
       },
       {
         "date": "2026-04-30",
@@ -182,7 +182,7 @@
       }
     },
     "price_targets": {
-      "current": 1904.5,
+      "current": 1885.0,
       "high": 2320.0,
       "low": 1770.0,
       "mean": 2111.9395,
@@ -350,7 +350,7 @@
       }
     },
     "price_targets": {
-      "current": 1589.0,
+      "current": 1590.0,
       "high": 2070.0,
       "low": 1645.0,
       "mean": 1769.7382,
