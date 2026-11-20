@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-18",
+  "as_of": "2026-11-19",
   "assumptions": {
     "periods_per_year": 252,
     "risk_free_rate": 0.055199,
@@ -14,10 +14,10 @@
   },
   "data": {
     "source": "Yahoo Finance via yfinance (auto_adjust=True)",
-    "fetched_at_utc": "2026-11-19T20:53:15+00:00",
+    "fetched_at_utc": "2026-11-20T20:38:49+00:00",
     "first_date": "2016-01-04",
-    "last_date": "2026-11-18",
-    "observations": 2680,
+    "last_date": "2026-11-19",
+    "observations": 2681,
     "dropped_incomplete_dates": [
       "2016-01-01",
       "2016-08-12",
@@ -26,7 +26,7 @@
       "2019-10-27",
       "2020-11-14",
       "2026-01-15",
-      "2026-11-19"
+      "2026-11-20"
     ],
     "demerger_adjustments": [
       {
@@ -44,66 +44,66 @@
   },
   "securities": {
     "HINDUNILVR.NS": {
-      "cagr": 0.102708,
-      "mean_return": 0.121807,
-      "volatility": 0.219924,
-      "sharpe": 0.309526,
-      "sortino": 0.469748,
+      "cagr": 0.106816,
+      "mean_return": 0.125593,
+      "volatility": 0.220229,
+      "sharpe": 0.326286,
+      "sortino": 0.495964,
       "max_drawdown": -0.36601,
-      "skewness": 0.75115,
-      "excess_kurtosis": 8.325531,
-      "var_95_daily": 0.019666,
+      "skewness": 0.753631,
+      "excess_kurtosis": 8.281883,
+      "var_95_daily": 0.019663,
       "es_95_daily": 0.028717,
-      "beta": 0.604299,
-      "treynor": 0.112647,
-      "jensen_alpha": 0.018489,
-      "capm_required_return": 0.097983
+      "beta": 0.60562,
+      "treynor": 0.118652,
+      "jensen_alpha": 0.021548,
+      "capm_required_return": 0.098077
     },
     "SUNPHARMA.NS": {
-      "cagr": 0.092273,
-      "mean_return": 0.125072,
-      "volatility": 0.271308,
-      "sharpe": 0.262938,
-      "sortino": 0.38085,
+      "cagr": 0.09379,
+      "mean_return": 0.126458,
+      "volatility": 0.271295,
+      "sharpe": 0.268057,
+      "sortino": 0.388318,
       "max_drawdown": -0.623092,
-      "skewness": 0.039342,
-      "excess_kurtosis": 5.004498,
-      "var_95_daily": 0.02484,
+      "skewness": 0.038606,
+      "excess_kurtosis": 5.0032,
+      "var_95_daily": 0.024839,
       "es_95_daily": 0.037649,
-      "beta": 0.643967,
-      "treynor": 0.110778,
-      "jensen_alpha": 0.0185,
-      "capm_required_return": 0.100792
+      "beta": 0.644271,
+      "treynor": 0.112876,
+      "jensen_alpha": 0.019202,
+      "capm_required_return": 0.100813
     },
     "ICICIBANK.NS": {
-      "cagr": 0.207822,
-      "mean_return": 0.233033,
-      "volatility": 0.297474,
-      "sharpe": 0.602736,
-      "sortino": 0.906199,
-      "max_drawdown": -0.483073,
-      "skewness": 0.251735,
-      "excess_kurtosis": 9.57725,
-      "var_95_daily": 0.025232,
+      "cagr": 0.208274,
+      "mean_return": 0.233393,
+      "volatility": 0.297421,
+      "sharpe": 0.604052,
+      "sortino": 0.908185,
+      "max_drawdown": -0.483072,
+      "skewness": 0.25155,
+      "excess_kurtosis": 9.581478,
+      "var_95_daily": 0.025226,
       "es_95_daily": 0.040106,
-      "beta": 1.293526,
-      "treynor": 0.138612,
-      "jensen_alpha": 0.073164,
-      "capm_required_return": 0.146781
+      "beta": 1.293125,
+      "treynor": 0.138933,
+      "jensen_alpha": 0.072236,
+      "capm_required_return": 0.146752
     },
     "^NSEI": {
-      "cagr": 0.13048,
-      "mean_return": 0.135785,
-      "volatility": 0.161385,
-      "sharpe": 0.508412,
-      "sortino": 0.700114,
+      "cagr": 0.131634,
+      "mean_return": 0.136806,
+      "volatility": 0.161389,
+      "sharpe": 0.514726,
+      "sortino": 0.70896,
       "max_drawdown": -0.38299,
-      "skewness": -0.992802,
-      "excess_kurtosis": 18.158521,
-      "var_95_daily": 0.014266,
+      "skewness": -0.993094,
+      "excess_kurtosis": 18.150456,
+      "var_95_daily": 0.01426,
       "es_95_daily": 0.023337,
       "beta": 1.0,
-      "treynor": 0.08205,
+      "treynor": 0.083071,
       "jensen_alpha": 0.0,
       "capm_required_return": 0.125999
     }
@@ -111,26 +111,26 @@
   "correlation_full_sample": {
     "HINDUNILVR.NS": {
       "HINDUNILVR.NS": 1.0,
-      "SUNPHARMA.NS": 0.161981,
-      "ICICIBANK.NS": 0.235361
+      "SUNPHARMA.NS": 0.162638,
+      "ICICIBANK.NS": 0.235209
     },
     "SUNPHARMA.NS": {
-      "HINDUNILVR.NS": 0.161981,
+      "HINDUNILVR.NS": 0.162638,
       "SUNPHARMA.NS": 1.0,
-      "ICICIBANK.NS": 0.223539
+      "ICICIBANK.NS": 0.223572
     },
     "ICICIBANK.NS": {
-      "HINDUNILVR.NS": 0.235361,
-      "SUNPHARMA.NS": 0.223539,
+      "HINDUNILVR.NS": 0.235209,
+      "SUNPHARMA.NS": 0.223572,
       "ICICIBANK.NS": 1.0
     }
   },
   "correlation_check": {
-    "window_start": "2021-10-12",
-    "window_end": "2026-11-18",
+    "window_start": "2021-10-13",
+    "window_end": "2026-11-19",
     "pairs": {
-      "HINDUNILVR.NS / SUNPHARMA.NS": 0.16,
-      "HINDUNILVR.NS / ICICIBANK.NS": 0.207,
+      "HINDUNILVR.NS / SUNPHARMA.NS": 0.163,
+      "HINDUNILVR.NS / ICICIBANK.NS": 0.208,
       "SUNPHARMA.NS / ICICIBANK.NS": 0.218
     },
     "max_pair": "SUNPHARMA.NS / ICICIBANK.NS",
@@ -140,19 +140,19 @@
   },
   "covariance_annualized": {
     "HINDUNILVR.NS": {
-      "HINDUNILVR.NS": 0.048367,
-      "SUNPHARMA.NS": 0.009665,
-      "ICICIBANK.NS": 0.015398
+      "HINDUNILVR.NS": 0.048501,
+      "SUNPHARMA.NS": 0.009717,
+      "ICICIBANK.NS": 0.015406
     },
     "SUNPHARMA.NS": {
-      "HINDUNILVR.NS": 0.009665,
-      "SUNPHARMA.NS": 0.073608,
-      "ICICIBANK.NS": 0.018041
+      "HINDUNILVR.NS": 0.009717,
+      "SUNPHARMA.NS": 0.073601,
+      "ICICIBANK.NS": 0.01804
     },
     "ICICIBANK.NS": {
-      "HINDUNILVR.NS": 0.015398,
-      "SUNPHARMA.NS": 0.018041,
-      "ICICIBANK.NS": 0.088491
+      "HINDUNILVR.NS": 0.015406,
+      "SUNPHARMA.NS": 0.01804,
+      "ICICIBANK.NS": 0.088459
     }
   }
 }
