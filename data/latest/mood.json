@@ -17,11 +17,11 @@
         "calm": 21.066666666666666,
         "near_high": 46.266666666666666
       },
-      "excess_after_fear": 0.013297198066743659,
-      "excess_after_greed": -0.02224833829101252,
+      "excess_after_fear": 0.013297211059737893,
+      "excess_after_greed": -0.022248340830572054,
       "fear_days": 439,
       "greed_days": 183,
-      "p_nonoverlapping": 0.10892275778004183,
+      "p_nonoverlapping": 0.1089223794332103,
       "n_nonoverlapping": 109
     },
     "SUNPHARMA.NS": {
@@ -34,11 +34,11 @@
         "calm": 50.8,
         "near_high": 43.333333333333336
       },
-      "excess_after_fear": 0.011497458494501327,
-      "excess_after_greed": 0.00534726526628749,
+      "excess_after_fear": 0.01149744832720841,
+      "excess_after_greed": 0.005347260587084664,
       "fear_days": 283,
       "greed_days": 512,
-      "p_nonoverlapping": 0.6360415906741054,
+      "p_nonoverlapping": 0.6360407351824552,
       "n_nonoverlapping": 109
     },
     "ICICIBANK.NS": {
@@ -51,11 +51,11 @@
         "calm": 4.933333333333334,
         "near_high": 57.199999999999996
       },
-      "excess_after_fear": 0.003920926917721001,
-      "excess_after_greed": 0.0013568041336592088,
+      "excess_after_fear": 0.003920930634078368,
+      "excess_after_greed": 0.0013568084442083254,
       "fear_days": 303,
       "greed_days": 310,
-      "p_nonoverlapping": 0.9337536803199555,
+      "p_nonoverlapping": 0.9337552869385837,
       "n_nonoverlapping": 109
     }
   },
@@ -117,19 +117,19 @@
   "vix_error": null,
   "tone": {
     "HINDUNILVR.NS": {
-      "next_r": 0.04213627394484919,
-      "next_p": 0.7714019883388521,
+      "next_r": 0.042135872786280074,
+      "next_p": 0.7714041060398965,
       "next_n": 50,
-      "same_day_r": 0.03933480624190798,
-      "same_day_p": 0.5367013941679084,
+      "same_day_r": 0.03933489498681072,
+      "same_day_p": 0.5367004745353904,
       "same_day_n": 249
     },
     "SUNPHARMA.NS": {
-      "next_r": 0.0767045436689047,
-      "next_p": 0.6003873286250864,
+      "next_r": 0.07670444409715932,
+      "next_p": 0.6003878030344751,
       "next_n": 49,
-      "same_day_r": 0.1512987768862855,
-      "same_day_p": 0.018520531847378372,
+      "same_day_r": 0.15129879573650035,
+      "same_day_p": 0.01852051705250896,
       "same_day_n": 242
     },
     "ICICIBANK.NS": {

@@ -233,16 +233,16 @@
   },
   "event_study": {
     "events": 72,
-    "mean_car_positive_surprise": 0.008230800359208854,
-    "mean_car_negative_surprise": -0.014128661921256433,
-    "slope_car_on_surprise": -0.00037794042460151096,
-    "correlation": -0.0022238882785140086,
+    "mean_car_positive_surprise": 0.009298099642460943,
+    "mean_car_negative_surprise": -0.014458039847557374,
+    "slope_car_on_surprise": 0.11061579080838152,
+    "correlation": 0.35494936574291114,
     "rows": [
       {
         "date": "2026-10-28",
         "car": 0.018,
         "raw_return": 0.02177,
-        "surprise_pct": 2.51,
+        "surprise_pct": -40.17,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -263,7 +263,7 @@
         "date": "2026-02-12",
         "car": -0.05384,
         "raw_return": -0.06048,
-        "surprise_pct": 172.81,
+        "surprise_pct": -41.11,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -277,7 +277,7 @@
         "date": "2025-07-31",
         "car": 0.04606,
         "raw_return": 0.0408,
-        "surprise_pct": 11.63,
+        "surprise_pct": 12.78,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -305,7 +305,7 @@
         "date": "2024-07-23",
         "car": -0.00184,
         "raw_return": -0.00365,
-        "surprise_pct": 1.7,
+        "surprise_pct": 0.37,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -319,7 +319,7 @@
         "date": "2024-01-19",
         "car": -0.06419,
         "raw_return": -0.0731,
-        "surprise_pct": -2.45,
+        "surprise_pct": -2.51,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -354,7 +354,7 @@
         "date": "2022-10-21",
         "car": -0.01279,
         "raw_return": -0.00383,
-        "surprise_pct": 11.18,
+        "surprise_pct": 12.66,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -809,9 +809,9 @@
           "growth": 0.20879999
         },
         "+1y": {
-          "avg": 98.03624,
+          "avg": 98.0391,
           "analysts": 35,
-          "growth": 0.1736
+          "growth": 0.17379999
         }
       },
       "analyst_target_mean": 1777.2683,
@@ -820,8 +820,8 @@
         1650.0,
         2070.0
       ],
-      "our_comps_on_next_year_eps": 1389.1217623112025,
-      "our_comps_fwd_upside": -0.12385886956089409,
+      "our_comps_on_next_year_eps": 1389.1622870012582,
+      "our_comps_fwd_upside": -0.12383330999605291,
       "our_model_value": 574.65,
       "our_model_upside": -0.6375591296121097,
       "our_blended_upside": -0.459575
