@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-25",
   "components": {
     "momentum": "Price vs its 125-day average",
     "rsi": "14-day RSI",
@@ -8,61 +8,61 @@
   },
   "stocks": {
     "HINDUNILVR.NS": {
-      "as_of": "2026-11-23",
-      "mood": 54.3,
+      "as_of": "2026-11-25",
+      "mood": 64.36666666666666,
       "zone": "Greed",
       "components": {
-        "momentum": 68.0,
-        "rsi": 81.86666666666666,
-        "calm": 21.066666666666666,
-        "near_high": 46.266666666666666
+        "momentum": 84.66666666666667,
+        "rsi": 97.33333333333334,
+        "calm": 8.266666666666666,
+        "near_high": 67.2
       },
-      "excess_after_fear": 0.013297211059737893,
-      "excess_after_greed": -0.022248340830572054,
-      "fear_days": 439,
+      "excess_after_fear": 0.01339000769124044,
+      "excess_after_greed": -0.02224833660535533,
+      "fear_days": 440,
       "greed_days": 183,
-      "p_nonoverlapping": 0.1089223794332103,
+      "p_nonoverlapping": 0.1089227361480249,
       "n_nonoverlapping": 109
     },
     "SUNPHARMA.NS": {
-      "as_of": "2026-11-23",
-      "mood": 44.333333333333336,
-      "zone": "Fear",
+      "as_of": "2026-11-25",
+      "mood": 53.266666666666666,
+      "zone": "Greed",
       "components": {
-        "momentum": 30.0,
-        "rsi": 53.2,
-        "calm": 50.8,
-        "near_high": 43.333333333333336
+        "momentum": 40.666666666666664,
+        "rsi": 69.33333333333334,
+        "calm": 44.266666666666666,
+        "near_high": 58.8
       },
-      "excess_after_fear": 0.01149744832720841,
-      "excess_after_greed": 0.005347260587084664,
-      "fear_days": 283,
+      "excess_after_fear": 0.01130828617906315,
+      "excess_after_greed": 0.005347267808239694,
+      "fear_days": 284,
       "greed_days": 512,
-      "p_nonoverlapping": 0.6360407351824552,
+      "p_nonoverlapping": 0.6360426115122367,
       "n_nonoverlapping": 109
     },
     "ICICIBANK.NS": {
-      "as_of": "2026-11-23",
-      "mood": 61.36666666666666,
-      "zone": "Greed",
+      "as_of": "2026-11-25",
+      "mood": 74.33333333333333,
+      "zone": "Extreme greed",
       "components": {
-        "momentum": 97.6,
-        "rsi": 85.73333333333333,
-        "calm": 4.933333333333334,
-        "near_high": 57.199999999999996
+        "momentum": 99.86666666666667,
+        "rsi": 94.26666666666667,
+        "calm": 3.2,
+        "near_high": 100.0
       },
-      "excess_after_fear": 0.003920930634078368,
-      "excess_after_greed": 0.0013568084442083254,
+      "excess_after_fear": 0.003920936003941487,
+      "excess_after_greed": 0.0013568073918680057,
       "fear_days": 303,
       "greed_days": 310,
-      "p_nonoverlapping": 0.9337552869385837,
+      "p_nonoverlapping": 0.9337544774167692,
       "n_nonoverlapping": 109
     }
   },
   "vix": {
-    "as_of": "2026-11-23",
-    "level": 17.700000762939453,
-    "one_year_percentile": 0.812,
+    "as_of": "2026-11-25",
+    "level": 17.670000076293945,
+    "one_year_percentile": 0.808,
     "quintiles": [
       {
         "quintile": 1,
@@ -89,8 +89,8 @@
         "quintile": 4,
         "low": 16.040000915527344,
         "high": 19.15999984741211,
-        "forward": 0.004707414947580161,
-        "days": 524.0
+        "forward": 0.004955119896898864,
+        "days": 525.0
       },
       {
         "quintile": 5,
@@ -112,7 +112,7 @@
       "r": 0.18940440560343028,
       "p": 0.032252532093988664
     },
-    "same_day_correlation": -0.5544711210535017
+    "same_day_correlation": -0.5541851636765455
   },
   "vix_error": null,
   "tone": {
@@ -120,16 +120,16 @@
       "next_r": 0.042135872786280074,
       "next_p": 0.7714041060398965,
       "next_n": 50,
-      "same_day_r": 0.03933489498681072,
-      "same_day_p": 0.5367004745353904,
+      "same_day_r": 0.039334876063211566,
+      "same_day_p": 0.5367006706339915,
       "same_day_n": 249
     },
     "SUNPHARMA.NS": {
-      "next_r": 0.07670444409715932,
-      "next_p": 0.6003878030344751,
+      "next_r": 0.0767045436689047,
+      "next_p": 0.6003873286250864,
       "next_n": 49,
-      "same_day_r": 0.15129879573650035,
-      "same_day_p": 0.01852051705250896,
+      "same_day_r": 0.1512987768862855,
+      "same_day_p": 0.018520531847378372,
       "same_day_n": 242
     },
     "ICICIBANK.NS": {

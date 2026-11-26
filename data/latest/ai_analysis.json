@@ -1,12 +1,12 @@
 {
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-25",
   "technical_analysis": [
     {
       "ticker": "HINDUNILVR.NS",
       "rule": "Buy and hold",
-      "cagr": 0.114,
-      "volatility": 0.2206,
-      "sharpe": 0.3553,
+      "cagr": 0.1206,
+      "volatility": 0.2214,
+      "sharpe": 0.3816,
       "max_drawdown": -0.366,
       "time_invested": 1.0,
       "trades_per_year": 0.0
@@ -15,11 +15,11 @@
       "ticker": "HINDUNILVR.NS",
       "rule": "Trend (50/200 DMA)",
       "cagr": 0.0794,
-      "volatility": 0.1815,
-      "sharpe": 0.215,
+      "volatility": 0.1814,
+      "sharpe": 0.2149,
       "max_drawdown": -0.3416,
-      "time_invested": 0.6492,
-      "trades_per_year": 1.7253
+      "time_invested": 0.649,
+      "trades_per_year": 1.7246
     },
     {
       "ticker": "HINDUNILVR.NS",
@@ -29,14 +29,14 @@
       "sharpe": 0.0698,
       "max_drawdown": -0.1414,
       "time_invested": 0.1212,
-      "trades_per_year": 2.4358
+      "trades_per_year": 2.4348
     },
     {
       "ticker": "SUNPHARMA.NS",
       "rule": "Buy and hold",
-      "cagr": 0.1066,
+      "cagr": 0.109,
       "volatility": 0.2736,
-      "sharpe": 0.3108,
+      "sharpe": 0.3187,
       "max_drawdown": -0.5553,
       "time_invested": 1.0,
       "trades_per_year": 0.0
@@ -46,10 +46,10 @@
       "rule": "Trend (50/200 DMA)",
       "cagr": 0.097,
       "volatility": 0.2002,
-      "sharpe": 0.2941,
+      "sharpe": 0.294,
       "max_drawdown": -0.4532,
-      "time_invested": 0.6532,
-      "trades_per_year": 1.2179
+      "time_invested": 0.653,
+      "trades_per_year": 1.2174
     },
     {
       "ticker": "SUNPHARMA.NS",
@@ -58,15 +58,15 @@
       "volatility": 0.1269,
       "sharpe": 0.219,
       "max_drawdown": -0.2165,
-      "time_invested": 0.083,
-      "trades_per_year": 2.6387
+      "time_invested": 0.0829,
+      "trades_per_year": 2.6377
     },
     {
       "ticker": "ICICIBANK.NS",
       "rule": "Buy and hold",
-      "cagr": 0.209,
-      "volatility": 0.2903,
-      "sharpe": 0.614,
+      "cagr": 0.2131,
+      "volatility": 0.2904,
+      "sharpe": 0.6254,
       "max_drawdown": -0.4831,
       "time_invested": 1.0,
       "trades_per_year": 0.0
@@ -74,29 +74,29 @@
     {
       "ticker": "ICICIBANK.NS",
       "rule": "Trend (50/200 DMA)",
-      "cagr": 0.128,
-      "volatility": 0.2466,
-      "sharpe": 0.3936,
+      "cagr": 0.1318,
+      "volatility": 0.2468,
+      "sharpe": 0.4071,
       "max_drawdown": -0.4831,
-      "time_invested": 0.7914,
-      "trades_per_year": 1.0149
+      "time_invested": 0.7915,
+      "trades_per_year": 1.0145
     },
     {
       "ticker": "ICICIBANK.NS",
       "rule": "RSI mean reversion",
       "cagr": 0.0778,
-      "volatility": 0.1397,
+      "volatility": 0.1396,
       "sharpe": 0.2222,
       "max_drawdown": -0.3901,
-      "time_invested": 0.0681,
-      "trades_per_year": 2.4358
+      "time_invested": 0.068,
+      "trades_per_year": 2.4348
     },
     {
       "ticker": "^NSEI",
       "rule": "Buy and hold",
-      "cagr": 0.1158,
-      "volatility": 0.1624,
-      "sharpe": 0.4255,
+      "cagr": 0.1178,
+      "volatility": 0.1625,
+      "sharpe": 0.4366,
       "max_drawdown": -0.3844,
       "time_invested": 1.0,
       "trades_per_year": 0.0
@@ -105,73 +105,73 @@
       "ticker": "^NSEI",
       "rule": "Trend (50/200 DMA)",
       "cagr": 0.0465,
-      "volatility": 0.1236,
+      "volatility": 0.1235,
       "sharpe": -0.0046,
       "max_drawdown": -0.395,
-      "time_invested": 0.737,
-      "trades_per_year": 1.5224
+      "time_invested": 0.7367,
+      "trades_per_year": 1.5217
     },
     {
       "ticker": "^NSEI",
       "rule": "RSI mean reversion",
       "cagr": 0.0399,
       "volatility": 0.0954,
-      "sharpe": -0.1048,
+      "sharpe": -0.1047,
       "max_drawdown": -0.3267,
       "time_invested": 0.0874,
-      "trades_per_year": 2.4358
+      "trades_per_year": 2.4348
     }
   ],
   "risk": {
     "correlation_full": {
       "HUL": {
         "HUL": 1.0,
-        "Sun Pharma": 0.163,
-        "ICICI Bank": 0.235,
-        "Nifty 50 TR": 0.444
+        "Sun Pharma": 0.164,
+        "ICICI Bank": 0.237,
+        "Nifty 50 TR": 0.445
       },
       "Sun Pharma": {
-        "HUL": 0.163,
+        "HUL": 0.164,
         "Sun Pharma": 1.0,
         "ICICI Bank": 0.224,
-        "Nifty 50 TR": 0.383
+        "Nifty 50 TR": 0.384
       },
       "ICICI Bank": {
-        "HUL": 0.235,
+        "HUL": 0.237,
         "Sun Pharma": 0.224,
         "ICICI Bank": 1.0,
-        "Nifty 50 TR": 0.702
+        "Nifty 50 TR": 0.703
       },
       "Nifty 50 TR": {
-        "HUL": 0.444,
-        "Sun Pharma": 0.383,
-        "ICICI Bank": 0.702,
+        "HUL": 0.445,
+        "Sun Pharma": 0.384,
+        "ICICI Bank": 0.703,
         "Nifty 50 TR": 1.0
       }
     },
     "correlation_5y": {
       "HUL": {
         "HUL": 1.0,
-        "Sun Pharma": 0.165,
-        "ICICI Bank": 0.209,
-        "Nifty 50 TR": 0.4
+        "Sun Pharma": 0.169,
+        "ICICI Bank": 0.216,
+        "Nifty 50 TR": 0.404
       },
       "Sun Pharma": {
-        "HUL": 0.165,
+        "HUL": 0.169,
         "Sun Pharma": 1.0,
-        "ICICI Bank": 0.219,
-        "Nifty 50 TR": 0.391
+        "ICICI Bank": 0.223,
+        "Nifty 50 TR": 0.393
       },
       "ICICI Bank": {
-        "HUL": 0.209,
-        "Sun Pharma": 0.219,
+        "HUL": 0.216,
+        "Sun Pharma": 0.223,
         "ICICI Bank": 1.0,
-        "Nifty 50 TR": 0.665
+        "Nifty 50 TR": 0.666
       },
       "Nifty 50 TR": {
-        "HUL": 0.4,
-        "Sun Pharma": 0.391,
-        "ICICI Bank": 0.665,
+        "HUL": 0.404,
+        "Sun Pharma": 0.393,
+        "ICICI Bank": 0.666,
         "Nifty 50 TR": 1.0
       }
     },
@@ -191,58 +191,58 @@
       ]
     },
     "risk_share_latest": {
-      "HUL": 0.309,
+      "HUL": 0.317,
       "Sun Pharma": 0.11,
-      "ICICI Bank": 0.581
+      "ICICI Bank": 0.573
     },
     "weights": {
-      "HINDUNILVR.NS": 0.3087,
-      "SUNPHARMA.NS": 0.1913,
-      "ICICIBANK.NS": 0.5
+      "HINDUNILVR.NS": 0.3079,
+      "SUNPHARMA.NS": 0.1915,
+      "ICICIBANK.NS": 0.5006
     },
     "stress": {
       "COVID crash (Feb-Mar 2020)": {
         "HUL": -0.1843,
         "Sun Pharma": -0.1959,
         "ICICI Bank": -0.4787,
-        "Portfolio P": -0.3456,
+        "Portfolio P": -0.3457,
         "Nifty 50": -0.3717
       },
       "Rate-hike sell-off (Jan-Jun 2022)": {
         "HUL": -0.109,
         "Sun Pharma": -0.0628,
         "ICICI Bank": -0.1617,
-        "Portfolio P": -0.1226,
+        "Portfolio P": -0.1227,
         "Nifty 50": -0.1605
       },
       "Election-result shock (4 Jun 2024)": {
         "HUL": 0.0596,
         "Sun Pharma": -0.016,
         "ICICI Bank": -0.0763,
-        "Portfolio P": -0.0228,
+        "Portfolio P": -0.0229,
         "Nifty 50": -0.0592
       },
       "2026 drawdown (02 Jan 2026 to now)": {
-        "HUL": -0.1231,
-        "Sun Pharma": 0.0862,
-        "ICICI Bank": 0.1796,
-        "Portfolio P": 0.07,
-        "Nifty 50": -0.0271
+        "HUL": -0.0698,
+        "Sun Pharma": 0.1102,
+        "ICICI Bank": 0.2202,
+        "Portfolio P": 0.1132,
+        "Nifty 50": -0.009
       }
     }
   },
   "event_study": {
     "events": 72,
-    "mean_car_positive_surprise": 0.009298099642460943,
-    "mean_car_negative_surprise": -0.014458039847557374,
-    "slope_car_on_surprise": 0.11061579080838152,
-    "correlation": 0.35494936574291114,
+    "mean_car_positive_surprise": 0.009845929335435927,
+    "mean_car_negative_surprise": -0.015625275036038316,
+    "slope_car_on_surprise": 0.145484644520793,
+    "correlation": 0.41989760904861567,
     "rows": [
       {
         "date": "2026-10-28",
         "car": 0.018,
         "raw_return": 0.02177,
-        "surprise_pct": -40.17,
+        "surprise_pct": 2.51,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -277,7 +277,7 @@
         "date": "2025-07-31",
         "car": 0.04606,
         "raw_return": 0.0408,
-        "surprise_pct": 12.78,
+        "surprise_pct": 11.63,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -312,7 +312,7 @@
         "date": "2024-04-24",
         "car": -0.00884,
         "raw_return": -0.00475,
-        "surprise_pct": 3.27,
+        "surprise_pct": -3.0,
         "ticker": "HINDUNILVR.NS"
       },
       {
@@ -746,7 +746,7 @@
   },
   "forecasts": {
     "HINDUNILVR.NS": {
-      "price": 2019.0999755859375,
+      "price": 2141.800048828125,
       "eps_ttm": 47.618925831202,
       "consensus_eps": {
         "0y": {
@@ -760,20 +760,20 @@
           "growth": 0.1065
         }
       },
-      "analyst_target_mean": 2242.1052,
-      "analyst_target_upside": 0.11044783671464664,
+      "analyst_target_mean": 2256.9473,
+      "analyst_target_upside": 0.05376190519506108,
       "analyst_target_range": [
         1800.0,
         2750.0
       ],
       "our_comps_on_next_year_eps": 2358.1499210051693,
-      "our_comps_fwd_upside": 0.16792132609522725,
+      "our_comps_fwd_upside": 0.10101310451244916,
       "our_model_value": 1079.12,
-      "our_model_upside": -0.4655440478192061,
-      "our_blended_upside": -0.211559
+      "our_model_upside": -0.49616211812562294,
+      "our_blended_upside": -0.256728
     },
     "SUNPHARMA.NS": {
-      "price": 1860.0,
+      "price": 1901.0,
       "eps_ttm": 52.688622754491,
       "consensus_eps": {
         "0y": {
@@ -788,43 +788,43 @@
         }
       },
       "analyst_target_mean": 2108.606,
-      "analyst_target_upside": 0.13365913978494626,
+      "analyst_target_upside": 0.1092088374539717,
       "analyst_target_range": [
         1770.0,
         2320.0
       ],
       "our_comps_on_next_year_eps": 2025.7212224000004,
-      "our_comps_fwd_upside": 0.08909743139784965,
+      "our_comps_fwd_upside": 0.06560821799053151,
       "our_model_value": 747.63,
-      "our_model_upside": -0.5980483870967742,
-      "our_blended_upside": -0.341541
+      "our_model_upside": -0.6067175170962651,
+      "our_blended_upside": -0.355742
     },
     "ICICIBANK.NS": {
-      "price": 1585.5,
+      "price": 1640.0,
       "eps_ttm": 80.3869047619048,
       "consensus_eps": {
         "0y": {
-          "avg": 83.65238,
+          "avg": 83.66027,
           "analysts": 38,
-          "growth": 0.20879999
+          "growth": 0.20899999
         },
         "+1y": {
-          "avg": 98.0391,
+          "avg": 98.03881,
           "analysts": 35,
-          "growth": 0.17379999
+          "growth": 0.1736
         }
       },
-      "analyst_target_mean": 1777.2683,
-      "analyst_target_upside": 0.1209513087354146,
+      "analyst_target_mean": 1780.439,
+      "analyst_target_upside": 0.08563353658536599,
       "analyst_target_range": [
         1650.0,
         2070.0
       ],
-      "our_comps_on_next_year_eps": 1389.1622870012582,
-      "our_comps_fwd_upside": -0.12383330999605291,
+      "our_comps_on_next_year_eps": 1389.1581778543643,
+      "our_comps_fwd_upside": -0.15295233057660707,
       "our_model_value": 574.65,
-      "our_model_upside": -0.6375591296121097,
-      "our_blended_upside": -0.459575
+      "our_model_upside": -0.6496036585365854,
+      "our_blended_upside": -0.477534
     }
   },
   "extraction": {
